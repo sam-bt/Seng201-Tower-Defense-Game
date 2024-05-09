@@ -19,6 +19,7 @@ public class BetweenRoundsScreenController {
     @FXML private Label betweenRoundsTitleLabel;
     @FXML private Label betweenRoundMoney;
     @FXML private Label betweenRoundDifficulty;
+    @FXML private Button startRoundButton;
 //    @FXML private Label currTowerType;
 //    @FXML private Label currTowerXP;
 //    @FXML private Button nextRoundButton;
@@ -51,6 +52,7 @@ public class BetweenRoundsScreenController {
             betweenRoundsTitleLabel.setText("Weclome "+roundGameManager.getName()+", Select your Setup for round "+roundGameManager.getCurrRound()+" of "+roundGameManager.getRounds()+"!");
             betweenRoundMoney.setText("Current Money: "+roundGameManager.getMoney());
             betweenRoundDifficulty.setText("Current Difficulty: "+roundGameManager.getDifficulty());
+            startRoundButton.setText("Start Round "+roundGameManager.getCurrRound()+"!");
         }
 
         /**

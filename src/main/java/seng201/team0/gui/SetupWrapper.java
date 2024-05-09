@@ -18,7 +18,7 @@ public class SetupWrapper {
 
     public void init(Stage stage) {
         this.stage = stage;
-        new GameManager(this::launchSetupScreen, this::launchBetweenRoundsScreen, this::clearPane);
+        new GameManager(this::launchSetupScreen, this::launchBetweenRoundsScreen, this::launchGameScreen,this::clearPane);
     }
 
     public void clearPane() {
@@ -43,7 +43,18 @@ public class SetupWrapper {
             mainScreenLoader.setControllerFactory(param -> new BetweenRoundsScreenController(setupGameManager));
             Parent setupParent  = mainScreenLoader.load();
             pane.getChildren().add(setupParent);
-            stage.setTitle("Between Rounds");
+            stage.setTitle("Between Rounds Screen");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void launchGameScreen(GameManager setupGameManager) {
+        try {
+            FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/game_screen.fxml"));
+            setupScreenLoader.setControllerFactory(param -> new SetupScreenController(setupGameManager));
+            Parent setupParent  = setupScreenLoader.load();
+            pane.getChildren().add(setupParent);
+            stage.setTitle("Game Screen");
         } catch (IOException e) {
             e.printStackTrace();
         }

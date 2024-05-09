@@ -19,10 +19,12 @@ public class GameManager {
     private MoneyService money;
     private final Consumer<GameManager> setupScreenLauncher;
     private final Consumer<GameManager> betweenScreenLauncher;
+    private final Consumer<GameManager> gameScreenLauncher;
     private final Runnable clearScreen;
-    public GameManager(Consumer<GameManager> setupScreenLauncher, Consumer<GameManager> betweenScreenLauncher, Runnable clearScreen){
+    public GameManager(Consumer<GameManager> setupScreenLauncher, Consumer<GameManager> betweenScreenLauncher, Consumer<GameManager> gameScreenLauncher, Runnable clearScreen){
         this.setupScreenLauncher = setupScreenLauncher;
         this.betweenScreenLauncher = betweenScreenLauncher;
+        this.gameScreenLauncher = gameScreenLauncher;
         this.clearScreen = clearScreen;
         launchSetupScreen();
     }
@@ -36,6 +38,9 @@ public class GameManager {
     public void launchSetupScreen() { setupScreenLauncher.accept(this); }
     public void launchBetweenRoundsScreen() {
         betweenScreenLauncher.accept(this);
+    }
+    public void launchGameScreen() {
+        gameScreenLauncher.accept(this);
     }
     public String getName() { return name; }
     public void setName(String name) {
@@ -56,6 +61,9 @@ public class GameManager {
     }
     public void closeBetweenRoundScreen() {
         clearScreen.run();
-//        launchBetweenRoundsScreen();
+        launchGameScreen();
+    }
+    public void closeGameScreen(){
+        clearScreen.run();
     }
 }
