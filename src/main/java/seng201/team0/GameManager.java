@@ -36,9 +36,7 @@ public class GameManager {
     public void incrementRound() { currRound += 1; } // TODO check for round == to max rounds, if so then terminate
     public int getCurrRound() { return currRound; }
     public void launchSetupScreen() { setupScreenLauncher.accept(this); }
-    public void launchBetweenRoundsScreen() {
-        betweenScreenLauncher.accept(this);
-    }
+    public void launchBetweenRoundsScreen() { betweenScreenLauncher.accept(this); }
     public void launchGameScreen() {
         gameScreenLauncher.accept(this);
     }
@@ -65,5 +63,6 @@ public class GameManager {
     }
     public void closeGameScreen(){
         clearScreen.run();
+        launchBetweenRoundsScreen();
     }
 }

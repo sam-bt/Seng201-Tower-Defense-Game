@@ -51,7 +51,7 @@ public class SetupWrapper {
     public void launchGameScreen(GameManager setupGameManager) {
         try {
             FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/game_screen.fxml"));
-            setupScreenLoader.setControllerFactory(param -> new SetupScreenController(setupGameManager));
+            setupScreenLoader.setControllerFactory(param -> new GameScreenController(setupGameManager));
             Parent setupParent  = setupScreenLoader.load();
             pane.getChildren().add(setupParent);
             stage.setTitle("Game Screen");

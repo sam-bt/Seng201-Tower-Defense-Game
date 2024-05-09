@@ -1,19 +1,17 @@
 package seng201.team0.gui;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import seng201.team0.GameManager;
 
-public class GameScreenController {
+public class FinishedScreenController {
     GameManager roundGameManager;
-    @FXML private Button nextRoundButton;
-    public GameScreenController(GameManager tempRoundGameManager){
+    public FinishedScreenController(GameManager tempRoundGameManager){
         roundGameManager = tempRoundGameManager;
     }
-//    public void initialize() {}
+    public void initialize() {}
 
     @FXML
-    private void gameOnConfirm() {
+    private void onConfirm() {
 //            String playerText = playerName.getText();
 //            Setup setup = new Setup(playerText,numRoundsValue,difficultyValue);
         roundGameManager.closeGameScreen();
