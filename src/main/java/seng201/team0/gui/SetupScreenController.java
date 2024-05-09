@@ -14,25 +14,28 @@ import seng201.team0.models.Setup;
 
 public class SetupScreenController {
     private GameManager setupGameManager;
-    @FXML
-    private TextField playerName;
+    @FXML private TextField playerName;
     @FXML private Button setupAccept;
     @FXML private Slider numRoundsSlider;
     @FXML private Slider difficultySlider;
 
     /**
      *
-     * Sole constructor that initialises a game manager instance
+     * Sole constructor that sets the GameManager instance
      *
      */
 
     public SetupScreenController(GameManager tempSetupGameManager){
             setupGameManager = tempSetupGameManager;
     }
+    public void initialize () {
+
+    }
 
     /**
      *
-     * Method that calls the GameManager setSetup method with a
+     * Method that calls the GameManager setSetup method with a setup object containing the setup info
+     * Also calls setCurrRound to set the current round to 0
      *
      */
 
@@ -43,6 +46,7 @@ public class SetupScreenController {
         String playerText = playerName.getText();
         Setup setup = new Setup(playerText,numRoundsValue,difficultyValue);
         setupGameManager.setSetup(setup);
+        setupGameManager.setCurrRound();
         setupGameManager.closeSetupScreen();
     }
 }

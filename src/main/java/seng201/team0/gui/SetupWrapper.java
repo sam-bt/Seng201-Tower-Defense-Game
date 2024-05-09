@@ -18,17 +18,17 @@ public class SetupWrapper {
 
     public void init(Stage stage) {
         this.stage = stage;
-        new GameManager(this::launchSetupScreen, this::launchMainScreen, this::clearPane);
+        new GameManager(this::launchSetupScreen, this::launchBetweenRoundsScreen, this::clearPane);
     }
 
     public void clearPane() {
         pane.getChildren().removeAll(pane.getChildren());
     }
 
-    public void launchSetupScreen(GameManager setupScreenManager) {
+    public void launchSetupScreen(GameManager setupGameManager) {
         try {
             FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/setup_screen.fxml"));
-            setupScreenLoader.setControllerFactory(param -> new SetupScreenController(setupScreenManager));
+            setupScreenLoader.setControllerFactory(param -> new SetupScreenController(setupGameManager));
             Parent setupParent  = setupScreenLoader.load();
             pane.getChildren().add(setupParent);
             stage.setTitle("Setup Screen");
@@ -37,22 +37,15 @@ public class SetupWrapper {
         }
     }
 
-//    public void launchMainScreen(RocketManager rocketManager) {
-//        System.out.println("Main screen would launch here.");
-//        // For now, do nothing or just print a message.
-//    }
-
-    public void launchMainScreen(GameManager setupScreenManager) {
+    public void launchBetweenRoundsScreen(GameManager setupGameManager) {
         try {
-            FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/main_screen.fxml"));
-//            mainScreenLoader.setControllerFactory(param -> new MainScreenController(rocketManager));
+            FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/between_rounds_screen.fxml"));
+            mainScreenLoader.setControllerFactory(param -> new BetweenRoundsScreenController(setupGameManager));
             Parent setupParent  = mainScreenLoader.load();
             pane.getChildren().add(setupParent);
-            stage.setTitle("Rocket Manager Main Screen");
+            stage.setTitle("Between Rounds");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }
