@@ -13,10 +13,6 @@ import seng201.team0.services.CounterService;
 public class MainController {
 
     @FXML
-    private Label defaultLabel;
-
-    @FXML
-    private Button defaultButton;
 
     private CounterService counterService;
 
