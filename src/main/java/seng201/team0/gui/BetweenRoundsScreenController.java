@@ -17,7 +17,8 @@ import seng201.team0.models.Setup;
 
 public class BetweenRoundsScreenController {
     @FXML private Label betweenRoundsTitleLabel;
-
+    @FXML private Label betweenRoundMoney;
+    @FXML private Label betweenRoundDifficulty;
 //    @FXML private Label currTowerType;
 //    @FXML private Label currTowerXP;
 //    @FXML private Button nextRoundButton;
@@ -27,7 +28,7 @@ public class BetweenRoundsScreenController {
 //    @FXML private Button towerButton2;
 //    @FXML private Button towerButton3;
 
-    private GameManager setupGameManager;
+    private GameManager roundGameManager;
 
         /**
          *
@@ -35,8 +36,8 @@ public class BetweenRoundsScreenController {
          *
          */
 
-        public BetweenRoundsScreenController(GameManager tempSetupGameManager){
-            setupGameManager = tempSetupGameManager;
+        public BetweenRoundsScreenController(GameManager tempRoundGameManager){
+            roundGameManager = tempRoundGameManager;
         }
 
     /**
@@ -46,8 +47,10 @@ public class BetweenRoundsScreenController {
      */
 
 
-    public void initialize() { // TODO fix this somehow, currently not being called, however setupscreencontroller one is
-            betweenRoundsTitleLabel.setText("Weclome "+setupGameManager.getName()+", Select your Setup for round "+setupGameManager.getCurrRound()+" of "+setupGameManager.getRounds()+"!");
+    public void initialize() {
+            betweenRoundsTitleLabel.setText("Weclome "+roundGameManager.getName()+", Select your Setup for round "+roundGameManager.getCurrRound()+" of "+roundGameManager.getRounds()+"!");
+            betweenRoundMoney.setText("Current Money: "+roundGameManager.getMoney());
+            betweenRoundDifficulty.setText("Current Difficulty: "+roundGameManager.getDifficulty());
         }
 
         /**
@@ -60,7 +63,7 @@ public class BetweenRoundsScreenController {
         private void onConfirm() {
 //            String playerText = playerName.getText();
 //            Setup setup = new Setup(playerText,numRoundsValue,difficultyValue);
-            setupGameManager.incrementRound();
-            setupGameManager.closeSetupScreen();
+            roundGameManager.incrementRound();
+            roundGameManager.closeBetweenRoundScreen();
         }
 }

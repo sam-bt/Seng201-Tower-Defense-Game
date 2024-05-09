@@ -8,24 +8,19 @@ package seng201.team0.models;
 public class Setup {
     private String playerName;
     private Long numRounds;
-    private Long difficulty;
     /**
      *
      * Constructor method that initialises the input variables
      *
      */
-    public Setup(String playerName, Long numRounds, Long difficulty) {
+    public Setup(String playerName, Long numRounds) {
         this.playerName = playerName;
         this.numRounds = numRounds;
-        this.difficulty = difficulty;
     }
     public String getName() {
         return playerName;
     }
     public Long getNumRounds() {
         return numRounds;
-    }
-    public Long getDifficulty() {
-        return difficulty;
     }
 }

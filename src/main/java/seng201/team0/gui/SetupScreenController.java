@@ -5,6 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.*;
 import seng201.team0.GameManager;
 import seng201.team0.models.Setup;
+import seng201.team0.services.DifficultyService;
+import seng201.team0.services.MoneyService;
 
 /**
  *
@@ -18,7 +20,6 @@ public class SetupScreenController {
     @FXML private Button setupAccept;
     @FXML private Slider numRoundsSlider;
     @FXML private Slider difficultySlider;
-
     /**
      *
      * Sole constructor that sets the GameManager instance
@@ -28,9 +29,7 @@ public class SetupScreenController {
     public SetupScreenController(GameManager tempSetupGameManager){
             setupGameManager = tempSetupGameManager;
     }
-    public void initialize () {
 
-    }
 
     /**
      *
@@ -42,11 +41,13 @@ public class SetupScreenController {
     @FXML
     private void onConfirm() {
         Long numRoundsValue = Math.round(numRoundsSlider.getValue());
-        Long difficultyValue = Math.round(numRoundsSlider.getValue());
+        double difficultyValue = Math.round(difficultySlider.getValue());
         String playerText = playerName.getText();
-        Setup setup = new Setup(playerText,numRoundsValue,difficultyValue);
+        Setup setup = new Setup(playerText,numRoundsValue);
         setupGameManager.setSetup(setup);
         setupGameManager.setCurrRound();
+        setupGameManager.setMoney(new MoneyService());
+        setupGameManager.setDifficulty(new DifficultyService(difficultyValue));
         setupGameManager.closeSetupScreen();
     }
 }
