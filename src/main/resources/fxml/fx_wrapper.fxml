@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<Pane xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="seng201.team0.gui.SetupWrapper"
+      prefHeight="600.0" prefWidth="800.0"
+      fx:id="pane">
+
+</Pane>
+

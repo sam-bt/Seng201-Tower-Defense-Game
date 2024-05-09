@@ -7,14 +7,14 @@ package seng201.team0.models;
  */
 public class Setup {
     private String playerName;
-    private int numRounds;
-    private int difficulty;
+    private Long numRounds;
+    private Long difficulty;
     /**
      *
      * Constructor method that initialises the input variables
      *
      */
-    public Setup(String playerName, int numRounds, int difficulty) {
+    public Setup(String playerName, Long numRounds, Long difficulty) {
         this.playerName = playerName;
         this.numRounds = numRounds;
         this.difficulty = difficulty;
@@ -22,10 +22,10 @@ public class Setup {
     public String getName() {
         return playerName;
     }
-    public int getNumRounds() {
+    public Long getNumRounds() {
         return numRounds;
     }
-    public int getDifficulty() {
+    public Long getDifficulty() {
         return difficulty;
     }
 }

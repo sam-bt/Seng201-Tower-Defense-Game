@@ -1,6 +1,6 @@
 package seng201.team0;
 
-import seng201.team0.gui.MainWindow;
+import seng201.team0.gui.SetupWindow;
 
 /**
  * Default entry point class
@@ -15,6 +15,6 @@ public class App {
      * @param args program arguments from command line
      */
     public static void main(String[] args) {
-        MainWindow.launchWrapper(args);
+        SetupWindow.launchWrapper(args);
     }
 }

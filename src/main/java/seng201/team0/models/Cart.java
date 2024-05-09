@@ -1,4 +1,4 @@
-package seng201.team0;
+package seng201.team0.models;
 
 public class Cart {
     public double hitPoints;
