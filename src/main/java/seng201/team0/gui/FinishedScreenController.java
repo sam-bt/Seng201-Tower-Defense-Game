@@ -8,12 +8,11 @@ public class FinishedScreenController {
     public FinishedScreenController(GameManager tempRoundGameManager){
         roundGameManager = tempRoundGameManager;
     }
-    public void initialize() {}
 
-    @FXML
-    private void onConfirm() {
-//            String playerText = playerName.getText();
-//            Setup setup = new Setup(playerText,numRoundsValue,difficultyValue);
-        roundGameManager.closeGameScreen();
-    }
+//    @FXML
+//    private void onConfirm() {
+////            String playerText = playerName.getText();
+////            Setup setup = new Setup(playerText,numRoundsValue,difficultyValue);
+//        roundGameManager.closeGameScreen();
+//    }
 }

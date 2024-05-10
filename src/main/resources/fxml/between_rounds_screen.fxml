@@ -24,16 +24,21 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="betweenRoundMoney" text="Current Money: {money}" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Label fx:id="betweenRoundMoneyLabel" text="Current Money: {money}" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="betweenRoundDifficulty" text="Current Difficulty: {difficulty}" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+      <Label fx:id="betweenRoundDifficultyLabel" text="Current Difficulty: {difficulty}" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
       <Button fx:id="startRoundButton" mnemonicParsing="false" onAction="#onConfirm" text="Start Round {Round}!" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label fx:id="pointsLabel" prefHeight="17.0" prefWidth="143.0" text="Current Points: {points}" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets top="10.0" />
+         </GridPane.margin>
+      </Label>
    </children>
 </GridPane>

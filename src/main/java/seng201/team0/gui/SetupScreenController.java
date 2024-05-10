@@ -45,6 +45,7 @@ public class SetupScreenController {
         String playerText = playerName.getText();
         Setup setup = new Setup(playerText,numRoundsValue);
         setupGameManager.setSetup(setup);
+        setupGameManager.startPoints();
         setupGameManager.setCurrRound();
         setupGameManager.setMoney(new MoneyService());
         setupGameManager.setDifficulty(new DifficultyService(difficultyValue));

@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 import seng201.team0.GameManager;
 import seng201.team0.models.Setup;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * This class is the controller for the between rounds screen
@@ -16,10 +18,13 @@ import seng201.team0.models.Setup;
  */
 
 public class BetweenRoundsScreenController {
+    public final DecimalFormat decimalFormat  = new DecimalFormat("0.00");
+
     @FXML private Label betweenRoundsTitleLabel;
-    @FXML private Label betweenRoundMoney;
-    @FXML private Label betweenRoundDifficulty;
+    @FXML private Label betweenRoundMoneyLabel;
+    @FXML private Label betweenRoundDifficultyLabel;
     @FXML private Button startRoundButton;
+    @FXML private Label pointsLabel;
 //    @FXML private Label currTowerType;
 //    @FXML private Label currTowerXP;
 //    @FXML private Button nextRoundButton;
@@ -50,9 +55,10 @@ public class BetweenRoundsScreenController {
 
     public void initialize() {
             betweenRoundsTitleLabel.setText("Weclome "+roundGameManager.getName()+", Select your Setup for round "+roundGameManager.getCurrRound()+" of "+roundGameManager.getRounds()+"!");
-            betweenRoundMoney.setText("Current Money: "+roundGameManager.getMoney());
-            betweenRoundDifficulty.setText("Current Difficulty: "+roundGameManager.getDifficulty());
+            betweenRoundMoneyLabel.setText("Current Money: "+roundGameManager.getMoney());
+            betweenRoundDifficultyLabel.setText("Current Difficulty: "+decimalFormat.format(roundGameManager.getDifficulty()));
             startRoundButton.setText("Start Round "+roundGameManager.getCurrRound()+"!");
+            pointsLabel.setText("Current Points: "+decimalFormat.format(roundGameManager.getPoints()));
         }
 
         /**

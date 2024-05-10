@@ -18,7 +18,7 @@ public class SetupWrapper {
 
     public void init(Stage stage) {
         this.stage = stage;
-        new GameManager(this::launchSetupScreen, this::launchBetweenRoundsScreen, this::launchGameScreen,this::clearPane);
+        new GameManager(this::launchSetupScreen, this::launchBetweenRoundsScreen, this::launchGameScreen,this::launchErrorScreen,this::launchFinishedScreen,this::clearPane);
     }
 
     public void clearPane() {
@@ -43,7 +43,7 @@ public class SetupWrapper {
             mainScreenLoader.setControllerFactory(param -> new BetweenRoundsScreenController(setupGameManager));
             Parent setupParent  = mainScreenLoader.load();
             pane.getChildren().add(setupParent);
-            stage.setTitle("Between Rounds Screen");
+            stage.setTitle("Inventory Screen");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,6 +55,28 @@ public class SetupWrapper {
             Parent setupParent  = setupScreenLoader.load();
             pane.getChildren().add(setupParent);
             stage.setTitle("Game Screen");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void launchErrorScreen(GameManager setupGameManager) {
+        try {
+            FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/error_screen.fxml"));
+            setupScreenLoader.setControllerFactory(param -> new ErrorScreenController(setupGameManager));
+            Parent setupParent  = setupScreenLoader.load();
+            pane.getChildren().add(setupParent);
+            stage.setTitle("Error Screen");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void launchFinishedScreen(GameManager setupGameManager) {
+        try {
+            FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/finished_screen.fxml"));
+            setupScreenLoader.setControllerFactory(param -> new FinishedScreenController(setupGameManager));
+            Parent setupParent  = setupScreenLoader.load();
+            pane.getChildren().add(setupParent);
+            stage.setTitle("Finish Screen");
         } catch (IOException e) {
             e.printStackTrace();
         }

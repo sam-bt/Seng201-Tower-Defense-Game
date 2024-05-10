@@ -17,14 +17,19 @@ public class GameManager {
     private DifficultyService difficulty;
     private int currRound;
     private MoneyService money;
+    private double points;
     private final Consumer<GameManager> setupScreenLauncher;
     private final Consumer<GameManager> betweenScreenLauncher;
     private final Consumer<GameManager> gameScreenLauncher;
+    private final Consumer<GameManager> errorScreenLauncher;
+    private final Consumer<GameManager> finishedScreenLauncher;
     private final Runnable clearScreen;
-    public GameManager(Consumer<GameManager> setupScreenLauncher, Consumer<GameManager> betweenScreenLauncher, Consumer<GameManager> gameScreenLauncher, Runnable clearScreen){
+    public GameManager(Consumer<GameManager> setupScreenLauncher, Consumer<GameManager> betweenScreenLauncher, Consumer<GameManager> gameScreenLauncher, Consumer<GameManager> errorScreenLauncher, Consumer<GameManager> finishedScreenLauncher, Runnable clearScreen){
         this.setupScreenLauncher = setupScreenLauncher;
         this.betweenScreenLauncher = betweenScreenLauncher;
         this.gameScreenLauncher = gameScreenLauncher;
+        this.errorScreenLauncher = errorScreenLauncher;
+        this.finishedScreenLauncher = finishedScreenLauncher;
         this.clearScreen = clearScreen;
         launchSetupScreen();
     }
@@ -32,37 +37,43 @@ public class GameManager {
         setName(setup.getName());
         setRounds(setup.getNumRounds());
     }
-    public void setCurrRound()  {currRound = 0; }
+    public void setCurrRound()  {currRound = 1; }
     public void incrementRound() { currRound += 1; } // TODO check for round == to max rounds, if so then terminate
     public int getCurrRound() { return currRound; }
     public void launchSetupScreen() { setupScreenLauncher.accept(this); }
     public void launchBetweenRoundsScreen() { betweenScreenLauncher.accept(this); }
-    public void launchGameScreen() {
-        gameScreenLauncher.accept(this);
-    }
+    public void launchFinishedScreen() { finishedScreenLauncher.accept(this); }
+    public void launchGameScreen() { gameScreenLauncher.accept(this); }
+    public void launchErrorScreen() { errorScreenLauncher.accept(this); }
     public String getName() { return name; }
     public void setName(String name) {
         this.name = name;
     }
     public void setRounds(Long rounds) { this.rounds = rounds; }
-    public Long getRounds() {
-        return rounds;
-    }
+    public Long getRounds() { return rounds; }
     public void setDifficulty(DifficultyService difficulty) { this.difficulty = difficulty; }
     public Double getDifficulty() {return difficulty.getDifficulty();}
     public void setMoney(MoneyService money) { this.money = money; }
     public int getMoney() { return money.getCurrentAmount(); }
+    public void startPoints() { this.points = 0; }
+    public void incrementPoints() { this.points += 100*getDifficulty(); }
+    public double getPoints() { return points; }
 
     public void closeSetupScreen() {
         clearScreen.run();
-        launchBetweenRoundsScreen();
-    }
+        if (getName().length() < 3 || getName().length() > 15) {
+            launchErrorScreen(); }
+        else { launchBetweenRoundsScreen(); } }
     public void closeBetweenRoundScreen() {
         clearScreen.run();
         launchGameScreen();
     }
     public void closeGameScreen(){
         clearScreen.run();
-        launchBetweenRoundsScreen();
+        if (getCurrRound() <= getRounds()) {
+        launchBetweenRoundsScreen(); }
+        else {
+            launchFinishedScreen();
+        }
     }
 }

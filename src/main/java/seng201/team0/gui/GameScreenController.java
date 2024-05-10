@@ -10,7 +10,6 @@ public class GameScreenController {
     public GameScreenController(GameManager tempRoundGameManager){
         roundGameManager = tempRoundGameManager;
     }
-//    public void initialize() {}
 
     @FXML
     private void gameOnConfirm() {
