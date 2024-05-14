@@ -60,16 +60,16 @@ public class GameManager {
     public double getPoints() { return points; }
 
     public void closeSetupScreen() {
-        clearScreen.run();
+//        clearScreen.run();
         if (getName().length() < 3 || getName().length() > 15) {
             launchErrorScreen(); }
         else { launchBetweenRoundsScreen(); } }
     public void closeBetweenRoundScreen() {
-        clearScreen.run();
+//        clearScreen.run();
         launchGameScreen();
     }
     public void closeGameScreen(){
-        clearScreen.run();
+//        clearScreen.run();
         if (getCurrRound() <= getRounds()) {
         launchBetweenRoundsScreen(); }
         else {
