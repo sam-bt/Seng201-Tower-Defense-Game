@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import seng201.team0.GameManager;
 
@@ -22,7 +21,7 @@ public class SetupWrapper {
         new GameManager(this::launchSetupScreen, this::launchBetweenRoundsScreen, this::launchGameScreen,this::launchErrorScreen,this::launchFinishedScreen,this::clearPane);
     }
 
-    public void clearPane() {
+    public void clearPane() { // TODO - change/delete as now not needed
         borderpane.getChildren().removeAll(borderpane.getChildren());
     }
 
@@ -63,7 +62,7 @@ public class SetupWrapper {
     public void launchErrorScreen(GameManager setupGameManager) {
         try {
             FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/error_screen.fxml"));
-            setupScreenLoader.setControllerFactory(param -> new ErrorScreenController(setupGameManager));
+            setupScreenLoader.setControllerFactory(param -> new InvalidNameScreenController(setupGameManager));
             Parent setupParent  = setupScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Error Screen");

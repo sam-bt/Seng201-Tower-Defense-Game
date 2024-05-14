@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.ErrorScreenController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.InvalidNameScreenController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -15,6 +17,10 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name is incorrect, Please make sure that your name is between 3 and 15 characters long!" wrappingWidth="486.60791015625" GridPane.halignment="CENTER" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Invalid name, Please make sure that your name is between 3 and 15 characters long and only contain letters and numbers!" textAlignment="CENTER" wrappingWidth="486.60791015625" GridPane.halignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Text>
+      <Button fx:id="returnToMainMenuButton" mnemonicParsing="false" onAction="#invalidNameOnConfirm" prefHeight="92.0" prefWidth="165.0" text="Return to Main Menu" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
    </children>
 </GridPane>

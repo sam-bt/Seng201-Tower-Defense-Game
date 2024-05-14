@@ -61,7 +61,7 @@ public class GameManager {
 
     public void closeSetupScreen() {
 //        clearScreen.run();
-        if (getName().length() < 3 || getName().length() > 15) {
+        if (getName().length() < 3 || getName().length() > 15 || !getName().matches("[a-zA-Z0-9]+")) {
             launchErrorScreen(); }
         else { launchBetweenRoundsScreen(); } }
     public void closeBetweenRoundScreen() {
@@ -75,5 +75,8 @@ public class GameManager {
         else {
             launchFinishedScreen();
         }
+    }
+    public void closeInvalidNameScreen(){
+        launchSetupScreen();
     }
 }
