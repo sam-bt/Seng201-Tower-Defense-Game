@@ -11,7 +11,8 @@
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.BetweenRoundsScreenController">
   <columnConstraints>
     <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="216.0" minWidth="10.0" prefWidth="210.0" />
+    <ColumnConstraints hgrow="ALWAYS" maxWidth="198.0" minWidth="10.0" prefWidth="187.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
@@ -19,26 +20,38 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
   </rowConstraints>
    <children>
-      <Label fx:id="betweenRoundsTitleLabel" text="Weclome {Name}, Select your Setup for round {Round} of {TotalRounds}!" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+      <Label fx:id="betweenRoundsTitleLabel" text="Weclome {Name}, Here are your stats for {Round} of {TotalRounds}!" GridPane.columnSpan="3" GridPane.halignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="betweenRoundMoneyLabel" text="Current Money: {money}" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Label fx:id="betweenRoundMoneyLabel" text="Current Money: {money}" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets left="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="betweenRoundDifficultyLabel" text="Current Difficulty: {difficulty}" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+      <Label fx:id="betweenRoundDifficultyLabel" text="Current Difficulty: {difficulty}" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <Button fx:id="startRoundButton" mnemonicParsing="false" onAction="#onConfirm" text="Start Round {Round}!" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Label fx:id="pointsLabel" prefHeight="17.0" prefWidth="143.0" text="Current Points: {points}" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+      <Button fx:id="startRoundButton" mnemonicParsing="false" onAction="#onConfirm" text="Start Round {Round}!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <Label fx:id="pointsLabel" prefHeight="17.0" prefWidth="143.0" text="Current Points: {points}" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets top="10.0" />
          </GridPane.margin>
+      </Label>
+      <Button fx:id="goToShopButton" mnemonicParsing="false" onAction="#onShop" prefHeight="26.0" prefWidth="58.0" text="Shop" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Button fx:id="goToInventoryButton" mnemonicParsing="false" onAction="#onInventory" prefHeight="26.0" prefWidth="101.0" text="Inventory" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <Label fx:id="roundsLeftLabel" prefHeight="17.0" prefWidth="176.0" text="Rounds Left: {Rounds Left}" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="10.0" top="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="cantAccessShopLabel" prefHeight="21.0" prefWidth="186.0" textFill="#dd0505" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
       </Label>
    </children>
 </GridPane>

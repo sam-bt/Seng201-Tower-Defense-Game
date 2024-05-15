@@ -2,7 +2,6 @@ package seng201.team0.models;
 
 import java.util.Random;
 public class Tower {
-
     private int health;
     private boolean owned;
     private int level;

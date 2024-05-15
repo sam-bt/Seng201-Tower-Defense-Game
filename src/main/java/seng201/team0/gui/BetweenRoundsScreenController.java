@@ -25,14 +25,10 @@ public class BetweenRoundsScreenController {
     @FXML private Label betweenRoundDifficultyLabel;
     @FXML private Button startRoundButton;
     @FXML private Label pointsLabel;
-//    @FXML private Label currTowerType;
-//    @FXML private Label currTowerXP;
-//    @FXML private Button nextRoundButton;
-//    @FXML private Button selectedTowerSellButton;
-//    @FXML private Button selectedTowerUpgradeButton;
-//    @FXML private Button towerButton1;
-//    @FXML private Button towerButton2;
-//    @FXML private Button towerButton3;
+    @FXML private Label roundsLeftLabel;
+    @FXML private Label cantAccessShopLabel;
+    @FXML private Button goToShopButton;
+    @FXML private Button goToInventoryButton;
 
     private GameManager roundGameManager;
 
@@ -54,7 +50,8 @@ public class BetweenRoundsScreenController {
 
 
     public void initialize() {
-            betweenRoundsTitleLabel.setText("Weclome "+roundGameManager.getName()+", Select your Setup for round "+roundGameManager.getCurrRound()+" of "+roundGameManager.getRounds()+"!");
+            betweenRoundsTitleLabel.setText("Weclome "+roundGameManager.getName()+", Here are your Stats for Round "+roundGameManager.getCurrRound()+" of "+roundGameManager.getRounds()+"!");
+            roundsLeftLabel.setText("Rounds Left:"+(roundGameManager.getRounds()-roundGameManager.getCurrRound()+1));
             betweenRoundMoneyLabel.setText("Current Money: "+roundGameManager.getMoney());
             betweenRoundDifficultyLabel.setText("Current Difficulty: "+decimalFormat.format(roundGameManager.getDifficulty()));
             startRoundButton.setText("Start Round "+roundGameManager.getCurrRound()+"!");
@@ -69,9 +66,23 @@ public class BetweenRoundsScreenController {
 
         @FXML
         private void onConfirm() {
-//            String playerText = playerName.getText();
-//            Setup setup = new Setup(playerText,numRoundsValue,difficultyValue);
             roundGameManager.incrementRound();
             roundGameManager.closeBetweenRoundScreen();
         }
+    @FXML
+    private void onShop() { // TODO go to shop
+            if (roundGameManager.getCurrRound() == 1) {
+                cantAccessShopLabel.setText("Cannot access shop on round 1!");
+            }
+            else{
+                roundGameManager.closeBetweenRoundScreen();
+                // go to shop screen
+            }
+
+    }
+    @FXML
+    private void onInventory() { // TODO go to inventory
+        roundGameManager.incrementRound();
+        roundGameManager.closeBetweenRoundScreen();
+    }
 }

@@ -21,15 +21,18 @@ public class GameManager {
     private final Consumer<GameManager> setupScreenLauncher;
     private final Consumer<GameManager> betweenScreenLauncher;
     private final Consumer<GameManager> gameScreenLauncher;
+    private final Consumer<GameManager> roundOneSetupScreenLauncher;
+
     private final Consumer<GameManager> errorScreenLauncher;
     private final Consumer<GameManager> finishedScreenLauncher;
     private final Runnable clearScreen;
-    public GameManager(Consumer<GameManager> setupScreenLauncher, Consumer<GameManager> betweenScreenLauncher, Consumer<GameManager> gameScreenLauncher, Consumer<GameManager> errorScreenLauncher, Consumer<GameManager> finishedScreenLauncher, Runnable clearScreen){
+    public GameManager(Consumer<GameManager> setupScreenLauncher, Consumer<GameManager> betweenScreenLauncher, Consumer<GameManager> gameScreenLauncher,Consumer<GameManager> roundOneSetupScreenLauncher , Consumer<GameManager> errorScreenLauncher, Consumer<GameManager> finishedScreenLauncher, Runnable clearScreen){
         this.setupScreenLauncher = setupScreenLauncher;
         this.betweenScreenLauncher = betweenScreenLauncher;
         this.gameScreenLauncher = gameScreenLauncher;
         this.errorScreenLauncher = errorScreenLauncher;
         this.finishedScreenLauncher = finishedScreenLauncher;
+        this.roundOneSetupScreenLauncher = roundOneSetupScreenLauncher;
         this.clearScreen = clearScreen;
         launchSetupScreen();
     }
@@ -44,6 +47,7 @@ public class GameManager {
     public void launchBetweenRoundsScreen() { betweenScreenLauncher.accept(this); }
     public void launchFinishedScreen() { finishedScreenLauncher.accept(this); }
     public void launchGameScreen() { gameScreenLauncher.accept(this); }
+    public void launchRoundOneSetupScreen() { roundOneSetupScreenLauncher.accept(this); }
     public void launchErrorScreen() { errorScreenLauncher.accept(this); }
     public String getName() { return name; }
     public void setName(String name) {
@@ -66,7 +70,12 @@ public class GameManager {
         else { launchBetweenRoundsScreen(); } }
     public void closeBetweenRoundScreen() {
 //        clearScreen.run();
-        launchGameScreen();
+        if (this.getCurrRound() == 2) { // TODO change to 1 when round screen is fixed
+            launchRoundOneSetupScreen();
+        }
+        else {
+            launchGameScreen();
+        }
     }
     public void closeGameScreen(){
 //        clearScreen.run();
