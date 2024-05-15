@@ -18,7 +18,7 @@ public class SetupWrapper {
 
     public void init(Stage stage) {
         this.stage = stage;
-        new GameManager(this::launchSetupScreen, this::launchBetweenRoundsScreen, this::launchGameScreen,this::launchRoundOneScreen,this::launchErrorScreen,this::launchFinishedScreen,this::clearPane);
+        new GameManager(this::launchSetupScreen, this::launchBetweenRoundsScreen, this::launchGameScreen,this::launchRoundOneInventoryScreen,this::launchRoundOneGameScreen,this::launchErrorScreen,this::launchFinishedScreen,this::clearPane);
     }
 
     public void clearPane() { // TODO - change/delete as now not needed
@@ -59,13 +59,24 @@ public class SetupWrapper {
             e.printStackTrace();
         }
     }
-    public void launchRoundOneScreen(GameManager setupGameManager) {
+    public void launchRoundOneInventoryScreen(GameManager setupGameManager) {
         try {
-            FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/round_one_setup_screen.fxml"));
-            setupScreenLoader.setControllerFactory(param -> new SetupScreenController(setupGameManager));
+            FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/round_one_inventory_screen.fxml"));
+            setupScreenLoader.setControllerFactory(param -> new RoundOneInventoryScreenController(setupGameManager));
             Parent setupParent  = setupScreenLoader.load();
             borderpane.setCenter(setupParent);
-            stage.setTitle("Round 1 Screen");
+            stage.setTitle("Round 1 Inventory Screen");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void launchRoundOneGameScreen(GameManager setupGameManager) {
+        try {
+            FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/round_one_game_screen.fxml"));
+            setupScreenLoader.setControllerFactory(param -> new RoundOneGameScreenController(setupGameManager));
+            Parent setupParent  = setupScreenLoader.load();
+            borderpane.setCenter(setupParent);
+            stage.setTitle("Round 1 Game Screen");
         } catch (IOException e) {
             e.printStackTrace();
         }

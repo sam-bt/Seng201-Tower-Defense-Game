@@ -51,7 +51,7 @@ public class BetweenRoundsScreenController {
 
     public void initialize() {
             betweenRoundsTitleLabel.setText("Weclome "+roundGameManager.getName()+", Here are your Stats for Round "+roundGameManager.getCurrRound()+" of "+roundGameManager.getRounds()+"!");
-            roundsLeftLabel.setText("Rounds Left:"+(roundGameManager.getRounds()-roundGameManager.getCurrRound()+1));
+            roundsLeftLabel.setText("Rounds Left: "+(roundGameManager.getRounds()-roundGameManager.getCurrRound()+1));
             betweenRoundMoneyLabel.setText("Current Money: "+roundGameManager.getMoney());
             betweenRoundDifficultyLabel.setText("Current Difficulty: "+decimalFormat.format(roundGameManager.getDifficulty()));
             startRoundButton.setText("Start Round "+roundGameManager.getCurrRound()+"!");
