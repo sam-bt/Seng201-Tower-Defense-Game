@@ -78,12 +78,11 @@ public class BetweenRoundsScreenController {
         if (roundGameManager.getCurrRound() == 1) {
             cantAccessShopLabel.setText("Cannot access shop on round 1!");
         } else {
-            roundGameManager.closeBetweenRoundScreen();
+            roundGameManager.openShopScreen();
             // go to shop screen
         }
 
     }
-
     @FXML
     private void onInventory() { // TODO go to inventory
         if (roundGameManager.getCurrRound() == 1) {

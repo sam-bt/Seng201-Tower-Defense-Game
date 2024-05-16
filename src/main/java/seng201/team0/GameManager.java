@@ -52,8 +52,8 @@ public class GameManager {
     public void launchBetweenRoundsScreen() { betweenScreenLauncher.accept(this); }
     public void launchFinishedScreen() { finishedScreenLauncher.accept(this); }
     public void launchGameScreen() { gameScreenLauncher.accept(this); }
-    public void launchShopScreen() { setupScreenLauncher.accept(this); }
-    public void launchInventoryScreen() { setupScreenLauncher.accept(this); }
+    public void launchShopScreen() { shopScreenLauncher.accept(this); }
+    public void launchInventoryScreen() { inventoryScreenLauncher.accept(this); }
     public void launchRoundOneInventoryScreen() { roundOneInventoryScreenLauncher.accept(this); }
     public void launchRoundOneGameScreen() { roundOneGameScreenLauncher.accept(this); }
     public void launchErrorScreen() { errorScreenLauncher.accept(this); }
@@ -83,7 +83,7 @@ public class GameManager {
             launchRoundOneGameScreen();
         }
         else {
-            launchShopScreen();
+            launchGameScreen();
         }
     }
     public void openRoundOneInventoryScreen() {
@@ -91,6 +91,9 @@ public class GameManager {
     }
     public void openInventoryScreen(){
         launchInventoryScreen();
+    }
+    public void openShopScreen(){
+        launchShopScreen();
     }
     public void closeGameScreen(){
 //        clearScreen.run();
