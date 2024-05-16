@@ -3,6 +3,7 @@ package seng201.team0.models;
 import java.util.Random;
 public class Tower implements Purchasable{
     private int health;
+    private int maxHealth;
     private boolean owned;
     private int level;
     private int breakChance;
@@ -14,8 +15,9 @@ public class Tower implements Purchasable{
     private boolean broken;
     private String towerName;
 
-    Tower(int initialHealth,boolean owned,String fillType, int fillAmount, int reloadSpeed, String towerName, double difficulty) {
+    public Tower(int initialHealth, boolean owned, String fillType, int fillAmount, int reloadSpeed, String towerName, double difficulty) {
         this.health = initialHealth;
+        this.maxHealth = initialHealth;
         this.owned = owned;
         this.level = 1;
         this.breakChance = 0;
@@ -30,10 +32,11 @@ public class Tower implements Purchasable{
         this.sellPrice = Math.round((buyRandomInt/2)*100.0)/100.0;
     }
     public void setHealth(int amount) {
-        if (health + amount > 100) {
-            health = 100; }
+        if (health + amount > maxHealth) {
+            health = maxHealth; }
         else if (health + amount < 0) {
-            health = 0; }
+            health = 0;
+            }
         else { health += amount; }
     }
     public void breakTower() {
@@ -45,8 +48,9 @@ public class Tower implements Purchasable{
     public void sell(){
         owned = false;
     }
-    public void levelUp(){ // TODO improve stats
+    public void levelUp(){
         level += 1;
+        maxHealth += 5;
     }
     public void increaseBreakChance(int amount) {
         breakChance += amount;
@@ -54,6 +58,7 @@ public class Tower implements Purchasable{
     public int getHealth() {
         return health;
     }
+    public int getMaxHealth() { return maxHealth; }
     public boolean getOwned(){
         return owned;
     }
@@ -80,6 +85,13 @@ public class Tower implements Purchasable{
     }
     public boolean getBroken(){
         return broken;
+    }
+    public void setBroken() { broken = true; }
+    public void setFixed() {
+        broken = false;
+    if (health == 0) {
+    health = 5;
+        }
     }
     public String getTowerName(){
         return towerName;

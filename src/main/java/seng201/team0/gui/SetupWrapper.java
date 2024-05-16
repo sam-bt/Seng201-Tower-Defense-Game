@@ -50,9 +50,9 @@ public class SetupWrapper {
     }
     public void launchGameScreen(GameManager setupGameManager) {
         try {
-            FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/game_screen.fxml"));
-            setupScreenLoader.setControllerFactory(param -> new GameScreenController(setupGameManager));
-            Parent setupParent  = setupScreenLoader.load();
+            FXMLLoader gameScreenLoader = new FXMLLoader(getClass().getResource("/fxml/game_screen.fxml"));
+            gameScreenLoader.setControllerFactory(param -> new GameScreenController(setupGameManager));
+            Parent setupParent  = gameScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Game Screen");
         } catch (IOException e) {
@@ -61,9 +61,9 @@ public class SetupWrapper {
     }
     public void launchRoundOneInventoryScreen(GameManager setupGameManager) {
         try {
-            FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/round_one_inventory_screen.fxml"));
-            setupScreenLoader.setControllerFactory(param -> new RoundOneInventoryScreenController(setupGameManager));
-            Parent setupParent  = setupScreenLoader.load();
+            FXMLLoader roundOneInventoryScreenLoader = new FXMLLoader(getClass().getResource("/fxml/round_one_inventory_screen.fxml"));
+            roundOneInventoryScreenLoader.setControllerFactory(param -> new RoundOneInventoryScreenController(setupGameManager));
+            Parent setupParent  = roundOneInventoryScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Round 1 Inventory Screen");
         } catch (IOException e) {
@@ -72,9 +72,9 @@ public class SetupWrapper {
     }
     public void launchShopScreen(GameManager setupGameManager) {
         try {
-            FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/shop_screen.fxml"));
-            setupScreenLoader.setControllerFactory(param -> new ShopScreenController(setupGameManager));
-            Parent setupParent  = setupScreenLoader.load();
+            FXMLLoader shopScreenLoader = new FXMLLoader(getClass().getResource("/fxml/shop_screen.fxml"));
+            shopScreenLoader.setControllerFactory(param -> new ShopScreenController(setupGameManager));
+            Parent setupParent  = shopScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Shop Screen");
         } catch (IOException e) {
@@ -83,9 +83,9 @@ public class SetupWrapper {
     }
     public void launchInventoryScreen(GameManager setupGameManager) {
         try {
-            FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/inventory_screen.fxml"));
-            setupScreenLoader.setControllerFactory(param -> new InventoryScreenController(setupGameManager));
-            Parent setupParent  = setupScreenLoader.load();
+            FXMLLoader inventoryScreenLoader = new FXMLLoader(getClass().getResource("/fxml/inventory_screen.fxml"));
+            inventoryScreenLoader.setControllerFactory(param -> new InventoryScreenController(setupGameManager));
+            Parent setupParent  = inventoryScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Round Inventory Screen");
         } catch (IOException e) {
@@ -94,9 +94,9 @@ public class SetupWrapper {
     }
     public void launchRoundOneGameScreen(GameManager setupGameManager) {
         try {
-            FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/round_one_game_screen.fxml"));
-            setupScreenLoader.setControllerFactory(param -> new RoundOneGameScreenController(setupGameManager));
-            Parent setupParent  = setupScreenLoader.load();
+            FXMLLoader roundOneGameScreenLoader = new FXMLLoader(getClass().getResource("/fxml/round_one_game_screen.fxml"));
+            roundOneGameScreenLoader.setControllerFactory(param -> new RoundOneGameScreenController(setupGameManager));
+            Parent setupParent  = roundOneGameScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Round 1 Game Screen");
         } catch (IOException e) {
@@ -105,9 +105,9 @@ public class SetupWrapper {
     }
     public void launchErrorScreen(GameManager setupGameManager) {
         try {
-            FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/error_screen.fxml"));
-            setupScreenLoader.setControllerFactory(param -> new InvalidNameScreenController(setupGameManager));
-            Parent setupParent  = setupScreenLoader.load();
+            FXMLLoader errorScreenLoader = new FXMLLoader(getClass().getResource("/fxml/error_screen.fxml"));
+            errorScreenLoader.setControllerFactory(param -> new InvalidNameScreenController(setupGameManager));
+            Parent setupParent  = errorScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Error Screen");
         } catch (IOException e) {
@@ -116,9 +116,9 @@ public class SetupWrapper {
     }
     public void launchFinishedScreen(GameManager setupGameManager) {
         try {
-            FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/finished_screen.fxml"));
-            setupScreenLoader.setControllerFactory(param -> new FinishedScreenController(setupGameManager));
-            Parent setupParent  = setupScreenLoader.load();
+            FXMLLoader finishedScreenLoader = new FXMLLoader(getClass().getResource("/fxml/finished_screen.fxml"));
+            finishedScreenLoader.setControllerFactory(param -> new FinishedScreenController(setupGameManager));
+            Parent setupParent  = finishedScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Finish Screen");
         } catch (IOException e) {
