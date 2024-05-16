@@ -39,9 +39,19 @@
       <ProgressBar prefWidth="200.0" progress="0.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
       <ProgressBar prefWidth="200.0" progress="0.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
       <ProgressBar prefWidth="200.0" progress="0.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-      <ProgressBar prefHeight="66.0" prefWidth="41.0" progress="0.0" rotate="270.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <ProgressBar prefHeight="88.0" prefWidth="55.0" progress="0.35" rotate="270.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets bottom="70.0" />
+         </GridPane.margin>
+      </ProgressBar>
+      <ProgressBar prefHeight="85.0" prefWidth="74.0" progress="0.0" rotate="270.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets bottom="50.0" />
+         </GridPane.margin>
+      </ProgressBar>
+      <ProgressBar prefHeight="103.0" prefWidth="93.0" progress="0.14" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.rowSpan="2" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets bottom="67.0" />
          </GridPane.margin>
       </ProgressBar>
    </children>
