@@ -27,19 +27,19 @@ public class InventoryScreenController {
     private Button goldType2Button;
 
     @FXML
-    private Button inventorySlot1;
+    private Button inventorySlot1Button;
 
     @FXML
-    private Button inventorySlot2;
+    private Button inventorySlot2Button;
 
     @FXML
-    private Button inventorySlot3;
+    private Button inventorySlot3Button;
 
     @FXML
-    private Button inventorySlot4;
+    private Button inventorySlot4Button;
 
     @FXML
-    private Button inventorySlot5;
+    private Button inventorySlot5Button;
 
     @FXML
     private Button inventoryToMenuButton;

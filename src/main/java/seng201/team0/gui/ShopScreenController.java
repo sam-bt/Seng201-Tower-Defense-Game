@@ -10,37 +10,37 @@ public class ShopScreenController {
     private Button buyButton;
 
     @FXML
-    private Button coalTower1Button;
+    private Button coalTower1ShopButton;
 
     @FXML
-    private Button coalTower2Button;
+    private Button coalTower2ShopButton;
 
     @FXML
-    private Button coalTower3Button;
+    private Button gemTower1ShopButton;
 
     @FXML
-    private Button emeraldTower1Button;
+    private Button gemTower2ShopButton;
 
     @FXML
-    private Button emeraldTower2Button;
+    private Button goldTower1ShopButton;
 
     @FXML
-    private Button emeraldTower3Button;
+    private Button goldTower2ShopButton;
 
     @FXML
-    private Button goldTower1Button;
+    private Button ironTower1ShopButton;
 
     @FXML
-    private Button goldTower2Button;
-
-    @FXML
-    private Button goldTower3Button;
+    private Button ironTower2ShopButton;
 
     @FXML
     private Button sellButton;
 
     @FXML
     private Button shopToInventoryButton;
+
+    @FXML
+    private Button shopToMenuButton;
 
     @FXML
     private Button towerHealShopButton;

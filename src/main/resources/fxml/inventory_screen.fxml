@@ -97,7 +97,7 @@
       </Label>
       <Button fx:id="coalType1Button" mnemonicParsing="false" text="Coal Type 1 ({coalType1Amount})" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP" />
       <Button fx:id="coalType2Button" mnemonicParsing="false" text="Coal Type 2 ({coalType2amount})" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
-      <Button fx:id="inventoryToMenuButton" mnemonicParsing="false" text="Go Back" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+      <Button fx:id="inventoryToMenuButton" mnemonicParsing="false" text="Go to Menu" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
       <Button fx:id="ironType1Button" mnemonicParsing="false" text="Iron Type 1 ({ironType1Amount})" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP" />
       <Button fx:id="ironType2Button" mnemonicParsing="false" text="Iron Type 2 ({ironType2Amount})" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
       <Button fx:id="goldType2Button" mnemonicParsing="false" text="Gold Type 2 ({goldType2Amount})" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
