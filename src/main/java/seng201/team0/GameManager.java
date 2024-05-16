@@ -92,6 +92,9 @@ public class GameManager {
     public void openInventoryScreen(){
         launchInventoryScreen();
     }
+    public void closeRoundOneInventoryScreen(){
+        launchBetweenRoundsScreen();
+    }
     public void openShopScreen(){
         launchShopScreen();
     }
