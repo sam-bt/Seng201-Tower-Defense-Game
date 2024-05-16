@@ -2,6 +2,8 @@ package seng201.team0.gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import seng201.team0.GameManager;
+
 public class InventoryScreenController {
 
     @FXML
@@ -45,7 +47,11 @@ public class InventoryScreenController {
 
     @FXML
     private Button useUpgradeButton;
+    GameManager inventoryScreenGameManager;
 
+    InventoryScreenController(GameManager tempInventoryScreenGameManager) {
+        this.inventoryScreenGameManager = tempInventoryScreenGameManager;
+    }
 }
 
 

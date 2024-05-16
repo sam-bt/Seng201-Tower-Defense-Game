@@ -2,6 +2,7 @@ package seng201.team0.gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import seng201.team0.GameManager;
 
 public class ShopScreenController {
 
@@ -49,5 +50,10 @@ public class ShopScreenController {
 
     @FXML
     private Button towerUpgradeShopButton;
+    GameManager shopScreenGameManager;
+
+    ShopScreenController(GameManager tempShopScreenGameManager) {
+        this.shopScreenGameManager = tempShopScreenGameManager;
+    }
 
 }

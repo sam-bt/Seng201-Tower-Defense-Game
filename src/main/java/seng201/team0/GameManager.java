@@ -21,15 +21,19 @@ public class GameManager {
     private final Consumer<GameManager> setupScreenLauncher;
     private final Consumer<GameManager> betweenScreenLauncher;
     private final Consumer<GameManager> gameScreenLauncher;
+    private final Consumer<GameManager> inventoryScreenLauncher;
+    private final Consumer<GameManager> shopScreenLauncher;
     private final Consumer<GameManager> roundOneInventoryScreenLauncher;
     private final Consumer<GameManager> roundOneGameScreenLauncher;
     private final Consumer<GameManager> errorScreenLauncher;
     private final Consumer<GameManager> finishedScreenLauncher;
     private final Runnable clearScreen;
-    public GameManager(Consumer<GameManager> setupScreenLauncher, Consumer<GameManager> betweenScreenLauncher, Consumer<GameManager> gameScreenLauncher, Consumer<GameManager> roundOneInventoryScreenLauncher, Consumer<GameManager> roundOneGameScreenLauncher, Consumer<GameManager> errorScreenLauncher, Consumer<GameManager> finishedScreenLauncher, Runnable clearScreen){
+    public GameManager(Consumer<GameManager> setupScreenLauncher, Consumer<GameManager> betweenScreenLauncher, Consumer<GameManager> gameScreenLauncher, Consumer<GameManager> inventoryScreenLauncher, Consumer<GameManager> shopScreenLauncher, Consumer<GameManager> roundOneInventoryScreenLauncher, Consumer<GameManager> roundOneGameScreenLauncher, Consumer<GameManager> errorScreenLauncher, Consumer<GameManager> finishedScreenLauncher, Runnable clearScreen){
         this.setupScreenLauncher = setupScreenLauncher;
         this.betweenScreenLauncher = betweenScreenLauncher;
         this.gameScreenLauncher = gameScreenLauncher;
+        this.inventoryScreenLauncher = inventoryScreenLauncher;
+        this.shopScreenLauncher = shopScreenLauncher;
         this.errorScreenLauncher = errorScreenLauncher;
         this.finishedScreenLauncher = finishedScreenLauncher;
         this.roundOneInventoryScreenLauncher = roundOneInventoryScreenLauncher; //TODO add call for inventory button
@@ -48,6 +52,8 @@ public class GameManager {
     public void launchBetweenRoundsScreen() { betweenScreenLauncher.accept(this); }
     public void launchFinishedScreen() { finishedScreenLauncher.accept(this); }
     public void launchGameScreen() { gameScreenLauncher.accept(this); }
+    public void launchShopScreen() { setupScreenLauncher.accept(this); }
+    public void launchInventoryScreen() { setupScreenLauncher.accept(this); }
     public void launchRoundOneInventoryScreen() { roundOneInventoryScreenLauncher.accept(this); }
     public void launchRoundOneGameScreen() { roundOneGameScreenLauncher.accept(this); }
     public void launchErrorScreen() { errorScreenLauncher.accept(this); }
@@ -70,14 +76,21 @@ public class GameManager {
         if (getName().length() < 3 || getName().length() > 15 || !getName().matches("[a-zA-Z0-9]+")) {
             launchErrorScreen(); }
         else { launchBetweenRoundsScreen(); } }
+
     public void closeBetweenRoundScreen() {
 //        clearScreen.run();
         if (this.getCurrRound() == 2) { // TODO change to 1 when round screen is fixed
             launchRoundOneGameScreen();
         }
         else {
-            launchGameScreen();
+            launchShopScreen();
         }
+    }
+    public void openRoundOneInventoryScreen() {
+        launchRoundOneInventoryScreen();
+    }
+    public void openInventoryScreen(){
+        launchInventoryScreen();
     }
     public void closeGameScreen(){
 //        clearScreen.run();
