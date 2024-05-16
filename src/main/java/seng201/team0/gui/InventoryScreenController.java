@@ -61,11 +61,36 @@ public class InventoryScreenController {
 
     @FXML
     private Button useUpgradeButton;
-    GameManager inventoryScreenGameManager;
+    private GameManager inventoryScreenGameManager;
 
-    InventoryScreenController(GameManager tempInventoryScreenGameManager) {
-        this.inventoryScreenGameManager = tempInventoryScreenGameManager;
+    public InventoryScreenController(GameManager tempInventoryScreenGameManager) {
+        inventoryScreenGameManager = tempInventoryScreenGameManager;
     }
+
+    @FXML
+    private void onMenu() {
+        inventoryScreenGameManager.launchBetweenRoundsScreen();
+    }
+
+    @FXML
+    private void onShop() {
+        inventoryScreenGameManager.openShopScreen();
+    }
+
+    @FXML
+    void onUseHeal() {
+
+    } //TODO implement
+
+    @FXML
+    void onUseRevive() {
+
+    } //TODO implement
+
+    @FXML
+    void onUseUpgrade() {
+
+    } //TODO implement
 }
 
 

@@ -106,4 +106,6 @@ public class GameManager {
     public void closeInvalidNameScreen(){
         launchSetupScreen();
     }
+
+
 }

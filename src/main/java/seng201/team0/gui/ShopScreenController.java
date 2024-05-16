@@ -50,10 +50,31 @@ public class ShopScreenController {
 
     @FXML
     private Button towerUpgradeShopButton;
-    GameManager shopScreenGameManager;
+    private GameManager shopScreenGameManager;
 
-    ShopScreenController(GameManager tempShopScreenGameManager) {
-        this.shopScreenGameManager = tempShopScreenGameManager;
+    public ShopScreenController(GameManager tempShopScreenGameManager) {
+        shopScreenGameManager = tempShopScreenGameManager;
+    }
+
+
+
+    @FXML
+    private void onInventory() {
+        shopScreenGameManager.launchInventoryScreen();
+    }
+
+    @FXML
+    private void onMenu() {
+        shopScreenGameManager.launchBetweenRoundsScreen();
+    }
+
+    @FXML
+    private void onSell() {
+
+    }
+    @FXML
+    private void onBuy() {
+
     }
 
 }
