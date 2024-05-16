@@ -6,11 +6,28 @@ import seng201.team0.GameManager;
 
 public class InventoryScreenController {
 
-    @FXML
-    private Button inventorySlot1;
+
 
     @FXML
-    private Button inventorySlot10;
+    private Button coalType1Button;
+
+    @FXML
+    private Button coalType2Button;
+
+    @FXML
+    private Button gemType1Button;
+
+    @FXML
+    private Button gemType2Button;
+
+    @FXML
+    private Button goldType1Button;
+
+    @FXML
+    private Button goldType2Button;
+
+    @FXML
+    private Button inventorySlot1;
 
     @FXML
     private Button inventorySlot2;
@@ -25,19 +42,16 @@ public class InventoryScreenController {
     private Button inventorySlot5;
 
     @FXML
-    private Button inventorySlot6;
-
-    @FXML
-    private Button inventorySlot7;
-
-    @FXML
-    private Button inventorySlot8;
-
-    @FXML
-    private Button inventorySlot9;
+    private Button inventoryToMenuButton;
 
     @FXML
     private Button inventoryToShopButton;
+
+    @FXML
+    private Button ironType1Button;
+
+    @FXML
+    private Button ironType2Button;
 
     @FXML
     private Button useHealButton;
