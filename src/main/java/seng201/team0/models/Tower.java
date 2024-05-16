@@ -1,7 +1,7 @@
 package seng201.team0.models;
 
 import java.util.Random;
-public class Tower {
+public class Tower implements Purchasable{
     private int health;
     private boolean owned;
     private int level;
@@ -39,10 +39,10 @@ public class Tower {
     public void breakTower() {
         broken = true;
     }
-    public void buyTower(){
+    public void buy(){
         owned = true;
     }
-    public void sellTower(){
+    public void sell(){
         owned = false;
     }
     public void levelUp(){ // TODO improve stats
