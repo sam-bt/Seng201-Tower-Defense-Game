@@ -18,6 +18,7 @@ public class GameManager {
     private int currRound;
     private MoneyService money;
     private double points;
+    private int roundTrackLength;
     private final Consumer<GameManager> setupScreenLauncher;
     private final Consumer<GameManager> betweenScreenLauncher;
     private final Consumer<GameManager> gameScreenLauncher;
@@ -27,7 +28,6 @@ public class GameManager {
     private final Consumer<GameManager> roundOneGameScreenLauncher;
     private final Consumer<GameManager> errorScreenLauncher;
     private final Consumer<GameManager> finishedScreenLauncher;
-    private final Runnable clearScreen;
     public GameManager(Consumer<GameManager> setupScreenLauncher, Consumer<GameManager> betweenScreenLauncher, Consumer<GameManager> gameScreenLauncher, Consumer<GameManager> inventoryScreenLauncher, Consumer<GameManager> shopScreenLauncher, Consumer<GameManager> roundOneInventoryScreenLauncher, Consumer<GameManager> roundOneGameScreenLauncher, Consumer<GameManager> errorScreenLauncher, Consumer<GameManager> finishedScreenLauncher, Runnable clearScreen){
         this.setupScreenLauncher = setupScreenLauncher;
         this.betweenScreenLauncher = betweenScreenLauncher;
@@ -38,7 +38,6 @@ public class GameManager {
         this.finishedScreenLauncher = finishedScreenLauncher;
         this.roundOneInventoryScreenLauncher = roundOneInventoryScreenLauncher; //TODO add call for inventory button
         this.roundOneGameScreenLauncher = roundOneGameScreenLauncher;
-        this.clearScreen = clearScreen;
         launchSetupScreen();
     }
     public void setSetup(Setup setup){
@@ -46,6 +45,8 @@ public class GameManager {
         setRounds(setup.getNumRounds());
     }
     public void setCurrRound()  {currRound = 1; }
+    public void setRoundTrackLength(int trackLength) { roundTrackLength = trackLength; }
+    public int getRoundTrackLength() { return roundTrackLength; }
     public void incrementRound() { currRound += 1; } // TODO check for round == to max rounds, if so then terminate
     public int getCurrRound() { return currRound; }
     public void launchSetupScreen() { setupScreenLauncher.accept(this); }
