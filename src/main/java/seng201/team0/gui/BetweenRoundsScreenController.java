@@ -1,13 +1,9 @@
 package seng201.team0.gui;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
 import seng201.team0.GameManager;
-import seng201.team0.models.Setup;
 import seng201.team0.services.TowerService;
 
 import java.text.DecimalFormat;
@@ -60,7 +56,7 @@ public class BetweenRoundsScreenController {
     public void initialize() {
         betweenRoundsTitleLabel.setText("Weclome " + roundGameManager.getName() + ", Here are your Stats for Round " + roundGameManager.getCurrRound() + " of " + roundGameManager.getRounds() + "!");
         roundsLeftLabel.setText("Rounds Left: " + (roundGameManager.getRounds() - roundGameManager.getCurrRound() + 1));
-        betweenRoundMoneyLabel.setText("Current Money: " + roundGameManager.getMoney());
+        betweenRoundMoneyLabel.setText("Current Money: " + roundGameManager.getMoneyAmount());
         betweenRoundDifficultyLabel.setText("Current Difficulty: " + decimalFormat.format(roundGameManager.getDifficulty()));
         startRoundButton.setText("Start Round " + roundGameManager.getCurrRound() + "!");
         pointsLabel.setText("Current Points: " + decimalFormat.format(roundGameManager.getPoints()));

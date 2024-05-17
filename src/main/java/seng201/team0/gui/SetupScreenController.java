@@ -44,11 +44,11 @@ public class SetupScreenController {
         double difficultyValue = Math.round(difficultySlider.getValue());
         String playerText = playerName.getText();
         Setup setup = new Setup(playerText,numRoundsValue);
-        setupGameManager.setSetup(setup);
         setupGameManager.startPoints();
         setupGameManager.setCurrRound();
         setupGameManager.setMoney(new MoneyService());
         setupGameManager.setDifficulty(new DifficultyService(difficultyValue));
+        setupGameManager.setSetup(setup);
         setupGameManager.closeSetupScreen();
     }
 }

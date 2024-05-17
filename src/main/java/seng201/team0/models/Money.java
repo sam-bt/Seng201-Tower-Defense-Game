@@ -1,7 +1,7 @@
 package seng201.team0.models;
 
 public class Money {
-    private int money;
+    private double money;
 
     /**
      * Constructor
@@ -14,7 +14,7 @@ public class Money {
      * Get current counter count
      * @return Current count
      */
-    public int getAmount() {
+    public double getAmount() {
         return money;
     }
 
@@ -23,7 +23,7 @@ public class Money {
      * Set current counter count
      * @param value Value of counter
      */
-    public void setMoney(int value) {
+    public void setMoney(double value) {
         money += value;
     }
 }

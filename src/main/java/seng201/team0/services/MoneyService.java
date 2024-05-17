@@ -15,7 +15,7 @@ public class MoneyService {
     /**
      * Increment our counter by one
      */
-    public void editMoney(int amount) {
+    public void editMoney(double amount) {
         if (amount <0) {
             if (money.getAmount() + amount < 0) {
                 money.setMoney(0);
@@ -33,7 +33,7 @@ public class MoneyService {
      * Get the current count of the counter
      * @return Current count
      */
-    public int getCurrentAmount() {
-        return money.getAmount();
+    public double getCurrentAmount() {
+        return Math.round(money.getAmount());
     }
 }

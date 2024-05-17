@@ -3,6 +3,7 @@ import seng201.team0.models.Setup;
 import seng201.team0.models.Tower;
 import seng201.team0.services.DifficultyService;
 import seng201.team0.services.MoneyService;
+import seng201.team0.services.RoundService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +49,7 @@ public class GameManager {
     public void setSetup(Setup setup){
         setName(setup.getName());
         setRounds(setup.getNumRounds());
+        this.money.editMoney(100*difficulty.getDifficulty());
     }
     public void setCurrRound()  {currRound = 1; }
     public void setRoundTrackLength(int trackLength) { roundTrackLength = trackLength; }
@@ -69,13 +71,17 @@ public class GameManager {
     }
     public void setRounds(Long rounds) { this.rounds = rounds; }
     public Long getRounds() { return rounds; }
-    public void setDifficulty(DifficultyService difficulty) { this.difficulty = difficulty; }
+    public void setDifficulty(DifficultyService difficulty) { this.difficulty = difficulty; } //TODO FIX THIS NONSENSE
     public Double getDifficulty() {return difficulty.getDifficulty();}
+    public DifficultyService getDifficultyService() {return difficulty;}
+
     public void setMoney(MoneyService money) { this.money = money; }
-    public int getMoney() { return money.getCurrentAmount(); }
+    public double getMoneyAmount() { return money.getCurrentAmount(); }
+    public MoneyService getMoneyService() { return money; }
     public void startPoints() { this.points = 0; }
     public void incrementPoints() { this.points += 100*getDifficulty(); }
     public double getPoints() { return points; }
+
     public void setRoundOneTowerList(Tower[] roundOneTowerList){
         this.roundOneTowerList = roundOneTowerList;
     }
@@ -127,9 +133,10 @@ public class GameManager {
         launchShopScreen();
     }
     public void closeGameScreen(){
-//        clearScreen.run();
         if (getCurrRound() <= getRounds()) {
-        launchBetweenRoundsScreen(); }
+            RoundService.completeRound(this);
+            launchBetweenRoundsScreen();
+        }
         else {
             launchFinishedScreen();
         }
