@@ -1,8 +1,11 @@
 package seng201.team0;
 import seng201.team0.models.Setup;
+import seng201.team0.models.Tower;
 import seng201.team0.services.DifficultyService;
 import seng201.team0.services.MoneyService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
 /**
@@ -19,6 +22,8 @@ public class GameManager {
     private MoneyService money;
     private double points;
     private int roundTrackLength;
+    private Tower[] roundOneTowerList;
+    private Tower[] genericRoundTowerList;
     private final Consumer<GameManager> setupScreenLauncher;
     private final Consumer<GameManager> betweenScreenLauncher;
     private final Consumer<GameManager> gameScreenLauncher;
@@ -71,15 +76,37 @@ public class GameManager {
     public void startPoints() { this.points = 0; }
     public void incrementPoints() { this.points += 100*getDifficulty(); }
     public double getPoints() { return points; }
+    public void setRoundOneTowerList(Tower[] roundOneTowerList){
+        this.roundOneTowerList = roundOneTowerList;
+    }
+    public Tower[] getRoundOneTowerList(){
+        return roundOneTowerList;
+    }
+    public List<Integer> getRoundOneTowerListIndices(){
+        List<Integer> roundOneTowerIndices = new ArrayList<Integer>();
+        if (this.roundOneTowerList != null) {
+            for (int i = 0; i < this.roundOneTowerList.length; i++) {
+                if (roundOneTowerList[i] != null) {
+                    roundOneTowerIndices.add(i);
+                }
+            }
+        }
+        return roundOneTowerIndices;
+    }
+    public void setGenericRoundTowerList(Tower[] genericRoundTowerList){
+        this.genericRoundTowerList = genericRoundTowerList;
+    }
+    public Tower[] getGenericRoundTowerList(){
+        return genericRoundTowerList;
+    }
+
 
     public void closeSetupScreen() {
-//        clearScreen.run();
         if (getName().length() < 3 || getName().length() > 15 || !getName().matches("[a-zA-Z0-9]+")) {
             launchErrorScreen(); }
         else { launchBetweenRoundsScreen(); } }
 
     public void closeBetweenRoundScreen() {
-//        clearScreen.run();
         if (this.getCurrRound() == 2) { // TODO change to 1 when round screen is fixed
             launchRoundOneGameScreen();
         }

@@ -24,4 +24,5 @@ public class RoundOneInventoryService {
     public List<Tower> getTowerList(){
         return List.of(HeavyCoal,LightCoal,HeavyIron,LightIron,HeavyGold,LightGold);
     }
+
 }

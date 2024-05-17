@@ -8,6 +8,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import seng201.team0.GameManager;
 import seng201.team0.models.Setup;
+import seng201.team0.services.TowerService;
 
 import java.text.DecimalFormat;
 
@@ -34,6 +35,8 @@ public class BetweenRoundsScreenController {
     private Label roundsLeftLabel;
     @FXML
     private Label cantAccessShopLabel;
+    @FXML
+    private Label cantStartRoundLabel;
     @FXML
     private Button goToShopButton;
     @FXML
@@ -68,13 +71,17 @@ public class BetweenRoundsScreenController {
      */
 
     @FXML
-    private void onConfirm() {
+    private void onConfirm() { // TODO wrap text
+        if (roundGameManager.getRoundOneTowerList() == null || !TowerService.areAllTowersSelected(roundGameManager.getRoundOneTowerList())) {
+            cantStartRoundLabel.setText("Cannot start the round without all tower slots full!"); }
+        else {
         roundGameManager.incrementRound();
         roundGameManager.closeBetweenRoundScreen();
+        }
     }
 
     @FXML
-    private void onShop() { // TODO go to shop
+    private void onShop() { // TODO wrap text
         if (roundGameManager.getCurrRound() == 1) {
             cantAccessShopLabel.setText("Cannot access shop on round 1!");
         } else {

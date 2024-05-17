@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.BetweenRoundsScreenController">
@@ -41,17 +42,29 @@
             <Insets top="10.0" />
          </GridPane.margin>
       </Label>
-      <Button fx:id="goToShopButton" mnemonicParsing="false" onAction="#onShop" prefHeight="26.0" prefWidth="58.0" text="Shop" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
       <Button fx:id="goToInventoryButton" mnemonicParsing="false" onAction="#onInventory" prefHeight="26.0" prefWidth="101.0" text="Inventory" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <Label fx:id="roundsLeftLabel" prefHeight="17.0" prefWidth="176.0" text="Rounds Left: {Rounds Left}" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="cantAccessShopLabel" prefHeight="21.0" prefWidth="186.0" textFill="#dd0505" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+      <Label fx:id="cantStartRoundLabel" alignment="TOP_LEFT" maxHeight="44.0" maxWidth="178.0" prefHeight="46.0" prefWidth="207.0" textAlignment="CENTER" textFill="#dd0505" textOverrun="CLIP" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
          <padding>
             <Insets bottom="20.0" />
          </padding>
       </Label>
+      <VBox prefHeight="9.0" prefWidth="186.0" GridPane.rowIndex="2">
+         <children>
+            <Button fx:id="goToShopButton" mnemonicParsing="false" onAction="#onShop" prefHeight="26.0" prefWidth="58.0" text="Shop" />
+            <Label fx:id="cantAccessShopLabel" alignment="TOP_LEFT" maxHeight="44.0" maxWidth="178.0" prefHeight="44.0" prefWidth="178.0" textAlignment="CENTER" textFill="#dd0505" textOverrun="CLIP" wrapText="true">
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="85.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
    </children>
 </GridPane>

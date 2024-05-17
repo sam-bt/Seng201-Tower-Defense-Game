@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import seng201.team0.GameManager;
 import seng201.team0.models.Tower;
 import seng201.team0.services.RoundOneInventoryService;
+import seng201.team0.services.TowerService;
 
 import java.util.HashMap;
 import java.util.List;
@@ -39,6 +40,7 @@ public class RoundOneInventoryScreenController {
         RoundOneInventoryService roundOneInventory = new RoundOneInventoryService(roundOneInventoryScreenGameManager);
         List<Tower> towers = roundOneInventory.getTowerList();
 
+        // Sets the action to display the selected towers information when it is clicked on, and to show that it is selected
         for (int i = 0; i < towerButtons.size(); i++) {
             int finalI = i;
             towerButtons.get(i).setOnAction(event -> {
@@ -53,14 +55,24 @@ public class RoundOneInventoryScreenController {
                 });
             });
         }
+        // Sets the action to add the selected tower to the selected tower slot (doesn't allow for repeats)
         for (int i = 0; i < selectedTowerButtons.size(); i++) {
-            int finalI = i; //TODO stop multiple of the same tower being added
+            int finalI = i;
             selectedTowerButtons.get(i).setOnAction(event -> {
                 if (selectedTowerIndex != -1) {
+                    if (!TowerService.isTowerAlreadySelected(selectedTowers, towers.get(selectedTowerIndex))) {
                     selectedTowerButtons.get(finalI).setText(towers.get(selectedTowerIndex).getTowerName());
-                    selectedTowers[finalI] = towers.get(selectedTowerIndex);
+                    selectedTowers[finalI] = towers.get(selectedTowerIndex); }
                 }
             });
+        }
+        List<Integer> towerListIndices = roundOneInventoryScreenGameManager.getRoundOneTowerListIndices();
+        Tower[] savedTowers = roundOneInventoryScreenGameManager.getRoundOneTowerList();
+        if (!towerListIndices.isEmpty()) {
+            for (int selectedTowerIndex: towerListIndices) {
+            selectedTowerButtons.get(selectedTowerIndex).setText(savedTowers[selectedTowerIndex].getTowerName());
+            selectedTowers[selectedTowerIndex] = savedTowers[selectedTowerIndex];
+            }
         }
 
     }
@@ -73,6 +85,7 @@ public class RoundOneInventoryScreenController {
     }
     @FXML
     private void onConfirm() {
+        roundOneInventoryScreenGameManager.setRoundOneTowerList(selectedTowers);
         // TODO save selected towers
         roundOneInventoryScreenGameManager.closeRoundOneInventoryScreen();
     }
