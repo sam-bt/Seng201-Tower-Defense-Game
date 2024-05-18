@@ -19,6 +19,9 @@ public class InventoryService {
     public int availableUpgrades;
     public InventoryService(GameManager inventoryServiceGameManager){
         double currDifficulty = inventoryServiceGameManager.getDifficulty();
+        availableHeals = 0;
+        availableRevives = 0;
+        availableUpgrades = 0;
         HeavyCoal = new Tower(TowerGenerator.heavyTowerHealthGenerator(),true, "Coal", TowerGenerator.heavyTowerFillAmountGenerator(),  TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Coal", currDifficulty);
         LightCoal = new Tower(TowerGenerator.lightTowerHealthGenerator(),true, "Coal", TowerGenerator.lightTowerFillAmountGenerator(),  TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Coal", currDifficulty);
         HeavyIron = new Tower(TowerGenerator.heavyTowerHealthGenerator(),true, "Iron", TowerGenerator.heavyTowerFillAmountGenerator(),  TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Iron", currDifficulty);
