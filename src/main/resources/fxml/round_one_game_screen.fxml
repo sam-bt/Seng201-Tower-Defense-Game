@@ -4,12 +4,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.RoundOneGameScreenController">
   <columnConstraints>
@@ -24,26 +24,21 @@
   </rowConstraints>
    <children>
       <Button fx:id="nextRoundButton" mnemonicParsing="false" onAction="#onConfirm" text="Button" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-      <Button mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.rowIndex="2">
+      <Button fx:id="towerOneLabel" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="25.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Button fx:id="towerTwoLabel" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+      <Button fx:id="towerThreeLabel" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets right="25.0" />
          </GridPane.margin>
       </Button>
-      <TextArea editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="530.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-         <GridPane.margin>
-            <Insets right="15.0" top="75.0" />
-         </GridPane.margin>
-      </TextArea>
       <Button mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="25.0" top="110.0" />
@@ -74,7 +69,7 @@
             <Insets right="25.0" />
          </GridPane.margin>
       </ProgressBar>
-      <Label prefHeight="55.0" prefWidth="1400.0" text="Name: WWWWWWWWWWWWW   Round: 15   Money: 10000.00   Points: 10000.00   Difficulty: 10.00" GridPane.columnSpan="3">
+      <Label fx:id="nameAndRoundLabel" prefHeight="55.0" prefWidth="682.0" text="Name: WWWWWWWWWWWWW   Round: 15" GridPane.columnSpan="3">
          <font>
             <Font size="32.0" />
          </font>
@@ -82,7 +77,7 @@
             <Insets left="25.0" />
          </GridPane.margin>
       </Label>
-      <Label prefHeight="33.0" prefWidth="250.0" text="Cart: {CartName}" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartThreeName" prefHeight="33.0" prefWidth="250.0" text="Cart: {CartName}" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="580.0" top="30.0" />
          </GridPane.margin>
@@ -90,7 +85,7 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <Label prefHeight="33.0" prefWidth="250.0" text="Cart: {CartName}" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartTwoName" prefHeight="33.0" prefWidth="250.0" text="Cart: {CartName}" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="315.0" top="30.0" />
          </GridPane.margin>
@@ -98,7 +93,7 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <Label prefHeight="33.0" prefWidth="250.0" text="Cart: {CartName}" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartOneName" prefHeight="33.0" prefWidth="250.0" text="Cart: {CartName}" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="25.0" top="30.0" />
          </GridPane.margin>
@@ -106,7 +101,7 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="530.0" text="Next Frame" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+      <Button fx:id="nextFrameLabel" mnemonicParsing="false" prefHeight="100.0" prefWidth="530.0" text="Next Frame" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="30.0" right="15.0" />
          </GridPane.margin>
@@ -114,7 +109,7 @@
             <Font size="32.0" />
          </font>
       </Button>
-      <Label prefHeight="71.0" prefWidth="558.0" text="Actions Left This Frame: {NumActions}" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Label fx:id="actionsLeftLabel" prefHeight="71.0" prefWidth="558.0" text="Actions Left This Frame: {NumActions}" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
@@ -122,7 +117,7 @@
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="530.0" text="Confirm Action" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="confirmActionLabel" mnemonicParsing="false" prefHeight="100.0" prefWidth="530.0" text="Confirm Action" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="65.0" right="15.0" />
          </GridPane.margin>
@@ -130,7 +125,7 @@
             <Font size="32.0" />
          </font>
       </Button>
-      <Label prefHeight="28.0" prefWidth="253.0" text="Label" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartOneSpeed" prefHeight="28.0" prefWidth="253.0" text="Speed: {CartSpeed} m/s" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="25.0" top="85.0" />
          </GridPane.margin>
@@ -138,7 +133,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label prefHeight="28.0" prefWidth="251.0" text="Label" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartOneSize" prefHeight="28.0" prefWidth="251.0" text="Size: {CartSize}" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font size="22.0" />
          </font>
@@ -146,7 +141,7 @@
             <Insets left="25.0" top="130.0" />
          </GridPane.margin>
       </Label>
-      <Label prefHeight="28.0" prefWidth="253.0" text="Label" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartTwoSpeed" prefHeight="28.0" prefWidth="253.0" text="Speed: {CartSpeed} m/s" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font size="22.0" />
          </font>
@@ -154,7 +149,7 @@
             <Insets left="315.0" top="85.0" />
          </GridPane.margin>
       </Label>
-      <Label prefHeight="28.0" prefWidth="249.0" text="Label" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartTwoSize" prefHeight="28.0" prefWidth="249.0" text="Size: {CartSize}" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font size="22.0" />
          </font>
@@ -162,7 +157,7 @@
             <Insets left="315.0" top="135.0" />
          </GridPane.margin>
       </Label>
-      <Label prefHeight="28.0" prefWidth="250.0" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartThreeSpeed" prefHeight="28.0" prefWidth="250.0" text="Speed: {CartSpeed} m/s" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font size="22.0" />
          </font>
@@ -170,7 +165,7 @@
             <Insets left="580.0" top="85.0" />
          </GridPane.margin>
       </Label>
-      <Label prefHeight="28.0" prefWidth="250.0" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartThreeSize" prefHeight="28.0" prefWidth="250.0" text="Size: {CartSize}" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font size="22.0" />
          </font>
@@ -178,15 +173,15 @@
             <Insets left="580.0" top="130.0" />
          </GridPane.margin>
       </Label>
-      <Label prefHeight="73.0" prefWidth="564.0" text="Frames until next fill: {ReloadSpeed}" GridPane.columnIndex="2" GridPane.rowIndex="1">
+      <Label fx:id="fillAmountLabel" prefHeight="73.0" prefWidth="564.0" text="Filll Amount: {FillAmount}" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <font>
             <Font size="32.0" />
          </font>
          <GridPane.margin>
-            <Insets top="200.0" />
+            <Insets bottom="70.0" top="200.0" />
          </GridPane.margin>
       </Label>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tower Stats:" wrappingWidth="527.99609375" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Tower Stats:" wrappingWidth="527.99609375" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="75.0" top="100.0" />
          </GridPane.margin>
@@ -194,18 +189,85 @@
             <Font name="System Bold" size="32.0" />
          </font>
       </Text>
-      <Label prefHeight="69.0" prefWidth="550.0" text="Fill {CartName} With {TowerName}?" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Label fx:id="fillCartWithTowerLabel" prefHeight="69.0" prefWidth="550.0" text="Fill {CartName} With {TowerName}?" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <font>
             <Font size="32.0" />
          </font>
       </Label>
-      <Label prefHeight="33.0" prefWidth="250.0" text="Events:" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label prefHeight="33.0" prefWidth="250.0" text="Frame Event:" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
-            <Font size="32.0" />
+            <Font name="System Bold" size="32.0" />
          </font>
          <GridPane.margin>
             <Insets top="30.0" />
          </GridPane.margin>
       </Label>
+      <Label fx:id="reloadSpeedLabel" prefHeight="73.0" prefWidth="564.0" text="Frames until next fill: {ReloadSpeed}" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="80.0" />
+         </GridPane.margin>
+      </Label>
+      <ProgressBar fx:id="cartOneProgressBar" prefHeight="200.0" prefWidth="225.0" progress="0.87" rotate="270.0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="100.0" left="40.0" />
+         </GridPane.margin>
+      </ProgressBar>
+      <ProgressBar fx:id="cartTwoProgressBar" prefHeight="200.0" prefWidth="225.0" progress="0.28" rotate="270.0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="100.0" left="325.0" />
+         </GridPane.margin>
+      </ProgressBar>
+      <ProgressBar fx:id="cartThreeProgressBar" prefHeight="200.0" prefWidth="225.0" progress="0.7" rotate="270.0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="100.0" left="615.0" />
+         </GridPane.margin>
+      </ProgressBar>
+      <Text fx:id="moneyLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Money: {CurrentMoney}" wrappingWidth="340.390625" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="720.0" top="5.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fx:id="pointsLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Points: {CurrentPoints}}" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="720.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fx:id="difficultyLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty: {Difficulty}" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="1075.0" top="5.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fx:id="trackLengthLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Track Length: {Length} m" wrappingWidth="365.9375" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="1075.0" />
+         </GridPane.margin>
+      </Text>
+      <TextFlow maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="530.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets right="15.0" top="75.0" />
+         </GridPane.margin>
+         <children>
+            <Label fx:id="eventFrameLabel" alignment="TOP_LEFT" prefHeight="150.0" prefWidth="530.0" text="No event for the first frame!!" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </TextFlow>
    </children>
 </GridPane>
