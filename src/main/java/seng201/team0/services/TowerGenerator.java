@@ -16,15 +16,15 @@ public class TowerGenerator {
     }
     public static int heavyTowerFillAmountGenerator() {
         Random rng = new Random();
-        return rng.nextInt(11) + 20;
+        return rng.nextInt(21) + 40;
     }
     public static int lightTowerFillAmountGenerator() {
         Random rng = new Random();
-        return rng.nextInt(21) + 50;
+        return rng.nextInt(11) + 20;
     }
     public static int heavyTowerReloadSpeedGenerator() {
         Random rng = new Random();
-        return rng.nextInt(5) + 1;
+        return rng.nextInt(3) + 3;
     }
     public static int lightTowerReloadSpeedGenerator() {
         Random rng = new Random();
