@@ -73,7 +73,7 @@ public class BetweenRoundsScreenController {
 
     @FXML
     private void onConfirm() { // TODO wrap text
-        if (roundGameManager.getRoundOneTowerList() == null) {
+        if (roundGameManager.getRoundOneSelectedTowerList() == null) {
             cantStartRoundLabel.setText("Cannot start the round without any towers selected! Please go to the inventory and select your towers!"); }
         else {
         roundGameManager.incrementRound();

@@ -49,7 +49,9 @@ public class RoundOneGameScreenController {
         cartThreeProgressBar. setStyle("-fx-accent: gold");
         cartOneProgressBar.setProgress(0.8);
     }
-    private void confirmAction() {}
+    @FXML
+    private void onConfirmAction() {}
+    @FXML
     private void onConfirmNext() {}
     @FXML
     private void onConfirm() {

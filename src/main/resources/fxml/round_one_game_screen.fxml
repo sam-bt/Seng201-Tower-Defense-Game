@@ -54,12 +54,12 @@
             <Insets right="25.0" top="110.0" />
          </GridPane.margin>
       </Button>
-      <ProgressBar fx:id="cartOneProgressBar" prefHeight="40.0" prefWidth="250.0" progress="0.31" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <ProgressBar fx:id="cartOneTravelProgressBar" prefHeight="40.0" prefWidth="250.0" progress="0.31" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets left="25.0" />
          </GridPane.margin>
       </ProgressBar>
-      <ProgressBar fx:id="cartOneProgressBar1" prefHeight="40.0" prefWidth="250.0" progress="0.42" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <ProgressBar fx:id="cartTwoTravelProgressBar" prefHeight="40.0" prefWidth="250.0" progress="0.42" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
@@ -210,17 +210,17 @@
             <Insets bottom="80.0" />
          </GridPane.margin>
       </Label>
-      <ProgressBar fx:id="cartOneProgressBar" prefHeight="200.0" prefWidth="225.0" progress="0.87" rotate="270.0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <ProgressBar fx:id="cartOneFillProgressBar" prefHeight="200.0" prefWidth="225.0" progress="0.87" rotate="270.0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="100.0" left="40.0" />
          </GridPane.margin>
       </ProgressBar>
-      <ProgressBar fx:id="cartTwoProgressBar" prefHeight="200.0" prefWidth="225.0" progress="0.28" rotate="270.0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <ProgressBar fx:id="cartTwoFillProgressBar" prefHeight="200.0" prefWidth="225.0" progress="0.28" rotate="270.0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="100.0" left="325.0" />
          </GridPane.margin>
       </ProgressBar>
-      <ProgressBar fx:id="cartThreeProgressBar" prefHeight="200.0" prefWidth="225.0" progress="0.7" rotate="270.0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <ProgressBar fx:id="cartThreeFillProgressBar" prefHeight="200.0" prefWidth="225.0" progress="0.7" rotate="270.0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="100.0" left="610.0" />
          </GridPane.margin>
@@ -269,5 +269,6 @@
             </Label>
          </children>
       </TextFlow>
+      <Label text="Label" />
    </children>
 </GridPane>

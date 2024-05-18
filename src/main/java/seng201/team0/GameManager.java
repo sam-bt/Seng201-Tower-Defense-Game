@@ -23,7 +23,8 @@ public class GameManager {
     private MoneyService money;
     private double points;
     private int roundTrackLength;
-    private Tower[] roundOneTowerList;
+    private List<Tower> roundOneTowerList;
+    private Tower[] roundOneSelectedTowerList;
     private Tower[] genericRoundTowerList;
     private final Consumer<GameManager> setupScreenLauncher;
     private final Consumer<GameManager> betweenScreenLauncher;
@@ -81,18 +82,20 @@ public class GameManager {
     public void startPoints() { this.points = 0; }
     public void incrementPoints() { this.points += 100*getDifficulty(); }
     public double getPoints() { return points; }
-
-    public void setRoundOneTowerList(Tower[] roundOneTowerList){
+    public void setRoundOneTowerList(List<Tower> roundOneTowerList){
         this.roundOneTowerList = roundOneTowerList;
     }
-    public Tower[] getRoundOneTowerList(){
+    public List<Tower> getRoundOneTowerList(){
         return roundOneTowerList;
     }
+    public void setRoundOneSelectedTowerList(Tower[] roundOneSelectedTowerList){
+        this.roundOneSelectedTowerList = roundOneSelectedTowerList; }
+    public Tower[] getRoundOneSelectedTowerList(){ return roundOneSelectedTowerList; }
     public List<Integer> getRoundOneTowerListIndices(){
         List<Integer> roundOneTowerIndices = new ArrayList<Integer>();
-        if (this.roundOneTowerList != null) {
-            for (int i = 0; i < this.roundOneTowerList.length; i++) {
-                if (roundOneTowerList[i] != null) {
+        if (this.roundOneSelectedTowerList != null) {
+            for (int i = 0; i < this.roundOneSelectedTowerList.length; i++) {
+                if (roundOneSelectedTowerList[i] != null) {
                     roundOneTowerIndices.add(i);
                 }
             }
