@@ -64,7 +64,7 @@
             <Insets />
          </GridPane.margin>
       </ProgressBar>
-      <ProgressBar fx:id="cartOneProgressBar2" prefHeight="40.0" prefWidth="250.0" progress="0.81" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <ProgressBar fx:id="cartThreeTravelProgressBar" prefHeight="40.0" prefWidth="250.0" progress="0.81" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets right="25.0" />
          </GridPane.margin>
@@ -225,38 +225,6 @@
             <Insets bottom="100.0" left="610.0" />
          </GridPane.margin>
       </ProgressBar>
-      <Text fx:id="moneyLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Money: {CurrentMoney}" wrappingWidth="340.390625" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="TOP">
-         <font>
-            <Font size="32.0" />
-         </font>
-         <GridPane.margin>
-            <Insets left="720.0" top="5.0" />
-         </GridPane.margin>
-      </Text>
-      <Text fx:id="pointsLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Points: {CurrentPoints}}" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
-         <font>
-            <Font size="32.0" />
-         </font>
-         <GridPane.margin>
-            <Insets left="720.0" />
-         </GridPane.margin>
-      </Text>
-      <Text fx:id="difficultyLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty: {Difficulty}" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="TOP">
-         <font>
-            <Font size="32.0" />
-         </font>
-         <GridPane.margin>
-            <Insets left="1075.0" top="5.0" />
-         </GridPane.margin>
-      </Text>
-      <Text fx:id="trackLengthLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Track Length: {Length} m" wrappingWidth="365.9375" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
-         <font>
-            <Font size="32.0" />
-         </font>
-         <GridPane.margin>
-            <Insets left="1075.0" />
-         </GridPane.margin>
-      </Text>
       <TextFlow maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="530.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets right="15.0" top="75.0" />
@@ -269,6 +237,37 @@
             </Label>
          </children>
       </TextFlow>
-      <Label text="Label" />
+      <Label fx:id="moneyLabel" prefHeight="39.0" prefWidth="332.0" text="Money: {CurrentMoney}" GridPane.columnSpan="3" GridPane.valignment="TOP">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="720.0" top="5.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="pointsLabel" prefHeight="39.0" prefWidth="332.0" text="Points: {CurrentPoints}" GridPane.columnSpan="3" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="720.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="difficultyLabel" prefHeight="39.0" prefWidth="364.0" text="Difficulty: {Difficulty}" GridPane.columnSpan="3" GridPane.valignment="TOP">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="1075.0" top="5.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="trackLengthLabel" prefHeight="39.0" prefWidth="364.0" text="Track Length: {Length} m" GridPane.columnSpan="3" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="1075.0" />
+         </GridPane.margin>
+      </Label>
    </children>
 </GridPane>

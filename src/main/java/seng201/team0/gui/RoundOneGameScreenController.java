@@ -8,9 +8,12 @@ import seng201.team0.GameManager;
 
 public class RoundOneGameScreenController {
     @FXML private Button nextRoundButton;
-    @FXML private ProgressBar cartOneProgressBar;
-    @FXML private ProgressBar cartTwoProgressBar;
-    @FXML private ProgressBar cartThreeProgressBar;
+    @FXML private ProgressBar cartOneFillProgressBar;
+    @FXML private ProgressBar cartTwoFillProgressBar;
+    @FXML private ProgressBar cartThreeFillProgressBar;
+    @FXML private ProgressBar cartOneTravelProgressBar;
+    @FXML private ProgressBar cartTwoTravelProgressBar;
+    @FXML private ProgressBar cartThreeTravelProgressBar;
     @FXML private Label nameAndRoundLabel;
     @FXML private Label moneyLabel;
     @FXML private Label pointsLabel;
@@ -44,10 +47,10 @@ public class RoundOneGameScreenController {
         roundOneGameScreenManager = tempRoundOneGameScreenManager;
     }
     public void initialize() {
-        cartOneProgressBar. setStyle("-fx-accent: black");
-        cartTwoProgressBar. setStyle("-fx-accent: silver");
-        cartThreeProgressBar. setStyle("-fx-accent: gold");
-        cartOneProgressBar.setProgress(0.8);
+        cartOneFillProgressBar. setStyle("-fx-accent: black");
+        cartTwoFillProgressBar. setStyle("-fx-accent: silver");
+        cartThreeFillProgressBar. setStyle("-fx-accent: gold");
+        cartOneFillProgressBar.setProgress(0.8);
     }
     @FXML
     private void onConfirmAction() {}
