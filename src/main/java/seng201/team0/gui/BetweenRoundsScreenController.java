@@ -37,6 +37,8 @@ public class BetweenRoundsScreenController {
     private Button goToShopButton;
     @FXML
     private Button goToInventoryButton;
+    @FXML
+    private Button skipRoundButton;
 
     private GameManager roundGameManager;
 
@@ -94,5 +96,10 @@ public class BetweenRoundsScreenController {
             else {
             roundGameManager.openInventoryScreen();
         }
+    }
+    @FXML
+    private void onSkipRound() {
+        roundGameManager.incrementRound();
+        roundGameManager.closeGameScreen();
     }
 }
