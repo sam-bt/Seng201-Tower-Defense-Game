@@ -9,16 +9,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.RoundOneInventoryScreenController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.RoundOneInventoryScreenController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="1377.0" minWidth="10.0" prefWidth="1253.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="875.0" minWidth="10.0" prefWidth="667.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="323.0" minHeight="10.0" prefHeight="173.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="590.0" minHeight="10.0" prefHeight="547.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="554.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="422.0" minHeight="10.0" prefHeight="292.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="323.0" minHeight="10.0" prefHeight="102.0100326538086" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="590.0" minHeight="10.0" prefHeight="436.67559814453125" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="554.0" minHeight="10.0" prefHeight="57.26422119140625" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="422.0" minHeight="10.0" prefHeight="309.23577880859375" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your starting Towers!" textAlignment="CENTER" wrappingWidth="998.7294921875" GridPane.halignment="CENTER">
@@ -37,90 +37,93 @@
             <Insets left="50.0" />
          </GridPane.margin>
       </Text>
-      <Button fx:id="heavyCoalButton" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" text="Heavy Coal" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Button fx:id="heavyCoalButton" mnemonicParsing="false" prefHeight="200.0" prefWidth="280.0" text="Heavy Coal" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
-            <Insets left="100.0" />
+            <Insets left="50.0" />
          </GridPane.margin>
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="lightCoalButton" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" text="Light Coal" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Button fx:id="lightCoalButton" mnemonicParsing="false" prefHeight="200.0" prefWidth="280.0" text="Light Coal" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets left="100.0" />
+            <Insets left="50.0" />
          </GridPane.margin>
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="heavyIronButton" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" text="Heavy Iron" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Button fx:id="heavyIronButton" mnemonicParsing="false" prefHeight="200.0" prefWidth="280.0" text="Heavy Iron" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
-            <Insets left="500.0" />
+            <Insets left="375.0" />
          </GridPane.margin>
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="lightIronButton" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" text="Light Iron" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Button fx:id="lightIronButton" mnemonicParsing="false" prefHeight="200.0" prefWidth="280.0" text="Light Iron" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets left="500.0" />
+            <Insets left="375.0" />
          </GridPane.margin>
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="lightGoldButton" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" text="Light Gold" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Button fx:id="lightGoldButton" mnemonicParsing="false" prefHeight="200.0" prefWidth="280.0" text="Light Gold" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets left="900.0" />
+            <Insets left="700.0" />
          </GridPane.margin>
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="heavyGoldButton" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" text="Heavy Gold" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Button fx:id="heavyGoldButton" mnemonicParsing="false" prefHeight="200.0" prefWidth="280.0" text="Heavy Gold" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
-            <Insets left="900.0" />
+            <Insets left="700.0" />
          </GridPane.margin>
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="selectedTowerButtonOne" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" text="Slot 1" GridPane.rowIndex="3">
+      <Button fx:id="selectedTowerButtonOne" mnemonicParsing="false" prefHeight="250.0" prefWidth="280.0" text="Slot 1" GridPane.rowIndex="3">
          <GridPane.margin>
-            <Insets left="100.0" />
+            <Insets bottom="10.0" left="50.0" />
          </GridPane.margin>
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="selectedTowerButtonTwo" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" text="Slot 2" GridPane.rowIndex="3">
+      <Button fx:id="selectedTowerButtonTwo" mnemonicParsing="false" prefHeight="250.0" prefWidth="280.0" text="Slot 2" GridPane.rowIndex="3">
          <GridPane.margin>
-            <Insets left="500.0" />
+            <Insets bottom="10.0" left="375.0" />
          </GridPane.margin>
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="selectedTowerButtonThree" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" text="Slot 3" GridPane.rowIndex="3">
+      <Button fx:id="selectedTowerButtonThree" mnemonicParsing="false" prefHeight="250.0" prefWidth="280.0" text="Slot 3" GridPane.rowIndex="3">
          <GridPane.margin>
-            <Insets left="900.0" />
+            <Insets bottom="10.0" left="700.0" />
          </GridPane.margin>
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Towers:" wrappingWidth="1125.12939453125" GridPane.rowIndex="2">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Towers:" wrappingWidth="1125.12939453125" GridPane.halignment="LEFT" GridPane.rowIndex="2">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
          <GridPane.margin>
-            <Insets left="100.0" top="20.0" />
+            <Insets left="50.0" top="20.0" />
          </GridPane.margin>
       </Text>
       <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#onConfirm" prefHeight="110.0" prefWidth="272.0" text="Confirm" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <font>
             <Font size="30.0" />
          </font>
+         <GridPane.margin>
+            <Insets bottom="125.0" />
+         </GridPane.margin>
       </Button>
       <Label fx:id="towerNameLabel" text="Name: " GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
@@ -135,7 +138,7 @@
             <Font size="30.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="145.0" left="50.0" />
+            <Insets bottom="100.0" left="50.0" />
          </GridPane.margin>
       </Label>
       <Label fx:id="towerReloadLabel" text="Reload Speed:" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
@@ -151,8 +154,16 @@
             <Font size="30.0" />
          </font>
          <GridPane.margin>
-            <Insets left="50.0" top="135.0" />
+            <Insets left="50.0" top="100.0" />
          </GridPane.margin>
+      </Label>
+      <Label fx:id="selectAllTowersLabel" alignment="TOP_LEFT" prefHeight="108.0" prefWidth="385.0" text="Please select 1 Tower for each ore type AND ensure all 3 tower slots are full, otherwise you won't be able to fill up all of the carts in the coming round!!" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets top="175.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="20.0" />
+         </font>
       </Label>
    </children>
 </GridPane>

@@ -3,6 +3,7 @@ package seng201.team0.gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.text.TextFlow;
 import seng201.team0.GameManager;
 import seng201.team0.services.TowerService;
 
@@ -33,6 +34,8 @@ public class BetweenRoundsScreenController {
     private Label cantAccessShopLabel;
     @FXML
     private Label cantStartRoundLabel;
+    @FXML
+    private TextFlow cantStartRoundTextFlow;
     @FXML
     private Button goToShopButton;
     @FXML
@@ -70,8 +73,8 @@ public class BetweenRoundsScreenController {
 
     @FXML
     private void onConfirm() { // TODO wrap text
-        if (roundGameManager.getRoundOneTowerList() == null || !TowerService.areAllTowersSelected(roundGameManager.getRoundOneTowerList())) {
-            cantStartRoundLabel.setText("Cannot start the round without all tower slots full!"); }
+        if (roundGameManager.getRoundOneTowerList() == null) {
+            cantStartRoundLabel.setText("Cannot start the round without any towers selected! Please go to the inventory and select your towers!"); }
         else {
         roundGameManager.incrementRound();
         roundGameManager.closeBetweenRoundScreen();
@@ -89,7 +92,7 @@ public class BetweenRoundsScreenController {
 
     }
     @FXML
-    private void onInventory() { // TODO go to inventory
+    private void onInventory() {
         if (roundGameManager.getCurrRound() == 1) {
             roundGameManager.openRoundOneInventoryScreen();
         }

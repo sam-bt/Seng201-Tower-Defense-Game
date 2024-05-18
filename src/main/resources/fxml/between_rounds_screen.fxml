@@ -20,7 +20,7 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
     </rowConstraints>
     <children>
-        <Label fx:id="betweenRoundsTitleLabel" text="Weclome {Name}, Here are your stats for {Round} of {TotalRounds}!" GridPane.columnSpan="3" GridPane.halignment="CENTER">
+        <Label fx:id="betweenRoundsTitleLabel" text="Welcome {Name}, Here are your stats for {Round} of {TotalRounds}!" GridPane.columnSpan="3" GridPane.halignment="CENTER">
             <font>
                 <Font size="18.0" />
             </font>
@@ -47,13 +47,13 @@
                 <Insets left="10.0" top="10.0" />
             </GridPane.margin>
         </Label>
-        <Label fx:id="cantStartRoundLabel" alignment="TOP_LEFT" maxHeight="44.0" maxWidth="178.0" prefHeight="46.0" prefWidth="207.0" textAlignment="CENTER" textFill="#dd0505" textOverrun="CLIP" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
-            <padding>
-                <Insets bottom="20.0" />
-            </padding>
+        <Label fx:id="cantStartRoundLabel" alignment="TOP_LEFT" maxHeight="44.0" maxWidth="178.0" prefHeight="46.0" prefWidth="207.0" text="fuehfiuehfiufheiufheiufheifuehieuhfeiufheiufheiufheiufheiufe" textAlignment="CENTER" textFill="#dd0505" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
         </Label>
         <Button fx:id="goToShopButton" mnemonicParsing="false" onAction="#onShop" prefHeight="26.0" prefWidth="58.0" text="Shop" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-        <Label fx:id="cantAccessShopLabel" alignment="TOP_LEFT" maxHeight="44.0" maxWidth="178.0" prefHeight="44.0" prefWidth="178.0" textAlignment="CENTER" textFill="#dd0505" textOverrun="CLIP" wrapText="true" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+        <Label fx:id="cantAccessShopLabel" alignment="TOP_LEFT" maxHeight="44.0" maxWidth="178.0" prefHeight="44.0" prefWidth="178.0" textAlignment="CENTER" textFill="#dd0505" wrapText="true" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
             <padding>
                 <Insets bottom="20.0" />
             </padding>

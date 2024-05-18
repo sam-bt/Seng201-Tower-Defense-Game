@@ -26,10 +26,12 @@ public class RoundOneInventoryScreenController {
     @FXML Label towerHealthLabel;
     @FXML Label towerTypeLabel;
     @FXML Label towerReloadLabel;
+    @FXML Label selectAllTowersLabel;
     private final Tower[] selectedTowers = new Tower[3];
     private int selectedTowerIndex = -1;
 
     GameManager roundOneInventoryScreenGameManager;
+    List<Tower> towers;
 
     RoundOneInventoryScreenController(GameManager tempRoundOneInventoryScreenGameManager){
         roundOneInventoryScreenGameManager = tempRoundOneInventoryScreenGameManager;
@@ -38,7 +40,8 @@ public class RoundOneInventoryScreenController {
         List<Button> towerButtons = List.of(heavyCoalButton,lightCoalButton,heavyIronButton,lightIronButton,heavyGoldButton,lightGoldButton);
         List<Button> selectedTowerButtons = List.of(selectedTowerButtonOne,selectedTowerButtonTwo,selectedTowerButtonThree);
         RoundOneInventoryService roundOneInventory = new RoundOneInventoryService(roundOneInventoryScreenGameManager);
-        List<Tower> towers = roundOneInventory.getTowerList();
+        towers = roundOneInventory.getTowerList();
+        Tower[] savedTowers = roundOneInventoryScreenGameManager.getRoundOneTowerList();
 
         // Sets the action to display the selected towers information when it is clicked on, and to show that it is selected
         for (int i = 0; i < towerButtons.size(); i++) {
@@ -60,14 +63,13 @@ public class RoundOneInventoryScreenController {
             int finalI = i;
             selectedTowerButtons.get(i).setOnAction(event -> {
                 if (selectedTowerIndex != -1) {
-                    if (!TowerService.isTowerAlreadySelected(selectedTowers, towers.get(selectedTowerIndex))) {
+                    if (!TowerService.isTowerAlreadySelected(selectedTowers,savedTowers, towers.get(selectedTowerIndex))) {
                     selectedTowerButtons.get(finalI).setText(towers.get(selectedTowerIndex).getTowerName());
                     selectedTowers[finalI] = towers.get(selectedTowerIndex); }
                 }
             });
         }
         List<Integer> towerListIndices = roundOneInventoryScreenGameManager.getRoundOneTowerListIndices();
-        Tower[] savedTowers = roundOneInventoryScreenGameManager.getRoundOneTowerList();
         if (!towerListIndices.isEmpty()) {
             for (int selectedTowerIndex: towerListIndices) {
             selectedTowerButtons.get(selectedTowerIndex).setText(savedTowers[selectedTowerIndex].getTowerName());
@@ -85,8 +87,9 @@ public class RoundOneInventoryScreenController {
     }
     @FXML
     private void onConfirm() {
+        if (!(roundOneInventoryScreenGameManager.getRoundOneTowerList() == null) || TowerService.areAllRoundOneTowersTypesSelected(selectedTowers) || TowerService.areAllTowersSelected(selectedTowers)) {
         roundOneInventoryScreenGameManager.setRoundOneTowerList(selectedTowers);
-        // TODO save selected towers
-        roundOneInventoryScreenGameManager.closeRoundOneInventoryScreen();
+        roundOneInventoryScreenGameManager.closeRoundOneInventoryScreen(); }
+        else { selectAllTowersLabel.setStyle("-fx-text-fill: red");}
     }
 }

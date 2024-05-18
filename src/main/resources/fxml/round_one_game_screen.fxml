@@ -24,17 +24,17 @@
   </rowConstraints>
    <children>
       <Button fx:id="nextRoundButton" mnemonicParsing="false" onAction="#onConfirm" text="Button" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-      <Button fx:id="towerOneLabel" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.rowIndex="2">
+      <Button fx:id="towerOneButton" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="25.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="towerTwoLabel" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Button fx:id="towerTwoButton" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
       </Button>
-      <Button fx:id="towerThreeLabel" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+      <Button fx:id="towerThreeButton" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets right="25.0" />
          </GridPane.margin>
@@ -101,7 +101,7 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <Button fx:id="nextFrameLabel" mnemonicParsing="false" prefHeight="100.0" prefWidth="530.0" text="Next Frame" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+      <Button fx:id="nextFrameButton" mnemonicParsing="false" onAction="#onConfirmNext" prefHeight="100.0" prefWidth="530.0" text="Next Frame" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="30.0" right="15.0" />
          </GridPane.margin>
@@ -117,7 +117,7 @@
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <Button fx:id="confirmActionLabel" mnemonicParsing="false" prefHeight="100.0" prefWidth="530.0" text="Confirm Action" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="confirmActionButton" mnemonicParsing="false" onAction="#onConfirmAction" prefHeight="100.0" prefWidth="530.0" text="Confirm Action" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="65.0" right="15.0" />
          </GridPane.margin>
@@ -222,7 +222,7 @@
       </ProgressBar>
       <ProgressBar fx:id="cartThreeProgressBar" prefHeight="200.0" prefWidth="225.0" progress="0.7" rotate="270.0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets bottom="100.0" left="615.0" />
+            <Insets bottom="100.0" left="610.0" />
          </GridPane.margin>
       </ProgressBar>
       <Text fx:id="moneyLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Money: {CurrentMoney}" wrappingWidth="340.390625" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="TOP">
