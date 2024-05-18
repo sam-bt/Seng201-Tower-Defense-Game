@@ -58,5 +58,6 @@
                 <Insets bottom="20.0" />
             </padding>
         </Label>
+      <Button fx:id="skipRoundButton" mnemonicParsing="false" onAction="#onSkipRound" text="Button" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
     </children>
 </GridPane>
