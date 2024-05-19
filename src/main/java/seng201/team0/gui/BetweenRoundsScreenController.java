@@ -50,8 +50,8 @@ public class BetweenRoundsScreenController {
     private Button trackLengthButtonTwo;
     int shortTrackLength;
     int longTrackLength;
+    boolean trackChosen;
     boolean longTrackChosen;
-
     private GameManager roundGameManager;
 
     /**
@@ -88,17 +88,19 @@ public class BetweenRoundsScreenController {
     private void setTrackLengthOne(){
         trackLengthLabel.setText("Current Track Length: " + shortTrackLength + "m");
         longTrackChosen = false;
+        trackChosen = true;
     }
     @FXML
     private void setTrackLengthTwo(){
         trackLengthLabel.setText("Current Track Length: " + longTrackLength + "m");
         longTrackChosen = true;
+        trackChosen = true;
     }
     @FXML
     private void onConfirm() { // TODO wrap text
         if (roundGameManager.getRoundOneSelectedTowerList() == null) {
             cantStartRoundLabel.setText("Cannot start the round without any towers selected! Please go to the inventory and select your towers!"); }
-        else if (shortTrackLength == 0 && longTrackLength == 0) {cantStartRoundLabel.setText("Please select a track length for the next round!");}
+        else if (!trackChosen) {cantStartRoundLabel.setText("Please select a track length for the next round!");}
         else {
             if (longTrackChosen) {
             roundGameManager.setRoundTrackLength(longTrackLength); }
@@ -116,7 +118,6 @@ public class BetweenRoundsScreenController {
             cantAccessShopLabel.setText("Cannot access shop on round 1!");
         } else {
             roundGameManager.openShopScreen();
-            // go to shop screen
         }
 
     }
