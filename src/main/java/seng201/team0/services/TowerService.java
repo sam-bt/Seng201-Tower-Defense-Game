@@ -5,6 +5,7 @@ import seng201.team0.models.Tower;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 public class TowerService {
     public static boolean areAllTowersSelected(Tower[] selectedTowers) {
@@ -15,15 +16,12 @@ public class TowerService {
         }
         return true;
     }
-    public static boolean isTowerAlreadySelected(Tower[] selectedTowers, Tower[] gameSelectedTowers, Tower tower) {
+    public static boolean isTowerAlreadySelected(Tower[] selectedTowers, Tower tower) {
         for (Tower selectedTower: selectedTowers){
-            if (selectedTower == tower) {
-                return true;
-            }
-        }
-        if (gameSelectedTowers == null) {return false;}
-        for (Tower gameSelectedTower: gameSelectedTowers){
-            if (gameSelectedTower == tower) {
+            if (selectedTower == null) {continue;}
+            System.out.println(selectedTower.getTowerName());
+            System.out.println(tower.getTowerName());
+            if (Objects.equals(selectedTower.getTowerName(), tower.getTowerName())) {
                 return true;
             }
         }

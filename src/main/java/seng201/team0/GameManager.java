@@ -1,4 +1,5 @@
 package seng201.team0;
+import javafx.scene.control.Button;
 import seng201.team0.models.Setup;
 import seng201.team0.models.Tower;
 import seng201.team0.services.DifficultyService;
@@ -26,6 +27,7 @@ public class GameManager {
     private List<Tower> roundOneTowerList;
     private Tower[] roundOneSelectedTowerList;
     private Tower[] genericRoundTowerList;
+    private List<Button> roundOneSelectedTowerButtons;
     private final Consumer<GameManager> setupScreenLauncher;
     private final Consumer<GameManager> betweenScreenLauncher;
     private final Consumer<GameManager> gameScreenLauncher;
@@ -82,6 +84,8 @@ public class GameManager {
     public void startPoints() { this.points = 0; }
     public void incrementPoints() { this.points += 100*getDifficulty(); }
     public double getPoints() { return points; }
+    public void setRoundOneSelectedTowerButtons(List<Button> roundOneSelectedTowerButtons) {this.roundOneSelectedTowerButtons = roundOneSelectedTowerButtons; }
+    public List<Button> getRoundOneSelectedTowerButtons() {return roundOneSelectedTowerButtons; }
     public void setRoundOneTowerList(List<Tower> roundOneTowerList){
         this.roundOneTowerList = roundOneTowerList;
     }
