@@ -100,14 +100,14 @@ public class InventoryScreenController {
                 }
             });
         }
-        List<Integer> towerListIndices = inventoryScreenGameManager.getRoundOneTowerListIndices();
-        Tower[] savedTowers = inventoryScreenGameManager.getRoundOneTowerList();
-        if (!towerListIndices.isEmpty()) {
-            for (int selectedTowerIndex : towerListIndices) {
-                towerSlotButtons.get(selectedTowerIndex).setText(savedTowers[selectedTowerIndex].getTowerName());
-                selectedTowers[selectedTowerIndex] = savedTowers[selectedTowerIndex];
-            }
-        }
+//        List<Integer> towerListIndices = inventoryScreenGameManager.getRoundOneTowerListIndices();
+//        Tower[] savedTowers = inventoryScreenGameManager.getRoundOneTowerList();
+//        if (!towerListIndices.isEmpty()) {
+//            for (int selectedTowerIndex : towerListIndices) {
+//                towerSlotButtons.get(selectedTowerIndex).setText(savedTowers[selectedTowerIndex].getTowerName());
+//                selectedTowers[selectedTowerIndex] = savedTowers[selectedTowerIndex];
+//            }
+//        }
     }
 
     private void updateDisplayedStats(Tower tower) {

@@ -48,7 +48,7 @@ public class Tower implements Purchasable{
     public void sell(){
         owned = false;
     }
-    public void levelUp(){
+    public void useUpgrade(){
         level += 1;
         maxHealth += 5;
     }
@@ -87,7 +87,7 @@ public class Tower implements Purchasable{
         return broken;
     }
     public void setBroken() { broken = true; }
-    public void setFixed() {
+    public void useRevive() {
         broken = false;
     if (health == 0) {
     health = 5;
@@ -96,5 +96,14 @@ public class Tower implements Purchasable{
     public String getTowerName(){
         return towerName;
     }
+    public void useHeal() { // TODO: health item currently heals 5 as stand in value so update later on
+        if (health + 5 >= maxHealth) {
+            health = maxHealth;
+        } else {
+            health += 5;
+        }
+    }
+
+
 
 }
