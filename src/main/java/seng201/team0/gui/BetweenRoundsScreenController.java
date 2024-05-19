@@ -21,9 +21,11 @@ public class BetweenRoundsScreenController {
     @FXML
     private Label betweenRoundsTitleLabel;
     @FXML
-    private Label betweenRoundMoneyLabel;
+    private Label moneyLabel;
     @FXML
-    private Label betweenRoundDifficultyLabel;
+    private Label trackLengthLabel;
+    @FXML
+    private Label difficultyLabel;
     @FXML
     private Button startRoundButton;
     @FXML
@@ -42,6 +44,10 @@ public class BetweenRoundsScreenController {
     private Button goToInventoryButton;
     @FXML
     private Button skipRoundButton;
+    @FXML
+    private Button trackLengthButtonOne;
+    @FXML
+    private Button trackLengthButtonTwo;
 
     private GameManager roundGameManager;
 
@@ -61,8 +67,9 @@ public class BetweenRoundsScreenController {
     public void initialize() {
         betweenRoundsTitleLabel.setText("Weclome " + roundGameManager.getName() + ", Here are your Stats for Round " + roundGameManager.getCurrRound() + " of " + roundGameManager.getRounds() + "!");
         roundsLeftLabel.setText("Rounds Left: " + (roundGameManager.getRounds() - roundGameManager.getCurrRound() + 1));
-        betweenRoundMoneyLabel.setText("Current Money: " + roundGameManager.getMoneyAmount());
-        betweenRoundDifficultyLabel.setText("Current Difficulty: " + decimalFormat.format(roundGameManager.getDifficulty()));
+        moneyLabel.setText("Current Money: " + roundGameManager.getMoneyAmount());
+        difficultyLabel.setText("Current Difficulty: " + decimalFormat.format(roundGameManager.getDifficulty()));
+        trackLengthLabel.setText("Current Track Length: " + 100+"m");
         startRoundButton.setText("Start Round " + roundGameManager.getCurrRound() + "!");
         pointsLabel.setText("Current Points: " + decimalFormat.format(roundGameManager.getPoints()));
     }
@@ -70,7 +77,14 @@ public class BetweenRoundsScreenController {
     /**
      * Method that TODO
      */
-
+    @FXML
+    private void setTrackLengthOne(){
+        trackLengthLabel.setText("Current Track Length: " + "trackLength1" + "m");
+    }
+    @FXML
+    private void setTrackLengthTwo(){
+        trackLengthLabel.setText("Current Track Length: " + "trackLength2" + "m");
+    }
     @FXML
     private void onConfirm() { // TODO wrap text
         if (roundGameManager.getRoundOneSelectedTowerList() == null) {
@@ -80,6 +94,7 @@ public class BetweenRoundsScreenController {
         roundGameManager.closeBetweenRoundScreen();
         }
     }
+
 
     @FXML
     private void onShop() { // TODO wrap text

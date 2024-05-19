@@ -47,10 +47,12 @@ public class RoundOneGameScreenController {
         roundOneGameScreenManager = tempRoundOneGameScreenManager;
     }
     public void initialize() {
-        cartOneFillProgressBar. setStyle("-fx-accent: black");
-        cartTwoFillProgressBar. setStyle("-fx-accent: silver");
-        cartThreeFillProgressBar. setStyle("-fx-accent: gold");
-        cartOneFillProgressBar.setProgress(0.8);
+        cartOneFillProgressBar.setStyle("-fx-accent: black");
+        cartTwoFillProgressBar.setStyle("-fx-accent: silver");
+        cartThreeFillProgressBar.setStyle("-fx-accent: gold");
+        cartOneFillProgressBar.setProgress(0.0);
+        cartTwoFillProgressBar.setProgress(0.0);
+        cartThreeFillProgressBar.setProgress(0.0);
     }
     @FXML
     private void onConfirmAction() {}

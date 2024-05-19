@@ -7,57 +7,117 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.BetweenRoundsScreenController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.BetweenRoundsScreenController">
     <columnConstraints>
-        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-        <ColumnConstraints hgrow="ALWAYS" maxWidth="216.0" minWidth="10.0" prefWidth="210.0" />
-        <ColumnConstraints hgrow="ALWAYS" maxWidth="198.0" minWidth="10.0" prefWidth="187.0" />
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="1012.0" minWidth="10.0" />
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="724.0" minWidth="10.0" prefWidth="463.0" />
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="524.0" minWidth="10.0" prefWidth="468.0" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+        <RowConstraints maxHeight="384.0" minHeight="10.0" prefHeight="266.0" vgrow="ALWAYS" />
+        <RowConstraints maxHeight="580.0" minHeight="10.0" prefHeight="380.0" vgrow="ALWAYS" />
+        <RowConstraints maxHeight="292.0" minHeight="10.0" prefHeight="244.0" vgrow="ALWAYS" />
     </rowConstraints>
     <children>
-        <Label fx:id="betweenRoundsTitleLabel" text="Welcome {Name}, Here are your stats for {Round} of {TotalRounds}!" GridPane.columnSpan="3" GridPane.halignment="CENTER">
+        <Label fx:id="betweenRoundsTitleLabel" alignment="CENTER" prefHeight="77.0" prefWidth="1555.0" text="Welcome _______________, Here are your stats for {Round} of {TotalRounds}!" GridPane.columnSpan="3" GridPane.halignment="CENTER">
             <font>
-                <Font size="18.0" />
+                <Font size="42.0" />
             </font>
         </Label>
-        <Label fx:id="betweenRoundMoneyLabel" text="Current Money: {money}" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+        <Label fx:id="moneyLabel" prefHeight="70.0" prefWidth="400.0" text="Current Money: {money}" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
             <GridPane.margin>
-                <Insets left="10.0" top="10.0" />
+                <Insets bottom="100.0" top="10.0" />
             </GridPane.margin>
+         <font>
+            <Font size="32.0" />
+         </font>
         </Label>
-        <Label fx:id="betweenRoundDifficultyLabel" text="Current Difficulty: {difficulty}" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-            <GridPane.margin>
-                <Insets right="10.0" top="10.0" />
-            </GridPane.margin>
-        </Label>
-        <Button fx:id="startRoundButton" mnemonicParsing="false" onAction="#onConfirm" text="Start Round {Round}!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-        <Label fx:id="pointsLabel" prefHeight="17.0" prefWidth="143.0" text="Current Points: {points}" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+        <Label fx:id="pointsLabel" prefHeight="70.0" prefWidth="400.0" text="Current Points: {points}" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
             <GridPane.margin>
                 <Insets top="10.0" />
             </GridPane.margin>
+         <font>
+            <Font size="32.0" />
+         </font>
         </Label>
-        <Button fx:id="goToInventoryButton" mnemonicParsing="false" onAction="#onInventory" prefHeight="26.0" prefWidth="101.0" text="Inventory" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-        <Label fx:id="roundsLeftLabel" prefHeight="17.0" prefWidth="176.0" text="Rounds Left: {Rounds Left}" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+        <Button fx:id="startRoundButton" mnemonicParsing="false" onAction="#onConfirm" prefHeight="150.0" prefWidth="425.0" text="Start Round {Round}!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font></Button>
+        <Label fx:id="difficultyLabel" prefHeight="70.0" prefWidth="449.0" text="Current Difficulty: {difficulty}" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
             <GridPane.margin>
-                <Insets left="10.0" top="10.0" />
+                <Insets bottom="100.0" top="10.0" />
             </GridPane.margin>
+         <font>
+            <Font size="32.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
         </Label>
-        <Label fx:id="cantStartRoundLabel" alignment="TOP_LEFT" maxHeight="44.0" maxWidth="178.0" prefHeight="46.0" prefWidth="207.0" text="fuehfiuehfiufheiufheiufheifuehieuhfeiufheiufheiufheiufheiufe" textAlignment="CENTER" textFill="#dd0505" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
-         <padding>
-            <Insets bottom="20.0" />
-         </padding>
+        <Button fx:id="goToInventoryButton" mnemonicParsing="false" onAction="#onInventory" prefHeight="150.0" prefWidth="425.0" text="Inventory" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+         <font>
+            <Font size="32.0" />
+         </font></Button>
+        <Label fx:id="roundsLeftLabel" prefHeight="55.0" prefWidth="440.0" text="Rounds Left: {Rounds Left}" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+            <GridPane.margin>
+                <Insets left="30.0" top="10.0" />
+            </GridPane.margin>
+         <font>
+            <Font size="32.0" />
+         </font>
         </Label>
-        <Button fx:id="goToShopButton" mnemonicParsing="false" onAction="#onShop" prefHeight="26.0" prefWidth="58.0" text="Shop" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-        <Label fx:id="cantAccessShopLabel" alignment="TOP_LEFT" maxHeight="44.0" maxWidth="178.0" prefHeight="44.0" prefWidth="178.0" textAlignment="CENTER" textFill="#dd0505" wrapText="true" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+        <Label fx:id="cantStartRoundLabel" alignment="TOP_CENTER" maxHeight="80.0" maxWidth="468.0" prefHeight="80.0" prefWidth="459.0" textAlignment="CENTER" textFill="#dd0505" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="20.0" />
+         </font>
+        </Label>
+        <Button fx:id="goToShopButton" mnemonicParsing="false" onAction="#onShop" prefHeight="150.0" prefWidth="425.0" text="Shop" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+         <font>
+            <Font size="32.0" />
+         </font></Button>
+        <Label fx:id="cantAccessShopLabel" alignment="TOP_CENTER" maxHeight="80.0" maxWidth="522.0" prefHeight="80.0" prefWidth="522.0" textAlignment="CENTER" textFill="#dd0505" wrapText="true" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
             <padding>
                 <Insets bottom="20.0" />
             </padding>
+         <font>
+            <Font size="20.0" />
+         </font>
         </Label>
       <Button fx:id="skipRoundButton" mnemonicParsing="false" onAction="#onSkipRound" text="Button" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
+      <Button fx:id="trackLengthButtonTwo" mnemonicParsing="false" onAction="#setTrackLengthTwo" prefHeight="80.0" prefWidth="252.0" text="{Selection2} m" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="40.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your track length for the next round:" textAlignment="CENTER" wrappingWidth="416.21630859375" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="15.0" />
+         </GridPane.margin>
+      </Text>
+      <Button fx:id="trackLengthButtonOne" mnemonicParsing="false" onAction="#setTrackLengthOne" prefHeight="80.0" prefWidth="252.0" text="{Selection1} m" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
+      <Label fx:id="trackLengthLabel" prefHeight="70.0" prefWidth="550.0" text="Current Track Length {Track Length}" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="450.0" top="10.0" />
+         </GridPane.margin>
+      </Label>
     </children>
 </GridPane>
