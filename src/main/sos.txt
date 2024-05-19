@@ -1,0 +1,4 @@
+run: find ~/.gradle -type f -name "*.lock" -delete
+then run: gradle jar
+then, wait for build to fail and then run: find /path-to-project-dir/.gradle -type f -name "*.lock" | while read f; do rm $f; done
+,replacing /path-to-project-dir/ with the path to the lock file (/csse/users/nameNumberCode/IdeaProjects/team-62/)
