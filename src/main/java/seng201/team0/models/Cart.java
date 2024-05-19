@@ -11,7 +11,7 @@ public class Cart {
     public int distanceTravelled;
     public boolean endReached;
 
-    Cart(String resourceType) {
+    public Cart(String resourceType) {
         this.resourceType = resourceType;
         Random rng = new Random();
         List<Integer> speedList = Arrays.asList(10, 10, 20, 20, 50);

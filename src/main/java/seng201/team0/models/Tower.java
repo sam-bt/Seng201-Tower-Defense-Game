@@ -1,7 +1,7 @@
 package seng201.team0.models;
 
 import java.util.Random;
-public class Tower implements Purchasable{
+public class Tower implements Purchasable {
     private int health;
     private int maxHealth;
     private boolean owned;

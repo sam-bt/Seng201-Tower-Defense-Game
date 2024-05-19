@@ -28,45 +28,54 @@
          <GridPane.margin>
             <Insets left="25.0" />
          </GridPane.margin>
+         <font>
+            <Font size="32.0" />
+         </font>
       </Button>
       <Button fx:id="towerTwoButton" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
+         <font>
+            <Font size="32.0" />
+         </font>
       </Button>
       <Button fx:id="towerThreeButton" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets right="25.0" />
          </GridPane.margin>
+         <font>
+            <Font size="32.0" />
+         </font>
       </Button>
-      <Button mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.rowIndex="1">
+      <Button fx:id="cartOneButton" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="25.0" top="110.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <Button fx:id="cartTwoButton" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets top="110.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+      <Button fx:id="cartThreeButton" mnemonicParsing="false" prefHeight="250.0" prefWidth="250.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets right="25.0" top="110.0" />
          </GridPane.margin>
       </Button>
       <ProgressBar fx:id="cartOneTravelProgressBar" prefHeight="40.0" prefWidth="250.0" progress="0.31" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets left="25.0" />
+            <Insets bottom="10.0" left="25.0" />
          </GridPane.margin>
       </ProgressBar>
       <ProgressBar fx:id="cartTwoTravelProgressBar" prefHeight="40.0" prefWidth="250.0" progress="0.42" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets />
+            <Insets bottom="10.0" />
          </GridPane.margin>
       </ProgressBar>
       <ProgressBar fx:id="cartThreeTravelProgressBar" prefHeight="40.0" prefWidth="250.0" progress="0.81" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets right="25.0" />
+            <Insets bottom="10.0" right="25.0" />
          </GridPane.margin>
       </ProgressBar>
       <Label fx:id="nameAndRoundLabel" prefHeight="55.0" prefWidth="682.0" text="Name: WWWWWWWWWWWWW   Round: 15" GridPane.columnSpan="3">
@@ -173,7 +182,7 @@
             <Insets left="580.0" top="130.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="fillAmountLabel" prefHeight="73.0" prefWidth="564.0" text="Filll Amount: {FillAmount}" GridPane.columnIndex="2" GridPane.rowIndex="1">
+      <Label fx:id="fillAmountLabel" prefHeight="73.0" prefWidth="564.0" text="Fill Amount: " GridPane.columnIndex="2" GridPane.rowIndex="1">
          <font>
             <Font size="32.0" />
          </font>
@@ -202,7 +211,7 @@
             <Insets top="30.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="reloadSpeedLabel" prefHeight="73.0" prefWidth="564.0" text="Frames until next fill: {ReloadSpeed}" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Label fx:id="reloadSpeedLabel" prefHeight="73.0" prefWidth="564.0" text="Frames until next fill: " GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <font>
             <Font size="32.0" />
          </font>
