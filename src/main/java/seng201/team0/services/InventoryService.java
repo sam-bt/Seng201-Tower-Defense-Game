@@ -19,17 +19,22 @@ public class InventoryService {
     public int availableUpgrades;
     public InventoryService(GameManager inventoryServiceGameManager){
         double currDifficulty = inventoryServiceGameManager.getDifficulty();
+//        System.out.println("round one tower list:");                       //i was testing
+//        for (int i = 0; i < inventoryServiceGameManager.getRoundOneTowerList().size(); i++) {
+//            System.out.println(inventoryServiceGameManager.getRoundOneTowerList().get(i).getTowerName());
+//        }
+
         availableHeals = 0;
         availableRevives = 0;
         availableUpgrades = 0;
-        HeavyCoal = new Tower(TowerGenerator.heavyTowerHealthGenerator(),true, "Coal", TowerGenerator.heavyTowerFillAmountGenerator(),  TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Coal", currDifficulty);
-        LightCoal = new Tower(TowerGenerator.lightTowerHealthGenerator(),true, "Coal", TowerGenerator.lightTowerFillAmountGenerator(),  TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Coal", currDifficulty);
-        HeavyIron = new Tower(TowerGenerator.heavyTowerHealthGenerator(),true, "Iron", TowerGenerator.heavyTowerFillAmountGenerator(),  TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Iron", currDifficulty);
-        LightIron = new Tower(TowerGenerator.lightTowerHealthGenerator(),true, "Iron", TowerGenerator.lightTowerFillAmountGenerator(),  TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Iron", currDifficulty);
-        HeavyGold = new Tower(TowerGenerator.heavyTowerHealthGenerator(),true, "Gold", TowerGenerator.heavyTowerFillAmountGenerator(),  TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Gold", currDifficulty);
-        LightGold = new Tower(TowerGenerator.lightTowerHealthGenerator(),true, "Gold", TowerGenerator.lightTowerFillAmountGenerator(),  TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Gold", currDifficulty);
-        HeavyGem = new Tower(TowerGenerator.heavyTowerHealthGenerator(),true, "Gem", TowerGenerator.heavyTowerFillAmountGenerator(),  TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Gem", currDifficulty);
-        LightGem = new Tower(TowerGenerator.lightTowerHealthGenerator(),true, "Gem", TowerGenerator.lightTowerFillAmountGenerator(),  TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Gem", currDifficulty);
+        HeavyCoal = inventoryServiceGameManager.getRoundOneTowerList().get(0);
+        LightCoal = inventoryServiceGameManager.getRoundOneTowerList().get(1);
+        HeavyIron = inventoryServiceGameManager.getRoundOneTowerList().get(2);
+        LightIron = inventoryServiceGameManager.getRoundOneTowerList().get(3);
+        HeavyGold = inventoryServiceGameManager.getRoundOneTowerList().get(4);
+        LightGold = inventoryServiceGameManager.getRoundOneTowerList().get(5);
+        HeavyGem = new Tower(TowerGenerator.heavyTowerHealthGenerator(),false, "Gem", TowerGenerator.heavyTowerFillAmountGenerator(),  TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Gem", currDifficulty);
+        LightGem = new Tower(TowerGenerator.lightTowerHealthGenerator(),false, "Gem", TowerGenerator.lightTowerFillAmountGenerator(),  TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Gem", currDifficulty);
 
     }
     public List<Tower> getTowerList(){

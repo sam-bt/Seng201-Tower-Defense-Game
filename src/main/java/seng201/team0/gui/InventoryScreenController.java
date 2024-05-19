@@ -80,16 +80,9 @@ public class InventoryScreenController {
         currentInventory = new InventoryService(inventoryScreenGameManager);
         List<Tower> towers = currentInventory.getTowerList();
 
-        towers.get(0).buy();
-        towers.get(1).buy();
-        System.out.println(towers.get(0).getOwned());
-
-
         for (int i = 0; i < availableTowerButtons.size(); i++) {
-            System.out.println(towers.get(i));
             if (towers.get(i).getOwned() == false) {
                 availableTowerButtons.get(i).setStyle("-fx-background-color: #000000; -fx-background-radius: 5;");
-                System.out.println("sui");
             }
         }
 
@@ -104,8 +97,11 @@ public class InventoryScreenController {
                     selectedItem = null;
                     resetItemButtonStyles();
                     availableTowerButtons.forEach(button -> {
+                        System.out.println(towers.get(finalI));
                         if (button == availableTowerButtons.get(finalI)) {
-                            button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
+                            if (towers.get(finalI).getOwned() == false) {
+                                button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
+                            }
                         } else {
                             if (towers.get(finalI).getOwned() == true) {
                                 button.setStyle("");
