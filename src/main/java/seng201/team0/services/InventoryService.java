@@ -19,10 +19,7 @@ public class InventoryService {
     public int availableUpgrades;
     public InventoryService(GameManager inventoryServiceGameManager){
         double currDifficulty = inventoryServiceGameManager.getDifficulty();
-//        System.out.println("round one tower list:");                       //i was testing
-//        for (int i = 0; i < inventoryServiceGameManager.getRoundOneTowerList().size(); i++) {
-//            System.out.println(inventoryServiceGameManager.getRoundOneTowerList().get(i).getTowerName());
-//        }
+
 
         availableHeals = 0;
         availableRevives = 0;

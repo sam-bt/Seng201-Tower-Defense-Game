@@ -81,12 +81,14 @@ public class InventoryScreenController {
         currentInventory = new InventoryService(inventoryScreenGameManager);
         List<Tower> towers = currentInventory.getTowerList();
 
+        // Sets non owned tower buttons to black
         for (int i = 0; i < availableTowerButtons.size(); i++) {
             if (towers.get(i).getOwned() == false) {
                 availableTowerButtons.get(i).setStyle("-fx-background-color: #000000; -fx-background-radius: 5;");
             }
         }
 
+        // Sets the action to display the selected towers information when it is clicked on, and to show that it is selected
         for (int i = 0; i < availableTowerButtons.size(); i++) {
             int finalI = i;
             availableTowerButtons.get(i).setOnAction(event -> {
@@ -113,24 +115,18 @@ public class InventoryScreenController {
             });
         }
 
-        for (int i = 0; i < towerSlotButtons.size(); i++) {
-            int finalI = i;
-            towerSlotButtons.get(i).setOnAction(event -> {
-                if (selectedTowerIndex != -1) {
-                    if (!TowerService.isTowerAlreadySelected(selectedTowers, towers.get(selectedTowerIndex))) {
-                        towerSlotButtons.get(finalI).setText(towers.get(selectedTowerIndex).getTowerName());
-                        selectedTowers[finalI] = towers.get(selectedTowerIndex); }
-                }
-            });
-        }
+
 
         for (int i = 0; i < towerSlotButtons.size(); i++) {
             int finalI = i;
             towerSlotButtons.get(i).setOnAction(event -> {
-                if (selectedTowerIndex != -1) {
-                    towerSlotButtons.get(finalI).setText(towers.get(selectedTowerIndex).getTowerName());
-                    selectedTowers[finalI] = towers.get(selectedTowerIndex);
-                    resetTowerSelection();
+                if (selectedTowerIndex != -1 && towers.get(selectedTowerIndex).getOwned() == true) {
+                    if (!TowerService.isTowerAlreadySelected(selectedTowers, towers.get(selectedTowerIndex))) {
+                        towerSlotButtons.get(finalI).setText(towers.get(selectedTowerIndex).getTowerName());
+                        selectedTowers[finalI] = towers.get(selectedTowerIndex);
+                        resetTowerSelection();
+                    }
+
                 } else if (selectedItem != null && selectedTowers[finalI] != null) {
                     applySelectedItem(selectedTowers[finalI]);
                     selectedItem = null;
