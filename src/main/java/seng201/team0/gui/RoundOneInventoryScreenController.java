@@ -11,6 +11,7 @@ import seng201.team0.services.TowerService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class RoundOneInventoryScreenController {
     @FXML Button heavyCoalButton;
@@ -94,6 +95,16 @@ public class RoundOneInventoryScreenController {
     private void onConfirm() {
 //        roundOneInventoryScreenGameManager.setRoundOneSelectedTowerButtons(selectedTowerButtons);
         if  (TowerService.areAllRoundOneTowersTypesSelected(selectedTowers) && TowerService.areAllTowersSelected(selectedTowers)) {
+            for (Tower tower: towers) {
+                for (Tower selectedTower: selectedTowers) {
+                    if (Objects.equals(tower.getTowerName(), selectedTower.getTowerName())) {
+                        tower.setOwned();
+                    }
+                }
+            }
+            for (Tower tower: towers) {
+                System.out.println(tower.getOwned());
+            }
             roundOneInventoryScreenGameManager.setRoundOneTowerList(towers);
         roundOneInventoryScreenGameManager.setRoundOneSelectedTowerList(selectedTowers);
         roundOneInventoryScreenGameManager.closeRoundOneInventoryScreen(); }

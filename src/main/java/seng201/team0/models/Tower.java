@@ -42,12 +42,14 @@ public class Tower implements Purchasable{
     public void breakTower() {
         broken = true;
     }
+    public void setOwned() {owned = true;}
+    public void setNotOwned() {owned = false;}
     public void buy(){
         owned = true;
-    }
+    } //TODO decrease money
     public void sell(){
         owned = false;
-    }
+    } //TODO increase money
     public void useUpgrade(){
         level += 1;
         maxHealth += 5;

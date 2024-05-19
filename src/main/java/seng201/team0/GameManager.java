@@ -53,6 +53,7 @@ public class GameManager {
         setName(setup.getName());
         setRounds(setup.getNumRounds());
         this.money.editMoney(100*difficulty.getDifficulty());
+        setRoundTrackLength(100);
     }
     public void setCurrRound()  {currRound = 1; }
     public void setRoundTrackLength(int trackLength) { roundTrackLength = trackLength; }
