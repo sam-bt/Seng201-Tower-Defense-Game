@@ -86,8 +86,10 @@ public class InventoryScreenController {
 
 
         for (int i = 0; i < availableTowerButtons.size(); i++) {
+            System.out.println(towers.get(i));
             if (towers.get(i).getOwned() == false) {
                 availableTowerButtons.get(i).setStyle("-fx-background-color: #000000; -fx-background-radius: 5;");
+                System.out.println("sui");
             }
         }
 
