@@ -47,11 +47,15 @@ public class InventoryScreenController {
     @FXML
     private Button useUpgradeButton;
     @FXML
-    private Label currTowerDamage;
-    @FXML
     private Label currTowerHealth;
     @FXML
     private Label currTowerLevel;
+    @FXML
+    private Label currTowerReload;
+    @FXML
+    private Label currTowerType;
+    @FXML
+    private Label currTowerFillAmount;
     @FXML
     private Label UpgradesOwned;
     @FXML
@@ -64,7 +68,7 @@ public class InventoryScreenController {
     private String selectedItem = null;
 
     GameManager inventoryScreenGameManager;
-
+    private InventoryService currentInventory;
     public InventoryScreenController(GameManager tempInventoryScreenGameManager) {
         inventoryScreenGameManager = tempInventoryScreenGameManager;
     }
@@ -73,12 +77,19 @@ public class InventoryScreenController {
         List<Button> towerSlotButtons = List.of(inventorySlot1Button, inventorySlot2Button, inventorySlot3Button, inventorySlot4Button, inventorySlot5Button);
         List<Button> availableTowerButtons = List.of(coalType1Button, coalType2Button, ironType1Button, ironType2Button, goldType1Button, goldType2Button, gemType1Button, gemType2Button);
         List<Button> availableItemButtons = List.of(useHealButton, useReviveButton, useUpgradeButton);
-        InventoryService currentInventory = new InventoryService(inventoryScreenGameManager);
+        currentInventory = new InventoryService(inventoryScreenGameManager);
         List<Tower> towers = currentInventory.getTowerList();
 
-//        for (int i = 0; i < availableTowerButtons.size(); i++) {
-//            if ()
-//        }
+        towers.get(0).buy();
+        towers.get(1).buy();
+        System.out.println(towers.get(0).getOwned());
+
+
+        for (int i = 0; i < availableTowerButtons.size(); i++) {
+            if (towers.get(i).getOwned() == false) {
+                availableTowerButtons.get(i).setStyle("-fx-background-color: #000000; -fx-background-radius: 5;");
+            }
+        }
 
         for (int i = 0; i < availableTowerButtons.size(); i++) {
             int finalI = i;
@@ -94,7 +105,9 @@ public class InventoryScreenController {
                         if (button == availableTowerButtons.get(finalI)) {
                             button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
                         } else {
-                            button.setStyle("");
+                            if (towers.get(finalI).getOwned() == true) {
+                                button.setStyle("");
+                            }
                         }
                     });
                 }
@@ -161,21 +174,18 @@ public class InventoryScreenController {
                 if (Integer.parseInt(healsOwned.getText()) > 0) {
                     tower.useHeal();
                     healsOwned.setText(String.valueOf(Integer.parseInt(healsOwned.getText()) - 1));
-                    System.out.println("Healed tower: " + tower.getTowerName());
                 }
                 break;
             case "revive":
                 if (Integer.parseInt(revivesOwned.getText()) > 0) {
                     tower.useRevive();
                     revivesOwned.setText(String.valueOf(Integer.parseInt(revivesOwned.getText()) - 1));
-                    System.out.println("Revived tower: " + tower.getTowerName());
                 }
                 break;
             case "upgrade":
                 if (Integer.parseInt(UpgradesOwned.getText()) > 0) {
                     tower.useUpgrade();
                     UpgradesOwned.setText(String.valueOf(Integer.parseInt(UpgradesOwned.getText()) - 1));
-                    System.out.println("Upgraded tower: " + tower.getTowerName());
                 }
                 break;
         }
@@ -190,7 +200,12 @@ public class InventoryScreenController {
 
     private void resetTowerButtonStyles() {
         List<Button> availableTowerButtons = List.of(coalType1Button, coalType2Button, ironType1Button, ironType2Button, goldType1Button, goldType2Button, gemType1Button, gemType2Button);
-        availableTowerButtons.forEach(button -> button.setStyle(""));
+        List<Tower> towers = currentInventory.getTowerList();
+        for (int i = 0; i < availableTowerButtons.size(); i++) {
+            if (towers.get(i).getOwned() == true) {
+                availableTowerButtons.get(i).setStyle("");
+            }
+        }
     }
 
     private void resetTowerSelection() {
@@ -204,9 +219,11 @@ public class InventoryScreenController {
     }
 
     private void updateDisplayedStats(Tower tower) {
-        currTowerHealth.setText("Health: " + tower.getHealth());
+        currTowerHealth.setText("Health: " + tower.getHealth() +"/"+ tower.getMaxHealth());
         currTowerLevel.setText("Level: " + tower.getLevel());
-        // Add other stats update as needed
+        currTowerReload.setText("Reload Speed:" + tower.getReloadSpeed());
+        currTowerType.setText("Name:" + tower.getTowerName());
+        currTowerFillAmount.setText("Fill Amount:" + tower.getFillAmount());
     }
 
     @FXML
@@ -217,20 +234,5 @@ public class InventoryScreenController {
     @FXML
     private void onShop() {
         inventoryScreenGameManager.openShopScreen();
-    }
-
-    @FXML
-    void onUseHeal() {
-        // This method is no longer needed
-    }
-
-    @FXML
-    void onUseRevive() {
-        // This method is no longer needed
-    }
-
-    @FXML
-    void onUseUpgrade() {
-        // This method is no longer needed
     }
 }
