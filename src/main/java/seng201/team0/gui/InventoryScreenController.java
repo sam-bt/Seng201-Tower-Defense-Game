@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import seng201.team0.GameManager;
 import seng201.team0.models.Tower;
 import seng201.team0.services.InventoryService;
+import seng201.team0.services.TowerService;
 
 import java.util.List;
 
@@ -97,17 +98,28 @@ public class InventoryScreenController {
                     selectedItem = null;
                     resetItemButtonStyles();
                     availableTowerButtons.forEach(button -> {
-                        System.out.println(towers.get(finalI));
+                        int buttonIndex = availableTowerButtons.indexOf(button);
                         if (button == availableTowerButtons.get(finalI)) {
-                            if (towers.get(finalI).getOwned() == false) {
+                            if (towers.get(buttonIndex).getOwned() == true) {
                                 button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
                             }
                         } else {
-                            if (towers.get(finalI).getOwned() == true) {
+                            if (towers.get(buttonIndex).getOwned() == true) {
                                 button.setStyle("");
                             }
                         }
                     });
+                }
+            });
+        }
+
+        for (int i = 0; i < towerSlotButtons.size(); i++) {
+            int finalI = i;
+            towerSlotButtons.get(i).setOnAction(event -> {
+                if (selectedTowerIndex != -1) {
+                    if (!TowerService.isTowerAlreadySelected(selectedTowers, towers.get(selectedTowerIndex))) {
+                        towerSlotButtons.get(finalI).setText(towers.get(selectedTowerIndex).getTowerName());
+                        selectedTowers[finalI] = towers.get(selectedTowerIndex); }
                 }
             });
         }
