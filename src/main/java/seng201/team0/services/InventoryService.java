@@ -37,5 +37,31 @@ public class InventoryService {
     public List<Tower> getTowerList(){
         return List.of(HeavyCoal,LightCoal,HeavyIron,LightIron,HeavyGold,LightGold,HeavyGem,LightGem);
     }
+    public void consumeHeal() {
+        availableHeals -= 1;
+    }
+    public void consumeRevive() { availableRevives -= 1;}
+    public void consumeUpgrade() {
+        availableUpgrades -= 1;
+    }
 
+    public void addHeal() {
+        availableHeals += 1;
+    }
+    public void addRevive() { availableRevives += 1;}
+    public void addUpgrade() {
+        availableUpgrades += 1;
+    }
+
+    public int getAvailableHeals() {
+        return availableHeals;
+    }
+
+    public int getAvailableRevives() {
+        return availableRevives;
+    }
+
+    public int getAvailableUpgrades() {
+        return availableUpgrades;
+    }
 }

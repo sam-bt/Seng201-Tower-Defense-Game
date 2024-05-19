@@ -1,5 +1,8 @@
 package seng201.team0.models;
 
+import seng201.team0.services.InventoryService;
+import seng201.team0.services.TowerService;
+
 import java.util.Random;
 public class Tower implements Purchasable {
     private int health;
@@ -50,9 +53,10 @@ public class Tower implements Purchasable {
     public void sell(){
         owned = false;
     } //TODO increase money
-    public void useUpgrade(){
+    public void useUpgrade(InventoryService inventoryService){
         level += 1;
         maxHealth += 5;
+        inventoryService.consumeUpgrade();
     }
     public void increaseBreakChance(int amount) {
         breakChance += amount;
@@ -89,21 +93,23 @@ public class Tower implements Purchasable {
         return broken;
     }
     public void setBroken() { broken = true; }
-    public void useRevive() {
+    public void useRevive(InventoryService inventoryService) {
         broken = false;
-    if (health == 0) {
-    health = 5;
+        if (health == 0) {
+            health = 5;
         }
+        inventoryService.consumeRevive();
     }
     public String getTowerName(){
         return towerName;
     }
-    public void useHeal() { // TODO: health item currently heals 5 as stand in value so update later on
+    public void useHeal(InventoryService inventoryService) { // TODO: health item currently heals 5 as stand in value so update later on
         if (health + 5 >= maxHealth) {
             health = maxHealth;
         } else {
             health += 5;
         }
+        inventoryService.consumeHeal();
     }
 
 

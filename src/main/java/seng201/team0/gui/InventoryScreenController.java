@@ -58,7 +58,7 @@ public class InventoryScreenController {
     @FXML
     private Label currTowerFillAmount;
     @FXML
-    private Label UpgradesOwned;
+    private Label upgradesOwned;
     @FXML
     private Label healsOwned;
     @FXML
@@ -87,6 +87,11 @@ public class InventoryScreenController {
                 availableTowerButtons.get(i).setStyle("-fx-background-color: #000000; -fx-background-radius: 5;");
             }
         }
+
+        healsOwned.setText("Owned:" + currentInventory.getAvailableHeals());
+        revivesOwned.setText("Owned:" + currentInventory.getAvailableRevives());
+        upgradesOwned.setText("Owned:" + currentInventory.getAvailableUpgrades());
+
 
         // Sets the action to display the selected towers information when it is clicked on, and to show that it is selected
         for (int i = 0; i < availableTowerButtons.size(); i++) {
@@ -174,24 +179,25 @@ public class InventoryScreenController {
         });
     }
 
+
     private void applySelectedItem(Tower tower) {
         switch (selectedItem) {
             case "heal":
-                if (Integer.parseInt(healsOwned.getText()) > 0) {
-                    tower.useHeal();
-                    healsOwned.setText(String.valueOf(Integer.parseInt(healsOwned.getText()) - 1));
+                if (currentInventory.getAvailableHeals() > 0) {
+                    tower.useHeal(currentInventory);
+                    healsOwned.setText("Owned:" + currentInventory.getAvailableHeals());
                 }
                 break;
             case "revive":
-                if (Integer.parseInt(revivesOwned.getText()) > 0) {
-                    tower.useRevive();
-                    revivesOwned.setText(String.valueOf(Integer.parseInt(revivesOwned.getText()) - 1));
+                if (currentInventory.getAvailableRevives() > 0) {
+                    tower.useRevive(currentInventory);
+                    revivesOwned.setText("Owned:" + currentInventory.getAvailableRevives());
                 }
                 break;
             case "upgrade":
-                if (Integer.parseInt(UpgradesOwned.getText()) > 0) {
-                    tower.useUpgrade();
-                    UpgradesOwned.setText(String.valueOf(Integer.parseInt(UpgradesOwned.getText()) - 1));
+                if (currentInventory.getAvailableUpgrades() > 0) {
+                    tower.useUpgrade(currentInventory);
+                    upgradesOwned.setText("Owned:" + currentInventory.getAvailableUpgrades());
                 }
                 break;
         }
