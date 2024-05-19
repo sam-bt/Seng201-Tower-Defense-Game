@@ -6,7 +6,6 @@ import javafx.scene.control.Label;
 import seng201.team0.GameManager;
 import seng201.team0.models.Tower;
 import seng201.team0.services.InventoryService;
-import seng201.team0.services.TowerService;
 
 import java.util.List;
 
@@ -62,6 +61,7 @@ public class InventoryScreenController {
 
     private final Tower[] selectedTowers = new Tower[5];
     private int selectedTowerIndex = -1;
+    private String selectedItem = null;
 
     GameManager inventoryScreenGameManager;
 
@@ -76,45 +76,137 @@ public class InventoryScreenController {
         InventoryService currentInventory = new InventoryService(inventoryScreenGameManager);
         List<Tower> towers = currentInventory.getTowerList();
 
+//        for (int i = 0; i < availableTowerButtons.size(); i++) {
+//            if ()
+//        }
+
         for (int i = 0; i < availableTowerButtons.size(); i++) {
             int finalI = i;
             availableTowerButtons.get(i).setOnAction(event -> {
-                updateDisplayedStats(towers.get(finalI));
-                selectedTowerIndex = finalI;
-                availableTowerButtons.forEach(button -> {
-                    if (button == availableTowerButtons.get(finalI)) {
-                        button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
-                    } else {
-                        button.setStyle("");
-                    }
-                });
+                if (selectedTowerIndex == finalI) {
+                    resetTowerSelection();
+                } else {
+                    updateDisplayedStats(towers.get(finalI));
+                    selectedTowerIndex = finalI;
+                    selectedItem = null;
+                    resetItemButtonStyles();
+                    availableTowerButtons.forEach(button -> {
+                        if (button == availableTowerButtons.get(finalI)) {
+                            button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
+                        } else {
+                            button.setStyle("");
+                        }
+                    });
+                }
             });
         }
-        // Sets the action to add the selected tower to the selected tower slot TODO: if > 0 are owned
+
         for (int i = 0; i < towerSlotButtons.size(); i++) {
             int finalI = i;
             towerSlotButtons.get(i).setOnAction(event -> {
                 if (selectedTowerIndex != -1) {
                     towerSlotButtons.get(finalI).setText(towers.get(selectedTowerIndex).getTowerName());
                     selectedTowers[finalI] = towers.get(selectedTowerIndex);
+                    resetTowerSelection();
+                } else if (selectedItem != null && selectedTowers[finalI] != null) {
+                    applySelectedItem(selectedTowers[finalI]);
+                    selectedItem = null;
+                    resetItemButtonStyles();
+                } else if (selectedTowers[finalI] != null) {
+                    updateDisplayedStats(selectedTowers[finalI]);
                 }
             });
         }
-//        List<Integer> towerListIndices = inventoryScreenGameManager.getRoundOneTowerListIndices();
-//        Tower[] savedTowers = inventoryScreenGameManager.getRoundOneTowerList();
-//        if (!towerListIndices.isEmpty()) {
-//            for (int selectedTowerIndex : towerListIndices) {
-//                towerSlotButtons.get(selectedTowerIndex).setText(savedTowers[selectedTowerIndex].getTowerName());
-//                selectedTowers[selectedTowerIndex] = savedTowers[selectedTowerIndex];
-//            }
-//        }
+
+        useHealButton.setOnAction(event -> {
+            if ("heal".equals(selectedItem)) {
+                resetItemSelection();
+            } else {
+                selectedItem = "heal";
+                selectedTowerIndex = -1;
+                resetTowerButtonStyles();
+                resetItemButtonStyles();
+                useHealButton.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
+            }
+        });
+
+        useReviveButton.setOnAction(event -> {
+            if ("revive".equals(selectedItem)) {
+                resetItemSelection();
+            } else {
+                selectedItem = "revive";
+                selectedTowerIndex = -1;
+                resetTowerButtonStyles();
+                resetItemButtonStyles();
+                useReviveButton.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
+            }
+        });
+
+        useUpgradeButton.setOnAction(event -> {
+            if ("upgrade".equals(selectedItem)) {
+                resetItemSelection();
+            } else {
+                selectedItem = "upgrade";
+                selectedTowerIndex = -1;
+                resetTowerButtonStyles();
+                resetItemButtonStyles();
+                useUpgradeButton.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
+            }
+        });
+    }
+
+    private void applySelectedItem(Tower tower) {
+        switch (selectedItem) {
+            case "heal":
+                if (Integer.parseInt(healsOwned.getText()) > 0) {
+                    tower.useHeal();
+                    healsOwned.setText(String.valueOf(Integer.parseInt(healsOwned.getText()) - 1));
+                    System.out.println("Healed tower: " + tower.getTowerName());
+                }
+                break;
+            case "revive":
+                if (Integer.parseInt(revivesOwned.getText()) > 0) {
+                    tower.useRevive();
+                    revivesOwned.setText(String.valueOf(Integer.parseInt(revivesOwned.getText()) - 1));
+                    System.out.println("Revived tower: " + tower.getTowerName());
+                }
+                break;
+            case "upgrade":
+                if (Integer.parseInt(UpgradesOwned.getText()) > 0) {
+                    tower.useUpgrade();
+                    UpgradesOwned.setText(String.valueOf(Integer.parseInt(UpgradesOwned.getText()) - 1));
+                    System.out.println("Upgraded tower: " + tower.getTowerName());
+                }
+                break;
+        }
+        updateDisplayedStats(tower);
+    }
+
+    private void resetItemButtonStyles() {
+        useHealButton.setStyle("");
+        useReviveButton.setStyle("");
+        useUpgradeButton.setStyle("");
+    }
+
+    private void resetTowerButtonStyles() {
+        List<Button> availableTowerButtons = List.of(coalType1Button, coalType2Button, ironType1Button, ironType2Button, goldType1Button, goldType2Button, gemType1Button, gemType2Button);
+        availableTowerButtons.forEach(button -> button.setStyle(""));
+    }
+
+    private void resetTowerSelection() {
+        selectedTowerIndex = -1;
+        resetTowerButtonStyles();
+    }
+
+    private void resetItemSelection() {
+        selectedItem = null;
+        resetItemButtonStyles();
     }
 
     private void updateDisplayedStats(Tower tower) {
-//        towerNameLabel.setText("Name: "+tower.getTowerName());
-//        currTowerHealth.setText("Health: "+tower.getHealth());
-//        towerTypeLabel.setText("Resource Fill Type: "+tower.getFillType());
-//        towerReloadLabel.setText("Reload Speed: "+tower.getReloadSpeed()); TODO: add reload lable to scene
+        currTowerHealth.setText("Health: " + tower.getHealth());
+        currTowerLevel.setText("Level: " + tower.getLevel());
+        // Add other stats update as needed
     }
 
     @FXML
@@ -129,19 +221,16 @@ public class InventoryScreenController {
 
     @FXML
     void onUseHeal() {
-
-    } //TODO implement
+        // This method is no longer needed
+    }
 
     @FXML
     void onUseRevive() {
-
-    } //TODO implement
+        // This method is no longer needed
+    }
 
     @FXML
     void onUseUpgrade() {
-
-    } //TODO implement
-
-
+        // This method is no longer needed
+    }
 }
-
