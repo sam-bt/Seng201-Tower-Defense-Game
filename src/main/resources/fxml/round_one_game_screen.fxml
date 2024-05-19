@@ -217,12 +217,12 @@
       </ProgressBar>
       <ProgressBar fx:id="cartTwoFillProgressBar" prefHeight="200.0" prefWidth="225.0" progress="0.28" rotate="270.0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets bottom="100.0" left="325.0" />
+            <Insets bottom="100.0" left="330.0" />
          </GridPane.margin>
       </ProgressBar>
       <ProgressBar fx:id="cartThreeFillProgressBar" prefHeight="200.0" prefWidth="225.0" progress="0.7" rotate="270.0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets bottom="100.0" left="610.0" />
+            <Insets bottom="100.0" left="620.0" />
          </GridPane.margin>
       </ProgressBar>
       <TextFlow maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="530.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">

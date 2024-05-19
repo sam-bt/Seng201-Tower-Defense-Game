@@ -45,9 +45,6 @@ public class RoundOneInventoryScreenController {
         towers = roundOneInventory.getTowerList();
         Tower[] savedTowers = roundOneInventoryScreenGameManager.getRoundOneSelectedTowerList();
         List<Button> savedTowerButtons = roundOneInventoryScreenGameManager.getRoundOneSelectedTowerButtons();
-        if (savedTowers != null) {for (Tower tower: savedTowers){
-        System.out.println(tower.getTowerName());}
-        }
 
         // Sets the action to display the selected towers information when it is clicked on, and to show that it is selected
         for (int i = 0; i < towerButtons.size(); i++) {
@@ -101,9 +98,6 @@ public class RoundOneInventoryScreenController {
                         tower.setOwned();
                     }
                 }
-            }
-            for (Tower tower: towers) {
-                System.out.println(tower.getOwned());
             }
             roundOneInventoryScreenGameManager.setRoundOneTowerList(towers);
         roundOneInventoryScreenGameManager.setRoundOneSelectedTowerList(selectedTowers);

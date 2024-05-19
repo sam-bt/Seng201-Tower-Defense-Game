@@ -19,8 +19,6 @@ public class TowerService {
     public static boolean isTowerAlreadySelected(Tower[] selectedTowers, Tower tower) {
         for (Tower selectedTower: selectedTowers){
             if (selectedTower == null) {continue;}
-            System.out.println(selectedTower.getTowerName());
-            System.out.println(tower.getTowerName());
             if (Objects.equals(selectedTower.getTowerName(), tower.getTowerName())) {
                 return true;
             }
