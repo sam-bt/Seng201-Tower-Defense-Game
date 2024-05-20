@@ -6,9 +6,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import seng201.team0.GameManager;
 import seng201.team0.models.Cart;
+import seng201.team0.models.RoundOne;
 import seng201.team0.models.Tower;
 
 import java.util.List;
+import java.util.Objects;
 
 public class RoundOneGameScreenController {
     @FXML private Button nextRoundButton;
@@ -45,10 +47,11 @@ public class RoundOneGameScreenController {
     @FXML private Button cartThreeButton;
     @FXML private Button confirmActionButton;
     @FXML private Button nextFrameButton;
-    Tower[] towerList;
-    List<Cart> cartList;
-    int selectedTowerIndex = -1;
-    int selectedCartIndex = -1;
+    private Tower[] towerList;
+    private List<Cart> cartList;
+    private int selectedTowerIndex = -1;
+    private int selectedCartIndex = -1;
+    private boolean fillable = false;
 
     GameManager roundOneGameScreenManager;
 
@@ -56,14 +59,21 @@ public class RoundOneGameScreenController {
         roundOneGameScreenManager = tempRoundOneGameScreenManager;
     }
     public void initialize() {
+        RoundOne roundOne = new RoundOne(roundOneGameScreenManager.getMoneyService(), roundOneGameScreenManager.getPoints(), roundOneGameScreenManager.getDifficultyService(), roundOneGameScreenManager.getRoundTrackLength());
         towerList = roundOneGameScreenManager.getRoundOneSelectedTowerList();
-        Cart defaultCartOne = new Cart("Coal");
-        Cart defaultCartTwo = new Cart("Iron");
-        Cart defaultCartThree = new Cart("Gold");
-        cartList = List.of(defaultCartOne, defaultCartTwo, defaultCartThree);
+        cartList = List.of(roundOne.getCoalCart(), roundOne.getIronCart(), roundOne.getGoldCart());
         List<Button> towerButtons = List.of(towerOneButton,towerTwoButton,towerThreeButton);
         List<Button> cartButtons = List.of(cartOneButton,cartTwoButton,cartThreeButton);
 
+        cartOneName.setText("Cart: "+cartList.get(0).getCartName());
+        cartTwoName.setText("Cart: "+cartList.get(1).getCartName());
+        cartThreeName.setText("Cart: "+cartList.get(2).getCartName());
+        cartOneSpeed.setText("Speed: "+cartList.get(0).getSpeed()+" m/s");
+        cartTwoSpeed.setText("Speed: "+cartList.get(1).getSpeed()+" m/s");
+        cartThreeSpeed.setText("Speed: "+cartList.get(2).getSpeed()+" m/s");
+        cartOneSize.setText("Capacity: "+cartList.get(0).getCapacity()+" kg");
+        cartTwoSize.setText("Capacity: "+cartList.get(1).getCapacity()+" kg");
+        cartThreeSize.setText("Capacity: "+cartList.get(2).getCapacity()+" kg");
         cartOneFillProgressBar.setMouseTransparent(true);
         cartTwoFillProgressBar.setMouseTransparent(true);
         cartThreeFillProgressBar.setMouseTransparent(true);
@@ -125,10 +135,18 @@ public class RoundOneGameScreenController {
         reloadSpeedLabel.setText("Frames until next fill: "+tower.getReloadSpeed());
     }
     public void updateSelectedCartStats() {
-        fillCartWithTowerLabel.setText("Fill "+cartList.get(selectedCartIndex).getResourceType()+" Cart with "+towerList[selectedTowerIndex].getTowerName()+"?");
+        if (Objects.equals(cartList.get(selectedCartIndex).getResourceType(), towerList[selectedTowerIndex].getFillType())) {
+            fillable = true;
+            fillCartWithTowerLabel.setStyle("-fx-text-fill: black");
+        fillCartWithTowerLabel.setText("Fill "+cartList.get(selectedCartIndex).getResourceType()+" Cart with "+towerList[selectedTowerIndex].getTowerName()+"?");}
+        else {
+            fillable = false;
+            fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
+            fillCartWithTowerLabel.setText("Cannot fill " +cartList.get(selectedCartIndex).getResourceType()+" Cart with "+towerList[selectedTowerIndex].getTowerName()+"!!");}
     }
     @FXML
-    private void onConfirmAction() {}
+    private void onConfirmAction() {
+    }
     @FXML
     private void onConfirmNext() {}
     @FXML

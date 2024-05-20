@@ -5,13 +5,15 @@ import java.util.List;
 import java.util.Random;
 
 public class Cart {
+    public String cartName;
     public int capacity;
     public String resourceType;
     public int speed;
     public int distanceTravelled;
     public boolean endReached;
 
-    public Cart(String resourceType) {
+    public Cart(String cartName, String resourceType) {
+        this.cartName = cartName;
         this.resourceType = resourceType;
         Random rng = new Random();
         List<Integer> speedList = Arrays.asList(10, 10, 20, 20, 50);
@@ -34,6 +36,10 @@ public class Cart {
         } else {
             distanceTravelled += speed;
         }
+    }
+
+    public String getCartName() {
+        return cartName;
     }
 
     public String getResourceType() {

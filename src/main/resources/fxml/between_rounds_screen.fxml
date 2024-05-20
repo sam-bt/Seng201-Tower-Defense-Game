@@ -16,8 +16,8 @@
         <ColumnConstraints hgrow="ALWAYS" maxWidth="480.0" minWidth="10.0" prefWidth="480.0" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints maxHeight="384.0" minHeight="10.0" prefHeight="266.0" vgrow="ALWAYS" />
-        <RowConstraints maxHeight="580.0" minHeight="10.0" prefHeight="380.0" vgrow="ALWAYS" />
+        <RowConstraints maxHeight="384.0" minHeight="10.0" prefHeight="236.0" vgrow="ALWAYS" />
+        <RowConstraints maxHeight="580.0" minHeight="10.0" prefHeight="417.0" vgrow="ALWAYS" />
         <RowConstraints maxHeight="292.0" minHeight="10.0" prefHeight="244.0" vgrow="ALWAYS" />
     </rowConstraints>
     <children>
@@ -87,9 +87,9 @@
          </font>
         </Label>
       <Button fx:id="skipRoundButton" mnemonicParsing="false" onAction="#onSkipRound" text="Button" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
-      <Button fx:id="trackLengthButtonTwo" mnemonicParsing="false" onAction="#setTrackLengthTwo" prefHeight="80.0" prefWidth="252.0" text="{Selection2} m" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Button fx:id="trackLengthButtonTwo" mnemonicParsing="false" onAction="#setTrackLengthTwo" prefHeight="80.0" prefWidth="252.0" text="{Selection2} m" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets bottom="40.0" />
+            <Insets top="80.0" />
          </GridPane.margin>
          <font>
             <Font size="32.0" />
@@ -103,9 +103,9 @@
             <Insets top="15.0" />
          </GridPane.margin>
       </Text>
-      <Button fx:id="trackLengthButtonOne" mnemonicParsing="false" onAction="#setTrackLengthOne" prefHeight="80.0" prefWidth="252.0" text="{Selection1} m" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="trackLengthButtonOne" mnemonicParsing="false" onAction="#setTrackLengthOne" prefHeight="80.0" prefWidth="252.0" text="{Selection1} m" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
-            <Insets />
+            <Insets top="100.0" />
          </GridPane.margin>
          <font>
             <Font size="32.0" />
@@ -119,5 +119,13 @@
             <Insets left="450.0" top="10.0" />
          </GridPane.margin>
       </Label>
+      <Button fx:id="trackLengthButtonThree" mnemonicParsing="false" onAction="#setTrackLengthThree" prefHeight="80.0" prefWidth="252.0" text="{Selection3} m" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="20.0" />
+         </GridPane.margin>
+      </Button>
     </children>
 </GridPane>
