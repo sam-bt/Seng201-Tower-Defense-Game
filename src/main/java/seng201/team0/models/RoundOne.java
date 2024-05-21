@@ -72,6 +72,16 @@ public class RoundOne {
         }
         return true;
     }
+    public boolean isCartFillable(List<Cart> cartList, Tower selectedTower) {
+        for (Cart cart: cartList) {
+            if (Objects.equals(cart.getResourceType(), selectedTower.getFillType())) {
+                if (!cart.isFull()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     public boolean roundWon(List<Cart> cartList) {
         for (Cart cart: cartList) {
             System.out.println("success? "+cart.isCartSuccess());

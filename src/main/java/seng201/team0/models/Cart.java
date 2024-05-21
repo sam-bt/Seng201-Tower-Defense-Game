@@ -14,6 +14,7 @@ public class Cart {
     private double currentFillAmount;
     private boolean full;
     private boolean cartSuccess;
+    private int currentFillDisplay;
 
     public Cart(String cartName, String resourceType, double difficulty) {
         this.cartName = cartName;
@@ -21,6 +22,7 @@ public class Cart {
         this.endReached = false;
         this.full = false;
         this.cartSuccess = false;
+        this.currentFillDisplay=0;
         Random rng = new Random();
         List<Integer> speedList = Arrays.asList(10, 10, 15, 15, 20);
         int randomSpeed = rng.nextInt(5);
@@ -68,18 +70,23 @@ public class Cart {
     public double getCurrentFillAmount() {
         return currentFillAmount;
     }
-    public void increaseFillAmount(int towerFillAmount) {
-        System.out.println("current fill: "+currentFillAmount);
-        if (currentFillAmount + (((double) towerFillAmount /100)/((double) capacity) / 100) >= (double) capacity / 100) {
-            currentFillAmount = capacity;
-            full = true;
-            if (!endReached) {
-                cartSuccess = true;
-            }
-        } else {
-            currentFillAmount += ((double) towerFillAmount /100)/((double) capacity / 100);
-        }
+    public int getCurrentFillDisplay() {
+        return currentFillDisplay;
     }
+    public void increaseFillAmount(int towerFillAmount) {
+            double newFillAmount = currentFillAmount + (double) towerFillAmount / capacity;
+            if (newFillAmount >= 1) {
+                currentFillAmount = 1;
+                currentFillDisplay = capacity;
+                full = true;
+                if (!endReached) {
+                    cartSuccess = true;
+                }
+            } else {
+                currentFillAmount = newFillAmount;
+                currentFillDisplay += towerFillAmount;
+            }
+        }
 
     public boolean isCartSuccess() {
         return cartSuccess;

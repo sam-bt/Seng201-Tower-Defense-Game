@@ -86,7 +86,7 @@
             <Insets left="25.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="cartThreeName" prefHeight="33.0" prefWidth="250.0" text="Cart: {CartName}" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartThreeNameLabel" prefHeight="33.0" prefWidth="250.0" text="Cart: {CartName}" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="580.0" top="30.0" />
          </GridPane.margin>
@@ -94,7 +94,7 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <Label fx:id="cartTwoName" prefHeight="33.0" prefWidth="250.0" text="Cart: {CartName}" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartTwoNameLabel" prefHeight="33.0" prefWidth="250.0" text="Cart: {CartName}" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="315.0" top="30.0" />
          </GridPane.margin>
@@ -102,7 +102,7 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <Label fx:id="cartOneName" prefHeight="33.0" prefWidth="250.0" text="Cart: {CartName}" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartOneNameLabel" prefHeight="33.0" prefWidth="250.0" text="Cart: {CartName}" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="25.0" top="30.0" />
          </GridPane.margin>
@@ -134,7 +134,7 @@
             <Font size="32.0" />
          </font>
       </Button>
-      <Label fx:id="cartOneSpeed" prefHeight="28.0" prefWidth="253.0" text="Speed: {CartSpeed} m/s" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartOneSpeedLabel" prefHeight="28.0" prefWidth="253.0" text="Speed: {CartSpeed} m/s" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="25.0" top="85.0" />
          </GridPane.margin>
@@ -142,7 +142,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label fx:id="cartOneSize" prefHeight="28.0" prefWidth="251.0" text="Size: {CartSize}" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartOneSizeLabel" prefHeight="28.0" prefWidth="251.0" text="Size: {CartSize}" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font size="22.0" />
          </font>
@@ -150,7 +150,7 @@
             <Insets left="25.0" top="130.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="cartTwoSpeed" prefHeight="28.0" prefWidth="253.0" text="Speed: {CartSpeed} m/s" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartTwoSpeedLabel" prefHeight="28.0" prefWidth="253.0" text="Speed: {CartSpeed} m/s" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font size="22.0" />
          </font>
@@ -158,7 +158,7 @@
             <Insets left="315.0" top="85.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="cartTwoSize" prefHeight="28.0" prefWidth="249.0" text="Size: {CartSize}" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartTwoSizeLabel" prefHeight="28.0" prefWidth="249.0" text="Size: {CartSize}" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font size="22.0" />
          </font>
@@ -166,7 +166,7 @@
             <Insets left="315.0" top="135.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="cartThreeSpeed" prefHeight="28.0" prefWidth="250.0" text="Speed: {CartSpeed} m/s" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartThreeSpeedLabel" prefHeight="28.0" prefWidth="250.0" text="Speed: {CartSpeed} m/s" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font size="22.0" />
          </font>
@@ -174,7 +174,7 @@
             <Insets left="580.0" top="85.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="cartThreeSize" prefHeight="28.0" prefWidth="250.0" text="Size: {CartSize}" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="cartThreeSizeLabel" prefHeight="28.0" prefWidth="250.0" text="Size: {CartSize}" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font size="22.0" />
          </font>

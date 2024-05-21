@@ -133,6 +133,7 @@ public class Tower implements Purchasable {
             this.actionsUntilUsable -= 1; }
     };
     public boolean isUsable(){
+
         return isUsable;
     }
 }

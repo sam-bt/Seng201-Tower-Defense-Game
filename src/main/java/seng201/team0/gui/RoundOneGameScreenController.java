@@ -25,15 +25,15 @@ public class RoundOneGameScreenController {
     @FXML private Label pointsLabel;
     @FXML private Label difficultyLabel;
     @FXML private Label trackLengthLabel;
-    @FXML private Label cartOneName;
-    @FXML private Label cartTwoName;
-    @FXML private Label cartThreeName;
-    @FXML private Label cartOneSpeed;
-    @FXML private Label cartTwoSpeed;
-    @FXML private Label cartThreeSpeed;
-    @FXML private Label cartOneSize;
-    @FXML private Label cartTwoSize;
-    @FXML private Label cartThreeSize;
+    @FXML private Label cartOneNameLabel;
+    @FXML private Label cartTwoNameLabel;
+    @FXML private Label cartThreeNameLabel;
+    @FXML private Label cartOneSpeedLabel;
+    @FXML private Label cartTwoSpeedLabel;
+    @FXML private Label cartThreeSpeedLabel;
+    @FXML private Label cartOneSizeLabel;
+    @FXML private Label cartTwoSizeLabel;
+    @FXML private Label cartThreeSizeLabel;
     @FXML private Label eventFrameLabel;
     @FXML private Label fillAmountLabel;
     @FXML private Label reloadSpeedLabel;
@@ -55,6 +55,7 @@ public class RoundOneGameScreenController {
     List<Button> cartButtons;
     List<ProgressBar> cartFillProgressBars;
     List<ProgressBar> cartProgressBars;
+    List<Label> cartSizeLabels;
     RoundOne roundOne;
 
 
@@ -69,18 +70,19 @@ public class RoundOneGameScreenController {
         cartList = List.of(roundOne.getCoalCart(), roundOne.getIronCart(), roundOne.getGoldCart());
         towerButtons = List.of(towerOneButton,towerTwoButton,towerThreeButton);
         cartButtons = List.of(cartOneButton,cartTwoButton,cartThreeButton);
+        cartSizeLabels = List.of(cartOneSizeLabel,cartTwoSizeLabel,cartThreeSizeLabel);
         cartFillProgressBars = List.of(cartOneFillProgressBar,cartTwoFillProgressBar,cartThreeFillProgressBar);
         cartProgressBars = List.of(cartOneTravelProgressBar,cartTwoTravelProgressBar,cartThreeTravelProgressBar);
 
-        cartOneName.setText("Cart: "+cartList.get(0).getCartName());
-        cartTwoName.setText("Cart: "+cartList.get(1).getCartName());
-        cartThreeName.setText("Cart: "+cartList.get(2).getCartName());
-        cartOneSpeed.setText("Speed: "+cartList.get(0).getSpeed()+" m/s");
-        cartTwoSpeed.setText("Speed: "+cartList.get(1).getSpeed()+" m/s");
-        cartThreeSpeed.setText("Speed: "+cartList.get(2).getSpeed()+" m/s");
-        cartOneSize.setText("Capacity: "+cartList.get(0).getCapacity()+" kg");
-        cartTwoSize.setText("Capacity: "+cartList.get(1).getCapacity()+" kg");
-        cartThreeSize.setText("Capacity: "+cartList.get(2).getCapacity()+" kg");
+        cartOneNameLabel.setText("Cart: "+cartList.get(0).getCartName());
+        cartTwoNameLabel.setText("Cart: "+cartList.get(1).getCartName());
+        cartThreeNameLabel.setText("Cart: "+cartList.get(2).getCartName());
+        cartOneSpeedLabel.setText("Speed: "+cartList.get(0).getSpeed()+" m/s");
+        cartTwoSpeedLabel.setText("Speed: "+cartList.get(1).getSpeed()+" m/s");
+        cartThreeSpeedLabel.setText("Speed: "+cartList.get(2).getSpeed()+" m/s");
+        cartOneSizeLabel.setText("Capacity: 0/"+cartList.get(0).getCapacity()+" kg");
+        cartTwoSizeLabel.setText("Capacity: 0/"+cartList.get(1).getCapacity()+" kg");
+        cartThreeSizeLabel.setText("Capacity: 0/"+cartList.get(2).getCapacity()+" kg");
         cartOneFillProgressBar.setMouseTransparent(true);
         cartTwoFillProgressBar.setMouseTransparent(true);
         cartThreeFillProgressBar.setMouseTransparent(true);
@@ -134,25 +136,29 @@ public class RoundOneGameScreenController {
         else {
             fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
             fillCartWithTowerLabel.setText("This Tower is currently reloading!");
-            reloadSpeedLabel.setText("Actions until next usable: "+tower.getActionsUntilUsable());}
+            reloadSpeedLabel.setText("Actions until next usable: "+tower.getActionsUntilUsable());
+        }
     }
-    public void updateSelectedCartStats() {
-        if (Objects.equals(cartList.get(selectedCartIndex).getResourceType(), towerList[selectedTowerIndex].getFillType())) {
-            fillCartWithTowerLabel.setStyle("-fx-text-fill: black");
-            fillCartWithTowerLabel.setText("Fill "+cartList.get(selectedCartIndex).getResourceType()+" Cart with "+towerList[selectedTowerIndex].getTowerName()+"?");}
-        else {
-            fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
-            fillCartWithTowerLabel.setText("Cannot fill " +cartList.get(selectedCartIndex).getResourceType()+" Cart with "+towerList[selectedTowerIndex].getTowerName()+"!!");}
-    }
-    public void fillCarts(){
-        for (int cartIndex = 0; cartIndex < cartFillProgressBars.size(); cartIndex++) {
+//    public void updateSelectedCartStats() {
+//        if (Objects.equals(cartList.get(selectedCartIndex).getResourceType(), towerList[selectedTowerIndex].getFillType())) {
+//            fillCartWithTowerLabel.setStyle("-fx-text-fill: black");
+//            fillCartWithTowerLabel.setText("Fill "+cartList.get(selectedCartIndex).getResourceType()+" Cart with "+towerList[selectedTowerIndex].getTowerName()+"?");}
+//        else {
+//            fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
+//            fillCartWithTowerLabel.setText("Cannot fill " +cartList.get(selectedCartIndex).getResourceType()+" Cart with "+towerList[selectedTowerIndex].getTowerName()+"!!");}
+//    }
+    public void fillCarts(Tower selectedTower){
+        for (int cartIndex = 0; cartIndex < cartFillProgressBars.size(); cartIndex++) { //TODO new method for special cart in actual game
             Cart cart = cartList.get(cartIndex);
-            cartFillProgressBars.get(cartIndex).setProgress(cart.getCurrentFillAmount());
+            if (Objects.equals(cart.getResourceType(), selectedTower.getFillType())) {
+                cartFillProgressBars.get(cartIndex).setProgress(cart.getCurrentFillAmount());
+                cartSizeLabels.get(cartIndex).setText("Capacity: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity()+" kg");
+            }
         }
     }
     public void updateCartDistances(){
         for (int cartIndex = 0; cartIndex < cartProgressBars.size(); cartIndex++) {
-            cartProgressBars.get(cartIndex).setProgress(cartList.get(cartIndex).getDistanceTravelled()); //TODO update for carts at random indices and special cart for actual game
+            cartProgressBars.get(cartIndex).setProgress(cartList.get(cartIndex).getDistanceTravelled());
         }
     }
     @FXML
@@ -163,10 +169,14 @@ public class RoundOneGameScreenController {
         else if (selectedTowerIndex != -1) {
             Tower selectedTower = towerList[selectedTowerIndex];
             if (selectedTower.isUsable()) {
+                if (roundOne.isCartFillable(cartList, selectedTower)) {
                 roundOne.useAction(selectedTower,cartList,towerList);
-                fillCarts();
+                fillCarts(selectedTower);
                 updateSelectedTowerStats(selectedTower);
                 actionsLeftLabel.setText("Actions Left This Frame: "+roundOne.getActionsLeft());
+                } else {
+                    fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
+                    fillCartWithTowerLabel.setText("All the "+selectedTower.getFillType()+" Carts are full!");}
             }
             else {
                 fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
@@ -178,23 +188,34 @@ public class RoundOneGameScreenController {
     }
     @FXML
     private void onConfirmNext() {
+        roundOne.nextFrame(cartList, towerList);
         if (roundOne.roundEnded(cartList)) {
             if (roundOne.roundWon(cartList)){
                 System.out.println("round WONNNN"); //TODO make this do something, (maybe check after action executed not before)
+                confirmActionButton.setDisable(true);
+                for (Button towerButton: towerButtons){
+                    towerButton.setDisable(true);
+                }
+                fillCartWithTowerLabel.setStyle("-fx-text-fill: green");
+                fillCartWithTowerLabel.setText("Round Won !!");
+                nextFrameButton.setText("To next round!");
+                nextFrameButton.setOnAction(event -> {onConfirm();});
             }
             else {
+                updateCartDistances();
+                confirmActionButton.setDisable(true);
+                for (Button towerButton: towerButtons){
+                    towerButton.setDisable(true);
+                }
+                fillCartWithTowerLabel.setStyle("-fx-text-fill: dark red");
+                fillCartWithTowerLabel.setText("Round Lost !!");
                 System.out.println("round LOSTTTT LOSERRR");
+                nextFrameButton.setText("Round Lost!");
             }
         }
         else {
-            if (roundOne.getActionsLeft() == roundOne.getNumActions()) { //TODO do something about this
-            fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
-            fillCartWithTowerLabel.setText("Please Use an Action!!");} //TODO let them do what they want
-        else {
-        roundOne.nextFrame(cartList, towerList);
-        updateCartDistances();
-        actionsLeftLabel.setText("Actions Left This Frame: "+roundOne.getActionsLeft());
-        }
+            updateCartDistances();
+            actionsLeftLabel.setText("Actions Left This Frame: " + roundOne.getActionsLeft());
         }
     }
     @FXML
