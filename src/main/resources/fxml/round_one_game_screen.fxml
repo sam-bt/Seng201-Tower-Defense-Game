@@ -198,7 +198,7 @@
             <Font name="System Bold" size="32.0" />
          </font>
       </Text>
-      <Label fx:id="fillCartWithTowerLabel" prefHeight="69.0" prefWidth="550.0" text="Please Select a Tower and a Cart " GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Label fx:id="fillCartWithTowerLabel" prefHeight="69.0" prefWidth="550.0" text="Please select a Tower to fill a Cart with" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <font>
             <Font size="32.0" />
          </font>

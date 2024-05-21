@@ -3,25 +3,41 @@ package seng201.team0.models;
 import seng201.team0.services.DifficultyService;
 import seng201.team0.services.MoneyService;
 
+import java.util.List;
+import java.util.Objects;
+
 public class RoundOne {
     private final Cart CoalCart;
     private final Cart IronCart;
     private final Cart GoldCart;
     private int actionsLeft;
-    private int numActions;
+    private final int numActions = 2;
     public RoundOne(MoneyService money, double points, DifficultyService difficulty, int trackLength){
-        this.CoalCart = new Cart("Coal","Coal");
-        this.IronCart = new Cart("Iron","Iron");
-        this.GoldCart = new Cart("Gold","Gold");
-        this.numActions = 5 - (int) difficulty.getDifficulty();
+        this.CoalCart = new Cart("Coal","Coal", difficulty.getDifficulty());
+        this.IronCart = new Cart("Iron","Iron",difficulty.getDifficulty());
+        this.GoldCart = new Cart("Gold","Gold",difficulty.getDifficulty());
         this.actionsLeft = numActions;
     }
-    public void useAction(Tower usedTower, Cart usedCart){
-        usedTower.nextFrame();
+    public void useAction(Tower usedTower, List<Cart> cartList, Tower[] towerList){
+        for (Tower tower:towerList) {
+            tower.actionUsed();
+        }
+        usedTower.use();
         usedTower.increaseBreakChance();
-        usedCart.increaseFillAmount(usedTower.getFillAmount());
+        for (Cart cart: cartList) {
+            if (Objects.equals(cart.getResourceType(), usedTower.getFillType())) {
+            cart.increaseFillAmount(usedTower.getFillAmount());
+            }
+        }
+        this.actionsLeft -= 1;
     }
-    public void nextFrame() { //TODO take carts and towers, increase distance, reload etc
+    public void nextFrame(List<Cart> cartList, Tower[] towerList) { //TODO take carts and towers, increase distance
+        for (Tower tower:towerList) {
+            tower.actionUsed();
+        }
+        for (Cart cart: cartList) {
+            cart.increaseDistance();
+        }
         actionsLeft = numActions;
     }
 
@@ -39,10 +55,7 @@ public class RoundOne {
     public int getActionsLeft(){
         return this.actionsLeft;
     }
-    public void useAction(){
-        if (actionsLeft > 0) {
-        this.actionsLeft -= 1; }
-    }
+
     public int getNumActions(){
         return this.numActions;
     }

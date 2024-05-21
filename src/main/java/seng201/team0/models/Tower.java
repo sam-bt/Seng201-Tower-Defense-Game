@@ -17,7 +17,7 @@ public class Tower implements Purchasable {
     private boolean broken;
     private String towerName;
     private boolean isUsable;
-    private int framesUntilUsable;
+    private int actionsUntilUsable;
 
     public Tower(int initialHealth, boolean owned, String fillType, int fillAmount, int reloadSpeed, String towerName, double difficulty) {
         this.health = initialHealth;
@@ -31,7 +31,7 @@ public class Tower implements Purchasable {
         this.broken = false;
         this.towerName = towerName;
         this.isUsable = true;
-        this.framesUntilUsable = 0;
+        this.actionsUntilUsable = 0;
         Random buyRND = new Random();
         double buyRandomInt = buyRND.nextInt(1000)+100 * difficulty; // buy price scales with difficulty
         this.buyPrice = Math.round(buyRandomInt*100.0)/100.0;
@@ -118,18 +118,19 @@ public class Tower implements Purchasable {
         inventoryService.consumeHeal();
     }
     public void use(){
-        framesUntilUsable = reloadSpeed;
+        actionsUntilUsable = reloadSpeed;
         this.isUsable = false;
     }
-    public int getFramesUntilUsable(){
-        return this.framesUntilUsable;
+    public int getActionsUntilUsable(){
+        return this.actionsUntilUsable;
     }
-    public void nextFrame(){
-        if (framesUntilUsable == 1) {
+    public void actionUsed(){
+        if (actionsUntilUsable == 1) {
             this.isUsable = true;
-            this.framesUntilUsable = 0;
+            this.actionsUntilUsable = 0;
         }
-        else {this.framesUntilUsable -= 1; }
+        else if (actionsUntilUsable != 0) {
+            this.actionsUntilUsable -= 1; }
     };
     public boolean isUsable(){
         return isUsable;
