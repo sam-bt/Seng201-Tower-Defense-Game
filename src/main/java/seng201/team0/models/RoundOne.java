@@ -11,6 +11,8 @@ public class RoundOne {
     private final Cart IronCart;
     private final Cart GoldCart;
     private int actionsLeft;
+    boolean roundWon;
+    boolean roundEnded;
     private final int numActions = 2;
     public RoundOne(MoneyService money, double points, DifficultyService difficulty, int trackLength){
         this.CoalCart = new Cart("Coal","Coal", difficulty.getDifficulty());
@@ -58,5 +60,25 @@ public class RoundOne {
 
     public int getNumActions(){
         return this.numActions;
+    }
+    public boolean roundEnded(List<Cart> cartList){
+        System.out.println(cartList.size());
+        for (Cart cart: cartList) {
+            System.out.println("end reached? "+cart.isEndReached());
+            System.out.println("full? "+cart.isFull());
+            if (!cart.isEndReached() && !cart.isFull()){
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean roundWon(List<Cart> cartList) {
+        for (Cart cart: cartList) {
+            System.out.println("success? "+cart.isCartSuccess());
+            if (!cart.isCartSuccess()){
+                return false;
+            }
+        }
+        return true;
     }
 }

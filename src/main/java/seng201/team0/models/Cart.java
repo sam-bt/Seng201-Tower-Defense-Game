@@ -69,7 +69,8 @@ public class Cart {
         return currentFillAmount;
     }
     public void increaseFillAmount(int towerFillAmount) {
-        if (currentFillAmount + (((double) towerFillAmount /100)/((double) capacity) / 100) >= 1) {
+        System.out.println("current fill: "+currentFillAmount);
+        if (currentFillAmount + (((double) towerFillAmount /100)/((double) capacity) / 100) >= (double) capacity / 100) {
             currentFillAmount = capacity;
             full = true;
             if (!endReached) {
