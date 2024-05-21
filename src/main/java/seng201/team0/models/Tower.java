@@ -1,7 +1,6 @@
 package seng201.team0.models;
 
 import seng201.team0.services.InventoryService;
-import seng201.team0.services.TowerService;
 
 import java.util.Random;
 public class Tower implements Purchasable {
@@ -17,6 +16,8 @@ public class Tower implements Purchasable {
     private double sellPrice;
     private boolean broken;
     private String towerName;
+    private boolean isUsable;
+    private int framesUntilUsable;
 
     public Tower(int initialHealth, boolean owned, String fillType, int fillAmount, int reloadSpeed, String towerName, double difficulty) {
         this.health = initialHealth;
@@ -29,6 +30,8 @@ public class Tower implements Purchasable {
         this.reloadSpeed = reloadSpeed;
         this.broken = false;
         this.towerName = towerName;
+        this.isUsable = true;
+        this.framesUntilUsable = 0;
         Random buyRND = new Random();
         double buyRandomInt = buyRND.nextInt(1000)+100 * difficulty; // buy price scales with difficulty
         this.buyPrice = Math.round(buyRandomInt*100.0)/100.0;
@@ -74,6 +77,9 @@ public class Tower implements Purchasable {
     public int getBreakChance(){
         return breakChance;
     }
+    public void increaseBreakChance(){
+        breakChance += 1;
+    }
     public String getFillType(){
         return fillType;
     }
@@ -111,7 +117,21 @@ public class Tower implements Purchasable {
         }
         inventoryService.consumeHeal();
     }
-
-
-
+    public void use(){
+        framesUntilUsable = reloadSpeed;
+        this.isUsable = false;
+    }
+    public int getFramesUntilUsable(){
+        return this.framesUntilUsable;
+    }
+    public void nextFrame(){
+        if (framesUntilUsable == 1) {
+            this.isUsable = true;
+            this.framesUntilUsable = 0;
+        }
+        else {this.framesUntilUsable -= 1; }
+    };
+    public boolean isUsable(){
+        return isUsable;
+    }
 }

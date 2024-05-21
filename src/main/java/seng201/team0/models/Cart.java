@@ -5,16 +5,22 @@ import java.util.List;
 import java.util.Random;
 
 public class Cart {
-    public String cartName;
-    public int capacity;
-    public String resourceType;
-    public int speed;
-    public int distanceTravelled;
-    public boolean endReached;
+    private String cartName;
+    private int capacity;
+    private String resourceType;
+    private int speed;
+    private double distanceTravelled;
+    private boolean endReached;
+    private double currentFillAmount;
+    private boolean full;
+    private boolean cartSuccess;
 
     public Cart(String cartName, String resourceType) {
         this.cartName = cartName;
         this.resourceType = resourceType;
+        this.endReached = false;
+        this.full = false;
+        this.cartSuccess = false;
         Random rng = new Random();
         List<Integer> speedList = Arrays.asList(10, 10, 20, 20, 50);
         int randomSpeed = rng.nextInt(5);
@@ -29,12 +35,13 @@ public class Cart {
         this.endReached = false;
     }
 
-    public void increaseDistance(int maxDistance) {
-        if (distanceTravelled + speed >= maxDistance) {
-            distanceTravelled = maxDistance;
+    public void increaseDistance() {
+        if (distanceTravelled + (double) speed /10 >= 1) {
+            distanceTravelled = 1;
             endReached = true;
+            if (!full) {cartSuccess = false;}
         } else {
-            distanceTravelled += speed;
+            distanceTravelled += (double) speed /10;
         }
     }
 
@@ -54,11 +61,33 @@ public class Cart {
         return speed;
     }
 
-    public int getDistanceTravelled() {
+    public double getDistanceTravelled() {
         return distanceTravelled;
     }
 
-    public boolean getEndReached() {
+    public double getCurrentFillAmount() {
+        return currentFillAmount;
+    }
+    public void increaseFillAmount(int towerFillAmount) {
+        if (currentFillAmount + (double) towerFillAmount /100 >= 1) {
+            currentFillAmount = 1;
+            full = true;
+            if (!endReached) {
+                cartSuccess = true;
+            }
+        } else {
+            currentFillAmount += (double) towerFillAmount /100;
+        }
+    }
+
+    public boolean isCartSuccess() {
+        return cartSuccess;
+    }
+    public boolean isFull() {
+        return full;
+    }
+
+    public boolean isEndReached() {
         return endReached;
     }
 }
