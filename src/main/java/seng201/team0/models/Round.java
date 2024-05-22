@@ -6,18 +6,24 @@ import seng201.team0.services.MoneyService;
 import java.util.List;
 import java.util.Objects;
 
-public class RoundOne {
+
+public class Round {
+    
     private final Cart coalCart;
     private final Cart ironCart;
     private final Cart goldCart;
+    private final Cart gemCart;
+    private final Cart bonusCart;
     private int actionsLeft;
     boolean roundWon;
     boolean roundEnded;
     private final int numActions = 2;
-    public RoundOne(MoneyService money, double points, DifficultyService difficulty, int trackLength){
+    public Round(MoneyService money, double points, DifficultyService difficulty, int trackLength){
         this.coalCart = new Cart("Coal","Coal", difficulty.getDifficulty(),trackLength);
         this.ironCart = new Cart("Iron","Iron",difficulty.getDifficulty(),trackLength);
         this.goldCart = new Cart("Gold","Gold",difficulty.getDifficulty(),trackLength);
+        this.gemCart = new Cart("Gem","Gem",difficulty.getDifficulty(),trackLength);
+        this.bonusCart = new Cart("Bonus","All",difficulty.getDifficulty(),trackLength);
         this.actionsLeft = numActions;
     }
     public void useAction(Tower usedTower, List<Cart> cartList, Tower[] towerList){
@@ -27,7 +33,7 @@ public class RoundOne {
         usedTower.use();
         for (Cart cart: cartList) {
             if (Objects.equals(cart.getResourceType(), usedTower.getFillType())) {
-            cart.increaseFillAmount(usedTower.getFillAmount());
+                cart.increaseFillAmount(usedTower.getFillAmount());
             }
         }
         this.actionsLeft -= 1;
@@ -42,17 +48,6 @@ public class RoundOne {
         actionsLeft = numActions;
     }
 
-    public Cart getCoalCart() {
-        return this.coalCart;
-    }
-
-    public Cart getIronCart() {
-        return this.ironCart;
-    }
-
-    public Cart getGoldCart() {
-        return this.goldCart;
-    }
     public int getActionsLeft(){
         return this.actionsLeft;
     }
@@ -95,4 +90,20 @@ public class RoundOne {
         }
         return true;
     }
+
+    public Cart getCoalCart() {
+        return this.coalCart;
+    }
+
+    public Cart getIronCart() {
+        return this.ironCart;
+    }
+
+    public Cart getGoldCart() {
+        return this.goldCart;
+    }
+    public Cart getGemCart() {
+        return this.gemCart;
+    }
+    public Cart getBonusCart() { return this.bonusCart; }
 }

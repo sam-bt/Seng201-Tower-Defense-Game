@@ -69,6 +69,7 @@ public class RoundOneGameScreenController {
         roundOne = new RoundOne(roundOneGameScreenManager.getMoneyService(), roundOneGameScreenManager.getPoints(), roundOneGameScreenManager.getDifficultyService(), roundOneGameScreenManager.getRoundTrackLength());
         towerList = roundOneGameScreenManager.getRoundOneSelectedTowerList();
         cartList = List.of(roundOne.getCoalCart(), roundOne.getIronCart(), roundOne.getGoldCart());
+
         towerButtons = List.of(towerOneButton,towerTwoButton,towerThreeButton);
         cartButtons = List.of(cartOneButton,cartTwoButton,cartThreeButton);
         cartSizeLabels = List.of(cartOneSizeLabel,cartTwoSizeLabel,cartThreeSizeLabel);
@@ -216,8 +217,7 @@ public class RoundOneGameScreenController {
     }
     @FXML
     private void onConfirm() {
-        List<Tower> gameTowerList = List.of(towerList[0],towerList[1],towerList[2]);
-        roundOneGameScreenManager.setRoundOneTowerList(gameTowerList);
+        roundOneGameScreenManager.setRoundOneSelectedTowerList(towerList);
         roundOneGameScreenManager.closeGameScreen();
     }
     private void onLose() {

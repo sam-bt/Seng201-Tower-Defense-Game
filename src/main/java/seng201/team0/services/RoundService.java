@@ -5,7 +5,7 @@ import seng201.team0.GameManager;
 
 public class RoundService {
     public static void completeRound(GameManager roundGameManager){
-        TowerService.br
+        TowerService.breakTowers(roundGameManager.getRoundOneTowerList());
         roundGameManager.incrementPoints();
         roundGameManager.setTrackLengthIndex(0);
         roundGameManager.getMoneyService().editMoney(100*roundGameManager.getDifficulty());

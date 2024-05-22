@@ -62,9 +62,7 @@ public class Tower implements Purchasable {
         maxHealth += 5;
         inventoryService.consumeUpgrade();
     }
-    public void increaseBreakChance(int amount) {
-        breakChance += amount;
-    }
+
     public int getHealth() {
         return health;
     }

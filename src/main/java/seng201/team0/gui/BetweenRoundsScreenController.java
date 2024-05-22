@@ -5,9 +5,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.TextFlow;
 import seng201.team0.GameManager;
+import seng201.team0.models.Tower;
 import seng201.team0.services.RoundService;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 /**
  *
@@ -71,6 +73,12 @@ public class BetweenRoundsScreenController {
 
 
     public void initialize() {
+//        if (roundGameManager.getCurrRound() != 1) {
+//            List<Tower> towerList = roundGameManager.getRoundOneSelectedTowerList();
+//            for (Tower tower : towerList) {
+//                System.out.println(tower.getBreakChance());
+//            }
+//        }
         betweenRoundsTitleLabel.setText("Weclome " + roundGameManager.getName() + ", Here are your Stats for Round " + roundGameManager.getCurrRound() + " of " + roundGameManager.getRounds() + "!");
         roundsLeftLabel.setText("Rounds Left: " + (roundGameManager.getRounds() - roundGameManager.getCurrRound() + 1));
         moneyLabel.setText("Current Money: " + roundGameManager.getMoneyAmount());
