@@ -81,10 +81,14 @@ public class InventoryScreenController {
         currentInventory = new InventoryService(inventoryScreenGameManager);
         List<Tower> towers = currentInventory.getTowerList();
 
-        // Sets non owned tower buttons to black
+
+        // Sets non owned tower buttons to black and broken towers to red
         for (int i = 0; i < availableTowerButtons.size(); i++) {
-            if (towers.get(i).getOwned() == false) {
+            if (!towers.get(i).getOwned()) {
                 availableTowerButtons.get(i).setStyle("-fx-background-color: #000000; -fx-background-radius: 5;");
+            }
+            if (towers.get(i).getBroken()) {
+                availableItemButtons.get(i).setStyle("-fx-background-color: #ff0000; -fx-background-radius: 5;");
             }
         }
 
