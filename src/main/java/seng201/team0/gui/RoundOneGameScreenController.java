@@ -37,6 +37,7 @@ public class RoundOneGameScreenController {
     @FXML private Label eventFrameLabel;
     @FXML private Label fillAmountLabel;
     @FXML private Label reloadSpeedLabel;
+    @FXML private Label towerHealthLabel;
     @FXML private Label actionsLeftLabel;
     @FXML private Label fillCartWithTowerLabel;
     @FXML private Button towerOneButton;
@@ -50,7 +51,7 @@ public class RoundOneGameScreenController {
     private Tower[] towerList;
     private List<Cart> cartList;
     private int selectedTowerIndex = -1;
-    private int selectedCartIndex = -1;
+
     List<Button> towerButtons;
     List<Button> cartButtons;
     List<ProgressBar> cartFillProgressBars;
@@ -128,6 +129,7 @@ public class RoundOneGameScreenController {
 
     public void updateSelectedTowerStats(Tower tower) {
         fillAmountLabel.setText("Fill Amount: "+tower.getFillAmount());
+        towerHealthLabel.setText("Health: "+tower.getHealth());
         if (tower.getActionsUntilUsable() == 0) {
             reloadSpeedLabel.setText("Tower is usable!");
             fillCartWithTowerLabel.setStyle("-fx-text-fill: black");
@@ -139,14 +141,7 @@ public class RoundOneGameScreenController {
             reloadSpeedLabel.setText("Actions until next usable: "+tower.getActionsUntilUsable());
         }
     }
-//    public void updateSelectedCartStats() {
-//        if (Objects.equals(cartList.get(selectedCartIndex).getResourceType(), towerList[selectedTowerIndex].getFillType())) {
-//            fillCartWithTowerLabel.setStyle("-fx-text-fill: black");
-//            fillCartWithTowerLabel.setText("Fill "+cartList.get(selectedCartIndex).getResourceType()+" Cart with "+towerList[selectedTowerIndex].getTowerName()+"?");}
-//        else {
-//            fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
-//            fillCartWithTowerLabel.setText("Cannot fill " +cartList.get(selectedCartIndex).getResourceType()+" Cart with "+towerList[selectedTowerIndex].getTowerName()+"!!");}
-//    }
+
     public void fillCarts(Tower selectedTower){
         for (int cartIndex = 0; cartIndex < cartFillProgressBars.size(); cartIndex++) { //TODO new method for special cart in actual game
             Cart cart = cartList.get(cartIndex);

@@ -192,7 +192,7 @@
       </Label>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Tower Stats:" wrappingWidth="527.99609375" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets bottom="75.0" top="100.0" />
+            <Insets bottom="220.0" top="100.0" />
          </GridPane.margin>
          <font>
             <Font name="System Bold" size="32.0" />
@@ -277,6 +277,11 @@
          <GridPane.margin>
             <Insets left="1075.0" />
          </GridPane.margin>
+      </Label>
+      <Label fx:id="towerHealthLabel" prefHeight="73.0" prefWidth="564.0" text="Health: " GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <font>
+            <Font size="32.0" />
+         </font>
       </Label>
    </children>
 </GridPane>

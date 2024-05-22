@@ -16,6 +16,7 @@ public class Tower implements Purchasable {
     private double sellPrice;
     private boolean broken;
     private String towerName;
+    private Random rnd;
     private boolean isUsable;
     private int actionsUntilUsable;
 
@@ -32,8 +33,8 @@ public class Tower implements Purchasable {
         this.towerName = towerName;
         this.isUsable = true;
         this.actionsUntilUsable = 0;
-        Random buyRND = new Random();
-        double buyRandomInt = buyRND.nextInt(1000)+100 * difficulty; // buy price scales with difficulty
+        rnd = new Random();
+        double buyRandomInt = rnd.nextInt(1000)+100 * difficulty; // buy price scales with difficulty
         this.buyPrice = Math.round(buyRandomInt*100.0)/100.0;
         this.sellPrice = Math.round((buyRandomInt/2)*100.0)/100.0;
     }
@@ -119,6 +120,7 @@ public class Tower implements Purchasable {
     }
     public void use(){
         actionsUntilUsable = reloadSpeed;
+        health -= rnd.nextInt(10);
         this.isUsable = false;
     }
     public int getActionsUntilUsable(){
