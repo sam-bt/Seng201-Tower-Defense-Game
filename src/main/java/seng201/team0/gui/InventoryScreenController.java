@@ -65,6 +65,7 @@ public class InventoryScreenController {
     private Label revivesOwned;
 
     private final Tower[] selectedTowers = new Tower[5];
+    private Tower[] towersInSlots = new Tower[5];
     private int selectedTowerIndex = -1;
     private String selectedItem = null;
 
@@ -81,7 +82,6 @@ public class InventoryScreenController {
         currentInventory = new InventoryService(inventoryScreenGameManager);
         List<Tower> towers = currentInventory.getTowerList();
 
-
         // Sets non owned tower buttons to black and broken towers to red
         for (int i = 0; i < availableTowerButtons.size(); i++) {
             if (!towers.get(i).getOwned()) {
@@ -95,7 +95,6 @@ public class InventoryScreenController {
         healsOwned.setText("Owned:" + currentInventory.getAvailableHeals());
         revivesOwned.setText("Owned:" + currentInventory.getAvailableRevives());
         upgradesOwned.setText("Owned:" + currentInventory.getAvailableUpgrades());
-
 
         // Sets the action to display the selected towers information when it is clicked on, and to show that it is selected
         for (int i = 0; i < availableTowerButtons.size(); i++) {
@@ -111,11 +110,11 @@ public class InventoryScreenController {
                     availableTowerButtons.forEach(button -> {
                         int buttonIndex = availableTowerButtons.indexOf(button);
                         if (button == availableTowerButtons.get(finalI)) {
-                            if (towers.get(buttonIndex).getOwned() == true) {
+                            if (towers.get(buttonIndex).getOwned()) {
                                 button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
                             }
                         } else {
-                            if (towers.get(buttonIndex).getOwned() == true) {
+                            if (towers.get(buttonIndex).getOwned()) {
                                 button.setStyle("");
                             }
                         }
@@ -124,18 +123,16 @@ public class InventoryScreenController {
             });
         }
 
-
-
         for (int i = 0; i < towerSlotButtons.size(); i++) {
             int finalI = i;
             towerSlotButtons.get(i).setOnAction(event -> {
-                if (selectedTowerIndex != -1 && towers.get(selectedTowerIndex).getOwned() == true) {
+                if (selectedTowerIndex != -1 && towers.get(selectedTowerIndex).getOwned()) {
                     if (!TowerService.isTowerAlreadySelected(selectedTowers, towers.get(selectedTowerIndex))) {
                         towerSlotButtons.get(finalI).setText(towers.get(selectedTowerIndex).getTowerName());
                         selectedTowers[finalI] = towers.get(selectedTowerIndex);
+                        towersInSlots[finalI] = towers.get(selectedTowerIndex);  // Save the tower to towersInSlots array
                         resetTowerSelection();
                     }
-
                 } else if (selectedItem != null && selectedTowers[finalI] != null) {
                     applySelectedItem(selectedTowers[finalI]);
                     selectedItem = null;
@@ -183,7 +180,6 @@ public class InventoryScreenController {
         });
     }
 
-
     private void applySelectedItem(Tower tower) {
         switch (selectedItem) {
             case "heal":
@@ -218,7 +214,7 @@ public class InventoryScreenController {
         List<Button> availableTowerButtons = List.of(coalType1Button, coalType2Button, ironType1Button, ironType2Button, goldType1Button, goldType2Button, gemType1Button, gemType2Button);
         List<Tower> towers = currentInventory.getTowerList();
         for (int i = 0; i < availableTowerButtons.size(); i++) {
-            if (towers.get(i).getOwned() == true) {
+            if (towers.get(i).getOwned()) {
                 availableTowerButtons.get(i).setStyle("");
             }
         }
@@ -244,12 +240,18 @@ public class InventoryScreenController {
 
     @FXML
     private void onMenu() {
-//        towersInSlots[] =
+        // Save the towers in slots to towersInSlots array before navigating to the menu
+        for (int i = 0; i < selectedTowers.length; i++) {
+            towersInSlots[i] = selectedTowers[i];
+        }
         inventoryScreenGameManager.launchBetweenRoundsScreen();
     }
 
     @FXML
     private void onShop() {
+        for (int i = 0; i < selectedTowers.length; i++) {
+            towersInSlots[i] = selectedTowers[i];
+        }
         inventoryScreenGameManager.openShopScreen();
     }
 }
