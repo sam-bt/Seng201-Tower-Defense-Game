@@ -28,6 +28,7 @@ public class GameManager {
     private Tower[] roundOneSelectedTowerList;
     private Tower[] genericRoundTowerList;
     private List<Button> roundOneSelectedTowerButtons;
+    private int trackLengthIndex;
     private final Consumer<GameManager> setupScreenLauncher;
     private final Consumer<GameManager> betweenScreenLauncher;
     private final Consumer<GameManager> gameScreenLauncher;
@@ -96,6 +97,7 @@ public class GameManager {
     public void setRoundOneSelectedTowerList(Tower[] roundOneSelectedTowerList){
         this.roundOneSelectedTowerList = roundOneSelectedTowerList; }
     public Tower[] getRoundOneSelectedTowerList(){ return roundOneSelectedTowerList; }
+    public boolean isRoundOneSelectedTowerListNull(){ return roundOneSelectedTowerList == null;}
     public List<Integer> getRoundOneTowerListIndices(){
         List<Integer> roundOneTowerIndices = new ArrayList<Integer>();
         if (this.roundOneSelectedTowerList != null) {
@@ -114,6 +116,12 @@ public class GameManager {
         return genericRoundTowerList;
     }
 
+    public void setTrackLengthIndex(int index){
+        this.trackLengthIndex = index;
+    }
+    public int getTrackLengthIndex(){
+        return trackLengthIndex;
+    }
 
     public void closeSetupScreen() {
         if (getName().length() < 3 || getName().length() > 15 || !getName().matches("[a-zA-Z0-9]+")) {

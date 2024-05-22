@@ -207,10 +207,11 @@ public class RoundOneGameScreenController {
                 for (Button towerButton: towerButtons){
                     towerButton.setDisable(true);
                 }
-                fillCartWithTowerLabel.setStyle("-fx-text-fill: dark red");
+                fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
                 fillCartWithTowerLabel.setText("Round Lost !!");
                 System.out.println("round LOSTTTT LOSERRR");
-                nextFrameButton.setText("Round Lost!");
+                nextFrameButton.setText("View Summary");
+                nextFrameButton.setOnAction(event -> {onLose();});
             }
         }
         else {
@@ -222,5 +223,9 @@ public class RoundOneGameScreenController {
     private void onConfirm() {
         roundOneGameScreenManager.closeGameScreen();
     }
+    private void onLose() {
+        System.out.println("loser");
+    }
 }
+
 

@@ -15,9 +15,9 @@ public class RoundOne {
     boolean roundEnded;
     private final int numActions = 2;
     public RoundOne(MoneyService money, double points, DifficultyService difficulty, int trackLength){
-        this.CoalCart = new Cart("Coal","Coal", difficulty.getDifficulty());
-        this.IronCart = new Cart("Iron","Iron",difficulty.getDifficulty());
-        this.GoldCart = new Cart("Gold","Gold",difficulty.getDifficulty());
+        this.CoalCart = new Cart("Coal","Coal", difficulty.getDifficulty(),trackLength);
+        this.IronCart = new Cart("Iron","Iron",difficulty.getDifficulty(),trackLength);
+        this.GoldCart = new Cart("Gold","Gold",difficulty.getDifficulty(),trackLength);
         this.actionsLeft = numActions;
     }
     public void useAction(Tower usedTower, List<Cart> cartList, Tower[] towerList){
@@ -33,7 +33,7 @@ public class RoundOne {
         }
         this.actionsLeft -= 1;
     }
-    public void nextFrame(List<Cart> cartList, Tower[] towerList) { //TODO take carts and towers, increase distance
+    public void nextFrame(List<Cart> cartList, Tower[] towerList) {
         for (Tower tower:towerList) {
             tower.actionUsed();
         }
@@ -63,6 +63,11 @@ public class RoundOne {
     }
     public boolean roundEnded(List<Cart> cartList){
         System.out.println(cartList.size());
+        for (Cart cart: cartList) {
+            if (cart.isEndReached() && !cart.isFull()) {
+                return true;
+            }
+        }
         for (Cart cart: cartList) {
             System.out.println("end reached? "+cart.isEndReached());
             System.out.println("full? "+cart.isFull());

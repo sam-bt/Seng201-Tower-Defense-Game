@@ -84,6 +84,8 @@ public class BetweenRoundsScreenController {
         trackLengthButtonOne.setText(shortTrackLength+" m");
         trackLengthButtonTwo.setText(mediumTrackLength+" m");
         trackLengthButtonThree.setText(longTrackLength+" m");
+//        trackNumChosen = roundGameManager.getTrackLengthIndex();
+//        System.out.println(trackNumChosen);
     }
 
     /**
@@ -92,7 +94,7 @@ public class BetweenRoundsScreenController {
     @FXML
     private void setTrackLengthOne(){ //TODO get track lengths to save
         trackLengthLabel.setText("Next Round Track Length: " + shortTrackLength + "m");
-        trackNumChosen = 0;
+        trackNumChosen = 1;
         trackChosen = true;
     }
     @FXML
@@ -109,17 +111,21 @@ public class BetweenRoundsScreenController {
     }
     @FXML
     private void onConfirm() { // TODO wrap text
-        if (roundGameManager.getRoundOneSelectedTowerList() == null) {
+        if (roundGameManager.isRoundOneSelectedTowerListNull()) {
             cantStartRoundLabel.setText("Cannot start the round without any towers selected! Please go to the inventory and select your towers!"); }
-        else if (trackNumChosen==0) {cantStartRoundLabel.setText("Please select a track length for the next round!");}
+        else if ( trackNumChosen==0 ) {
+            cantStartRoundLabel.setText("Please select a track length for the next round!");
+        }
         else {
+            roundGameManager.incrementRound();
+            roundGameManager.closeBetweenRoundScreen();
+            roundGameManager.setTrackLengthIndex(trackNumChosen);
             if (trackNumChosen==1) {
             roundGameManager.setRoundTrackLength(shortTrackLength); }
             else if (trackNumChosen==2){
                 roundGameManager.setRoundTrackLength(mediumTrackLength);}
             else{roundGameManager.setRoundTrackLength(longTrackLength);}}
-            roundGameManager.incrementRound();
-            roundGameManager.closeBetweenRoundScreen();
+
         }
 
 

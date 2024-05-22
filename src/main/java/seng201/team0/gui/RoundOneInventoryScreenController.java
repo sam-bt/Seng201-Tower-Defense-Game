@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import static java.util.Collections.emptyList;
+
 public class RoundOneInventoryScreenController {
     @FXML Button heavyCoalButton;
     @FXML Button lightCoalButton;
@@ -31,6 +33,9 @@ public class RoundOneInventoryScreenController {
     private final Tower[] selectedTowers = new Tower[3];
     private int selectedTowerIndex = -1;
     List<Button> selectedTowerButtons;
+    List<Integer> towerListIndices;
+    Tower[] savedTowers;
+
 
     GameManager roundOneInventoryScreenGameManager;
     List<Tower> towers;
@@ -43,7 +48,16 @@ public class RoundOneInventoryScreenController {
         selectedTowerButtons = List.of(selectedTowerButtonOne,selectedTowerButtonTwo,selectedTowerButtonThree);
         RoundOneInventoryService roundOneInventory = new RoundOneInventoryService(roundOneInventoryScreenGameManager);
         towers = roundOneInventory.getTowerList();
-        Tower[] savedTowers = roundOneInventoryScreenGameManager.getRoundOneSelectedTowerList();
+        towerListIndices = roundOneInventoryScreenGameManager.getRoundOneTowerListIndices();
+        if (!roundOneInventoryScreenGameManager.isRoundOneSelectedTowerListNull()) {
+            if (roundOneInventoryScreenGameManager.getRoundOneSelectedTowerList()!=null){
+                savedTowers = roundOneInventoryScreenGameManager.getRoundOneSelectedTowerList();
+                towerListIndices = roundOneInventoryScreenGameManager.getRoundOneTowerListIndices();
+            }
+        }
+        else {
+            towerListIndices = emptyList();
+        }
         List<Button> savedTowerButtons = roundOneInventoryScreenGameManager.getRoundOneSelectedTowerButtons();
 
         // Sets the action to display the selected towers information when it is clicked on, and to show that it is selected
@@ -72,7 +86,6 @@ public class RoundOneInventoryScreenController {
                 }
             });
         }
-        List<Integer> towerListIndices = roundOneInventoryScreenGameManager.getRoundOneTowerListIndices();
         if (!towerListIndices.isEmpty()) {
             for (int selectedTowerIndex: towerListIndices) {
             selectedTowerButtons.get(selectedTowerIndex).setText(savedTowers[selectedTowerIndex].getTowerName());
