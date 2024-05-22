@@ -78,9 +78,7 @@ public class Tower implements Purchasable {
     public int getBreakChance(){
         return breakChance;
     }
-    public void increaseBreakChance(){
-        breakChance += 1;
-    }
+
     public String getFillType(){
         return fillType;
     }
@@ -120,6 +118,7 @@ public class Tower implements Purchasable {
     }
     public void use(){
         actionsUntilUsable = reloadSpeed;
+        breakChance += rnd.nextInt(4);
         health -= rnd.nextInt(10);
         this.isUsable = false;
     }

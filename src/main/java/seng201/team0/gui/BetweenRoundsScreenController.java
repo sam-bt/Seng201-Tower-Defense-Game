@@ -75,7 +75,7 @@ public class BetweenRoundsScreenController {
         roundsLeftLabel.setText("Rounds Left: " + (roundGameManager.getRounds() - roundGameManager.getCurrRound() + 1));
         moneyLabel.setText("Current Money: " + roundGameManager.getMoneyAmount());
         difficultyLabel.setText("Current Difficulty: " + decimalFormat.format(roundGameManager.getDifficulty()));
-        trackLengthLabel.setText("Next Round Track Length: Select");
+        trackLengthLabel.setText("Track Length: Select");
         startRoundButton.setText("Start Round " + roundGameManager.getCurrRound() + "!");
         pointsLabel.setText("Current Points: " + decimalFormat.format(roundGameManager.getPoints()));
         shortTrackLength = RoundService.trackLengthCalculator(roundGameManager.getDifficulty())-10;
@@ -93,19 +93,19 @@ public class BetweenRoundsScreenController {
      */
     @FXML
     private void setTrackLengthOne(){ //TODO get track lengths to save
-        trackLengthLabel.setText("Next Round Track Length: " + shortTrackLength + "m");
+        trackLengthLabel.setText("Track Length: " + shortTrackLength + "m");
         trackNumChosen = 1;
         trackChosen = true;
     }
     @FXML
     private void setTrackLengthTwo(){
-        trackLengthLabel.setText("Next Round Track Length: " + mediumTrackLength + "m");
+        trackLengthLabel.setText("Track Length: " + mediumTrackLength + "m");
         trackNumChosen = 2;
         trackChosen = true;
     }
     @FXML
     private void setTrackLengthThree(){
-        trackLengthLabel.setText("Next Round Track Length: " + longTrackLength + "m");
+        trackLengthLabel.setText("Track Length: " + longTrackLength + "m");
         trackNumChosen = 3;
         trackChosen = true;
     }

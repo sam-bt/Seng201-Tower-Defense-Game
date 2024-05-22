@@ -89,6 +89,7 @@ public class GameManager {
     public void setRoundOneSelectedTowerButtons(List<Button> roundOneSelectedTowerButtons) {this.roundOneSelectedTowerButtons = roundOneSelectedTowerButtons; }
     public List<Button> getRoundOneSelectedTowerButtons() {return roundOneSelectedTowerButtons; }
     public void setRoundOneTowerList(List<Tower> roundOneTowerList){
+        System.out.println(roundOneTowerList.get(0).getHealth());
         this.roundOneTowerList = roundOneTowerList;
     }
     public List<Tower> getRoundOneTowerList(){

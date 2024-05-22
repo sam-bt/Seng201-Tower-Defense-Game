@@ -25,7 +25,6 @@ public class RoundOne {
             tower.actionUsed();
         }
         usedTower.use();
-        usedTower.increaseBreakChance();
         for (Cart cart: cartList) {
             if (Objects.equals(cart.getResourceType(), usedTower.getFillType())) {
             cart.increaseFillAmount(usedTower.getFillAmount());

@@ -216,6 +216,8 @@ public class RoundOneGameScreenController {
     }
     @FXML
     private void onConfirm() {
+        List<Tower> gameTowerList = List.of(towerList[0],towerList[1],towerList[2]);
+        roundOneGameScreenManager.setRoundOneTowerList(gameTowerList);
         roundOneGameScreenManager.closeGameScreen();
     }
     private void onLose() {
