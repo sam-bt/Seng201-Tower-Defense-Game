@@ -23,7 +23,7 @@
     <RowConstraints maxHeight="318.0" minHeight="318.0" prefHeight="318.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="OK" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+      <Button mnemonicParsing="false" onAction="#onConfirm" prefHeight="25.0" prefWidth="50.0" text="OK" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
       <Label fx:id="nameAndRoundLabel" prefHeight="55.0" prefWidth="730.0" text="Name: WWWWWWWWWWWWW   Round: 15">
          <font>
             <Font size="28.0" />
