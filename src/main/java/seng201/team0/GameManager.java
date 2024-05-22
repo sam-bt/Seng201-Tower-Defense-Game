@@ -26,9 +26,12 @@ public class GameManager {
     private int roundTrackLength;
     private List<Tower> roundOneTowerList;
     private Tower[] roundOneSelectedTowerList;
-    private Tower[] genericRoundTowerList;
+    private List<Tower> genericRoundTowerList;
     private List<Button> roundOneSelectedTowerButtons;
     private int trackLengthIndex;
+    private int availableHeals;
+    private int availableRevives;
+    private int availableUpgrades;
     private final Consumer<GameManager> setupScreenLauncher;
     private final Consumer<GameManager> betweenScreenLauncher;
     private final Consumer<GameManager> gameScreenLauncher;
@@ -110,11 +113,21 @@ public class GameManager {
         }
         return roundOneTowerIndices;
     }
-    public void setGenericRoundTowerList(Tower[] genericRoundTowerList){
+    public void setGenericRoundTowerList(List<Tower> genericRoundTowerList){
         this.genericRoundTowerList = genericRoundTowerList;
     }
-    public Tower[] getGenericRoundTowerList(){
+    public List<Tower> getGenericRoundTowerList(){
         return genericRoundTowerList;
+    }
+    public int getAvailableHeals() {
+        return availableHeals;
+    }
+    public int getAvailableRevives() {
+        return availableRevives;
+    }
+
+    public int getAvailableUpgrades() {
+        return availableUpgrades;
     }
 
     public void setTrackLengthIndex(int index){
