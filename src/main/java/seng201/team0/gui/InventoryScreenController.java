@@ -244,6 +244,7 @@ public class InventoryScreenController {
 
     @FXML
     private void onMenu() {
+//        towersInSlots[] =
         inventoryScreenGameManager.launchBetweenRoundsScreen();
     }
 
