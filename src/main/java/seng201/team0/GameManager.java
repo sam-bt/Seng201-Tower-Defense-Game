@@ -42,7 +42,8 @@ public class GameManager {
     private final Consumer<GameManager> roundOneGameScreenLauncher;
     private final Consumer<GameManager> errorScreenLauncher;
     private final Consumer<GameManager> finishedScreenLauncher;
-    public GameManager(Consumer<GameManager> setupScreenLauncher, Consumer<GameManager> betweenScreenLauncher, Consumer<GameManager> gameScreenLauncher, Consumer<GameManager> inventoryScreenLauncher, Consumer<GameManager> shopScreenLauncher, Consumer<GameManager> roundOneInventoryScreenLauncher, Consumer<GameManager> roundOneGameScreenLauncher, Consumer<GameManager> errorScreenLauncher, Consumer<GameManager> finishedScreenLauncher, Runnable clearScreen){
+    private final Consumer<GameManager> losingScreenLauncher;
+    public GameManager(Consumer<GameManager> setupScreenLauncher, Consumer<GameManager> betweenScreenLauncher, Consumer<GameManager> gameScreenLauncher, Consumer<GameManager> inventoryScreenLauncher, Consumer<GameManager> shopScreenLauncher, Consumer<GameManager> roundOneInventoryScreenLauncher, Consumer<GameManager> roundOneGameScreenLauncher, Consumer<GameManager> errorScreenLauncher, Consumer<GameManager> finishedScreenLauncher,Consumer<GameManager> losingScreenLauncher, Runnable clearScreen){
         this.setupScreenLauncher = setupScreenLauncher;
         this.betweenScreenLauncher = betweenScreenLauncher;
         this.gameScreenLauncher = gameScreenLauncher;
@@ -52,6 +53,7 @@ public class GameManager {
         this.finishedScreenLauncher = finishedScreenLauncher;
         this.roundOneInventoryScreenLauncher = roundOneInventoryScreenLauncher; //TODO add call for inventory button
         this.roundOneGameScreenLauncher = roundOneGameScreenLauncher;
+        this.losingScreenLauncher = losingScreenLauncher;
         launchSetupScreen();
     }
     public void setSetup(Setup setup){
@@ -73,6 +75,7 @@ public class GameManager {
     public void launchInventoryScreen() { inventoryScreenLauncher.accept(this); }
     public void launchRoundOneInventoryScreen() { roundOneInventoryScreenLauncher.accept(this); }
     public void launchRoundOneGameScreen() { roundOneGameScreenLauncher.accept(this); }
+    public void launchLosingScreen() { losingScreenLauncher.accept(this); }
     public void launchErrorScreen() { errorScreenLauncher.accept(this); }
     public String getName() { return name; }
     public void setName(String name) {
@@ -180,6 +183,9 @@ public class GameManager {
     }
     public void closeInvalidNameScreen(){
         launchSetupScreen();
+    }
+    public void openLosingScreen() {
+        this.launchLosingScreen();
     }
 
 

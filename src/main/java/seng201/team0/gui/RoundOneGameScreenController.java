@@ -51,7 +51,7 @@ public class RoundOneGameScreenController {
     private Tower[] towerList;
     private List<Cart> cartList;
     private int selectedTowerIndex = -1;
-
+    private boolean lost;
     List<Button> towerButtons;
     List<Button> cartButtons;
     List<ProgressBar> cartFillProgressBars;
@@ -144,7 +144,7 @@ public class RoundOneGameScreenController {
     }
 
     public void fillCarts(Tower selectedTower){
-        for (int cartIndex = 0; cartIndex < cartFillProgressBars.size(); cartIndex++) { //TODO new method for special cart in actual game
+        for (int cartIndex = 0; cartIndex < cartFillProgressBars.size(); cartIndex++) {
             Cart cart = cartList.get(cartIndex);
             if (Objects.equals(cart.getResourceType(), selectedTower.getFillType())) {
                 cartFillProgressBars.get(cartIndex).setProgress(cart.getCurrentFillAmount());
@@ -184,10 +184,14 @@ public class RoundOneGameScreenController {
     }
     @FXML
     private void onConfirmNext() {
+        if (lost) {
+            roundOneGameScreenManager.openLosingScreen();
+        }
+        else {
         roundOne.nextFrame(cartList, towerList);
         if (roundOne.roundEnded(cartList)) {
             if (roundOne.roundWon(cartList)){
-                System.out.println("round WONNNN"); //TODO make this do something, (maybe check after action executed not before)
+                System.out.println("round WONNNN");
                 confirmActionButton.setDisable(true);
                 for (Button towerButton: towerButtons){
                     towerButton.setDisable(true);
@@ -207,12 +211,13 @@ public class RoundOneGameScreenController {
                 fillCartWithTowerLabel.setText("Round Lost !!");
                 System.out.println("round LOSTTTT LOSERRR");
                 nextFrameButton.setText("View Summary");
-                nextFrameButton.setOnAction(event -> {onLose();});
+                lost = true;
             }
         }
         else {
             updateCartDistances();
             actionsLeftLabel.setText("Actions Left This Frame: " + roundOne.getActionsLeft());
+        }
         }
     }
     @FXML

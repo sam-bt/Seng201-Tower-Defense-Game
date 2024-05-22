@@ -38,6 +38,14 @@ public class Round {
         }
         this.actionsLeft -= 1;
     }
+    public void useBonusAction(Tower usedTower, List<Cart> cartList, Tower[] towerList) {
+        for (Tower tower:towerList) {
+            tower.actionUsed();
+        }
+        usedTower.use();
+        cartList.get(4).increaseFillAmount(usedTower.getFillAmount());
+        this.actionsLeft -= 1;
+    }
     public void nextFrame(List<Cart> cartList, Tower[] towerList) {
         for (Tower tower:towerList) {
             tower.actionUsed();

@@ -25,6 +25,6 @@ public class DifficultyService {
      * @return Current count
      */
     public double getDifficulty() {
-        return difficulty.getDifficulty();
+        return Math.round(difficulty.getDifficulty()*10) / 10.0;
     }
 }

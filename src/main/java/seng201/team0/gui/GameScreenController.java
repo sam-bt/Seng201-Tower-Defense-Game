@@ -9,6 +9,7 @@ import seng201.team0.models.Cart;
 import seng201.team0.models.Round;
 import seng201.team0.models.RoundOne;
 import seng201.team0.models.Tower;
+import seng201.team0.services.CartService;
 import seng201.team0.services.TowerGenerator;
 
 import java.util.List;
@@ -68,6 +69,8 @@ public class GameScreenController {
     private Round round;
     private List<Cart> cartList;
     private int selectedTowerIndex = -1;
+    private boolean bonusUnlocked;
+    private boolean lost;
     private Tower[] towerList = new Tower[5]; //FIXME for when finn finishes inventory
     private List<Button> towerButtons;
     private List<Button> cartButtons;
@@ -123,7 +126,7 @@ public class GameScreenController {
         cartTwoFillProgressBar.setStyle("-fx-accent: silver");
         cartThreeFillProgressBar.setStyle("-fx-accent: gold");
         cartFourFillProgressBar.setStyle("-fx-accent: blue");
-        cartFiveFillProgressBar.setStyle("-fx-accent: green");
+        cartFiveFillProgressBar.setStyle("-fx-accent: red");
         cartOneFillProgressBar.setProgress(0.0);
         cartTwoFillProgressBar.setProgress(0.0);
         cartThreeFillProgressBar.setProgress(0.0);
@@ -173,8 +176,8 @@ public class GameScreenController {
         }
         else {
             fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
-            fillCartWithTowerLabel.setText("This Tower is currently reloading!");
-            reloadSpeedLabel.setText("Actions until next usable: "+tower.getActionsUntilUsable());
+            fillCartWithTowerLabel.setText("Tower reloading!");
+            reloadSpeedLabel.setText("Next usable in: "+tower.getActionsUntilUsable());
         }
     }
     public void fillCarts(Tower selectedTower){
@@ -185,6 +188,11 @@ public class GameScreenController {
                 cartSizeLabels.get(cartIndex).setText("Capacity: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity()+" kg");
             }
         }
+    }
+    public void fillBonusCart(){
+        Cart cart = cartList.get(4);
+        cartFillProgressBars.get(4).setProgress(cart.getCurrentFillAmount());
+        cartSizeLabels.get(4).setText("Capacity: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity()+" kg");
     }
     public void updateCartDistances(){
         for (int cartIndex = 0; cartIndex < cartProgressBars.size(); cartIndex++) {
@@ -199,29 +207,52 @@ public class GameScreenController {
             fillCartWithTowerLabel.setText("No actions left this frame!!"); }
         else if (selectedTowerIndex != -1) {
             Tower selectedTower = towerList[selectedTowerIndex];
+            if (bonusUnlocked) {
+                System.out.println("running tha bonnnuuuuuuuuuus");
+                round.useBonusAction(selectedTower,cartList,towerList);
+                fillBonusCart();
+                fillCarts(selectedTower);
+                updateSelectedTowerStats(selectedTower);
+                actionsLeftLabel.setText("Actions Left: "+round.getActionsLeft());
+            }
+            else {
             if (selectedTower.isUsable()) {
                 if (round.isCartFillable(cartList, selectedTower)) {
                     round.useAction(selectedTower,cartList,towerList);
                     fillCarts(selectedTower);
                     updateSelectedTowerStats(selectedTower);
-                    actionsLeftLabel.setText("Actions Left This Frame: "+round.getActionsLeft());
+                    actionsLeftLabel.setText("Actions Left: "+round.getActionsLeft());
+                    if (CartService.areAllCartsFull(cartList)) {
+                        this.bonusUnlocked = true;
+                        System.out.println("BONUS UNLOCKED!!!!!!");
+                        cartButtons.get(0).setStyle("-fx-background-color: black; -fx-background-radius: 5;");
+                        cartButtons.get(1).setStyle("-fx-background-color: silver; -fx-background-radius: 5;");
+                        cartButtons.get(2).setStyle("-fx-background-color: gold; -fx-background-radius: 5;");
+                        cartButtons.get(3).setStyle("-fx-background-color: blue; -fx-background-radius: 5;");
+                    }
                 } else {
                     fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
                     fillCartWithTowerLabel.setText("All the "+selectedTower.getFillType()+" Carts are full!");}
             }
             else {
                 fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
-                fillCartWithTowerLabel.setText("This Tower is currently reloading!");}
+                fillCartWithTowerLabel.setText("Tower reloading!");}
+            }
         }
         else {
             fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
             fillCartWithTowerLabel.setText("Please select a Tower!");}
     }
     @FXML private void onConfirmNext(){
+        if (lost) {
+            roundGameManager.openLosingScreen();
+        }
+        else {
         round.nextFrame(cartList, towerList);
-        if (round.roundEnded(cartList)) {
+        if (round.roundEnded(cartList)) { //TODO check on action instead of frame
             if (round.roundWon(cartList)){
-                System.out.println("round WONNNN"); //TODO make this do something, (maybe check after action executed not before)
+                cartButtons.get(4).setStyle("-fx-background-color: red; -fx-background-radius: 5;");
+                System.out.println("round WONNNN");
                 confirmActionButton.setDisable(true);
                 for (Button towerButton: towerButtons){
                     towerButton.setDisable(true);
@@ -241,20 +272,18 @@ public class GameScreenController {
                 fillCartWithTowerLabel.setText("Round Lost !!");
                 System.out.println("round LOSTTTT LOSERRR");
                 nextFrameButton.setText("View Summary");
-                nextFrameButton.setOnAction(event -> {onLose();});
+                lost = true;
             }
         }
         else {
             updateCartDistances();
             actionsLeftLabel.setText("Actions Left This Frame: " + round.getActionsLeft());
         }
+        }
     }
 
     @FXML
     private void onConfirm() {
         roundGameManager.closeGameScreen();
-    }
-    private void onLose() {
-        System.out.println("loser");
     }
 }

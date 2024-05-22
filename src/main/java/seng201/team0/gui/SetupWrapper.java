@@ -18,14 +18,14 @@ public class SetupWrapper {
 
     public void init(Stage stage) {
         this.stage = stage;
-        new GameManager(this::launchSetupScreen, this::launchBetweenRoundsScreen, this::launchGameScreen,this::launchInventoryScreen,this::launchShopScreen,this::launchRoundOneInventoryScreen,this::launchRoundOneGameScreen,this::launchErrorScreen,this::launchFinishedScreen,this::clearPane);
+        new GameManager(this::launchSetupScreen, this::launchBetweenRoundsScreen, this::launchGameScreen,this::launchInventoryScreen,this::launchShopScreen,this::launchRoundOneInventoryScreen,this::launchRoundOneGameScreen,this::launchErrorScreen,this::launchFinishedScreen,this::launchLoseScreen,this::clearPane);
     }
 
     public void clearPane() { // TODO - change/delete as now not needed
         borderpane.getChildren().removeAll(borderpane.getChildren());
     }
 
-    public void launchSetupScreen(GameManager setupGameManager) {
+    public void launchSetupScreen(GameManager setupGameManager) { //TODO change the name of these managers
         try {
             FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/setup_screen.fxml"));
             setupScreenLoader.setControllerFactory(param -> new SetupScreenController(setupGameManager));
@@ -43,7 +43,7 @@ public class SetupWrapper {
             mainScreenLoader.setControllerFactory(param -> new BetweenRoundsScreenController(setupGameManager));
             Parent setupParent  = mainScreenLoader.load();
             borderpane.setCenter(setupParent);
-            stage.setTitle("Round Setup Screen");
+            stage.setTitle("Between Rounds Screen");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,7 +54,7 @@ public class SetupWrapper {
             gameScreenLoader.setControllerFactory(param -> new GameScreenController(setupGameManager));
             Parent setupParent  = gameScreenLoader.load();
             borderpane.setCenter(setupParent);
-            stage.setTitle("Game Screen");
+            stage.setTitle("Game Screen"); // TODO make match the round number
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -121,6 +121,17 @@ public class SetupWrapper {
             Parent setupParent  = finishedScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Finish Screen");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void launchLoseScreen(GameManager setupGameManager) {
+        try {
+            FXMLLoader losingScreenLoader = new FXMLLoader(getClass().getResource("/fxml/losing_screen.fxml"));
+            losingScreenLoader.setControllerFactory(param -> new LosingScreenController(setupGameManager));
+            Parent setupParent  = losingScreenLoader.load();
+            borderpane.setCenter(setupParent);
+            stage.setTitle("Losing Screen");
         } catch (IOException e) {
             e.printStackTrace();
         }

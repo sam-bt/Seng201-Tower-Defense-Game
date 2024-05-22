@@ -26,7 +26,7 @@ public class Cart {
         this.currentFillDisplay=0;
         this.tracklength = tracklength;
         Random rng = new Random();
-        List<Integer> speedList = Arrays.asList(10, 10, 15, 15, 20);
+        List<Integer> speedList = Arrays.asList(5, 5, 8, 8, 10);
         int randomSpeed = rng.nextInt(5);
         this.speed = speedList.get(randomSpeed);
         List<Integer> capacityList = Arrays.asList(50 * (int) difficulty, 60 * (int) difficulty,50 * (int) difficulty, 60 * (int) difficulty, 75* (int) difficulty);
