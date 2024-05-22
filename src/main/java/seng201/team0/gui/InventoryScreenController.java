@@ -10,6 +10,8 @@ import seng201.team0.services.TowerService;
 
 import java.util.List;
 
+import static java.util.Collections.emptyList;
+
 public class InventoryScreenController {
     @FXML
     private Button coalType1Button;
@@ -68,6 +70,8 @@ public class InventoryScreenController {
     private Tower[] towersInSlots = new Tower[5];
     private int selectedTowerIndex = -1;
     private String selectedItem = null;
+    List<Integer> towerListIndices;
+    Tower[] savedTowers;
 
     GameManager inventoryScreenGameManager;
     private InventoryService currentInventory;
@@ -82,6 +86,17 @@ public class InventoryScreenController {
         currentInventory = new InventoryService(inventoryScreenGameManager);
         List<Tower> towers = currentInventory.getTowerList();
 
+        towerListIndices = inventoryScreenGameManager.getRoundOneTowerListIndices();
+        if (!inventoryScreenGameManager.isRoundOneSelectedTowerListNull()) {
+            if (inventoryScreenGameManager.getRoundOneSelectedTowerList()!=null){
+                savedTowers = inventoryScreenGameManager.getRoundOneSelectedTowerList();
+                towerListIndices = inventoryScreenGameManager.getRoundOneTowerListIndices();
+            }
+        }
+        else {
+            towerListIndices = emptyList();
+        }
+        List<Button> savedTowerButtons = inventoryScreenGameManager.getRoundOneSelectedTowerButtons();
         // Sets non owned tower buttons to black and broken towers to red
         for (int i = 0; i < availableTowerButtons.size(); i++) {
             if (!towers.get(i).getOwned()) {
@@ -244,6 +259,7 @@ public class InventoryScreenController {
         for (int i = 0; i < selectedTowers.length; i++) {
             towersInSlots[i] = selectedTowers[i];
         }
+        inventoryScreenGameManager.setTowersInSlots(towersInSlots);
         inventoryScreenGameManager.launchBetweenRoundsScreen();
     }
 
@@ -252,6 +268,7 @@ public class InventoryScreenController {
         for (int i = 0; i < selectedTowers.length; i++) {
             towersInSlots[i] = selectedTowers[i];
         }
+        inventoryScreenGameManager.setTowersInSlots(towersInSlots);
         inventoryScreenGameManager.openShopScreen();
     }
 }

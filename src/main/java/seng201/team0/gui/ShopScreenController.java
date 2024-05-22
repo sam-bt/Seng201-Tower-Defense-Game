@@ -64,7 +64,8 @@ public class ShopScreenController {
         shopScreenGameManager = tempShopScreenGameManager;
     }
 
-//    public void initialize() {
+    public void initialize() {
+        System.out.println(shopScreenGameManager.getTowersInSlots());
 //        List<Button> availableTowerButtons = List.of(coalTower1ShopButton, coalTower2ShopButton, ironTower1ShopButton, ironTower2ShopButton, goldTower1ShopButton, goldTower2ShopButton, gemTower1ShopButton, gemTower2ShopButton);
 //        shopService = new ShopService(shopScreenGameManager);
 //
@@ -103,7 +104,7 @@ public class ShopScreenController {
 //                availableTowerButtons.get(i).setStyle("");
 //            }
 //        }
-//    }
+    }
 
     @FXML
     private void onInventory() {

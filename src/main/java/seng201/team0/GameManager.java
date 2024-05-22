@@ -32,6 +32,7 @@ public class GameManager {
     private int availableHeals;
     private int availableRevives;
     private int availableUpgrades;
+    private Tower[] towersInSlots;
     private final Consumer<GameManager> setupScreenLauncher;
     private final Consumer<GameManager> betweenScreenLauncher;
     private final Consumer<GameManager> gameScreenLauncher;
@@ -89,6 +90,12 @@ public class GameManager {
     public void startPoints() { this.points = 0; }
     public void incrementPoints() { this.points += 100*getDifficulty(); }
     public double getPoints() { return points; }
+    public Tower[] getTowersInSlots() {
+        return towersInSlots;
+    }
+    public void setTowersInSlots(Tower[] towersInSlots) {
+        this.towersInSlots = towersInSlots;
+    }
     public void setRoundOneSelectedTowerButtons(List<Button> roundOneSelectedTowerButtons) {this.roundOneSelectedTowerButtons = roundOneSelectedTowerButtons; }
     public List<Button> getRoundOneSelectedTowerButtons() {return roundOneSelectedTowerButtons; }
     public void setRoundOneTowerList(List<Tower> roundOneTowerList){
