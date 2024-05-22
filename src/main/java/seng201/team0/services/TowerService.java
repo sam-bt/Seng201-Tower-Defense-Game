@@ -2,12 +2,10 @@ package seng201.team0.services;
 
 import seng201.team0.models.Tower;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class TowerService {
+    private static final Random rnd = new Random();
     public static boolean areAllTowersSelected(Tower[] selectedTowers) {
         for (Tower tower : selectedTowers) {
             if (tower == null) {
@@ -40,5 +38,16 @@ public class TowerService {
             roundOneTowers.remove(tower.getFillType());
         }
         return roundOneTowers.isEmpty();
+    }
+    public static boolean shouldTowerBreak(Tower tower){
+        int likelihood = rnd.nextInt(101);
+        return tower.getBreakChance() <= likelihood;
+    }
+    public static void breakTowers(List<Tower> towerList){
+        for (Tower tower: towerList) {
+            if (shouldTowerBreak(tower)) {
+
+            }
+        }
     }
 }
