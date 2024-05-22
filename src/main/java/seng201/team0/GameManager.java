@@ -33,6 +33,7 @@ public class GameManager {
     private int availableRevives;
     private int availableUpgrades;
     private Tower[] towersInSlots;
+    private boolean firstTimeInInventory;
     private final Consumer<GameManager> setupScreenLauncher;
     private final Consumer<GameManager> betweenScreenLauncher;
     private final Consumer<GameManager> gameScreenLauncher;
@@ -146,7 +147,10 @@ public class GameManager {
     public int getTrackLengthIndex(){
         return trackLengthIndex;
     }
-
+    public boolean isNotFirstTimeInInventory() { return firstTimeInInventory;}
+    public void setNotFirstTimeInInventory(boolean firstTimeInInventory) {
+        this.firstTimeInInventory = firstTimeInInventory;
+    }
     public void closeSetupScreen() {
         if (getName().length() < 3 || getName().length() > 15 || !getName().matches("[a-zA-Z0-9]+")) {
             launchErrorScreen(); }
