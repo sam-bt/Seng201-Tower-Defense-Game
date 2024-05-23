@@ -34,6 +34,7 @@ public class GameManager {
     private int availableRevives;
     private int availableUpgrades;
     private int netWorth;
+    private List<Tower> cheapestTowers;
     private Tower[] towersInSlots = new Tower[5];
     private ShopService shopService;
     private boolean firstTimeInInventory;
@@ -91,6 +92,13 @@ public class GameManager {
     public void setNetWorth(int value) {
         netWorth = value;
     }
+    public List<Tower> getCheapestTowers() {
+        return cheapestTowers;
+    }
+    public void setCheapestTowers(List<Tower> towers) {
+        cheapestTowers = towers;
+    }
+
     public void incrementRound() { currRound += 1; } // TODO check for round == to max rounds, if so then terminate
     public int getCurrRound() { return currRound; }
     public void launchSetupScreen() { setupScreenLauncher.accept(this); }
@@ -104,10 +112,8 @@ public class GameManager {
     public void launchLosingScreen() { losingScreenLauncher.accept(this); }
     public void launchErrorScreen() { errorScreenLauncher.accept(this); }
     public void incrementHeals() {
-//        System.out.println("gaang");
         availableHeals += 1;
     }
-
     public void incrementRevives() {
         availableRevives += 1;
     }

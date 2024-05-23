@@ -119,24 +119,43 @@ public class BetweenRoundsScreenController {
     }
     @FXML
     private void onConfirm() { // TODO wrap text
-        if (roundGameManager.isRoundOneSelectedTowerListNull()) {
-            cantStartRoundLabel.setText("Cannot start the round without any towers selected! Please go to the inventory and select your towers!"); }
-        else if ( trackNumChosen==0 ) {
-            cantStartRoundLabel.setText("Please select a track length for the next round!");
+        if (roundGameManager.getCurrRound() == 1) {
+            if (roundGameManager.isRoundOneSelectedTowerListNull()) {
+                cantStartRoundLabel.setText("Cannot start the round without any towers selected! Please go to the inventory and select your towers!"); }
+            else if ( trackNumChosen==0 ) {
+                cantStartRoundLabel.setText("Please select a track length for the next round!");
+            }
+            else {
+                roundGameManager.incrementRound();
+                roundGameManager.closeBetweenRoundScreen();
+                roundGameManager.setTrackLengthIndex(trackNumChosen);
+                if (trackNumChosen==1) {
+                    roundGameManager.setRoundTrackLength(shortTrackLength); }
+                else if (trackNumChosen==2){
+                    roundGameManager.setRoundTrackLength(mediumTrackLength);}
+                else{roundGameManager.setRoundTrackLength(longTrackLength);}}
+        } else {
+            Tower[] towersInSlots = roundGameManager.getTowersInSlots();
+            boolean brokenTowerError = false;
+            boolean notEnoughTowers = false;
+            for (int i = 0; 1 < towersInSlots.length; i++) {
+                if (towersInSlots[i].getBroken() == true) {
+                    brokenTowerError = true;
+                } else if (towersInSlots[i] == null) {
+                    notEnoughTowers = true;
+                }
+            }
+            if (brokenTowerError) {
+                cantStartRoundLabel.setText("One of your towers is broken!");
+            } else if (notEnoughTowers) {
+                cantStartRoundLabel.setText("You need 5 towers selected to start the next round!");
+            }
         }
-        else {
-            roundGameManager.incrementRound();
-            roundGameManager.closeBetweenRoundScreen();
-            roundGameManager.setTrackLengthIndex(trackNumChosen);
-            if (trackNumChosen==1) {
-            roundGameManager.setRoundTrackLength(shortTrackLength); }
-            else if (trackNumChosen==2){
-                roundGameManager.setRoundTrackLength(mediumTrackLength);}
-            else{roundGameManager.setRoundTrackLength(longTrackLength);}}
-
-        }
-
-
+    }
+    private boolean gameOverCheck() {
+        int netWorth = roundGameManager.getNetWorth();
+        return true; //TODO: temporary
+    }
     @FXML
     private void onShop() { // TODO wrap text
         if (roundGameManager.getCurrRound() == 1) {
