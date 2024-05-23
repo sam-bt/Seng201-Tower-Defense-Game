@@ -85,7 +85,12 @@ public class Cart {
                 if (!endReached) {
                     cartSuccess = true;
                 }
-            } else {
+            }
+            else if (newFillAmount <= 0) {
+                currentFillAmount = 0;
+                currentFillDisplay = 0;
+            }
+            else {
                 currentFillAmount = newFillAmount;
                 currentFillDisplay += towerFillAmount;
             }

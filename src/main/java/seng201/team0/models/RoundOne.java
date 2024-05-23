@@ -60,6 +60,7 @@ public class RoundOne {
     public int getNumActions(){
         return this.numActions;
     }
+    public void resetActions() {this.actionsLeft = 0; }
     public boolean roundEnded(List<Cart> cartList){
         System.out.println(cartList.size());
         for (Cart cart: cartList) {

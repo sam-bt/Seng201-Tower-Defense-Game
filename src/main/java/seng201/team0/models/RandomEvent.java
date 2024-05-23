@@ -6,19 +6,20 @@ public class RandomEvent { // return a message and action based on generated eve
     RandomEventGenerator randomGenerator;
     String eventName;
     String eventText;
-    String eventAction;
     int eventNum;
     public void generateRandomEvent(double difficulty) {
         int badEventLikelihood = (int) Math.round(difficulty);
+        System.out.println("bed event likelihood "+badEventLikelihood);
         if (badEventLikelihood > 5) {
             badEventLikelihood = 5;
         }
         randomGenerator = new RandomEventGenerator(badEventLikelihood);
-        eventNum = this.generateEvent();
-        if (eventNum <= 4) {
+        eventNum = randomGenerator.generate();
+        System.out.println("eventNum "+eventNum);
+        if (eventNum <= 5) {            //TODO TEST AND MAE IN FULL GAME
             this.generateGoodEvent();
         }
-        if (eventNum <= 9) {
+        else if (eventNum <= 10) {
             generateNeutralEvent();
         }
         else {
@@ -31,55 +32,45 @@ public class RandomEvent { // return a message and action based on generated eve
     public String getEventText(){
         return this.eventText;
     }
-    public String getEventAction(){
-        return this.eventAction;
-    }
     public int generateEvent(){
         return randomGenerator.generate();
     }
     private void generateGoodEvent(){
-        if (eventNum == 0 || eventNum == 1) {
-            eventName = "Cart Reset";
-            eventText = "One of the carts was reset!!";
-            eventAction = "Reset Cart";
+        if (eventNum == 5 || eventNum == 1) {
+            this.eventName = "Cart Reset";
+            this.eventText = "One of the carts was reset!!";
         }
         else if (eventNum == 2 || eventNum == 3) {
-            eventName = "Reset Towers";
-            eventText = "All of the towers were reloaded!";
-            eventAction = "Reload Towers";
+            this.eventName = "Reset Towers";
+            this.eventText = "All of the towers were reloaded!";
         }
         else {
-            eventName = "Fill Cart";
-            eventText = "A cart was filled!";
-            eventAction = "Fill Cart";
+            this.eventName = "Fill Cart";
+            this.eventText = "The first non-empty cart was filled";
         }
     }
     private void generateNeutralEvent(){
-        eventName = "Nothing";
-        eventText = "Nothing happened!";
-        eventAction = "Nothing";
+        this.eventName = "Nothing";
+        this.eventText = "Nothing happened!";
     }
     private void generateBadEvent(){
-        if (eventNum == 10 || eventNum == 11) {
-            eventName = "Steal Resources";
-            eventText = "Some of your resources were stolen!";
-            eventAction = "Steal Resources";
+        if (eventNum == 14 || eventNum == 11) {
+            this.eventName = "Steal Resources";
+            this.eventText = "Some of your resources were stolen!";
         }
         else if (eventNum == 12 || eventNum == 13) {
-            eventName = "Disable Tower";
-            eventText = "A tower has been disabled!";
-            eventAction = "Disable Tower";
+            this.eventName = "Disable Tower";
+            this.eventText = "A tower was used, but no cart was filled!";
         }
         else {
-            eventName = "Actions Reset";
-            eventText = "No actions this frame!";
-            eventAction = "Reset Actions";
+            this.eventName = "Actions Reset";
+            this.eventText = "No actions this frame!";
         }
     }
-//    public int generateRoundOneIndex(){
-//
-//    }
-//    public int generateRoundIndex(){
-//
-//    }
+    public int generateRoundOneIndex(){
+        return randomGenerator.generateRoundOneIndex();
+    }
+    public int generateRoundIndex(){
+        return randomGenerator.generateRoundIndex();
+    }
 }

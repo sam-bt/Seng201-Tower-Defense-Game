@@ -10,8 +10,14 @@ public class RandomEventGenerator {
     public RandomEventGenerator(int badEventLikelihood) { // generate a random event
         this.badEventLikelihood = badEventLikelihood;
     }
-    public int generate() { // in range 0 to 14
+    public int generate() { // in range 1 to 15
         return rnd.nextInt(10)+badEventLikelihood;
+    }
+    public int generateRoundOneIndex(){
+        return rnd.nextInt(2);
+    }
+    public int generateRoundIndex(){
+        return rnd.nextInt(4);
     }
 
 }
