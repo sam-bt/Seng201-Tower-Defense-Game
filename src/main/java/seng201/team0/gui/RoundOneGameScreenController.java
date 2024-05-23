@@ -167,18 +167,18 @@ public class RoundOneGameScreenController {
         }
     }
     public void executeRandomEvent(String eventName, String eventText) {
-        if (eventName == "Cart Reset") {
+        if (Objects.equals(eventName, "Cart Reset")) {
             int cartToReset = randomEvent.generateRoundOneIndex();
             cartList.get(cartToReset).resetDistance();
             eventFrameLabel.setText(eventText);
             eventFrameLabel.setStyle("-fx-text-fill: green");
-        } else if (eventName == "Reset Towers") {
+        } else if (Objects.equals(eventName, "Reset Towers")) {
             for (Tower tower : towerList) {
                 tower.setUsable();
             }
             eventFrameLabel.setText(eventText);
             eventFrameLabel.setStyle("-fx-text-fill: green");
-        } else if (eventName == "Fill Cart") {
+        } else if (Objects.equals(eventName, "Fill Cart")) {
             int cartToFill = randomEvent.generateRoundOneIndex();
             Cart cart = cartList.get(cartToFill);
             if (cart.isFull()) {
@@ -192,11 +192,11 @@ public class RoundOneGameScreenController {
             cartFillProgressBars.get(cartToFill).setProgress(cart.getCurrentFillAmount());
             cartSizeLabels.get(cartToFill).setText("Capacity: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity()+" kg");
         }
-        else if (eventName == "Nothing"){
+        else if (Objects.equals(eventName, "Nothing")){
             eventFrameLabel.setText(eventText);
             eventFrameLabel.setStyle("-fx-text-fill: black");
         }
-        else if (eventName == "Steal Resources"){
+        else if (Objects.equals(eventName, "Steal Resources")){
             for (int cartIndex = 0; cartIndex < cartFillProgressBars.size(); cartIndex++) {
                 Cart cart = cartList.get(cartIndex);
                 if (!cart.isFull()) {
@@ -208,14 +208,14 @@ public class RoundOneGameScreenController {
             eventFrameLabel.setText(eventText);
             eventFrameLabel.setStyle("-fx-text-fill: red");
         }
-        else if (eventName == "Disable Tower") {
+        else if (Objects.equals(eventName, "Disable Tower")) {
             int towerToDisable = randomEvent.generateRoundOneIndex();
             towerList[towerToDisable].use();
             eventFrameLabel.setText(eventText);
             eventFrameLabel.setStyle("-fx-text-fill: red");
             updateSelectedTowerStats(towerList[towerToDisable]);
         }
-        else if (eventName == "Actions Reset") {
+        else if (Objects.equals(eventName, "Actions Reset")) {
             roundOne.resetActions();
             eventFrameLabel.setText(eventText);
             eventFrameLabel.setStyle("-fx-text-fill: red");
@@ -231,6 +231,17 @@ public class RoundOneGameScreenController {
             if (selectedTower.isUsable()) {
                 if (roundOne.isCartFillable(cartList, selectedTower)) {
                 roundOne.useAction(selectedTower,cartList,towerList);
+                    if (selectedTower.getBroken() && !cartList.get(selectedTowerIndex).isFull()) {
+                        towerButtons.get(selectedTowerIndex).setStyle("-fx-background-color: black; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5; -fx-border-width: 1;");
+                        confirmActionButton.setDisable(true);
+                        for (Button towerButton: towerButtons){
+                            towerButton.setDisable(true);
+                        }
+                        fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
+                        fillCartWithTowerLabel.setText("Round Lost!!");
+                        nextFrameButton.setText("View Summary");
+                        lost = true;
+                    }
                 fillCarts(selectedTower);
                 updateSelectedTowerStats(selectedTower);
                 actionsLeftLabel.setText("Actions Left This Frame: "+roundOne.getActionsLeft());
@@ -261,7 +272,6 @@ public class RoundOneGameScreenController {
         roundOne.nextFrame(cartList, towerList);
         if (roundOne.roundEnded(cartList)) {
             if (roundOne.roundWon(cartList)){
-                System.out.println("round WONNNN");
                 confirmActionButton.setDisable(true);
                 cartButtons.get(0).setStyle("-fx-background-color: black; -fx-background-radius: 5;");
                 cartButtons.get(1).setStyle("-fx-background-color: silver; -fx-background-radius: 5;");
@@ -272,7 +282,7 @@ public class RoundOneGameScreenController {
                 fillCartWithTowerLabel.setStyle("-fx-text-fill: green");
                 fillCartWithTowerLabel.setText("Round Won !!");
                 nextFrameButton.setText("To next round!");
-                nextFrameButton.setOnAction(event -> {onConfirm();});
+                nextFrameButton.setOnAction(event -> onConfirm());
             }
             else {
                 updateCartDistances();
@@ -282,7 +292,6 @@ public class RoundOneGameScreenController {
                 }
                 fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
                 fillCartWithTowerLabel.setText("Round Lost !!");
-                System.out.println("round LOSTTTT LOSERRR");
                 nextFrameButton.setText("View Summary");
                 lost = true;
             }
@@ -302,9 +311,6 @@ public class RoundOneGameScreenController {
     private void onConfirm() {
         roundOneGameScreenManager.setRoundOneSelectedTowerList(towerList);
         roundOneGameScreenManager.closeGameScreen();
-    }
-    private void onLose() {
-        System.out.println("loser");
     }
 }
 
