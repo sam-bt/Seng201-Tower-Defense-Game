@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import seng201.team0.GameManager;
 import seng201.team0.models.Cart;
+import seng201.team0.models.RandomEvent;
 import seng201.team0.models.RoundOne;
 import seng201.team0.models.Tower;
 
@@ -58,8 +59,7 @@ public class RoundOneGameScreenController {
     List<ProgressBar> cartProgressBars;
     List<Label> cartSizeLabels;
     RoundOne roundOne;
-
-
+    RandomEvent randomEvent = new RandomEvent();
     GameManager roundOneGameScreenManager;
 
     public RoundOneGameScreenController(GameManager tempRoundOneGameScreenManager){
@@ -157,6 +157,11 @@ public class RoundOneGameScreenController {
             cartProgressBars.get(cartIndex).setProgress(cartList.get(cartIndex).getDistanceTravelled());
         }
     }
+    public void executeRandomEvent(String eventName, String eventText, String eventAction){
+        if (eventAction == "Reset Cart") {
+
+        }
+    }
     @FXML
     private void onConfirmAction() {
         if (roundOne.getActionsLeft() == 0) {
@@ -217,6 +222,8 @@ public class RoundOneGameScreenController {
         else {
             updateCartDistances();
             updateSelectedTowerStats(towerList[selectedTowerIndex]);
+            randomEvent.generateRandomEvent(roundOneGameScreenManager.getDifficulty());
+
             actionsLeftLabel.setText("Actions Left This Frame: " + roundOne.getActionsLeft());
         }
         }
