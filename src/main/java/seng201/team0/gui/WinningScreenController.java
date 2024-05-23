@@ -19,7 +19,7 @@ public class WinningScreenController {
     }
     public void initialize() {
         roundsCompletedLabel.setText("You completed "+(winningScreenGameManager.getCurrRound()-2)+"/"+winningScreenGameManager.getRounds()+" Rounds!");
-        moneyLabel.setText("You won with "+winningScreenGameManager.getDifficulty()+"$ left!");
+        moneyLabel.setText("You won with "+winningScreenGameManager.getMoneyAmount()+"$ left!");
         pointsLabel.setText("You had "+winningScreenGameManager.getPoints()+" Points!");
         difficultyLabel.setText("You won on difficulty "+winningScreenGameManager.getDifficulty()+"!");
     }

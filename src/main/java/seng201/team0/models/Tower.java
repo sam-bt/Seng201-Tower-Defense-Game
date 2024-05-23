@@ -35,7 +35,7 @@ public class Tower implements Purchasable {
         this.isUsable = true;
         this.actionsUntilUsable = 0;
         rnd = new Random();
-        double buyRandomInt = rnd.nextInt(1000)+100 * difficulty; // buy price scales with difficulty
+        double buyRandomInt = rnd.nextInt(1000)+100 * difficulty;
         this.buyPrice = Math.round(buyRandomInt*100.0)/100.0;
         this.sellPrice = Math.round((buyRandomInt)*100.0)/100.0;
     }
@@ -54,13 +54,14 @@ public class Tower implements Purchasable {
     public void setNotOwned() {owned = false;}
     public void buy(){
         owned = true;
-    } //TODO decrease money
+    }
     public void sell(){
         owned = false;
-    } //TODO increase money
+    }
     public void useUpgrade(InventoryService inventoryService){
         level += 1;
         maxHealth += 5;
+        fillAmount += 2;
     }
 
     public int getHealth() {
