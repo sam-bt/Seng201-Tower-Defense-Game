@@ -116,11 +116,11 @@ public class SetupWrapper {
     }
     public void launchFinishedScreen(GameManager setupGameManager) {
         try {
-            FXMLLoader finishedScreenLoader = new FXMLLoader(getClass().getResource("/fxml/finished_screen.fxml"));
-            finishedScreenLoader.setControllerFactory(param -> new FinishedScreenController(setupGameManager));
+            FXMLLoader finishedScreenLoader = new FXMLLoader(getClass().getResource("/fxml/winning_screen.fxml"));
+            finishedScreenLoader.setControllerFactory(param -> new WinningScreenController(setupGameManager));
             Parent setupParent  = finishedScreenLoader.load();
             borderpane.setCenter(setupParent);
-            stage.setTitle("Finish Screen");
+            stage.setTitle("Winning Screen!");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -131,7 +131,7 @@ public class SetupWrapper {
             losingScreenLoader.setControllerFactory(param -> new LosingScreenController(setupGameManager));
             Parent setupParent  = losingScreenLoader.load();
             borderpane.setCenter(setupParent);
-            stage.setTitle("Losing Screen");
+            stage.setTitle("Losing Screen!");
         } catch (IOException e) {
             e.printStackTrace();
         }
