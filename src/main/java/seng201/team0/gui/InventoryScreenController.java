@@ -245,7 +245,9 @@ public class InventoryScreenController {
                 break;
             case "revive":
                 if (inventoryScreenGameManager.getAvailableRevives() > 0) {
-                    tower.useRevive(currentInventory);
+                    for (int i = 0; i < inventoryScreenGameManager.getGenericRoundTowerList().size(); i++) {
+                        inventoryScreenGameManager.getGenericRoundTowerList().get(i).useRevive(currentInventory);
+                    }
                     inventoryScreenGameManager.consumeRevive();
                     revivesOwned.setText(":" + inventoryScreenGameManager.getAvailableRevives());
                 }

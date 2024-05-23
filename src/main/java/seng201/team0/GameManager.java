@@ -7,8 +7,7 @@ import seng201.team0.services.MoneyService;
 import seng201.team0.services.RoundService;
 import seng201.team0.services.ShopService;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 
 /**
@@ -92,13 +91,17 @@ public class GameManager {
     public void setNetWorth(int value) {
         netWorth = value;
     }
-    public List<Tower> getCheapestTowers() {
-        return cheapestTowers;
-    }
-    public void setCheapestTowers(List<Tower> towers) {
-        cheapestTowers = towers;
-    }
 
+    public double getCheapestTowersSum(List<Tower> genericRoundTowerList) {
+        List<Tower> sortedList = new ArrayList<>(genericRoundTowerList);
+        Collections.sort(sortedList, Comparator.comparingDouble(Tower::getBuyPrice));
+        double sum = 0;
+        for (int i = 0; i < 5; i++) {
+            sum += sortedList.get(i).getBuyPrice();
+        }
+
+        return sum;
+    }
     public void incrementRound() { currRound += 1; } // TODO check for round == to max rounds, if so then terminate
     public int getCurrRound() { return currRound; }
     public void launchSetupScreen() { setupScreenLauncher.accept(this); }

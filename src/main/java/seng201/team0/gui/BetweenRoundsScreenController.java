@@ -7,9 +7,11 @@ import javafx.scene.text.TextFlow;
 import seng201.team0.GameManager;
 import seng201.team0.models.Tower;
 import seng201.team0.services.RoundService;
+import seng201.team0.services.ShopService;
 
 import java.text.DecimalFormat;
 import java.util.List;
+
 
 /**
  *
@@ -119,6 +121,7 @@ public class BetweenRoundsScreenController {
     }
     @FXML
     private void onConfirm() { // TODO wrap text
+        System.out.println("click worked");
         if (roundGameManager.getCurrRound() == 1) {
             if (roundGameManager.isRoundOneSelectedTowerListNull()) {
                 cantStartRoundLabel.setText("Cannot start the round without any towers selected! Please go to the inventory and select your towers!"); }
@@ -138,23 +141,69 @@ public class BetweenRoundsScreenController {
             Tower[] towersInSlots = roundGameManager.getTowersInSlots();
             boolean brokenTowerError = false;
             boolean notEnoughTowers = false;
-            for (int i = 0; 1 < towersInSlots.length; i++) {
-                if (towersInSlots[i].getBroken() == true) {
-                    brokenTowerError = true;
-                } else if (towersInSlots[i] == null) {
+            for (int i = 0; i < towersInSlots.length; i++) {
+                if (towersInSlots[i] == null) {
                     notEnoughTowers = true;
+                    break;
+                } else if (towersInSlots[i].getBroken() == true) {
+                    brokenTowerError = true;
+                    break;
                 }
             }
             if (brokenTowerError) {
-                cantStartRoundLabel.setText("One of your towers is broken!");
+                System.out.println("broken step 1");
+                if (!roundGameManager.isNotFirstTimeInInventory()) {
+                    System.out.println("broken step 2");
+                    cantStartRoundLabel.setText("Select your towers in the inventory");
+                } else {
+                    System.out.println("broken step 3");
+                    cantStartRoundLabel.setText("One of your towers is broken!");
+                    if (getNetWorth() < roundGameManager.getCheapestTowersSum(roundGameManager.getGenericRoundTowerList()) + 100) {
+                        System.out.println("broken step 4");
+                        roundGameManager.launchLosingScreen();
+                        System.out.println("YOU LOSE");
+                    }
+                }
+
             } else if (notEnoughTowers) {
-                cantStartRoundLabel.setText("You need 5 towers selected to start the next round!");
+                System.out.println("not enough step 1");
+                if (!roundGameManager.isNotFirstTimeInInventory()) {
+                    cantStartRoundLabel.setText("Select your towers in the inventory");
+                } else {
+                    System.out.println("not enough step 2");
+                    cantStartRoundLabel.setText("You need 5 towers selected to start the next round!");
+                    System.out.println(getNetWorth() + "<=" + roundGameManager.getCheapestTowersSum(roundGameManager.getGenericRoundTowerList()));
+                    if (getNetWorth() < roundGameManager.getCheapestTowersSum(roundGameManager.getGenericRoundTowerList())) {
+                        System.out.println("not enough step 3");
+                        roundGameManager.launchLosingScreen();
+                        System.out.println("YOU LOSE");
+                }
+
+                }
+            } else {
+                roundGameManager.incrementRound();
+                roundGameManager.closeBetweenRoundScreen();
+                roundGameManager.setTrackLengthIndex(trackNumChosen);
+                if (trackNumChosen==1) {
+                    roundGameManager.setRoundTrackLength(shortTrackLength); }
+                else if (trackNumChosen==2){
+                    roundGameManager.setRoundTrackLength(mediumTrackLength);}
+                else{roundGameManager.setRoundTrackLength(longTrackLength);}
             }
         }
     }
-    private boolean gameOverCheck() {
-        int netWorth = roundGameManager.getNetWorth();
-        return true; //TODO: temporary
+
+    private double getNetWorth() {
+        double netWorth = roundGameManager.getMoneyAmount();
+        netWorth += (roundGameManager.getAvailableHeals() * 50);
+        netWorth += (roundGameManager.getAvailableRevives() * 100);
+        netWorth += (roundGameManager.getAvailableUpgrades() * 150);
+        for (int i = 0; i < roundGameManager.getGenericRoundTowerList().size(); i++) {
+            if (roundGameManager.getGenericRoundTowerList().get(i).getOwned()) {
+                netWorth += roundGameManager.getGenericRoundTowerList().get(i).getBuyPrice();
+            }
+        }
+        return netWorth;
     }
     @FXML
     private void onShop() { // TODO wrap text

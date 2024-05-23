@@ -3,6 +3,9 @@ package seng201.team0.models;
 import seng201.team0.GameManager;
 import seng201.team0.services.InventoryService;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Random;
 public class Tower implements Purchasable {
     private int health;
@@ -106,6 +109,7 @@ public class Tower implements Purchasable {
     public String getTowerName(){
         return towerName;
     }
+
     public void useHeal(InventoryService inventoryService) { // TODO: health item currently heals 5 as stand in value so update later on
         if (health + 5 >= maxHealth) {
             health = maxHealth;
