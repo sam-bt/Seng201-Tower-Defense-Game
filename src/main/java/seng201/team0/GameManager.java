@@ -33,7 +33,7 @@ public class GameManager {
     private int availableHeals;
     private int availableRevives;
     private int availableUpgrades;
-    private Tower[] towersInSlots;
+    private Tower[] towersInSlots = new Tower[5];
     private ShopService shopService;
     private boolean firstTimeInInventory;
     private final Consumer<GameManager> setupScreenLauncher;
@@ -153,6 +153,7 @@ public class GameManager {
         this.roundOneSelectedTowerList = roundOneSelectedTowerList; }
     public Tower[] getRoundOneSelectedTowerList(){ return roundOneSelectedTowerList; }
     public boolean isRoundOneSelectedTowerListNull(){ return roundOneSelectedTowerList == null;}
+    public boolean isGenericRoundTowerListNull() { return genericRoundTowerList == null;}
     public List<Integer> getRoundOneTowerListIndices(){
         List<Integer> roundOneTowerIndices = new ArrayList<Integer>();
         if (this.roundOneSelectedTowerList != null) {
@@ -164,6 +165,18 @@ public class GameManager {
         }
         return roundOneTowerIndices;
     }
+    public List<Integer> getGenericRoundTowerListIndices(){
+        List<Integer> genericRoundTowerListIndices = new ArrayList<Integer>();
+        if (this.genericRoundTowerList != null){
+            for (int i = 0; i < this.genericRoundTowerList.size(); i++) {
+                if (genericRoundTowerList.get(i) != null) {
+                    genericRoundTowerListIndices.add(i);
+                }
+            }
+        }
+        return genericRoundTowerListIndices;
+    }
+
     public void setGenericRoundTowerList(List<Tower> genericRoundTowerList){
         this.genericRoundTowerList = genericRoundTowerList;
     }

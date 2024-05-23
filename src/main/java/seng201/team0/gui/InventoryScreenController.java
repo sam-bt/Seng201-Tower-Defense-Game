@@ -90,28 +90,46 @@ public class InventoryScreenController {
         revivesOwned.setText(": " + inventoryScreenGameManager.getAvailableRevives());
         upgradesOwned.setText(": " + inventoryScreenGameManager.getAvailableUpgrades());
 
-        towerListIndices = inventoryScreenGameManager.getRoundOneTowerListIndices();
-        if (!inventoryScreenGameManager.isRoundOneSelectedTowerListNull()) {
+        towerListIndices = inventoryScreenGameManager.getGenericRoundTowerListIndices();
+        if (!inventoryScreenGameManager.isGenericRoundTowerListNull()) {
             if (inventoryScreenGameManager.getRoundOneSelectedTowerList()!=null){
                 savedTowers = inventoryScreenGameManager.getRoundOneSelectedTowerList();
-                towerListIndices = inventoryScreenGameManager.getRoundOneTowerListIndices();
+                towerListIndices = inventoryScreenGameManager.getGenericRoundTowerListIndices();
             }
         }
         else {
             towerListIndices = emptyList();
         }
         List<Button> savedTowerButtons = inventoryScreenGameManager.getRoundOneSelectedTowerButtons();
-        // Sets non owned tower buttons to black and broken towers to red
-        for (int i = 0; i < availableTowerButtons.size(); i++) {
-            if (!towers.get(i).getOwned()) {
-                availableTowerButtons.get(i).setStyle("-fx-background-color: #000000; -fx-background-radius: 5;");
-            }
-            if (towers.get(i).getBroken()) {
-                availableItemButtons.get(i).setStyle("-fx-background-color: #ff0000; -fx-background-radius: 5;");
+        // Load towers from slots if any
+        towersInSlots = inventoryScreenGameManager.getTowersInSlots();
+        for (int i = 0; i < towersInSlots.length; i++) {
+            if (towersInSlots[i] != null) {
+                if (towersInSlots[i].getOwned()) {
+                    towerSlotButtons.get(i).setText(towersInSlots[i].getTowerName());
+                    selectedTowers[i] = towersInSlots[i];
+                } else {
+                    towerSlotButtons.get(i).setText("Slot " + i + 1);
+                    towersInSlots[i] = null;
+                }
+
             }
         }
 
-
+        // Sets non-owned tower buttons to black and broken towers to red
+        for (int i = 0; i < availableTowerButtons.size(); i++) {
+            Tower tower = inventoryScreenGameManager.getGenericRoundTowerList().get(i);
+            if (!tower.getOwned()) {
+                availableTowerButtons.get(i).setDisable(true);
+                availableTowerButtons.get(i).setStyle("-fx-background-color: #000000; -fx-background-radius: 5;");
+            } else {
+                availableTowerButtons.get(i).setDisable(false);
+                availableTowerButtons.get(i).setStyle("");
+            }
+            if (tower.getBroken()) {
+                availableItemButtons.get(i).setStyle("-fx-background-color: #ff0000; -fx-background-radius: 5;");
+            }
+        }
 
         // Sets the action to display the selected towers information when it is clicked on, and to show that it is selected
         for (int i = 0; i < availableTowerButtons.size(); i++) {
@@ -258,22 +276,21 @@ public class InventoryScreenController {
 //        healsOwned.setText(":" + );
 //    }
 
-    @FXML
-    private void onMenu() {
-        // Save the towers in slots to towersInSlots array before navigating to the menu
+    private void saveTowersInSlots() {
         for (int i = 0; i < selectedTowers.length; i++) {
             towersInSlots[i] = selectedTowers[i];
         }
         inventoryScreenGameManager.setTowersInSlots(towersInSlots);
+    }
+    @FXML
+    private void onMenu() {
+        saveTowersInSlots();
         inventoryScreenGameManager.launchBetweenRoundsScreen();
     }
 
     @FXML
     private void onShop() {
-        for (int i = 0; i < selectedTowers.length; i++) {
-            towersInSlots[i] = selectedTowers[i];
-        }
-        inventoryScreenGameManager.setTowersInSlots(towersInSlots);
+        saveTowersInSlots();
         inventoryScreenGameManager.openShopScreen();
     }
 }

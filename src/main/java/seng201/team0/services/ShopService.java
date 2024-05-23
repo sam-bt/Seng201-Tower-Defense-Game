@@ -89,11 +89,11 @@ public class ShopService {
     public int getItemSellValue(String item) {
         switch (item) {
             case "heal":
-                return 25;
-            case "revive":
                 return 50;
+            case "revive":
+                return 100;
             case "upgrade":
-                return 75;
+                return 150;
             default:
                 return 0;
         }

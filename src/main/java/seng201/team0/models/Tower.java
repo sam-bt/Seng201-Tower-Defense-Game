@@ -36,7 +36,7 @@ public class Tower implements Purchasable {
         rnd = new Random();
         double buyRandomInt = rnd.nextInt(1000)+100 * difficulty; // buy price scales with difficulty
         this.buyPrice = Math.round(buyRandomInt*100.0)/100.0;
-        this.sellPrice = Math.round((buyRandomInt/2)*100.0)/100.0;
+        this.sellPrice = Math.round((buyRandomInt)*100.0)/100.0;
     }
     public void setHealth(int amount) {
         if (health + amount > maxHealth) {
