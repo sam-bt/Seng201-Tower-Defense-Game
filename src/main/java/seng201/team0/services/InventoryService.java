@@ -21,7 +21,6 @@ public class InventoryService {
         double currDifficulty = inventoryServiceGameManager.getDifficulty();
 
 
-        System.out.println(inventoryServiceGameManager.getCurrRound());
         if (!inventoryServiceGameManager.isNotFirstTimeInInventory()) {
             inventoryServiceGameManager.setNotFirstTimeInInventory(true);
             availableHeals = 0;
@@ -55,13 +54,6 @@ public class InventoryService {
     }
     public List<Tower> getTowerList(){
         return List.of(HeavyCoal,LightCoal,HeavyIron,LightIron,HeavyGold,LightGold,HeavyGem,LightGem);
-    }
-    public void consumeHeal() {
-        availableHeals -= 1;
-    }
-    public void consumeRevive() { availableRevives -= 1; }
-    public void consumeUpgrade() {
-        availableUpgrades -= 1;
     }
 
     public void addHeal() {

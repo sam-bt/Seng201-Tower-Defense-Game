@@ -36,11 +36,11 @@ public class ShopService {
         int itemCost = getItemCost(item);
         if (gameManager.getMoneyAmount() >= itemCost) {
             gameManager.getMoneyService().editMoney(-itemCost);
-            if (item == "heal") {
+            if (item.equals("heal")) {
                 gameManager.incrementHeals();
-            } else if (item == "revive") {
+            } else if (item.equals("revive")) {
                 gameManager.incrementRevives();
-            } else if (item == "upgrade") {
+            } else if (item.equals("upgrade")) {
                 gameManager.incrementUpgrades();
             }
             System.out.println("Bought item: " + item);
@@ -51,23 +51,15 @@ public class ShopService {
 
     public void sellItem(String item) {
         int itemSellValue = getItemSellValue(item);
-        switch (item) {
-            case "heal":
-                if (gameManager.getAvailableHeals() > 0) {
-                    gameManager.decrementHeals();
-                    gameManager.getMoneyService().editMoney(itemSellValue);
-                }
-
-            case "revive":
-                if (gameManager.getAvailableRevives() > 0) {
-                    gameManager.decrementRevives();
-                    gameManager.getMoneyService().editMoney(itemSellValue);
-                }
-            case "upgrade":
-                if (gameManager.getAvailableUpgrades() > 0) {
-                    gameManager.decrementUpgrades();
-                    gameManager.getMoneyService().editMoney(itemSellValue);
-                }
+        if (item.equals("heal") && gameManager.getAvailableHeals() > 0) {
+            gameManager.decrementHeals();
+            gameManager.getMoneyService().editMoney(itemSellValue);
+        } else if (item.equals("revive") && gameManager.getAvailableRevives() > 0) {
+            gameManager.decrementRevives();
+            gameManager.getMoneyService().editMoney(itemSellValue);
+        } else if (item.equals("upgrade") && gameManager.getAvailableUpgrades() > 0) {
+            gameManager.decrementUpgrades();
+            gameManager.getMoneyService().editMoney(itemSellValue);
         }
         // Remove item from inventory (example)
         System.out.println("Sold item: " + item);

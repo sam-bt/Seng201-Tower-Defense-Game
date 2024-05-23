@@ -1,5 +1,6 @@
 package seng201.team0.models;
 
+import seng201.team0.GameManager;
 import seng201.team0.services.InventoryService;
 
 import java.util.Random;
@@ -47,7 +48,7 @@ public class Tower implements Purchasable {
         else { health += amount; }
     }
     public void breakTower() {
-        broken = true;
+        this.broken = true;
     }
     public void setOwned() {owned = true;}
     public void setNotOwned() {owned = false;}
@@ -60,7 +61,6 @@ public class Tower implements Purchasable {
     public void useUpgrade(InventoryService inventoryService){
         level += 1;
         maxHealth += 5;
-        inventoryService.consumeUpgrade();
     }
 
     public int getHealth() {
@@ -95,13 +95,12 @@ public class Tower implements Purchasable {
     public boolean getBroken(){
         return broken;
     }
-    public void setBroken() { broken = true; }
+    public void setBroken() { this.breakTower(); }
     public void useRevive(InventoryService inventoryService) {
         broken = false;
         if (health == 0) {
             health = 5;
         }
-        inventoryService.consumeRevive();
     }
     public String getTowerName(){
         return towerName;
@@ -112,7 +111,6 @@ public class Tower implements Purchasable {
         } else {
             health += 5;
         }
-        inventoryService.consumeHeal();
     }
     public void use(){
         actionsUntilUsable = reloadSpeed;

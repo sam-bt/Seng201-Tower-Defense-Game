@@ -193,6 +193,13 @@ public class GameManager {
     public int getAvailableUpgrades() {
         return availableUpgrades;
     }
+    public void consumeHeal() {
+        availableHeals -= 1;
+    }
+    public void consumeRevive() { availableRevives -= 1; }
+    public void consumeUpgrade() {
+        availableUpgrades -= 1;
+    }
 
     public void setTrackLengthIndex(int index){
         this.trackLengthIndex = index;

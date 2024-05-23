@@ -85,6 +85,8 @@ public class InventoryScreenController {
         List<Button> availableItemButtons = List.of(useHealButton, useReviveButton, useUpgradeButton);
         currentInventory = new InventoryService(inventoryScreenGameManager);
         List<Tower> towers = currentInventory.getTowerList();
+        List<Tower> genericTowers = inventoryScreenGameManager.getGenericRoundTowerList();
+
 
         healsOwned.setText(": " + inventoryScreenGameManager.getAvailableHeals());
         revivesOwned.setText(": " + inventoryScreenGameManager.getAvailableRevives());
@@ -107,9 +109,12 @@ public class InventoryScreenController {
             if (towersInSlots[i] != null) {
                 if (towersInSlots[i].getOwned()) {
                     towerSlotButtons.get(i).setText(towersInSlots[i].getTowerName());
+                    if (towersInSlots[i].getBroken()) {
+                        towerSlotButtons.get(i).setStyle("-fx-background-color: #ff0000; -fx-background-radius: 5;");
+                    }
                     selectedTowers[i] = towersInSlots[i];
                 } else {
-                    towerSlotButtons.get(i).setText("Slot " + i + 1);
+                    towerSlotButtons.get(i).setText("Slot " + (i + 1));
                     towersInSlots[i] = null;
                 }
 
@@ -127,7 +132,8 @@ public class InventoryScreenController {
                 availableTowerButtons.get(i).setStyle("");
             }
             if (tower.getBroken()) {
-                availableItemButtons.get(i).setStyle("-fx-background-color: #ff0000; -fx-background-radius: 5;");
+                System.out.println(tower.getTowerName() + " is broken");
+                availableTowerButtons.get(i).setStyle("-fx-background-color: #ff0000; -fx-background-radius: 5;");
             }
         }
 
@@ -146,11 +152,19 @@ public class InventoryScreenController {
                         int buttonIndex = availableTowerButtons.indexOf(button);
                         if (button == availableTowerButtons.get(finalI)) {
                             if (towers.get(buttonIndex).getOwned()) {
-                                button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
+                                if (towers.get(buttonIndex).getBroken()) {
+                                    button.setStyle("-fx-background-color: #ff0000; -fx-background-radius: 5;");
+                                } else {
+                                    button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
+                                }
                             }
                         } else {
                             if (towers.get(buttonIndex).getOwned()) {
-                                button.setStyle("");
+                                if (towers.get(buttonIndex).getBroken()) {
+                                    button.setStyle("-fx-background-color: #ff0000; -fx-background-radius: 5;");
+                                } else {
+                                    button.setStyle("");
+                                }
                             }
                         }
                     });
@@ -166,6 +180,11 @@ public class InventoryScreenController {
                         towerSlotButtons.get(finalI).setText(towers.get(selectedTowerIndex).getTowerName());
                         selectedTowers[finalI] = towers.get(selectedTowerIndex);
                         towersInSlots[finalI] = towers.get(selectedTowerIndex);  // Save the tower to towersInSlots array
+                        if (towers.get(selectedTowerIndex).getBroken()) {
+                            towerSlotButtons.get(finalI).setStyle("-fx-background-color: #ff0000; -fx-background-radius: 5;");
+                        } else {
+                            towerSlotButtons.get(finalI).setStyle("");
+                        }
                         resetTowerSelection();
                     }
                 } else if (selectedItem != null && selectedTowers[finalI] != null) {
@@ -218,21 +237,24 @@ public class InventoryScreenController {
     private void applySelectedItem(Tower tower) {
         switch (selectedItem) {
             case "heal":
-                if (currentInventory.getAvailableHeals() > 0) {
+                if (inventoryScreenGameManager.getAvailableHeals() > 0) {
                     tower.useHeal(currentInventory);
-                    healsOwned.setText("Owned:" + currentInventory.getAvailableHeals());
+                    inventoryScreenGameManager.consumeHeal();
+                    healsOwned.setText(":" + inventoryScreenGameManager.getAvailableHeals());
                 }
                 break;
             case "revive":
-                if (currentInventory.getAvailableRevives() > 0) {
+                if (inventoryScreenGameManager.getAvailableRevives() > 0) {
                     tower.useRevive(currentInventory);
-                    revivesOwned.setText("Owned:" + currentInventory.getAvailableRevives());
+                    inventoryScreenGameManager.consumeRevive();
+                    revivesOwned.setText(":" + inventoryScreenGameManager.getAvailableRevives());
                 }
                 break;
             case "upgrade":
-                if (currentInventory.getAvailableUpgrades() > 0) {
+                if (inventoryScreenGameManager.getAvailableUpgrades() > 0) {
                     tower.useUpgrade(currentInventory);
-                    upgradesOwned.setText("Owned:" + currentInventory.getAvailableUpgrades());
+                    inventoryScreenGameManager.consumeUpgrade();
+                    upgradesOwned.setText(":" + inventoryScreenGameManager.getAvailableUpgrades());
                 }
                 break;
         }
@@ -246,11 +268,16 @@ public class InventoryScreenController {
     }
 
     private void resetTowerButtonStyles() {
+        System.out.println("yo");
         List<Button> availableTowerButtons = List.of(coalType1Button, coalType2Button, ironType1Button, ironType2Button, goldType1Button, goldType2Button, gemType1Button, gemType2Button);
         List<Tower> towers = currentInventory.getTowerList();
         for (int i = 0; i < availableTowerButtons.size(); i++) {
             if (towers.get(i).getOwned()) {
-                availableTowerButtons.get(i).setStyle("");
+                if (towers.get(i).getBroken()) {
+                    availableTowerButtons.get(i).setStyle("-fx-background-color: #ff0000; -fx-background-radius: 5;");
+                } else {
+                    availableTowerButtons.get(i).setStyle("");
+                }
             }
         }
     }
@@ -271,10 +298,28 @@ public class InventoryScreenController {
         currTowerReload.setText("Reload Speed:" + tower.getReloadSpeed());
         currTowerType.setText("Name:" + tower.getTowerName());
         currTowerFillAmount.setText("Fill Amount:" + tower.getFillAmount());
+        // Update the tower slot button color based on the broken status
+        for (int i = 0; i < selectedTowers.length; i++) {
+            if (selectedTowers[i] != null && selectedTowers[i].equals(tower)) {
+                if (tower.getBroken()) {
+                    getTowerSlotButton(i).setStyle("-fx-background-color: #ff0000; -fx-background-radius: 5;");
+                } else {
+                    getTowerSlotButton(i).setStyle("");
+                }
+            }
+        }
     }
-//    public void updateLabels() {
-//        healsOwned.setText(":" + );
-//    }
+
+    private Button getTowerSlotButton(int index) {
+        return switch (index) {
+            case 0 -> inventorySlot1Button;
+            case 1 -> inventorySlot2Button;
+            case 2 -> inventorySlot3Button;
+            case 3 -> inventorySlot4Button;
+            case 4 -> inventorySlot5Button;
+            default -> null;
+        };
+    }
 
     private void saveTowersInSlots() {
         for (int i = 0; i < selectedTowers.length; i++) {
@@ -282,6 +327,7 @@ public class InventoryScreenController {
         }
         inventoryScreenGameManager.setTowersInSlots(towersInSlots);
     }
+
     @FXML
     private void onMenu() {
         saveTowersInSlots();
