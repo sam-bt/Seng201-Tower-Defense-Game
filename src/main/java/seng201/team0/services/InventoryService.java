@@ -22,7 +22,8 @@ public class InventoryService {
 
 
         System.out.println(inventoryServiceGameManager.getCurrRound());
-        if (inventoryServiceGameManager.getCurrRound() == 2) {
+        if (!inventoryServiceGameManager.isNotFirstTimeInInventory()) {
+            inventoryServiceGameManager.setNotFirstTimeInInventory(true);
             availableHeals = 0;
             availableRevives = 0;
             availableUpgrades = 0;

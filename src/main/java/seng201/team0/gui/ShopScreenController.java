@@ -227,6 +227,11 @@ public class ShopScreenController {
         if (selectedTowerIndex >= 0) {
             Tower tower = shopScreenGameManager.getGenericRoundTowerList().get(selectedTowerIndex);
             shopScreenGameManager.buyTower(tower);
+            System.out.println("ShopSCreenController onBuy:");
+            for (int i = 0; i < shopScreenGameManager.getGenericRoundTowerList().size(); i++) {
+                System.out.println(shopScreenGameManager.getGenericRoundTowerList().get(i).getTowerName() + ": " + shopScreenGameManager.getGenericRoundTowerList().get(i).getOwned());
+            }
+
         } else if (selectedItem != null) {
             shopScreenGameManager.buyItem(selectedItem);
         }

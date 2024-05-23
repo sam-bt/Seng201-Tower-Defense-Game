@@ -11,12 +11,15 @@ public class ShopService {
     }
 
     public void buyTower(Tower tower) {
+        System.out.println(gameManager.getMoneyAmount());
+        System.out.println(tower.getBuyPrice());
+        System.out.println(tower.getOwned());
         if (gameManager.getMoneyAmount() >= tower.getBuyPrice() && !tower.getOwned()) {
             gameManager.getMoneyService().editMoney(-tower.getBuyPrice());
             tower.setOwned();
             System.out.println("Bought tower: " + tower.getTowerName());
         } else {
-            System.out.println("Not enough currency to buy the tower.");
+            System.out.println("Not enough currency to buy the tower, or tower already owned");
         }
     }
 
