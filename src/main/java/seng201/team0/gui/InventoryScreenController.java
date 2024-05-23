@@ -86,33 +86,21 @@ public class InventoryScreenController {
         currentInventory = new InventoryService(inventoryScreenGameManager);
         List<Tower> towers = currentInventory.getTowerList();
 
+        healsOwned.setText(": " + inventoryScreenGameManager.getAvailableHeals());
+        revivesOwned.setText(": " + inventoryScreenGameManager.getAvailableRevives());
+        upgradesOwned.setText(": " + inventoryScreenGameManager.getAvailableUpgrades());
 
-        if (!inventoryScreenGameManager.isNotFirstTimeInInventory()) {
-            inventoryScreenGameManager.setNotFirstTimeInInventory(true);
-            towerListIndices = inventoryScreenGameManager.getRoundOneTowerListIndices();
-            if (!inventoryScreenGameManager.isRoundOneSelectedTowerListNull()) {
-                if (inventoryScreenGameManager.getRoundOneSelectedTowerList()!=null){
-                    savedTowers = inventoryScreenGameManager.getRoundOneSelectedTowerList();
-                    towerListIndices = inventoryScreenGameManager.getRoundOneTowerListIndices();
-                }
-            }
-        } else {
-            towerListIndices = inventoryScreenGameManager.getRoundOneTowerListIndices();
-            if (!inventoryScreenGameManager.isRoundOneSelectedTowerListNull()) {
-                if (inventoryScreenGameManager.getRoundOneSelectedTowerList()!=null){
-                    savedTowers = inventoryScreenGameManager.getRoundOneSelectedTowerList();
-                    towerListIndices = inventoryScreenGameManager.getRoundOneTowerListIndices();
-                }
-            }
-
-        }
-
-        if (!towerListIndices.isEmpty()) {
-            for (int selectedTowerIndex: towerListIndices) {
-                towerSlotButtons.get(selectedTowerIndex).setText(savedTowers[selectedTowerIndex].getTowerName());
-                selectedTowers[selectedTowerIndex] = savedTowers[selectedTowerIndex];
+        towerListIndices = inventoryScreenGameManager.getRoundOneTowerListIndices();
+        if (!inventoryScreenGameManager.isRoundOneSelectedTowerListNull()) {
+            if (inventoryScreenGameManager.getRoundOneSelectedTowerList()!=null){
+                savedTowers = inventoryScreenGameManager.getRoundOneSelectedTowerList();
+                towerListIndices = inventoryScreenGameManager.getRoundOneTowerListIndices();
             }
         }
+        else {
+            towerListIndices = emptyList();
+        }
+        List<Button> savedTowerButtons = inventoryScreenGameManager.getRoundOneSelectedTowerButtons();
         // Sets non owned tower buttons to black and broken towers to red
         for (int i = 0; i < availableTowerButtons.size(); i++) {
             if (!towers.get(i).getOwned()) {
@@ -123,9 +111,7 @@ public class InventoryScreenController {
             }
         }
 
-        healsOwned.setText("Owned:" + currentInventory.getAvailableHeals());
-        revivesOwned.setText("Owned:" + currentInventory.getAvailableRevives());
-        upgradesOwned.setText("Owned:" + currentInventory.getAvailableUpgrades());
+
 
         // Sets the action to display the selected towers information when it is clicked on, and to show that it is selected
         for (int i = 0; i < availableTowerButtons.size(); i++) {
@@ -268,6 +254,9 @@ public class InventoryScreenController {
         currTowerType.setText("Name:" + tower.getTowerName());
         currTowerFillAmount.setText("Fill Amount:" + tower.getFillAmount());
     }
+//    public void updateLabels() {
+//        healsOwned.setText(":" + );
+//    }
 
     @FXML
     private void onMenu() {

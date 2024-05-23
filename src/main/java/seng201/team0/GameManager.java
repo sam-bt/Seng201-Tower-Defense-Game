@@ -5,6 +5,7 @@ import seng201.team0.models.Tower;
 import seng201.team0.services.DifficultyService;
 import seng201.team0.services.MoneyService;
 import seng201.team0.services.RoundService;
+import seng201.team0.services.ShopService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ public class GameManager {
     private int availableRevives;
     private int availableUpgrades;
     private Tower[] towersInSlots;
+    private ShopService shopService;
     private boolean firstTimeInInventory;
     private final Consumer<GameManager> setupScreenLauncher;
     private final Consumer<GameManager> betweenScreenLauncher;
@@ -55,6 +57,7 @@ public class GameManager {
         this.roundOneInventoryScreenLauncher = roundOneInventoryScreenLauncher; //TODO add call for inventory button
         this.roundOneGameScreenLauncher = roundOneGameScreenLauncher;
         this.losingScreenLauncher = losingScreenLauncher;
+        this.shopService = new ShopService(this);
         launchSetupScreen();
     }
     public void setSetup(Setup setup){
@@ -62,6 +65,21 @@ public class GameManager {
         setRounds(setup.getNumRounds());
         this.money.editMoney(100*difficulty.getDifficulty());
         setRoundTrackLength(100);
+    }
+    public void buyTower(Tower tower) {
+        shopService.buyTower(tower);
+    }
+
+    public void sellTower(Tower tower) {
+        shopService.sellTower(tower);
+    }
+
+    public void buyItem(String item) {
+        shopService.buyItem(item);
+    }
+
+    public void sellItem(String item) {
+        shopService.sellItem(item);
     }
     public void setCurrRound()  {currRound = 1; }
     public void setRoundTrackLength(int trackLength) { roundTrackLength = trackLength; }
@@ -78,6 +96,28 @@ public class GameManager {
     public void launchRoundOneGameScreen() { roundOneGameScreenLauncher.accept(this); }
     public void launchLosingScreen() { losingScreenLauncher.accept(this); }
     public void launchErrorScreen() { errorScreenLauncher.accept(this); }
+    public void incrementHeals() {
+//        System.out.println("gaang");
+        availableHeals += 1;
+    }
+
+    public void incrementRevives() {
+        availableRevives += 1;
+    }
+    public void incrementUpgrades() {
+        availableUpgrades += 1;
+    }
+
+    public void decrementHeals() {
+        availableHeals -= 1;
+    }
+
+    public void decrementRevives() {
+        availableRevives -= 1;
+    }
+    public void decrementUpgrades() {
+        availableUpgrades -= 1;
+    }
     public String getName() { return name; }
     public void setName(String name) {
         this.name = name;

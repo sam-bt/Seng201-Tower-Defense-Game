@@ -10,6 +10,7 @@ public class MoneyService {
      */
     public MoneyService() {
         money = new Money();
+        money.setMoney(10000);
     }
 
     /**

@@ -8,7 +8,7 @@ public class RandomEvent { // return a message and action based on generated eve
         int badEventLikelihood = (int) Math.round(difficulty);
         randomGenerator = new RandomEventGenerator(badEventLikelihood);
     }
-    public void generateEvent(){
-        randomGenerator.generateEvent();
-    }
+//    public void generateEvent(){
+//        randomGenerator.generateEvent();
+//    }
 }
