@@ -33,6 +33,7 @@ public class GameManager {
     private int availableHeals;
     private int availableRevives;
     private int availableUpgrades;
+    private int netWorth;
     private Tower[] towersInSlots = new Tower[5];
     private ShopService shopService;
     private boolean firstTimeInInventory;
@@ -84,6 +85,12 @@ public class GameManager {
     public void setCurrRound()  {currRound = 1; }
     public void setRoundTrackLength(int trackLength) { roundTrackLength = trackLength; }
     public int getRoundTrackLength() { return roundTrackLength; }
+    public int getNetWorth() {
+        return netWorth;
+    }
+    public void setNetWorth(int value) {
+        netWorth = value;
+    }
     public void incrementRound() { currRound += 1; } // TODO check for round == to max rounds, if so then terminate
     public int getCurrRound() { return currRound; }
     public void launchSetupScreen() { setupScreenLauncher.accept(this); }
