@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.RoundOneInventoryScreenController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.RoundOneInventoryScreenController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="1377.0" minWidth="10.0" prefWidth="1253.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="875.0" minWidth="10.0" prefWidth="667.0" />
@@ -130,7 +130,7 @@
             <Font size="30.0" />
          </font>
          <GridPane.margin>
-            <Insets left="50.0" top="50.0" />
+            <Insets left="50.0" top="55.0" />
          </GridPane.margin>
       </Label>
       <Label fx:id="towerHealthLabel" text="Health:" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -146,7 +146,7 @@
             <Font size="30.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="50.0" left="50.0" />
+            <Insets bottom="60.0" left="50.0" />
          </GridPane.margin>
       </Label>
       <Label fx:id="towerTypeLabel" text="Resource Fill Type:" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -154,7 +154,7 @@
             <Font size="30.0" />
          </font>
          <GridPane.margin>
-            <Insets left="50.0" top="100.0" />
+            <Insets left="50.0" top="95.0" />
          </GridPane.margin>
       </Label>
       <Label fx:id="selectAllTowersLabel" alignment="TOP_LEFT" prefHeight="108.0" prefWidth="385.0" text="Please select 1 Tower for each ore type AND ensure all 3 tower slots are full, otherwise you won't be able to fill up all of the carts in the coming round!!" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
@@ -164,6 +164,14 @@
          <font>
             <Font size="20.0" />
          </font>
+      </Label>
+      <Label fx:id="towerFillAmountLabel" text="Fill Amount: " GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="20.0" left="50.0" />
+         </GridPane.margin>
       </Label>
    </children>
 </GridPane>

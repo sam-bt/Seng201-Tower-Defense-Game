@@ -216,6 +216,7 @@ public class RoundOneGameScreenController {
         }
         else {
             updateCartDistances();
+            updateSelectedTowerStats(towerList[selectedTowerIndex]);
             actionsLeftLabel.setText("Actions Left This Frame: " + roundOne.getActionsLeft());
         }
         }

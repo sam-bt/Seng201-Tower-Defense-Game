@@ -118,6 +118,10 @@ public class Tower implements Purchasable {
         actionsUntilUsable = reloadSpeed;
         this.breakChance += rnd.nextInt(4);
         this.health -= rnd.nextInt(10);
+        if (this.health <= 0) {
+             this.health  = 0;
+             this.broken = true;
+        }
         this.isUsable = false;
     }
     public int getActionsUntilUsable(){
@@ -132,7 +136,6 @@ public class Tower implements Purchasable {
             this.actionsUntilUsable -= 1; }
     };
     public boolean isUsable(){
-
         return isUsable;
     }
 }

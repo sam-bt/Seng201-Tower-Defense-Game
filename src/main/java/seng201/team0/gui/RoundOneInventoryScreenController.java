@@ -29,6 +29,7 @@ public class RoundOneInventoryScreenController {
     @FXML Label towerHealthLabel;
     @FXML Label towerTypeLabel;
     @FXML Label towerReloadLabel;
+    @FXML Label towerFillAmountLabel;
     @FXML Label selectAllTowersLabel;
     private final Tower[] selectedTowers = new Tower[3];
     private int selectedTowerIndex = -1;
@@ -99,6 +100,7 @@ public class RoundOneInventoryScreenController {
         towerHealthLabel.setText("Health: "+tower.getHealth());
         towerTypeLabel.setText("Resource Fill Type: "+tower.getFillType());
         towerReloadLabel.setText("Reload Speed: "+tower.getReloadSpeed());
+        towerFillAmountLabel.setText("Reload Speed: "+tower.getFillAmount());
 
     }
     @FXML

@@ -177,7 +177,7 @@ public class GameScreenController {
         else {
             fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
             fillCartWithTowerLabel.setText("Tower reloading!");
-            reloadSpeedLabel.setText("Next usable in: "+tower.getActionsUntilUsable());
+            reloadSpeedLabel.setText("Usable in: "+tower.getActionsUntilUsable()+" Actions");
         }
     }
     public void fillCarts(Tower selectedTower){
@@ -212,7 +212,7 @@ public class GameScreenController {
                 round.useBonusAction(selectedTower,cartList,towerList);
                 fillBonusCart();
                 fillCarts(selectedTower);
-                updateSelectedTowerStats(selectedTower);
+                updateSelectedTowerStats(towerList[selectedTowerIndex]);
                 actionsLeftLabel.setText("Actions Left: "+round.getActionsLeft());
             }
             else {
@@ -220,7 +220,7 @@ public class GameScreenController {
                 if (round.isCartFillable(cartList, selectedTower)) {
                     round.useAction(selectedTower,cartList,towerList);
                     fillCarts(selectedTower);
-                    updateSelectedTowerStats(selectedTower);
+                    updateSelectedTowerStats(towerList[selectedTowerIndex]);
                     actionsLeftLabel.setText("Actions Left: "+round.getActionsLeft());
                     if (CartService.areAllCartsFull(cartList)) {
                         this.bonusUnlocked = true;
@@ -238,10 +238,12 @@ public class GameScreenController {
                 fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
                 fillCartWithTowerLabel.setText("Tower reloading!");}
             }
+            updateSelectedTowerStats(selectedTower);
         }
         else {
             fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
             fillCartWithTowerLabel.setText("Please select a Tower!");}
+
     }
     @FXML private void onConfirmNext(){
         if (lost) {
@@ -251,7 +253,7 @@ public class GameScreenController {
         round.nextFrame(cartList, towerList);
         if (round.roundEnded(cartList)) { //TODO check on action instead of frame
             if (round.roundWon(cartList)){
-                cartButtons.get(4).setStyle("-fx-background-color: red; -fx-background-radius: 5;");
+                cartButtons.get(4).setStyle("-fx-background-color: red; -fx-background-radius: 5;"); //TODO put into separate function
                 System.out.println("round WONNNN");
                 confirmActionButton.setDisable(true);
                 for (Button towerButton: towerButtons){
@@ -259,7 +261,12 @@ public class GameScreenController {
                 }
                 fillCartWithTowerLabel.setStyle("-fx-text-fill: green");
                 fillCartWithTowerLabel.setText("Round Won !!");
+                if (roundGameManager.getCurrRound() == roundGameManager.getRounds()) {
+                    nextFrameButton.setText("View Summary");
+                }
+                else {
                 nextFrameButton.setText("To next round!");
+                }
                 nextFrameButton.setOnAction(event -> {onConfirm();});
             }
             else {
@@ -276,6 +283,8 @@ public class GameScreenController {
             }
         }
         else {
+            System.out.println(selectedTowerIndex);
+            updateSelectedTowerStats(towerList[selectedTowerIndex]);
             updateCartDistances();
             actionsLeftLabel.setText("Actions Left This Frame: " + round.getActionsLeft());
         }
