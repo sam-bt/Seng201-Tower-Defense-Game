@@ -59,6 +59,7 @@ public class Round {
     public int getActionsLeft(){
         return this.actionsLeft;
     }
+    public void resetActions() {this.actionsLeft = 0; }
 
     public int getNumActions(){
         return this.numActions;

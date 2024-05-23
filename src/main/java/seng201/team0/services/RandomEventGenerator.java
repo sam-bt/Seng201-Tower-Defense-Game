@@ -14,10 +14,10 @@ public class RandomEventGenerator {
         return rnd.nextInt(10)+badEventLikelihood;
     }
     public int generateRoundOneIndex(){
-        return rnd.nextInt(2);
+        return rnd.nextInt(3);
     }
     public int generateRoundIndex(){
-        return rnd.nextInt(4);
+        return rnd.nextInt(5);
     }
 
 }

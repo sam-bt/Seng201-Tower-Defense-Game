@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.GameScreenController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.GameScreenController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="1040.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
@@ -380,5 +380,13 @@
             <Insets bottom="10.0" left="835.0" />
          </GridPane.margin>
       </ProgressBar>
+      <Label fx:id="bonusTowerLabel" alignment="CENTER" prefHeight="85.0" prefWidth="795.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="25.0" top="55.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Label>
    </children>
 </GridPane>
