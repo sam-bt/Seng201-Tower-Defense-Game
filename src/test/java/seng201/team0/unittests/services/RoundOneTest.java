@@ -41,9 +41,9 @@ public class RoundOneTest {
     @Test
     void useActionTest(){
         Tower[] towerList = new Tower[3];
-        towerList[0] = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
-        towerList[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron",1.5,450);
-        towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
+        towerList[0] = new Tower(100,true,"Coal",25,3,"Light Coal", 300);
+        towerList[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron", 450);
+        towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold", 800);
         Tower selectedTower = towerList[0];
         roundOne.useAction(selectedTower,cartList,towerList);
         assertEquals(roundOne.getActionsLeft(), 1);
@@ -57,9 +57,9 @@ public class RoundOneTest {
     @Test
     void nextFrameTest(){
         Tower[] towerList = new Tower[3];
-        towerList[0] = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
-        towerList[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron",1.5,450);
-        towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
+        towerList[0] = new Tower(100,true,"Coal",25,3,"Light Coal", 300);
+        towerList[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron", 450);
+        towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold", 800);
         Tower selectedTower = towerList[0];
         roundOne.useAction(selectedTower,cartList,towerList);
         assertEquals(roundOne.getActionsLeft(), 1);
@@ -102,7 +102,7 @@ public class RoundOneTest {
      */
     @Test
     void isCartFillableTrueTest(){
-        Tower selectedTower = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
+        Tower selectedTower = new Tower(100,true,"Coal",25,3,"Light Coal", 300);
         cartList.get(1).fillCart();
         cartList.get(2).fillCart();
         assertEquals(roundOne.isCartFillable(cartList,selectedTower), true);
@@ -112,7 +112,7 @@ public class RoundOneTest {
      */
     @Test
     void isCartFillableFullFalseTest(){
-        Tower selectedTower = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
+        Tower selectedTower = new Tower(100,true,"Coal",25,3,"Light Coal", 300);
         cartList.get(0).fillCart();
         cartList.get(1).fillCart();
         cartList.get(2).fillCart();
@@ -123,7 +123,7 @@ public class RoundOneTest {
      */
     @Test
     void isCartFillableEmptyFalseTest(){
-        Tower selectedTower = new Tower(100,true,"Gem",25,3,"Light Gem",1.2,300);
+        Tower selectedTower = new Tower(100,true,"Gem",25,3,"Light Gem", 300);
         assertEquals(roundOne.isCartFillable(cartList,selectedTower), false);
     }
     /**

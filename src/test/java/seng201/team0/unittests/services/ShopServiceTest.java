@@ -5,9 +5,6 @@ import seng201.team0.GameManager;
 import seng201.team0.models.Tower;
 import seng201.team0.services.MoneyService;
 import seng201.team0.services.ShopService;
-import seng201.team0.services.TowerGenerator;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -70,7 +67,7 @@ public class ShopServiceTest {
     @Test void buyTowerNotOwnedTest(){
         GameManager gameManager = new GameManager();
         ShopService shopService = new ShopService(gameManager);
-        Tower tower = new Tower(100,false,"Coal",50,3,"Heavy Coal",1.5,500);
+        Tower tower = new Tower(100,false,"Coal",50,3,"Heavy Coal", 500);
         MoneyService moneyService = new MoneyService();
         moneyService.editMoney(1000.0);
         gameManager.setMoney(moneyService);
@@ -84,7 +81,7 @@ public class ShopServiceTest {
     @Test void buyTowerOwnedTest(){
         GameManager gameManager = new GameManager();
         ShopService shopService = new ShopService(gameManager);
-        Tower tower = new Tower(100,true,"Coal",50,3,"Heavy Coal",1.5,500);
+        Tower tower = new Tower(100,true,"Coal",50,3,"Heavy Coal", 500);
         MoneyService moneyService = new MoneyService();
         moneyService.editMoney(1000.0);
         gameManager.setMoney(moneyService);
@@ -98,7 +95,7 @@ public class ShopServiceTest {
     @Test void sellTowerNotOwnedTest(){
         GameManager gameManager = new GameManager();
         ShopService shopService = new ShopService(gameManager);
-        Tower tower = new Tower(100,false,"Coal",50,3,"Heavy Coal",1.5,500);
+        Tower tower = new Tower(100,false,"Coal",50,3,"Heavy Coal", 500);
         MoneyService moneyService = new MoneyService();
         moneyService.editMoney(1000.0);
         gameManager.setMoney(moneyService);
@@ -112,7 +109,7 @@ public class ShopServiceTest {
     @Test void sellTowerOwnedTest(){
         GameManager gameManager = new GameManager();
         ShopService shopService = new ShopService(gameManager);
-        Tower tower = new Tower(100,true,"Coal",50,3,"Heavy Coal",1.5,500);
+        Tower tower = new Tower(100,true,"Coal",50,3,"Heavy Coal", 500);
         MoneyService moneyService = new MoneyService();
         moneyService.editMoney(1000.0);
         gameManager.setMoney(moneyService);

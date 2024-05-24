@@ -1,5 +1,4 @@
 package seng201.team0.unittests.services;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import seng201.team0.models.Tower;
 import seng201.team0.services.TowerService;
@@ -19,9 +18,9 @@ public class TowerServiceTest {
     @Test
     void areAllTowersSelectedAllTrueTest(){
         Tower[] selectedTowers = new Tower[3];
-        selectedTowers[0] = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
-        selectedTowers[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron",1.5,450);
-        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
+        selectedTowers[0] = new Tower(100,true,"Coal",25,3,"Light Coal", 300);
+        selectedTowers[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron", 450);
+        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Gold", 800);
         assertTrue(TowerService.areAllTowersSelected(selectedTowers));
     }
     /**
@@ -38,8 +37,8 @@ public class TowerServiceTest {
     @Test
     void areAllTowersSelectedSomeFalseTest(){
         Tower[] selectedTowers = new Tower[3];
-        selectedTowers[0] = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
-        selectedTowers[2] = new Tower(500,false,"Gold",25,1,"Light Gold",3.8,800);
+        selectedTowers[0] = new Tower(100,true,"Coal",25,3,"Light Coal", 300);
+        selectedTowers[2] = new Tower(500,false,"Gold",25,1,"Light Gold", 800);
         assertFalse(TowerService.areAllTowersSelected(selectedTowers));
     }
     /**
@@ -47,11 +46,11 @@ public class TowerServiceTest {
      */
     @Test
     void isTowerAlreadySelectedOneTrueTest(){
-        Tower queryTower = new Tower(10,false,"Coal",25,3,"Light Coal",1.2,900);
+        Tower queryTower = new Tower(10,false,"Coal",25,3,"Light Coal", 900);
         Tower[] selectedTowers = new Tower[3];
-        selectedTowers[0] = new Tower(100,true,"Coal",25,2,"Light Coal",1.2,300);
-        selectedTowers[1] = new Tower(250,true,"Iron",25,3,"Heavy Iron",1.5,450);
-        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
+        selectedTowers[0] = new Tower(100,true,"Coal",25,2,"Light Coal", 300);
+        selectedTowers[1] = new Tower(250,true,"Iron",25,3,"Heavy Iron", 450);
+        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Gold", 800);
         assertTrue(TowerService.isTowerAlreadySelected(selectedTowers, queryTower));
     }
     /**
@@ -59,11 +58,11 @@ public class TowerServiceTest {
      */
     @Test
     void isTowerAlreadySelectedAllTrueTest(){
-        Tower queryTower = new Tower(10,false,"Coal",25,3,"Light Coal",1.2,900);
+        Tower queryTower = new Tower(10,false,"Coal",25,3,"Light Coal", 900);
         Tower[] selectedTowers = new Tower[3];
-        selectedTowers[0] = new Tower(100,true,"Coal",25,2,"Light Coal",1.2,300);
-        selectedTowers[1] = new Tower(250,true,"Iron",25,3,"Light Coal",1.5,450);
-        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Coal",3.8,800);
+        selectedTowers[0] = new Tower(100,true,"Coal",25,2,"Light Coal", 300);
+        selectedTowers[1] = new Tower(250,true,"Iron",25,3,"Light Coal", 450);
+        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Coal", 800);
         assertTrue(TowerService.isTowerAlreadySelected(selectedTowers, queryTower));
     }
     /**
@@ -71,10 +70,10 @@ public class TowerServiceTest {
      */
     @Test
     void isTowerAlreadySelectedAllTrueNullTest(){
-        Tower queryTower = new Tower(10,false,"Coal",25,3,"Light Coal",1.2,900);
+        Tower queryTower = new Tower(10,false,"Coal",25,3,"Light Coal", 900);
         Tower[] selectedTowers = new Tower[3];
-        selectedTowers[0] = new Tower(100,true,"Coal",25,2,"Light Coal",1.2,300);
-        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Coal",3.8,800);
+        selectedTowers[0] = new Tower(100,true,"Coal",25,2,"Light Coal", 300);
+        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Coal", 800);
         assertTrue(TowerService.isTowerAlreadySelected(selectedTowers, queryTower));
     }
     /**
@@ -82,11 +81,11 @@ public class TowerServiceTest {
      */
     @Test
     void isTowerAlreadySelectedFalseTest(){
-        Tower queryTower = new Tower(99,true,"Coal",25,5,"Heavy Coal",1.2,760);
+        Tower queryTower = new Tower(99,true,"Coal",25,5,"Heavy Coal", 760);
         Tower[] selectedTowers = new Tower[3];
-        selectedTowers[0] = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
-        selectedTowers[1] = new Tower(250,true,"Iron",25,1,"Heavy Iron",1.5,450);
-        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
+        selectedTowers[0] = new Tower(100,true,"Coal",25,3,"Light Coal", 300);
+        selectedTowers[1] = new Tower(250,true,"Iron",25,1,"Heavy Iron", 450);
+        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Gold", 800);
         assertFalse(TowerService.isTowerAlreadySelected(selectedTowers, queryTower));
     }
     /**
@@ -94,9 +93,9 @@ public class TowerServiceTest {
      */
     @Test
     void isTowerAlreadySelectedFalseNullTest(){
-        Tower queryTower = new Tower(99,true,"Coal",25,5,"Heavy Coal",1.2,760);
+        Tower queryTower = new Tower(99,true,"Coal",25,5,"Heavy Coal", 760);
         Tower[] selectedTowers = new Tower[3];
-        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
+        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Gold", 800);
         assertFalse(TowerService.isTowerAlreadySelected(selectedTowers, queryTower));
     }
     /**
@@ -105,9 +104,9 @@ public class TowerServiceTest {
     @Test
     void areAllRoundOneTowersTypesSelectedTrueTest(){
         Tower[] selectedTowers = new Tower[3];
-        selectedTowers[0] = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
-        selectedTowers[1] = new Tower(250,true,"Iron",25,1,"Heavy Iron",1.5,450);
-        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
+        selectedTowers[0] = new Tower(100,true,"Coal",25,3,"Light Coal", 300);
+        selectedTowers[1] = new Tower(250,true,"Iron",25,1,"Heavy Iron", 450);
+        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Gold", 800);
         assertTrue(TowerService.areAllRoundOneTowersTypesSelected(selectedTowers));
     }
     /**
@@ -116,9 +115,9 @@ public class TowerServiceTest {
     @Test
     void areAllRoundOneTowersTypesSelectedFalseTest(){
         Tower[] selectedTowers = new Tower[3];
-        selectedTowers[0] = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
-        selectedTowers[1] = new Tower(250,true,"Gold",25,1,"Heavy Gold",1.5,450);
-        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
+        selectedTowers[0] = new Tower(100,true,"Coal",25,3,"Light Coal", 300);
+        selectedTowers[1] = new Tower(250,true,"Gold",25,1,"Heavy Gold", 450);
+        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Gold", 800);
         assertFalse(TowerService.areAllRoundOneTowersTypesSelected(selectedTowers));
     }
     /**
@@ -127,8 +126,8 @@ public class TowerServiceTest {
     @Test
     void areAllRoundOneTowersTypesSelectedFalseNullTest(){
         Tower[] selectedTowers = new Tower[3];
-        selectedTowers[0] = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
-        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
+        selectedTowers[0] = new Tower(100,true,"Coal",25,3,"Light Coal", 300);
+        selectedTowers[2] = new Tower(500,false,"Gold",25,3,"Light Gold", 800);
         assertFalse(TowerService.areAllRoundOneTowersTypesSelected(selectedTowers));
     }
 }

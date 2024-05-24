@@ -1,11 +1,5 @@
 package seng201.team0.models;
 
-import seng201.team0.GameManager;
-import seng201.team0.services.InventoryService;
-
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Random;
 public class Tower implements Purchasable {
     private int health;
@@ -24,7 +18,7 @@ public class Tower implements Purchasable {
     private boolean isUsable;
     private int actionsUntilUsable;
 
-    public Tower(int initialHealth, boolean owned, String fillType, int fillAmount, int reloadSpeed, String towerName, double difficulty, double price) {
+    public Tower(int initialHealth, boolean owned, String fillType, int fillAmount, int reloadSpeed, String towerName, double price) {
         health = initialHealth;
         maxHealth = initialHealth;
         this.owned = owned;

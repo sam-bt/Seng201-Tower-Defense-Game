@@ -20,7 +20,7 @@ public class TowerTest {
      * Set up a tower before each test
      */
     @BeforeEach void setupTest(){
-        testTower = new Tower(100,false,"Coal",30,5,"Light Coal",1.5,500);
+        testTower = new Tower(100,false,"Coal",30,5,"Light Coal", 500);
     }
     /**
      * Test tower break implementation
@@ -30,17 +30,26 @@ public class TowerTest {
         testTower.breakTower();
         assertEquals(testTower.getBroken(), true);
     }
+    /**
+     * Test buying a tower
+     */
     @Test void buyTest(){
         assertEquals(testTower.getOwned(), false);
         testTower.buy();
         assertEquals(testTower.getOwned(), true);
     }
+    /**
+     * Test selling a tower
+     */
     @Test void sellTest(){
         testTower.buy();
         assertEquals(testTower.getOwned(), true);
         testTower.sell();
         assertEquals(testTower.getOwned(), false);
     }
+    /**
+     * Test upgrading a tower
+     */
     @Test void upgradeTest(){
         assertEquals(testTower.getLevel(), 1);
         assertEquals(testTower.getMaxHealth(), 100);
@@ -50,6 +59,9 @@ public class TowerTest {
         assertEquals(testTower.getMaxHealth(), 105);
         assertEquals(testTower.getFillAmount(), 32);
     }
+    /**
+     * Test reviving a tower
+     */
     @Test void reviveTest(){
         testTower.breakTower();
         assertEquals(testTower.getBroken(), true);
@@ -58,6 +70,9 @@ public class TowerTest {
         assertEquals(testTower.getBreakChance(), 0);
         assertEquals(testTower.getHealth(), 100);
     }
+    /**
+     * Test reviving a tower with 0 health
+     */
     @Test void reviveDeadTest(){
         testTower.breakTower();
         testTower.setHealth(0);
@@ -68,18 +83,27 @@ public class TowerTest {
         assertEquals(testTower.getBreakChance(), 0);
         assertEquals(testTower.getHealth(), 5);
     }
+    /**
+     * Test healing a tower
+     */
     @Test void healTest(){
         testTower.setHealth(0);
         assertEquals(testTower.getHealth(), 0);
         testTower.useHeal();
         assertEquals(testTower.getHealth(), 5);
     }
+    /**
+     * Test buying a tower that is already on max health
+     */
     @Test void healMaxHealthTest(){
         testTower.setHealth(99);
         assertEquals(testTower.getHealth(), 99);
         testTower.useHeal();
         assertEquals(testTower.getHealth(), 100);
     }
+    /**
+     * Test using a tower
+     */
     @Test void useTowerTest(){
         assertEquals(testTower.getActionsUntilUsable(), 0);
         assertEquals(testTower.getBreakChance(), 0);
@@ -92,6 +116,9 @@ public class TowerTest {
         assertTrue(testTower.getHealth()>=91);
         assertEquals(testTower.isUsable(),false);
     }
+    /**
+     * Test using a tower when it is going to break after use
+     */
     @Test void useTowerBreakTest(){
         testTower.setHealth(-1);
         assertEquals(testTower.getActionsUntilUsable(), 0);
@@ -106,6 +133,9 @@ public class TowerTest {
         assertEquals(testTower.isUsable(),false);
         assertEquals(testTower.getBroken(),true);
     }
+    /**
+     * Test using one action
+     */
     @Test void actionUsedOneTest(){
         testTower.use();
         assertEquals(testTower.getActionsUntilUsable(), 5);
@@ -114,6 +144,9 @@ public class TowerTest {
         assertEquals(testTower.getActionsUntilUsable(), 4);
         assertEquals(testTower.isUsable(), false);
     }
+    /**
+     * Test using enough actions to reset the towers
+     */
     @Test void actionUsedNotOneTest(){
         testTower.use();
         assertEquals(testTower.getActionsUntilUsable(), 5);
@@ -126,6 +159,9 @@ public class TowerTest {
         assertEquals(testTower.getActionsUntilUsable(), 0);
         assertEquals(testTower.isUsable(), true);
     }
+    /**
+     * Test using an action when the tower is already usable
+     */
     @Test void actionUsedAlreadyUsableTest(){
         assertEquals(testTower.getActionsUntilUsable(), 0);
         assertEquals(testTower.isUsable(), true);
@@ -133,6 +169,9 @@ public class TowerTest {
         assertEquals(testTower.getActionsUntilUsable(), 0);
         assertEquals(testTower.isUsable(), true);
     }
+    /**
+     * Test towers are set to usable
+     */
     @Test void setUsableTest(){
         testTower.use();
         assertEquals(testTower.getActionsUntilUsable(), 5);

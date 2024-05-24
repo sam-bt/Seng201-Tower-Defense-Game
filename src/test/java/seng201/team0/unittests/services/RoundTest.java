@@ -41,11 +41,11 @@ public class RoundTest {
     @Test
     void useActionTest(){
         Tower[] towerList = new Tower[5];
-        towerList[0] = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
-        towerList[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron",1.5,450);
-        towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
-        towerList[3] = new Tower(250,true,"Iron",25,9,"Heavy Gem",1.5,450);
-        towerList[4] = new Tower(500,false,"Bonus",25,3,"Bonus",3.8,800);
+        towerList[0] = new Tower(100,true,"Coal",25,3,"Light Coal", 300);
+        towerList[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron", 450);
+        towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold", 800);
+        towerList[3] = new Tower(250,true,"Iron",25,9,"Heavy Gem", 450);
+        towerList[4] = new Tower(500,false,"Bonus",25,3,"Bonus", 800);
         Tower selectedTower = towerList[0];
         round.useAction(selectedTower,cartList,towerList);
         assertEquals(round.getActionsLeft(), 1);
@@ -61,11 +61,11 @@ public class RoundTest {
     @Test
     void nextFrameTest(){
         Tower[] towerList = new Tower[5];
-        towerList[0] = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
-        towerList[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron",1.5,450);
-        towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
-        towerList[3] = new Tower(250,true,"Iron",25,9,"Heavy Gem",1.5,450);
-        towerList[4] = new Tower(500,false,"Bonus",25,3,"Bonus",3.8,800);
+        towerList[0] = new Tower(100,true,"Coal",25,3,"Light Coal", 300);
+        towerList[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron", 450);
+        towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold", 800);
+        towerList[3] = new Tower(250,true,"Iron",25,9,"Heavy Gem", 450);
+        towerList[4] = new Tower(500,false,"Bonus",25,3,"Bonus", 800);
         Tower selectedTower = towerList[0];
         round.useAction(selectedTower,cartList,towerList);
         assertEquals(round.getActionsLeft(), 1);
@@ -114,7 +114,7 @@ public class RoundTest {
      */
     @Test
     void isCartFillableTrueTest(){
-        Tower selectedTower = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
+        Tower selectedTower = new Tower(100,true,"Coal",25,3,"Light Coal", 300);
         cartList.get(1).fillCart();
         cartList.get(2).fillCart();
         cartList.get(3).fillCart();
@@ -125,7 +125,7 @@ public class RoundTest {
      */
     @Test
     void isCartFillableFullFalseTest(){
-        Tower selectedTower = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
+        Tower selectedTower = new Tower(100,true,"Coal",25,3,"Light Coal", 300);
         cartList.get(0).fillCart();
         cartList.get(1).fillCart();
         cartList.get(2).fillCart();
@@ -137,7 +137,7 @@ public class RoundTest {
      */
     @Test
     void isCartFillableEmptyFalseTest(){
-        Tower selectedTower = new Tower(100,true,"Fake Type",25,3,"Fake Tower",1.2,300);
+        Tower selectedTower = new Tower(100,true,"Fake Type",25,3,"Fake Tower", 300);
         assertEquals(round.isCartFillable(cartList,selectedTower), false);
     }
     /**
@@ -146,11 +146,11 @@ public class RoundTest {
     @Test
     void isBonusCartFillableTest(){
         Tower[] towerList = new Tower[5];
-        towerList[0] = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
-        towerList[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron",1.5,450);
-        towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
-        towerList[3] = new Tower(250,true,"Iron",25,9,"Heavy Gem",1.5,450);
-        towerList[4] = new Tower(500,false,"Bonus",25,3,"Bonus",3.8,800);
+        towerList[0] = new Tower(100,true,"Coal",25,3,"Light Coal", 300);
+        towerList[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron", 450);
+        towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold", 800);
+        towerList[3] = new Tower(250,true,"Iron",25,9,"Heavy Gem", 450);
+        towerList[4] = new Tower(500,false,"Bonus",25,3,"Bonus", 800);
         Tower selectedTower = towerList[0];
         round.useBonusAction(selectedTower,cartList,towerList);
         assertEquals(cartList.get(0).getCurrentFillDisplay(), 0);

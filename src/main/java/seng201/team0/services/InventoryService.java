@@ -14,42 +14,42 @@ public class InventoryService {
     /**
      * Heavy coal tower object.
      */
-    private Tower HeavyCoal;
+    private Tower heavyCoal;
 
     /**
      * Light coal tower object.
      */
-    private Tower LightCoal;
+    private Tower lightCoal;
 
     /**
      * Heavy iron tower object.
      */
-    private Tower HeavyIron;
+    private Tower heavyIron;
 
     /**
      * Light iron tower object.
      */
-    private Tower LightIron;
+    private Tower lightIron;
 
     /**
      * Heavy gold tower object.
      */
-    private Tower HeavyGold;
+    private Tower heavyGold;
 
     /**
      * Light gold tower object.
      */
-    private Tower LightGold;
+    private Tower lightGold;
 
     /**
      * Heavy gem tower object.
      */
-    private Tower HeavyGem;
+    private Tower heavyGem;
 
     /**
      * Light gem tower object.
      */
-    private Tower LightGem;
+    private Tower lightGem;
 
     /**
      * The number of available revives in the inventory.
@@ -80,46 +80,44 @@ public class InventoryService {
             availableHeals = 0;
             availableRevives = 0;
             availableUpgrades = 0;
-            HeavyCoal = inventoryServiceGameManager.getRoundOneTowerList().get(0);
-            LightCoal = inventoryServiceGameManager.getRoundOneTowerList().get(1);
-            HeavyIron = inventoryServiceGameManager.getRoundOneTowerList().get(2);
-            LightIron = inventoryServiceGameManager.getRoundOneTowerList().get(3);
-            HeavyGold = inventoryServiceGameManager.getRoundOneTowerList().get(4);
-            LightGold = inventoryServiceGameManager.getRoundOneTowerList().get(5);
-            HeavyGem = new Tower(
+            heavyCoal = inventoryServiceGameManager.getRoundOneTowerList().get(0);
+            lightCoal = inventoryServiceGameManager.getRoundOneTowerList().get(1);
+            heavyIron = inventoryServiceGameManager.getRoundOneTowerList().get(2);
+            lightIron = inventoryServiceGameManager.getRoundOneTowerList().get(3);
+            heavyGold = inventoryServiceGameManager.getRoundOneTowerList().get(4);
+            lightGold = inventoryServiceGameManager.getRoundOneTowerList().get(5);
+            heavyGem = new Tower(
                     TowerGenerator.heavyTowerHealthGenerator(),
                     false,
                     "Gem",
                     TowerGenerator.heavyTowerFillAmountGenerator(),
                     TowerGenerator.heavyTowerReloadSpeedGenerator(),
                     "Heavy Gem",
-                    currDifficulty,
                     TowerGenerator.heavyTowerPriceGenerator(currDifficulty)
             );
-            LightGem = new Tower(
+            lightGem = new Tower(
                     TowerGenerator.lightTowerHealthGenerator(),
                     false,
                     "Gem",
                     TowerGenerator.lightTowerFillAmountGenerator(),
                     TowerGenerator.lightTowerReloadSpeedGenerator(),
                     "Light Gem",
-                    currDifficulty,
                     TowerGenerator.lightTowerPriceGenerator(currDifficulty)
             );
-            List<Tower> towerList = List.of(HeavyCoal, LightCoal, HeavyIron, LightIron, HeavyGold, LightGold, HeavyGem, LightGem);
+            List<Tower> towerList = List.of(heavyCoal, lightCoal, heavyIron, lightIron, heavyGold, lightGold, heavyGem, lightGem);
             inventoryServiceGameManager.setGenericRoundTowerList(towerList);
         } else {
             availableHeals = inventoryServiceGameManager.getAvailableHeals();
             availableRevives = inventoryServiceGameManager.getAvailableRevives();
             availableUpgrades = inventoryServiceGameManager.getAvailableUpgrades();
-            HeavyCoal = inventoryServiceGameManager.getGenericRoundTowerList().get(0);
-            LightCoal = inventoryServiceGameManager.getGenericRoundTowerList().get(1);
-            HeavyIron = inventoryServiceGameManager.getGenericRoundTowerList().get(2);
-            LightIron = inventoryServiceGameManager.getGenericRoundTowerList().get(3);
-            HeavyGold = inventoryServiceGameManager.getGenericRoundTowerList().get(4);
-            LightGold = inventoryServiceGameManager.getGenericRoundTowerList().get(5);
-            HeavyGem = inventoryServiceGameManager.getGenericRoundTowerList().get(6);
-            LightGem = inventoryServiceGameManager.getGenericRoundTowerList().get(7);
+            heavyCoal = inventoryServiceGameManager.getGenericRoundTowerList().get(0);
+            lightCoal = inventoryServiceGameManager.getGenericRoundTowerList().get(1);
+            heavyIron = inventoryServiceGameManager.getGenericRoundTowerList().get(2);
+            lightIron = inventoryServiceGameManager.getGenericRoundTowerList().get(3);
+            heavyGold = inventoryServiceGameManager.getGenericRoundTowerList().get(4);
+            lightGold = inventoryServiceGameManager.getGenericRoundTowerList().get(5);
+            heavyGem = inventoryServiceGameManager.getGenericRoundTowerList().get(6);
+            lightGem = inventoryServiceGameManager.getGenericRoundTowerList().get(7);
         }
     }
 
@@ -129,6 +127,6 @@ public class InventoryService {
      * @return a list containing all the towers
      */
     public List<Tower> getTowerList() {
-        return List.of(HeavyCoal, LightCoal, HeavyIron, LightIron, HeavyGold, LightGold, HeavyGem, LightGem);
+        return List.of(heavyCoal, lightCoal, heavyIron, lightIron, heavyGold, lightGold, heavyGem, lightGem);
     }
 }

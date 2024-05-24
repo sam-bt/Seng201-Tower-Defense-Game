@@ -9,6 +9,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author Samuel Beattie
  */
 public class RandomEventTest {
+    /**
+     * random event
+     */
     RandomEvent randomEvent;
     @BeforeEach
     void setupTest(){
