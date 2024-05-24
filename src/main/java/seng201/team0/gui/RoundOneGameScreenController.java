@@ -82,9 +82,9 @@ public class RoundOneGameScreenController {
         cartOneSpeedLabel.setText("Speed: "+cartList.get(0).getSpeed()+" m/s");
         cartTwoSpeedLabel.setText("Speed: "+cartList.get(1).getSpeed()+" m/s");
         cartThreeSpeedLabel.setText("Speed: "+cartList.get(2).getSpeed()+" m/s");
-        cartOneSizeLabel.setText("Capacity: 0/"+cartList.get(0).getCapacity()+" kg");
-        cartTwoSizeLabel.setText("Capacity: 0/"+cartList.get(1).getCapacity()+" kg");
-        cartThreeSizeLabel.setText("Capacity: 0/"+cartList.get(2).getCapacity()+" kg");
+        cartOneSizeLabel.setText("Capacity: 0/"+cartList.get(0).getCapacity());
+        cartTwoSizeLabel.setText("Capacity: 0/"+cartList.get(1).getCapacity());
+        cartThreeSizeLabel.setText("Capacity: 0/"+cartList.get(2).getCapacity());
         cartOneFillProgressBar.setMouseTransparent(true);
         cartTwoFillProgressBar.setMouseTransparent(true);
         cartThreeFillProgressBar.setMouseTransparent(true);
@@ -157,7 +157,7 @@ public class RoundOneGameScreenController {
             Cart cart = cartList.get(cartIndex);
             if (Objects.equals(cart.getResourceType(), selectedTower.getFillType())) {
                 cartFillProgressBars.get(cartIndex).setProgress(cart.getCurrentFillAmount());
-                cartSizeLabels.get(cartIndex).setText("Capacity: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity()+" kg");
+                cartSizeLabels.get(cartIndex).setText("Capacity: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity());
             }
         }
     }
@@ -190,7 +190,7 @@ public class RoundOneGameScreenController {
                 eventFrameLabel.setStyle("-fx-text-fill: green");
             }
             cartFillProgressBars.get(cartToFill).setProgress(cart.getCurrentFillAmount());
-            cartSizeLabels.get(cartToFill).setText("Capacity: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity()+" kg");
+            cartSizeLabels.get(cartToFill).setText("Capacity: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity());
         }
         else if (Objects.equals(eventName, "Nothing")){
             eventFrameLabel.setText(eventText);
@@ -202,7 +202,7 @@ public class RoundOneGameScreenController {
                 if (!cart.isFull()) {
                     cart.increaseFillAmount(-20);
                     cartFillProgressBars.get(cartIndex).setProgress(cart.getCurrentFillAmount());
-                    cartSizeLabels.get(cartIndex).setText("Capacity: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity()+" kg");
+                    cartSizeLabels.get(cartIndex).setText("Capacity: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity());
                 }
             }
             eventFrameLabel.setText(eventText);

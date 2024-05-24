@@ -106,11 +106,11 @@ public class GameScreenController {
         cartThreeSpeedLabel.setText("Speed: "+cartList.get(2).getSpeed()+" m/s");
         cartFourSpeedLabel.setText("Speed: "+cartList.get(3).getSpeed()+" m/s");
         cartFiveSpeedLabel.setText("Speed: "+cartList.get(4).getSpeed()+" m/s");
-        cartOneSizeLabel.setText("Filled: 0/"+cartList.get(0).getCapacity()+" kg");
-        cartTwoSizeLabel.setText("Filled: 0/"+cartList.get(1).getCapacity()+" kg");
-        cartThreeSizeLabel.setText("Filled: 0/"+cartList.get(2).getCapacity()+" kg");
-        cartFourSizeLabel.setText("Filled: 0/"+cartList.get(2).getCapacity()+" kg");
-        cartFiveSizeLabel.setText("Filled: 0/"+cartList.get(2).getCapacity()+" kg");
+        cartOneSizeLabel.setText("Filled: 0/"+cartList.get(0).getCapacity());
+        cartTwoSizeLabel.setText("Filled: 0/"+cartList.get(1).getCapacity());
+        cartThreeSizeLabel.setText("Filled: 0/"+cartList.get(2).getCapacity());
+        cartFourSizeLabel.setText("Filled: 0/"+cartList.get(2).getCapacity());
+        cartFiveSizeLabel.setText("Filled: 0/"+cartList.get(2).getCapacity());
         cartOneFillProgressBar.setMouseTransparent(true);
         cartTwoFillProgressBar.setMouseTransparent(true);
         cartThreeFillProgressBar.setMouseTransparent(true);
@@ -194,14 +194,14 @@ public class GameScreenController {
             Cart cart = cartList.get(cartIndex);
             if (Objects.equals(cart.getResourceType(), selectedTower.getFillType())) {
                 cartFillProgressBars.get(cartIndex).setProgress(cart.getCurrentFillAmount());
-                cartSizeLabels.get(cartIndex).setText("Filled: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity()+" kg");
+                cartSizeLabels.get(cartIndex).setText("Filled: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity());
             }
         }
     }
     public void fillBonusCart(){
         Cart cart = cartList.get(4);
         cartFillProgressBars.get(4).setProgress(cart.getCurrentFillAmount());
-        cartSizeLabels.get(4).setText("Filled: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity()+" kg");
+        cartSizeLabels.get(4).setText("Filled: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity());
     }
     public void updateCartDistances(){
         for (int cartIndex = 0; cartIndex < cartProgressBars.size(); cartIndex++) {
@@ -249,7 +249,7 @@ public class GameScreenController {
                 eventFrameLabel.setStyle("-fx-text-fill: green");
             }
             cartFillProgressBars.get(cartToFill).setProgress(cart.getCurrentFillAmount());
-            cartSizeLabels.get(cartToFill).setText("Filled: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity()+" kg");
+            cartSizeLabels.get(cartToFill).setText("Filled: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity());
         }
         else if (Objects.equals(eventName, "Nothing")){
             eventFrameLabel.setText(eventText);
@@ -261,7 +261,7 @@ public class GameScreenController {
                 if (!cart.isFull()) {
                     cart.increaseFillAmount(-20);
                     cartFillProgressBars.get(cartIndex).setProgress(cart.getCurrentFillAmount());
-                    cartSizeLabels.get(cartIndex).setText("Filled: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity()+" kg");
+                    cartSizeLabels.get(cartIndex).setText("Filled: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity());
                 }
             }
             eventFrameLabel.setText(eventText);
