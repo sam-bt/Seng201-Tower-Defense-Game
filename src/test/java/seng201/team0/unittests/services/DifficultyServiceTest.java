@@ -11,6 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 
 public class DifficultyServiceTest {
+    /**
+     * Difficulty Service
+     */
     private DifficultyService testDifficultyService;
 
     /**

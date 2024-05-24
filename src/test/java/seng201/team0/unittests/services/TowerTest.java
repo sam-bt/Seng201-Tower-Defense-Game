@@ -12,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 
 public class TowerTest {
+    /**
+     * The tower to test
+     */
     Tower testTower;
     /**
      * Set up a tower before each test

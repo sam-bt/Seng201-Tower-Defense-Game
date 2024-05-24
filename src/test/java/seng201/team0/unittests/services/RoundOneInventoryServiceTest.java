@@ -14,6 +14,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 
 class RoundOneInventoryServiceTest {
+    /**
+     * Round One Inventory Service
+     */
     RoundOneInventoryService testRoundOneInventoryService;
     /**
      * Set up a RoundOneInventoryService instance before each test
