@@ -238,7 +238,7 @@ public class InventoryScreenController {
     private void applySelectedItem(Tower tower) {
         switch (selectedItem) {
             case "heal":
-                if (inventoryScreenGameManager.getAvailableHeals() > 0) {
+                if (inventoryScreenGameManager.getAvailableHeals() > 0 && tower.getMaxHealth() > tower.getHealth()) {
                     tower.useHeal(currentInventory);
                     inventoryScreenGameManager.consumeHeal();
                     healsOwned.setText(":" + inventoryScreenGameManager.getAvailableHeals());
