@@ -16,16 +16,16 @@ public class Cart {
     private boolean full;
     private boolean cartSuccess;
     private int currentFillDisplay;
-    int tracklength;
+    int trackLength;
 
-    public Cart(String cartName, String resourceType, double difficulty, int tracklength) {
+    public Cart(String cartName, String resourceType, double difficulty, int trackLength) {
         this.cartName = cartName;
         this.resourceType = resourceType;
         endReached = false;
         full = false;
         cartSuccess = false;
         currentFillDisplay=0;
-        this.tracklength = tracklength;
+        this.trackLength = trackLength;
         Random rng = new Random();
         List<Integer> speedList = Arrays.asList(5, 8, 8, 10, 10,15);
         int randomSpeed = rng.nextInt(6);
@@ -46,9 +46,9 @@ public class Cart {
     }
 
     public void increaseDistance() {
-        double newDistanceTravelled = distanceTravelled + (double) speed / tracklength;
-        if (distanceTravelled*100 >= tracklength) {
-            distanceTravelled = tracklength;
+        double newDistanceTravelled = distanceTravelled + (double) speed / trackLength;
+        if (distanceTravelled*100 >= trackLength) {
+            distanceTravelled = trackLength;
             endReached = true;
             if (!full) {cartSuccess = false;}
         } else {

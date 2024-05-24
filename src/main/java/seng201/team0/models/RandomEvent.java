@@ -9,13 +9,11 @@ public class RandomEvent { // return a message and action based on generated eve
     int eventNum;
     public void generateRandomEvent(double difficulty) {
         int badEventLikelihood = (int) Math.round(difficulty);
-        System.out.println("bed event likelihood "+badEventLikelihood);
         if (badEventLikelihood > 5) {
             badEventLikelihood = 5;
         }
         randomGenerator = new RandomEventGenerator(badEventLikelihood);
         eventNum = randomGenerator.generate();
-        System.out.println("eventNum "+eventNum);
         if (eventNum <= 5) {
             this.generateGoodEvent();
         }
