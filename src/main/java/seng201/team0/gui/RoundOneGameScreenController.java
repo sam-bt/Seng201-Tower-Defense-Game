@@ -125,7 +125,7 @@ public class RoundOneGameScreenController {
      * Initializes the round one game screen, setting up UI elements and handling button presses.
      */
     public void initialize() {
-        roundOne = new RoundOne(roundOneGameScreenManager.getMoneyService(), roundOneGameScreenManager.getPoints(), roundOneGameScreenManager.getDifficultyService(), roundOneGameScreenManager.getRoundTrackLength());
+        roundOne = new RoundOne(roundOneGameScreenManager.getDifficultyService(), roundOneGameScreenManager.getRoundTrackLength());
         towerList = roundOneGameScreenManager.getRoundOneSelectedTowerList();
         cartList = List.of(roundOne.getCoalCart(), roundOne.getIronCart(), roundOne.getGoldCart());
 
