@@ -12,6 +12,11 @@ import java.util.List;
 
 import static java.util.Collections.emptyList;
 
+/**
+ * The InventoryScreenController class controls the user interface for the inventory screen in the game.
+ * It handles interactions between the user and the inventory system, displaying tower information,
+ * managing tower slots, and applying selected items such as heals, revives, and upgrades to towers.
+ */
 public class InventoryScreenController {
     @FXML
     private Button coalType1Button;
@@ -67,20 +72,58 @@ public class InventoryScreenController {
     private Label healsOwned;
     @FXML
     private Label revivesOwned;
-
+    /**
+     * Array to store selected towers, with a fixed size of 5.
+     */
     private final Tower[] selectedTowers = new Tower[5];
+
+    /**
+     * Array to store towers in slots, with a fixed size of 5.
+     */
     private Tower[] towersInSlots = new Tower[5];
+
+    /**
+     * Index indicating the currently selected tower (-1 if none selected).
+     */
     private int selectedTowerIndex = -1;
+
+    /**
+     * The currently selected item (null if none selected).
+     */
     private String selectedItem = null;
+
+    /**
+     * List of indices representing towers in a tower list.
+     */
     List<Integer> towerListIndices;
+
+    /**
+     * Array to store saved towers.
+     */
     Tower[] savedTowers;
 
+    /**
+     * GameManager instance for the inventory screen.
+     */
     GameManager inventoryScreenGameManager;
+
+    /**
+     * The current inventory service.
+     */
     private InventoryService currentInventory;
+
+    /**
+     * Constructor
+     * @param tempInventoryScreenGameManager
+     */
     public InventoryScreenController(GameManager tempInventoryScreenGameManager) {
         inventoryScreenGameManager = tempInventoryScreenGameManager;
     }
-
+    /**
+     * Initializes the inventory screen by setting up various UI elements and event handlers.
+     * It populates the inventory with available towers and items, updates displayed stats,
+     * and sets up button actions for tower selection, item usage, etc.
+     */
     public void initialize() {
         List<Button> towerSlotButtons = List.of(inventorySlot1Button, inventorySlot2Button, inventorySlot3Button, inventorySlot4Button, inventorySlot5Button);
         List<Button> availableTowerButtons = List.of(coalType1Button, coalType2Button, ironType1Button, ironType2Button, goldType1Button, goldType2Button, gemType1Button, gemType2Button);
@@ -237,7 +280,10 @@ public class InventoryScreenController {
         });
         updateSlotButtonStyles();
     }
-
+    /**
+     * Applies the selected item action to the specified tower.
+     * @param tower The tower to apply the selected item action to.
+     */
     private void applySelectedItem(Tower tower) {
         switch (selectedItem) {
             case "heal":
@@ -268,13 +314,17 @@ public class InventoryScreenController {
         }
         updateDisplayedStats(tower);
     }
-
+    /**
+     * Resets the styles of item buttons.
+     */
     private void resetItemButtonStyles() {
         useHealButton.setStyle("");
         useReviveButton.setStyle("");
         useUpgradeButton.setStyle("");
     }
-
+    /**
+     * Resets the styles of tower buttons based on their availability and broken status.
+     */
     private void resetTowerButtonStyles() {
         List<Button> availableTowerButtons = List.of(coalType1Button, coalType2Button, ironType1Button, ironType2Button, goldType1Button, goldType2Button, gemType1Button, gemType2Button);
         List<Tower> towers = currentInventory.getTowerList();
@@ -298,16 +348,24 @@ public class InventoryScreenController {
             }
         }
     }
+    /**
+     * Resets the tower selection by clearing displayed stats and resetting tower button styles.
+     */
     private void resetTowerSelection() {
         selectedTowerIndex = -1;
         clearDisplayedStats();
         resetTowerButtonStyles();
     }
-
+    /**
+     * Resets the selected item.
+     */
     private void resetItemSelection() {
         selectedItem = null;
         resetItemButtonStyles();
     }
+    /**
+     * Clears the displayed tower statistics.
+     */
     private void clearDisplayedStats() {
         currTowerHealth.setText(" ");
         currTowerLevel.setText(" ");
@@ -316,7 +374,10 @@ public class InventoryScreenController {
         currTowerFillAmount.setText(" ");
         currTowerBreakChance.setText(" ");
     }
-
+    /**
+     * Updates the displayed statistics for the specified tower.
+     * @param tower The tower whose statistics to display.
+     */
     private void updateDisplayedStats(Tower tower) {
         currTowerHealth.setText(" " + tower.getHealth() +"/"+ tower.getMaxHealth());
         currTowerLevel.setText(" " + tower.getLevel());
@@ -335,6 +396,9 @@ public class InventoryScreenController {
             }
         }
     }
+    /**
+     * Updates the styles of tower slot buttons based on the towers in the slots.
+     */
     private void updateSlotButtonStyles() {
         List<Button> towerSlotButtons = List.of(inventorySlot1Button, inventorySlot2Button, inventorySlot3Button, inventorySlot4Button, inventorySlot5Button);
         for (int i = 0; i < towersInSlots.length; i++) {
@@ -349,7 +413,11 @@ public class InventoryScreenController {
         }
     }
 
-
+    /**
+     * Retrieves the tower slot button corresponding to the given index.
+     * @param index The index of the tower slot button to retrieve.
+     * @return The tower slot button corresponding to the given index.
+     */
     private Button getTowerSlotButton(int index) {
         return switch (index) {
             case 0 -> inventorySlot1Button;
@@ -360,7 +428,9 @@ public class InventoryScreenController {
             default -> null;
         };
     }
-
+    /**
+     * Saves the towers currently in slots to the GameManager.
+     */
     private void saveTowersInSlots() {
         for (int i = 0; i < selectedTowers.length; i++) {
             towersInSlots[i] = selectedTowers[i];
@@ -368,12 +438,20 @@ public class InventoryScreenController {
         inventoryScreenGameManager.setTowersInSlots(towersInSlots);
     }
 
+    /**
+     * Handles the action when the menu button is clicked.
+     * Saves towers in slots and launches the between rounds screen.
+     */
     @FXML
     private void onMenu() {
         saveTowersInSlots();
         inventoryScreenGameManager.launchBetweenRoundsScreen();
     }
 
+    /**
+     * Handles the action when the shop button is clicked.
+     * Saves towers in slots and opens the shop screen.
+     */
     @FXML
     private void onShop() {
         saveTowersInSlots();

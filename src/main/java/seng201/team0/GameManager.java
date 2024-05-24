@@ -16,36 +16,156 @@ import java.util.function.Consumer;
  * with various services and screens.
  */
 public class GameManager {
+    /**
+     * The name of the player.
+     */
     private String name;
+
+    /**
+     * The total number of rounds.
+     */
     private Long rounds;
+
+    /**
+     * Service to manage difficulty settings.
+     */
     private DifficultyService difficulty;
+
+    /**
+     * The current round number.
+     */
     private int currRound;
+
+    /**
+     * Service to manage in-game currency.
+     */
     private MoneyService money;
+
+    /**
+     * The total points accumulated.
+     */
     private double points;
+
+    /**
+     * The length of the track for each round.
+     */
     private int roundTrackLength;
+
+    /**
+     * List of towers available in round one.
+     */
     private List<Tower> roundOneTowerList;
+
+    /**
+     * Array to store selected towers for round one.
+     */
     private Tower[] roundOneSelectedTowerList;
+
+    /**
+     * List of towers available for all rounds.
+     */
     private List<Tower> genericRoundTowerList;
+
+    /**
+     * List of buttons for selected towers in round one.
+     */
     private List<Button> roundOneSelectedTowerButtons;
+
+    /**
+     * Index to track the length of the track.
+     */
     private int trackLengthIndex;
+
+    /**
+     * Number of available healing items.
+     */
     private int availableHeals;
+
+    /**
+     * Number of available revive items.
+     */
     private int availableRevives;
+
+    /**
+     * Number of available tower upgrades.
+     */
     private int availableUpgrades;
+
+    /**
+     * Total net worth in the game.
+     */
     private int netWorth;
+
+    /**
+     * List of cheapest towers available.
+     */
     private List<Tower> cheapestTowers;
+
+    /**
+     * Array to store towers in slots.
+     */
     private Tower[] towersInSlots = new Tower[5];
+
+    /**
+     * Service to manage the in-game shop.
+     */
     private ShopService shopService;
+
+    /**
+     * Flag indicating if it's the first time in the inventory screen.
+     */
     private boolean firstTimeInInventory;
+
+    /**
+     * Consumer function to launch setup screen.
+     */
     private final Consumer<GameManager> setupScreenLauncher;
+
+    /**
+     * Consumer function to launch between screen.
+     */
     private final Consumer<GameManager> betweenScreenLauncher;
+
+    /**
+     * Consumer function to launch game screen.
+     */
     private final Consumer<GameManager> gameScreenLauncher;
+
+    /**
+     * Consumer function to launch inventory screen.
+     */
     private final Consumer<GameManager> inventoryScreenLauncher;
+
+    /**
+     * Consumer function to launch shop screen.
+     */
     private final Consumer<GameManager> shopScreenLauncher;
+
+    /**
+     * Consumer function to launch round one inventory screen.
+     */
     private final Consumer<GameManager> roundOneInventoryScreenLauncher;
+
+    /**
+     * Consumer function to launch round one game screen.
+     */
     private final Consumer<GameManager> roundOneGameScreenLauncher;
+
+    /**
+     * Consumer function to launch error screen.
+     */
     private final Consumer<GameManager> errorScreenLauncher;
+
+    /**
+     * Consumer function to launch finished screen.
+     */
     private final Consumer<GameManager> finishedScreenLauncher;
+
+    /**
+     * Consumer function to launch losing screen.
+     */
     private final Consumer<GameManager> losingScreenLauncher;
+
 
     /**
      * Constructor for the GameManager class.
