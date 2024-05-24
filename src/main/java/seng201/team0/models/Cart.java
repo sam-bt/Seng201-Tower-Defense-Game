@@ -164,6 +164,13 @@ public class Cart {
     }
 
     /**
+     * Sets the distance travelled by the cart.
+     */
+    public void setDistanceTravelled(final double distanceTravelled){
+        this.distanceTravelled = distanceTravelled;
+    }
+
+    /**
      * Returns the current fill amount of the cart.
      *
      * @return The current fill amount of the cart.

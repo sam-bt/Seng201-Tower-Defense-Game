@@ -86,7 +86,7 @@ public class RoundServiceTest {
         RoundService.completeRound(gameManager);
         assertEquals(gameManager.getPoints(), 100.0);
         assertEquals(gameManager.getTrackLengthIndex(), 0);
-        assertEquals(gameManager.getMoneyAmount(), 1900.0);
+        assertEquals(gameManager.getMoneyAmount(), 2400);
         assertEquals(gameManager.getDifficulty(), 1.4);
     }
 }

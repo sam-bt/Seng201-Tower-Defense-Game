@@ -157,7 +157,7 @@
             <Insets left="50.0" top="95.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="selectAllTowersLabel" alignment="TOP_LEFT" prefHeight="108.0" prefWidth="385.0" text="Please select 1 Tower for each ore type AND ensure all 3 tower slots are full, otherwise you won't be able to fill up all of the carts in the coming round!!" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <Label fx:id="selectAllTowersLabel" alignment="TOP_LEFT" ellipsisString="" prefHeight="108.0" prefWidth="413.0" text="Please select 1 Tower for each ore type AND ensure all 3 tower slots are full, otherwise you won't be able to fill up all of the carts in the coming round!!" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="175.0" />
          </GridPane.margin>
