@@ -232,6 +232,7 @@ public class InventoryScreenController {
                 useUpgradeButton.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
             }
         });
+        updateSlotButtonStyles();
     }
 
     private void applySelectedItem(Tower tower) {
@@ -250,6 +251,8 @@ public class InventoryScreenController {
                     }
                     inventoryScreenGameManager.consumeRevive();
                     revivesOwned.setText(":" + inventoryScreenGameManager.getAvailableRevives());
+                    resetTowerButtonStyles();
+                    updateSlotButtonStyles();
                 }
                 break;
             case "upgrade":
@@ -270,20 +273,28 @@ public class InventoryScreenController {
     }
 
     private void resetTowerButtonStyles() {
-        System.out.println("yo");
         List<Button> availableTowerButtons = List.of(coalType1Button, coalType2Button, ironType1Button, ironType2Button, goldType1Button, goldType2Button, gemType1Button, gemType2Button);
         List<Tower> towers = currentInventory.getTowerList();
         for (int i = 0; i < availableTowerButtons.size(); i++) {
-            if (towers.get(i).getOwned()) {
-                if (towers.get(i).getBroken()) {
+            Tower tower = towers.get(i);
+            if (tower.getOwned()) {
+                if (tower.getBroken()) {
                     availableTowerButtons.get(i).setStyle("-fx-background-color: #ff0000; -fx-background-radius: 5;");
                 } else {
                     availableTowerButtons.get(i).setStyle("");
                 }
+            } else {
+                if (tower.getBroken()) {
+                    availableTowerButtons.get(i).setStyle("-fx-background-color: #ff0000; -fx-background-radius: 5;");
+                    availableTowerButtons.get(i).setDisable(true);
+                } else {
+                    availableTowerButtons.get(i).setStyle("-fx-background-color: #000000; -fx-background-radius: 5;");
+                    availableTowerButtons.get(i).setDisable(true);
+                }
+
             }
         }
     }
-
     private void resetTowerSelection() {
         selectedTowerIndex = -1;
         resetTowerButtonStyles();
@@ -311,6 +322,20 @@ public class InventoryScreenController {
             }
         }
     }
+    private void updateSlotButtonStyles() {
+        List<Button> towerSlotButtons = List.of(inventorySlot1Button, inventorySlot2Button, inventorySlot3Button, inventorySlot4Button, inventorySlot5Button);
+        for (int i = 0; i < towersInSlots.length; i++) {
+            Tower tower = towersInSlots[i];
+            if (tower != null) {
+                if (tower.getBroken()) {
+                    towerSlotButtons.get(i).setStyle("-fx-background-color: #ff0000; -fx-background-radius: 5;");
+                } else {
+                    towerSlotButtons.get(i).setStyle("");
+                }
+            }
+        }
+    }
+
 
     private Button getTowerSlotButton(int index) {
         return switch (index) {
