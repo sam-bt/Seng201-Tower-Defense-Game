@@ -48,10 +48,10 @@ public class SetupWrapper {
             e.printStackTrace();
         }
     }
-    public void launchGameScreen(GameManager setupGameManager) {
+    public void launchGameScreen(GameManager launchGameManager) {
         try {
             FXMLLoader gameScreenLoader = new FXMLLoader(getClass().getResource("/fxml/game_screen.fxml"));
-            gameScreenLoader.setControllerFactory(param -> new GameScreenController(setupGameManager));
+            gameScreenLoader.setControllerFactory(param -> new GameScreenController(launchGameManager));
             Parent setupParent  = gameScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Game Screen"); // TODO make match the round number
@@ -59,10 +59,10 @@ public class SetupWrapper {
             e.printStackTrace();
         }
     }
-    public void launchRoundOneInventoryScreen(GameManager setupGameManager) {
+    public void launchRoundOneInventoryScreen(GameManager roundOneInventoryGameManager) {
         try {
             FXMLLoader roundOneInventoryScreenLoader = new FXMLLoader(getClass().getResource("/fxml/round_one_inventory_screen.fxml"));
-            roundOneInventoryScreenLoader.setControllerFactory(param -> new RoundOneInventoryScreenController(setupGameManager));
+            roundOneInventoryScreenLoader.setControllerFactory(param -> new RoundOneInventoryScreenController(roundOneInventoryGameManager));
             Parent setupParent  = roundOneInventoryScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Round 1 Inventory Screen");
@@ -70,10 +70,10 @@ public class SetupWrapper {
             e.printStackTrace();
         }
     }
-    public void launchShopScreen(GameManager setupGameManager) {
+    public void launchShopScreen(GameManager shopScreenGameManager) {
         try {
             FXMLLoader shopScreenLoader = new FXMLLoader(getClass().getResource("/fxml/shop_screen.fxml"));
-            shopScreenLoader.setControllerFactory(param -> new ShopScreenController(setupGameManager));
+            shopScreenLoader.setControllerFactory(param -> new ShopScreenController(shopScreenGameManager));
             Parent setupParent  = shopScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Shop Screen");
@@ -81,10 +81,10 @@ public class SetupWrapper {
             e.printStackTrace();
         }
     }
-    public void launchInventoryScreen(GameManager setupGameManager) {
+    public void launchInventoryScreen(GameManager inventoryScreenGameManager) {
         try {
             FXMLLoader inventoryScreenLoader = new FXMLLoader(getClass().getResource("/fxml/inventory_screen.fxml"));
-            inventoryScreenLoader.setControllerFactory(param -> new InventoryScreenController(setupGameManager));
+            inventoryScreenLoader.setControllerFactory(param -> new InventoryScreenController(inventoryScreenGameManager));
             Parent setupParent  = inventoryScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Round Inventory Screen");
@@ -92,10 +92,10 @@ public class SetupWrapper {
             e.printStackTrace();
         }
     }
-    public void launchRoundOneGameScreen(GameManager setupGameManager) {
+    public void launchRoundOneGameScreen(GameManager roundOneGameManager) {
         try {
             FXMLLoader roundOneGameScreenLoader = new FXMLLoader(getClass().getResource("/fxml/round_one_game_screen.fxml"));
-            roundOneGameScreenLoader.setControllerFactory(param -> new RoundOneGameScreenController(setupGameManager));
+            roundOneGameScreenLoader.setControllerFactory(param -> new RoundOneGameScreenController(roundOneGameManager));
             Parent setupParent  = roundOneGameScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Round 1 Game Screen");
@@ -103,10 +103,10 @@ public class SetupWrapper {
             e.printStackTrace();
         }
     }
-    public void launchErrorScreen(GameManager setupGameManager) {
+    public void launchErrorScreen(GameManager errorScreenGameManager) {
         try {
             FXMLLoader errorScreenLoader = new FXMLLoader(getClass().getResource("/fxml/error_screen.fxml"));
-            errorScreenLoader.setControllerFactory(param -> new InvalidNameScreenController(setupGameManager));
+            errorScreenLoader.setControllerFactory(param -> new InvalidNameScreenController(errorScreenGameManager));
             Parent setupParent  = errorScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Error Screen");
@@ -114,10 +114,10 @@ public class SetupWrapper {
             e.printStackTrace();
         }
     }
-    public void launchFinishedScreen(GameManager setupGameManager) {
+    public void launchFinishedScreen(GameManager finishedScreenGameManager) {
         try {
             FXMLLoader finishedScreenLoader = new FXMLLoader(getClass().getResource("/fxml/winning_screen.fxml"));
-            finishedScreenLoader.setControllerFactory(param -> new WinningScreenController(setupGameManager));
+            finishedScreenLoader.setControllerFactory(param -> new WinningScreenController(finishedScreenGameManager));
             Parent setupParent  = finishedScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Winning Screen!");
@@ -125,10 +125,10 @@ public class SetupWrapper {
             e.printStackTrace();
         }
     }
-    public void launchLoseScreen(GameManager setupGameManager) {
+    public void launchLoseScreen(GameManager loseScreenGameManager) {
         try {
             FXMLLoader losingScreenLoader = new FXMLLoader(getClass().getResource("/fxml/losing_screen.fxml"));
-            losingScreenLoader.setControllerFactory(param -> new LosingScreenController(setupGameManager));
+            losingScreenLoader.setControllerFactory(param -> new LosingScreenController(loseScreenGameManager));
             Parent setupParent  = losingScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Losing Screen!");
