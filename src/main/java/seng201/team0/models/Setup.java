@@ -4,8 +4,8 @@ package seng201.team0.models;
  * This class contains the information for the information input in the menu screen
  */
 public class Setup {
-    private String playerName;
-    private Long numRounds;
+    private final String playerName;
+    private final Long numRounds;
 
     /**
      * Constructor method that initialises the input variables

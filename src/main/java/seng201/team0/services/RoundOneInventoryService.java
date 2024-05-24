@@ -11,32 +11,32 @@ public class RoundOneInventoryService {
     /**
      * Tower for heavy coal.
      */
-    private Tower heavyCoal;
+    private final Tower heavyCoal;
 
     /**
      * Tower for light coal.
      */
-    private Tower lightCoal;
+    private final Tower lightCoal;
 
     /**
      * Tower for heavy iron.
      */
-    private Tower heavyIron;
+    private final Tower heavyIron;
 
     /**
      * Tower for light iron.
      */
-    private Tower lightIron;
+    private final Tower lightIron;
 
     /**
      * Tower for heavy gold.
      */
-    private Tower heavyGold;
+    private final Tower heavyGold;
 
     /**
      * Tower for light gold.
      */
-    private Tower lightGold;
+    private final Tower lightGold;
 
     /**
      * Constructs a RoundOneInventoryService and initializes towers based on the specified difficulty.
@@ -44,13 +44,12 @@ public class RoundOneInventoryService {
      * @param difficulty The difficulty level of the game.
      */
     public RoundOneInventoryService(double difficulty) {
-        double currDifficulty = difficulty;
-        heavyCoal = new Tower(TowerGenerator.heavyTowerHealthGenerator(), false, "Coal", TowerGenerator.heavyTowerFillAmountGenerator(), TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Coal", TowerGenerator.heavyTowerPriceGenerator(currDifficulty));
-        lightCoal = new Tower(TowerGenerator.lightTowerHealthGenerator(), false, "Coal", TowerGenerator.lightTowerFillAmountGenerator(), TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Coal", TowerGenerator.lightTowerPriceGenerator(currDifficulty));
-        heavyIron = new Tower(TowerGenerator.heavyTowerHealthGenerator(), false, "Iron", TowerGenerator.heavyTowerFillAmountGenerator(), TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Iron", TowerGenerator.heavyTowerPriceGenerator(currDifficulty));
-        lightIron = new Tower(TowerGenerator.lightTowerHealthGenerator(), false, "Iron", TowerGenerator.lightTowerFillAmountGenerator(), TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Iron", TowerGenerator.lightTowerPriceGenerator(currDifficulty));
-        heavyGold = new Tower(TowerGenerator.heavyTowerHealthGenerator(), false, "Gold", TowerGenerator.heavyTowerFillAmountGenerator(), TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Gold", TowerGenerator.heavyTowerPriceGenerator(currDifficulty));
-        lightGold = new Tower(TowerGenerator.lightTowerHealthGenerator(), false, "Gold", TowerGenerator.lightTowerFillAmountGenerator(), TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Gold", TowerGenerator.lightTowerPriceGenerator(currDifficulty));
+        heavyCoal = new Tower(TowerGenerator.heavyTowerHealthGenerator(), false, "Coal", TowerGenerator.heavyTowerFillAmountGenerator(), TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Coal", TowerGenerator.heavyTowerPriceGenerator(difficulty));
+        lightCoal = new Tower(TowerGenerator.lightTowerHealthGenerator(), false, "Coal", TowerGenerator.lightTowerFillAmountGenerator(), TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Coal", TowerGenerator.lightTowerPriceGenerator(difficulty));
+        heavyIron = new Tower(TowerGenerator.heavyTowerHealthGenerator(), false, "Iron", TowerGenerator.heavyTowerFillAmountGenerator(), TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Iron", TowerGenerator.heavyTowerPriceGenerator(difficulty));
+        lightIron = new Tower(TowerGenerator.lightTowerHealthGenerator(), false, "Iron", TowerGenerator.lightTowerFillAmountGenerator(), TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Iron", TowerGenerator.lightTowerPriceGenerator(difficulty));
+        heavyGold = new Tower(TowerGenerator.heavyTowerHealthGenerator(), false, "Gold", TowerGenerator.heavyTowerFillAmountGenerator(), TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Gold", TowerGenerator.heavyTowerPriceGenerator(difficulty));
+        lightGold = new Tower(TowerGenerator.lightTowerHealthGenerator(), false, "Gold", TowerGenerator.lightTowerFillAmountGenerator(), TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Gold", TowerGenerator.lightTowerPriceGenerator(difficulty));
     }
 
     /**

@@ -14,42 +14,42 @@ public class InventoryService {
     /**
      * Heavy coal tower object.
      */
-    private Tower heavyCoal;
+    private final Tower heavyCoal;
 
     /**
      * Light coal tower object.
      */
-    private Tower lightCoal;
+    private final Tower lightCoal;
 
     /**
      * Heavy iron tower object.
      */
-    private Tower heavyIron;
+    private final Tower heavyIron;
 
     /**
      * Light iron tower object.
      */
-    private Tower lightIron;
+    private final Tower lightIron;
 
     /**
      * Heavy gold tower object.
      */
-    private Tower heavyGold;
+    private final Tower heavyGold;
 
     /**
      * Light gold tower object.
      */
-    private Tower lightGold;
+    private final Tower lightGold;
 
     /**
      * Heavy gem tower object.
      */
-    private Tower heavyGem;
+    private final Tower heavyGem;
 
     /**
      * Light gem tower object.
      */
-    private Tower lightGem;
+    private final Tower lightGem;
 
     /**
      * The number of available revives in the inventory.

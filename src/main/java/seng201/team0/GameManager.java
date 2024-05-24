@@ -279,24 +279,6 @@ public class GameManager {
     }
 
     /**
-     * Gets the net worth.
-     *
-     * @return The net worth.
-     */
-    public int getNetWorth() {
-        return netWorth;
-    }
-
-    /**
-     * Sets the net worth.
-     *
-     * @param value The new net worth value.
-     */
-    public void setNetWorth(int value) {
-        netWorth = value;
-    }
-
-    /**
      * Calculates the sum of the buy prices of the five cheapest towers.
      *
      * @param genericRoundTowerList The list of towers to consider.
@@ -569,24 +551,6 @@ public class GameManager {
      */
     public void setTowersInSlots(Tower[] towersInSlots) {
         this.towersInSlots = towersInSlots;
-    }
-
-    /**
-     * Sets the selected tower buttons for round one.
-     *
-     * @param roundOneSelectedTowerButtons The list of selected tower buttons.
-     */
-    public void setRoundOneSelectedTowerButtons(List<Button> roundOneSelectedTowerButtons) {
-        this.roundOneSelectedTowerButtons = roundOneSelectedTowerButtons;
-    }
-
-    /**
-     * Gets the selected tower buttons for round one.
-     *
-     * @return The list of selected tower buttons.
-     */
-    public List<Button> getRoundOneSelectedTowerButtons() {
-        return roundOneSelectedTowerButtons;
     }
 
     /**

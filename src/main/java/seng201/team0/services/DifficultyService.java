@@ -1,7 +1,6 @@
 package seng201.team0.services;
 
 import seng201.team0.models.Difficulty;
-import seng201.team0.models.Money;
 
 /**
  * Class to handle game difficulty related processes

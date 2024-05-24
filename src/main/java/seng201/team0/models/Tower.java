@@ -8,14 +8,14 @@ public class Tower implements Purchasable {
     private boolean owned;
     private int level;
     private int breakChance;
-    private String fillType;
+    private final String fillType;
     private int fillAmount;
-    private int reloadSpeed;
-    private double buyPrice;
-    private double sellPrice;
+    private final int reloadSpeed;
+    private final double buyPrice;
+    private final double sellPrice;
     private boolean broken;
-    private String towerName;
-    private Random rnd;
+    private final String towerName;
+    private final Random rnd;
     private boolean isUsable;
     private int actionsUntilUsable;
 

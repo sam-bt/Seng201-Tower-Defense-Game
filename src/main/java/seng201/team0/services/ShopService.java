@@ -12,7 +12,7 @@ public class ShopService {
     /**
      * The GameManager object representing the game's state.
      */
-    private GameManager gameManager;
+    private final GameManager gameManager;
 
     /**
      * Constructs a ShopService object with the given GameManager.

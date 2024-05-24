@@ -1,7 +1,5 @@
 package seng201.team0.services;
 
-import seng201.team0.models.RandomEvent;
-
 import java.util.Random;
 
 /**
