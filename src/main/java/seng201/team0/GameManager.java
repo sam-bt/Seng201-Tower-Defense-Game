@@ -119,52 +119,52 @@ public class GameManager {
     /**
      * Consumer function to launch setup screen.
      */
-    private final Consumer<GameManager> setupScreenLauncher;
+    private Consumer<GameManager> setupScreenLauncher;
 
     /**
      * Consumer function to launch between screen.
      */
-    private final Consumer<GameManager> betweenScreenLauncher;
+    private Consumer<GameManager> betweenScreenLauncher;
 
     /**
      * Consumer function to launch game screen.
      */
-    private final Consumer<GameManager> gameScreenLauncher;
+    private Consumer<GameManager> gameScreenLauncher;
 
     /**
      * Consumer function to launch inventory screen.
      */
-    private final Consumer<GameManager> inventoryScreenLauncher;
+    private Consumer<GameManager> inventoryScreenLauncher;
 
     /**
      * Consumer function to launch shop screen.
      */
-    private final Consumer<GameManager> shopScreenLauncher;
+    private Consumer<GameManager> shopScreenLauncher;
 
     /**
      * Consumer function to launch round one inventory screen.
      */
-    private final Consumer<GameManager> roundOneInventoryScreenLauncher;
+    private Consumer<GameManager> roundOneInventoryScreenLauncher;
 
     /**
      * Consumer function to launch round one game screen.
      */
-    private final Consumer<GameManager> roundOneGameScreenLauncher;
+    private Consumer<GameManager> roundOneGameScreenLauncher;
 
     /**
      * Consumer function to launch error screen.
      */
-    private final Consumer<GameManager> errorScreenLauncher;
+    private Consumer<GameManager> errorScreenLauncher;
 
     /**
      * Consumer function to launch finished screen.
      */
-    private final Consumer<GameManager> finishedScreenLauncher;
+    private Consumer<GameManager> finishedScreenLauncher;
 
     /**
      * Consumer function to launch losing screen.
      */
-    private final Consumer<GameManager> losingScreenLauncher;
+    private Consumer<GameManager> losingScreenLauncher;
 
 
     /**
@@ -197,6 +197,10 @@ public class GameManager {
         this.shopService = new ShopService(this);
         launchSetupScreen();
     }
+    /**
+     * Empty constructor for the GameManager class for testing.
+     */
+    public GameManager() {};
 
     /**
      * Sets up the initial game settings.

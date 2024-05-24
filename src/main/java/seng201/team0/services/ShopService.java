@@ -11,15 +11,9 @@ public class ShopService {
     }
 
     public void buyTower(Tower tower) {
-        System.out.println(gameManager.getMoneyAmount());
-        System.out.println(tower.getBuyPrice());
-        System.out.println(tower.getOwned());
         if (gameManager.getMoneyAmount() >= tower.getBuyPrice() && !tower.getOwned()) {
             gameManager.getMoneyService().editMoney(-tower.getBuyPrice());
             tower.setOwned();
-            System.out.println("Bought tower: " + tower.getTowerName());
-        } else {
-            System.out.println("Not enough currency to buy the tower, or tower already owned");
         }
     }
 
@@ -27,7 +21,6 @@ public class ShopService {
         if (tower.getOwned()) {
             gameManager.getMoneyService().editMoney(tower.getSellPrice());
             tower.setNotOwned();
-            System.out.println("Sold tower: " + tower.getTowerName());
         }
 
     }
@@ -43,9 +36,6 @@ public class ShopService {
             } else if (item.equals("upgrade")) {
                 gameManager.incrementUpgrades();
             }
-            System.out.println("Bought item: " + item);
-        } else {
-            System.out.println("Not enough currency to buy the item.");
         }
     }
 
@@ -61,8 +51,6 @@ public class ShopService {
             gameManager.decrementUpgrades();
             gameManager.getMoneyService().editMoney(itemSellValue);
         }
-        // Remove item from inventory (example)
-        System.out.println("Sold item: " + item);
     }
 
     public static int getItemCost(String item) {
