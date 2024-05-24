@@ -57,7 +57,7 @@ public class TowerTest {
         testTower.useUpgrade();
         assertEquals(testTower.getLevel(), 2);
         assertEquals(testTower.getMaxHealth(), 105);
-        assertEquals(testTower.getFillAmount(), 32);
+        assertEquals(testTower.getFillAmount(), 33);
     }
     /**
      * Test reviving a tower

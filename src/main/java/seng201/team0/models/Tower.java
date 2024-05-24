@@ -60,7 +60,7 @@ public class Tower implements Purchasable {
     public void useUpgrade() {
         level += 1;
         maxHealth += 5;
-        fillAmount += 2;
+        fillAmount += 3;
     }
 
     public int getHealth() {

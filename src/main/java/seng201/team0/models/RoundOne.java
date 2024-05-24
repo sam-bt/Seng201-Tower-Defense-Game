@@ -10,7 +10,7 @@ public class RoundOne {
     private final Cart ironCart;
     private final Cart goldCart;
     private int actionsLeft;
-    private final int numActions = 2;
+    private final int numActions = 3;
 
     public RoundOne(DifficultyService difficulty, int trackLength) {
         coalCart = new Cart("Coal", "Coal", difficulty.getDifficulty(), trackLength);
