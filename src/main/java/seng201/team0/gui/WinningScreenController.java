@@ -38,7 +38,6 @@ public class WinningScreenController {
         difficultyLabel.setText("You won on difficulty "+winningScreenGameManager.getDifficulty()+"!");
     }
     /**
-     * Handler for the quit button.
      * Exits the application when the button is clicked.
      */
     public void onQuit(){
