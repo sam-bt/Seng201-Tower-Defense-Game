@@ -116,7 +116,7 @@ public class RoundOneGameScreenController {
                 selectedTowerIndex = finalI;
                 updateSelectedTowerStats(towerList[finalI]);
                 towerButtons.forEach(button -> {
-                    int buttonIndex = towerButtons.indexOf(button); //TODO update tower stats on next action/frame to update the colours
+                    int buttonIndex = towerButtons.indexOf(button);
                     if (button == towerButtons.get(finalI) && towerList[finalI].isUsable()) {
                         button.setStyle("-fx-background-color: #99FF99; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5; -fx-border-width: 1;");
                     } else if (towerList[buttonIndex].isUsable()) {

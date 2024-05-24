@@ -15,9 +15,8 @@ public class RandomEvent { // return a message and action based on generated eve
         }
         randomGenerator = new RandomEventGenerator(badEventLikelihood);
         eventNum = randomGenerator.generate();
-//        eventNum = 15; //DELETED WHEN DONE TESTING TODO
         System.out.println("eventNum "+eventNum);
-        if (eventNum <= 5) {            //TODO TEST AND MAE IN FULL GAME
+        if (eventNum <= 5) {
             this.generateGoodEvent();
         }
         else if (eventNum <= 10) {

@@ -55,7 +55,7 @@ public class GameManager {
         this.shopScreenLauncher = shopScreenLauncher;
         this.errorScreenLauncher = errorScreenLauncher;
         this.finishedScreenLauncher = finishedScreenLauncher;
-        this.roundOneInventoryScreenLauncher = roundOneInventoryScreenLauncher; //TODO add call for inventory button
+        this.roundOneInventoryScreenLauncher = roundOneInventoryScreenLauncher;
         this.roundOneGameScreenLauncher = roundOneGameScreenLauncher;
         this.losingScreenLauncher = losingScreenLauncher;
         this.shopService = new ShopService(this);
@@ -102,7 +102,7 @@ public class GameManager {
 
         return sum;
     }
-    public void incrementRound() { currRound += 1; } // TODO check for round == to max rounds, if so then terminate
+    public void incrementRound() { currRound += 1; }
     public int getCurrRound() { return currRound; }
     public void launchSetupScreen() { setupScreenLauncher.accept(this); }
     public void launchBetweenRoundsScreen() { betweenScreenLauncher.accept(this); }
@@ -140,7 +140,7 @@ public class GameManager {
     }
     public void setRounds(Long rounds) { this.rounds = rounds; }
     public Long getRounds() { return rounds; }
-    public void setDifficulty(DifficultyService difficulty) { this.difficulty = difficulty; } //TODO FIX THIS NONSENSE
+    public void setDifficulty(DifficultyService difficulty) { this.difficulty = difficulty; }
     public Double getDifficulty() {return difficulty.getDifficulty();}
     public DifficultyService getDifficultyService() {return difficulty;}
 
@@ -233,7 +233,7 @@ public class GameManager {
         else { launchBetweenRoundsScreen(); } }
 
     public void closeBetweenRoundScreen() {
-        if (this.getCurrRound() == 2) { // TODO change to 1 when round screen is fixed
+        if (this.getCurrRound() == 2) {
             launchRoundOneGameScreen();
         }
         else {

@@ -102,7 +102,7 @@ public class BetweenRoundsScreenController {
      * Method that TODO
      */
     @FXML
-    private void setTrackLengthOne(){ //TODO get track lengths to save
+    private void setTrackLengthOne(){
         trackLengthLabel.setText("Track Length: " + shortTrackLength + "m");
         trackNumChosen = 1;
         trackChosen = true;
@@ -120,7 +120,7 @@ public class BetweenRoundsScreenController {
         trackChosen = true;
     }
     @FXML
-    private void onConfirm() { // TODO wrap text
+    private void onConfirm() {
         System.out.println("click worked");
         if (roundGameManager.getCurrRound() == 1) {
             if (roundGameManager.isRoundOneSelectedTowerListNull()) {
@@ -206,7 +206,7 @@ public class BetweenRoundsScreenController {
         return netWorth;
     }
     @FXML
-    private void onShop() { // TODO wrap text
+    private void onShop() {
         if (roundGameManager.getCurrRound() == 1) {
             cantAccessShopLabel.setText("Cannot access shop on round 1!");
         } else {

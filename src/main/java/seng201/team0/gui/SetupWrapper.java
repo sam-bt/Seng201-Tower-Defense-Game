@@ -25,7 +25,7 @@ public class SetupWrapper {
         borderpane.getChildren().removeAll(borderpane.getChildren());
     }
 
-    public void launchSetupScreen(GameManager setupGameManager) { //TODO change the name of these managers
+    public void launchSetupScreen(GameManager setupGameManager) {
         try {
             FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/setup_screen.fxml"));
             setupScreenLoader.setControllerFactory(param -> new SetupScreenController(setupGameManager));
@@ -54,7 +54,7 @@ public class SetupWrapper {
             gameScreenLoader.setControllerFactory(param -> new GameScreenController(launchGameManager));
             Parent setupParent  = gameScreenLoader.load();
             borderpane.setCenter(setupParent);
-            stage.setTitle("Game Screen"); // TODO make match the round number
+            stage.setTitle("Game Screen");
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -154,7 +154,7 @@ public class GameScreenController {
                 selectedTowerIndex = finalI;
                 updateSelectedTowerStats(towerList[finalI]);
                 towerButtons.forEach(button -> {
-                    int buttonIndex = towerButtons.indexOf(button); //TODO update tower stats on next action/frame to update the colours
+                    int buttonIndex = towerButtons.indexOf(button);
                     if (button == towerButtons.get(finalI) && towerList[finalI].isUsable()) {
                         button.setStyle("-fx-background-color: #99FF99; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5; -fx-border-width: 1;");
                     } else if (towerList[buttonIndex].isUsable()) {
@@ -190,7 +190,7 @@ public class GameScreenController {
         }
     }
     public void fillCarts(Tower selectedTower){
-        for (int cartIndex = 0; cartIndex < cartFillProgressBars.size(); cartIndex++) { //TODO new method for special cart in actual game
+        for (int cartIndex = 0; cartIndex < cartFillProgressBars.size(); cartIndex++) {
             Cart cart = cartList.get(cartIndex);
             if (Objects.equals(cart.getResourceType(), selectedTower.getFillType())) {
                 cartFillProgressBars.get(cartIndex).setProgress(cart.getCurrentFillAmount());
