@@ -2,6 +2,9 @@ package seng201.team0.services;
 
 import seng201.team0.models.Money;
 
+/**
+ * Class that handles money related processes
+ */
 public class MoneyService {
     private final Money money;
 

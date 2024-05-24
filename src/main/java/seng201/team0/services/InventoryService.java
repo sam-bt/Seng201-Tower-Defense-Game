@@ -124,7 +124,7 @@ public class InventoryService {
     }
 
     /**
-     * Returns the list of towers in the inventory.
+     * Returns the list of tower objects in the inventory.
      *
      * @return a list containing all the towers
      */
