@@ -41,14 +41,6 @@ public class Tower implements Purchasable {
         buyPrice = price;
         sellPrice = price;
     }
-    public void setHealth(int amount) {
-        if (health + amount > maxHealth) {
-            health = maxHealth; }
-        else if (health + amount < 0) {
-            health = 0;
-        }
-        else { health += amount; }
-    }
     public void breakTower() {
         broken = true;
     }
