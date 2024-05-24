@@ -196,7 +196,7 @@ public class BetweenRoundsScreenController {
     private double getNetWorth() {
         double netWorth = roundGameManager.getMoneyAmount();
         netWorth += (roundGameManager.getAvailableHeals() * 50);
-        netWorth += (roundGameManager.getAvailableRevives() * 100);
+        netWorth += (roundGameManager.getAvailableRevives() * 500);
         netWorth += (roundGameManager.getAvailableUpgrades() * 150);
         for (int i = 0; i < roundGameManager.getGenericRoundTowerList().size(); i++) {
             if (roundGameManager.getGenericRoundTowerList().get(i).getOwned()) {

@@ -83,12 +83,12 @@ public class GameScreenController {
     public void initialize() {
         round = new Round(roundGameManager.getMoneyService(), roundGameManager.getPoints(), roundGameManager.getDifficultyService(), roundGameManager.getRoundTrackLength());
         cartList = List.of(round.getCoalCart(), round.getIronCart(), round.getGoldCart(), round.getGemCart(), round.getBonusCart());
-        Tower[] tempTowerList = roundGameManager.getRoundOneSelectedTowerList();
+        Tower[] tempTowerList = roundGameManager.getTowersInSlots();
         towerList[0] = tempTowerList[0];
         towerList[1] = tempTowerList[1];
         towerList[2] = tempTowerList[2];
-        towerList[3] = new Tower(TowerGenerator.lightTowerHealthGenerator(),true, "Gem", TowerGenerator.lightTowerFillAmountGenerator(),  TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Gem", roundGameManager.getDifficulty());
-        towerList[4] = new Tower(TowerGenerator.heavyTowerHealthGenerator(),true, "Gem", TowerGenerator.heavyTowerFillAmountGenerator(),  TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Gem", roundGameManager.getDifficulty());
+        towerList[3] = tempTowerList[3];
+        towerList[4] = tempTowerList[4];
 
         towerButtons = List.of(towerOneButton,towerTwoButton,towerThreeButton,towerFourButton,towerFiveButton);
         cartButtons = List.of(cartOneButton,cartTwoButton,cartThreeButton,cartFourButton,cartFiveButton);
@@ -301,6 +301,9 @@ public class GameScreenController {
                     nextFrameButton.setText("View Summary");
                     lost = true;
                 }
+                else if (selectedTower.getBroken() && cartList.get(selectedTowerIndex).isFull()){
+                    towerButtons.get(selectedTowerIndex).setDisable(true);
+                }
                 fillBonusCart();
                 updateSelectedTowerStats(towerList[selectedTowerIndex]);
                 actionsLeftLabel.setText("Actions Left: "+round.getActionsLeft());
@@ -319,6 +322,9 @@ public class GameScreenController {
                         fillCartWithTowerLabel.setText("Round Lost!!");
                         nextFrameButton.setText("View Summary");
                         lost = true;
+                    }
+                    else if (selectedTower.getBroken() && cartList.get(selectedTowerIndex).isFull()){
+                        towerButtons.get(selectedTowerIndex).setDisable(true);
                     }
                     fillCarts(selectedTower);
                     updateSelectedTowerStats(towerList[selectedTowerIndex]);
@@ -365,7 +371,7 @@ public class GameScreenController {
                 }
                 fillCartWithTowerLabel.setStyle("-fx-text-fill: green");
                 fillCartWithTowerLabel.setText("Round Won !!");
-                if (roundGameManager.getCurrRound() == roundGameManager.getRounds()) {
+                if (roundGameManager.getCurrRound()-1 == roundGameManager.getRounds()) {
                     nextFrameButton.setText("View Summary");
                 }
                 else {

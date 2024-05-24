@@ -30,4 +30,14 @@ public class TowerGenerator {
         Random rng = new Random();
         return rng.nextInt(3) + 1;
     }
+    public static double heavyTowerPriceGenerator(double difficulty) {
+        Random rnd = new Random();
+        double priceRandomInt = rnd.nextInt((300))+200 * (int) difficulty;
+        return Math.round(priceRandomInt*100.0)/100.0;
+    }
+    public static double lightTowerPriceGenerator(double difficulty) {
+        Random rnd = new Random();
+        double priceRandomInt = rnd.nextInt((165))+100 * (int) difficulty;
+        return Math.round(priceRandomInt*100.0)/100.0;
+    }
 }

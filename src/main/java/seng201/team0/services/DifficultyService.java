@@ -17,7 +17,7 @@ public class DifficultyService {
      * Increment our counter by one
      */
     public void incrementDifficulty() {
-        difficulty.increaseDifficulty(.2);
+        difficulty.increaseDifficulty(.4);
     }
 
     /**

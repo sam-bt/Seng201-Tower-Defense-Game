@@ -64,7 +64,7 @@ public class GameManager {
     public void setSetup(Setup setup){
         setName(setup.getName());
         setRounds(setup.getNumRounds());
-        this.money.editMoney(100*difficulty.getDifficulty());
+        this.money.editMoney(1500);
         setRoundTrackLength(100);
     }
     public void buyTower(Tower tower) {

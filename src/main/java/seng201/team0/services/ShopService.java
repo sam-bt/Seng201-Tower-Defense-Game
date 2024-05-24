@@ -70,7 +70,7 @@ public class ShopService {
             case "heal":
                 return 50;
             case "revive":
-                return 100;
+                return 500;
             case "upgrade":
                 return 150;
             default:
@@ -83,7 +83,7 @@ public class ShopService {
             case "heal":
                 return 50;
             case "revive":
-                return 100;
+                return 500;
             case "upgrade":
                 return 150;
             default:

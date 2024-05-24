@@ -41,12 +41,12 @@ public class TowerService {
     }
     public static boolean shouldTowerBreak(Tower tower){
         int likelihood = rnd.nextInt(101);
-        return tower.getBreakChance() <= likelihood;
+        return tower.getBreakChance() > likelihood;
     }
     public static void breakTowers(List<Tower> towerList){
         for (Tower tower: towerList) {
-            if (shouldTowerBreak(tower)) {
-
+            if (tower.getOwned() && shouldTowerBreak(tower)) {
+                tower.breakTower();
             }
         }
     }

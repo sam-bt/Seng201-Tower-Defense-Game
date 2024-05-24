@@ -6,10 +6,9 @@ import seng201.team0.GameManager;
 public class RoundService {
     public static void completeRound(GameManager roundGameManager){
         TowerService.breakTowers(roundGameManager.getRoundOneTowerList());
-        // if all towers are broken, return false
         roundGameManager.incrementPoints();
         roundGameManager.setTrackLengthIndex(0);
-        roundGameManager.getMoneyService().editMoney(100*roundGameManager.getDifficulty());
+        roundGameManager.getMoneyService().editMoney(1000-(100*roundGameManager.getDifficulty()));
         roundGameManager.getDifficultyService().incrementDifficulty();
     }
     public static int trackLengthCalculator(double difficulty){

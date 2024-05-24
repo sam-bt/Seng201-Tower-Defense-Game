@@ -32,8 +32,8 @@ public class InventoryService {
             LightIron = inventoryServiceGameManager.getRoundOneTowerList().get(3);
             HeavyGold = inventoryServiceGameManager.getRoundOneTowerList().get(4);
             LightGold = inventoryServiceGameManager.getRoundOneTowerList().get(5);
-            HeavyGem = new Tower(TowerGenerator.heavyTowerHealthGenerator(),false, "Gem", TowerGenerator.heavyTowerFillAmountGenerator(),  TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Gem", currDifficulty);
-            LightGem = new Tower(TowerGenerator.lightTowerHealthGenerator(),false, "Gem", TowerGenerator.lightTowerFillAmountGenerator(),  TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Gem", currDifficulty);
+            HeavyGem = new Tower(TowerGenerator.heavyTowerHealthGenerator(),false, "Gem", TowerGenerator.heavyTowerFillAmountGenerator(),  TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Gem", currDifficulty, TowerGenerator.heavyTowerPriceGenerator(currDifficulty));
+            LightGem = new Tower(TowerGenerator.lightTowerHealthGenerator(),false, "Gem", TowerGenerator.lightTowerFillAmountGenerator(),  TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Gem", currDifficulty, TowerGenerator.lightTowerPriceGenerator(currDifficulty));
             List<Tower> towerList = List.of(HeavyCoal, LightCoal, HeavyIron, LightIron, HeavyGold, LightGold, HeavyGem, LightGem);
             inventoryServiceGameManager.setGenericRoundTowerList(towerList);
         } else {

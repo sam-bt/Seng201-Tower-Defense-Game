@@ -24,23 +24,22 @@ public class Tower implements Purchasable {
     private boolean isUsable;
     private int actionsUntilUsable;
 
-    public Tower(int initialHealth, boolean owned, String fillType, int fillAmount, int reloadSpeed, String towerName, double difficulty) {
-        this.health = initialHealth;
-        this.maxHealth = initialHealth;
+    public Tower(int initialHealth, boolean owned, String fillType, int fillAmount, int reloadSpeed, String towerName, double difficulty, double price) {
+        health = initialHealth;
+        maxHealth = initialHealth;
         this.owned = owned;
-        this.level = 1;
-        this.breakChance = 0;
+        level = 1;
+        breakChance = 0;
         this.fillType = fillType;
         this.fillAmount = fillAmount;
         this.reloadSpeed = reloadSpeed;
-        this.broken = false;
+        broken = false;
         this.towerName = towerName;
-        this.isUsable = true;
-        this.actionsUntilUsable = 0;
+        isUsable = true;
+        actionsUntilUsable = 0;
         rnd = new Random();
-        double buyRandomInt = rnd.nextInt(1000)+100 * difficulty;
-        this.buyPrice = Math.round(buyRandomInt*100.0)/100.0;
-        this.sellPrice = Math.round((buyRandomInt)*100.0)/100.0;
+        buyPrice = price;
+        sellPrice = price;
     }
     public void setHealth(int amount) {
         if (health + amount > maxHealth) {
@@ -99,9 +98,9 @@ public class Tower implements Purchasable {
     public boolean getBroken(){
         return broken;
     }
-    public void setBroken() { this.breakTower(); }
     public void useRevive(InventoryService inventoryService) {
         broken = false;
+        breakChance = 0;
         if (health == 0) {
             health = 5;
         }
@@ -110,7 +109,7 @@ public class Tower implements Purchasable {
         return towerName;
     }
 
-    public void useHeal(InventoryService inventoryService) { // TODO: health item currently heals 5 as stand in value so update later on
+    public void useHeal(InventoryService inventoryService) {
         if (health + 5 >= maxHealth) {
             health = maxHealth;
         } else {

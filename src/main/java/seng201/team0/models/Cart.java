@@ -2,6 +2,7 @@ package seng201.team0.models;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class Cart {
@@ -20,18 +21,23 @@ public class Cart {
     public Cart(String cartName, String resourceType, double difficulty, int tracklength) {
         this.cartName = cartName;
         this.resourceType = resourceType;
-        this.endReached = false;
-        this.full = false;
-        this.cartSuccess = false;
-        this.currentFillDisplay=0;
+        endReached = false;
+        full = false;
+        cartSuccess = false;
+        currentFillDisplay=0;
         this.tracklength = tracklength;
         Random rng = new Random();
-        List<Integer> speedList = Arrays.asList(5, 5, 8, 8, 10);
-        int randomSpeed = rng.nextInt(5);
-        this.speed = speedList.get(randomSpeed);
+        List<Integer> speedList = Arrays.asList(5, 8, 8, 10, 10,15);
+        int randomSpeed = rng.nextInt(6);
+        speed = speedList.get(randomSpeed);
         List<Integer> capacityList = Arrays.asList(50 * (int) difficulty, 60 * (int) difficulty,50 * (int) difficulty, 60 * (int) difficulty, 75* (int) difficulty);
         int randomCapacity = rng.nextInt(3);
-        this.capacity = capacityList.get(randomCapacity);
+        if (Objects.equals(cartName, "Bonus")) {
+            capacity = 100 +((int) difficulty * 50);
+        }
+        else {
+        capacity = capacityList.get(randomCapacity);
+        }
     }
 
     public void resetDistance() {
