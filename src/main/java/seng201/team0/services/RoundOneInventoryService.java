@@ -40,22 +40,25 @@ public class RoundOneInventoryService {
 
     /**
      * Constructs a RoundOneInventoryService and initializes towers based on the specified difficulty.
+     *
      * @param difficulty The difficulty level of the game.
      */
-    public RoundOneInventoryService(double difficulty){
+    public RoundOneInventoryService(double difficulty) {
         double currDifficulty = difficulty;
-        heavyCoal = new Tower(TowerGenerator.heavyTowerHealthGenerator(),false, "Coal", TowerGenerator.heavyTowerFillAmountGenerator(),  TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Coal", TowerGenerator.heavyTowerPriceGenerator(currDifficulty));
-        lightCoal = new Tower(TowerGenerator.lightTowerHealthGenerator(),false, "Coal", TowerGenerator.lightTowerFillAmountGenerator(),  TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Coal", TowerGenerator.lightTowerPriceGenerator(currDifficulty));
-        heavyIron = new Tower(TowerGenerator.heavyTowerHealthGenerator(),false, "Iron", TowerGenerator.heavyTowerFillAmountGenerator(),  TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Iron", TowerGenerator.heavyTowerPriceGenerator(currDifficulty));
-        lightIron = new Tower(TowerGenerator.lightTowerHealthGenerator(),false, "Iron", TowerGenerator.lightTowerFillAmountGenerator(),  TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Iron", TowerGenerator.lightTowerPriceGenerator(currDifficulty));
-        heavyGold = new Tower(TowerGenerator.heavyTowerHealthGenerator(),false, "Gold", TowerGenerator.heavyTowerFillAmountGenerator(),  TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Gold", TowerGenerator.heavyTowerPriceGenerator(currDifficulty));
-        lightGold = new Tower(TowerGenerator.lightTowerHealthGenerator(),false, "Gold", TowerGenerator.lightTowerFillAmountGenerator(),  TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Gold", TowerGenerator.lightTowerPriceGenerator(currDifficulty));
+        heavyCoal = new Tower(TowerGenerator.heavyTowerHealthGenerator(), false, "Coal", TowerGenerator.heavyTowerFillAmountGenerator(), TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Coal", TowerGenerator.heavyTowerPriceGenerator(currDifficulty));
+        lightCoal = new Tower(TowerGenerator.lightTowerHealthGenerator(), false, "Coal", TowerGenerator.lightTowerFillAmountGenerator(), TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Coal", TowerGenerator.lightTowerPriceGenerator(currDifficulty));
+        heavyIron = new Tower(TowerGenerator.heavyTowerHealthGenerator(), false, "Iron", TowerGenerator.heavyTowerFillAmountGenerator(), TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Iron", TowerGenerator.heavyTowerPriceGenerator(currDifficulty));
+        lightIron = new Tower(TowerGenerator.lightTowerHealthGenerator(), false, "Iron", TowerGenerator.lightTowerFillAmountGenerator(), TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Iron", TowerGenerator.lightTowerPriceGenerator(currDifficulty));
+        heavyGold = new Tower(TowerGenerator.heavyTowerHealthGenerator(), false, "Gold", TowerGenerator.heavyTowerFillAmountGenerator(), TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Gold", TowerGenerator.heavyTowerPriceGenerator(currDifficulty));
+        lightGold = new Tower(TowerGenerator.lightTowerHealthGenerator(), false, "Gold", TowerGenerator.lightTowerFillAmountGenerator(), TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Gold", TowerGenerator.lightTowerPriceGenerator(currDifficulty));
     }
+
     /**
      * Gets the list of towers available in the inventory for the first round.
+     *
      * @return A list of towers available in the inventory for the first round.
      */
-    public List<Tower> getTowerList(){
+    public List<Tower> getTowerList() {
         return List.of(heavyCoal, lightCoal, heavyIron, lightIron, heavyGold, lightGold);
     }
 

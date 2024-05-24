@@ -21,9 +21,10 @@ public class WinningScreenController {
 
     /**
      * Constructor for the WinningScreenController game manager.
+     *
      * @param tempWinningScreenGameManager The GameManager instance managing the game.
      */
-    public WinningScreenController(GameManager tempWinningScreenGameManager){
+    public WinningScreenController(GameManager tempWinningScreenGameManager) {
         winningScreenGameManager = tempWinningScreenGameManager;
     }
 
@@ -32,15 +33,16 @@ public class WinningScreenController {
      * Sets the text of labels to display game statistics.
      */
     public void initialize() {
-        roundsCompletedLabel.setText("You completed "+(winningScreenGameManager.getCurrRound()-1)+"/"+winningScreenGameManager.getRounds()+" Rounds!");
-        moneyLabel.setText("You won with "+winningScreenGameManager.getMoneyAmount()+"$ left!");
-        pointsLabel.setText("You had "+winningScreenGameManager.getPoints()+" Points!");
-        difficultyLabel.setText("You won on difficulty "+winningScreenGameManager.getDifficulty()+"!");
+        roundsCompletedLabel.setText("You completed " + (winningScreenGameManager.getCurrRound() - 1) + "/" + winningScreenGameManager.getRounds() + " Rounds!");
+        moneyLabel.setText("You won with " + winningScreenGameManager.getMoneyAmount() + "$ left!");
+        pointsLabel.setText("You had " + winningScreenGameManager.getPoints() + " Points!");
+        difficultyLabel.setText("You won on difficulty " + winningScreenGameManager.getDifficulty() + "!");
     }
+
     /**
      * Exits the application when the button is clicked.
      */
-    public void onQuit(){
+    public void onQuit() {
         System.exit(0);
     }
 }

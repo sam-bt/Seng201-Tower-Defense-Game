@@ -27,6 +27,7 @@ public class LosingScreenController {
 
     /**
      * Constructor for the losing screen controllers game manager.
+     *
      * @param tempLosingScreenGameManager The game manager instance associated with the losing screen.
      */
     public LosingScreenController(GameManager tempLosingScreenGameManager) {

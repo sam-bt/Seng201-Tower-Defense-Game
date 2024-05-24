@@ -56,12 +56,6 @@ public class ShopScreenController {
     private Button sellButton;
 
     @FXML
-    private Button shopToInventoryButton;
-
-    @FXML
-    private Button shopToMenuButton;
-
-    @FXML
     private Button towerHealShopButton;
 
     @FXML
@@ -73,7 +67,7 @@ public class ShopScreenController {
     /**
      * Manages the game logic and states related to the shop screen.
      */
-    private GameManager shopScreenGameManager;
+    private final GameManager shopScreenGameManager;
     /**
      * The index of the tower currently selected by the player. Initialized to -1.
      */
@@ -90,13 +84,16 @@ public class ShopScreenController {
      * The shop service that manages the operations and data related to the shop.
      */
     private ShopService shopService;
+
     /**
      * Constructor for the ShopScreenController game manager.
+     *
      * @param tempShopScreenGameManager The GameManager instance for the shop screen.
      */
     public ShopScreenController(GameManager tempShopScreenGameManager) {
         shopScreenGameManager = tempShopScreenGameManager;
     }
+
     /**
      * Initializes the shop screen by setting up button actions and labels.
      */
@@ -118,7 +115,6 @@ public class ShopScreenController {
                     selectedItem = null;
                     resetItemButtonStyles();
                     availableTowerButtons.forEach(button -> {
-                        int buttonIndex = availableTowerButtons.indexOf(button);
                         if (button == availableTowerButtons.get(finalI)) {
                             button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
                         } else {
@@ -172,6 +168,7 @@ public class ShopScreenController {
         buyButton.setOnAction(event -> onBuy());
         sellButton.setOnAction(event -> onSell());
     }
+
     /**
      * Updates the labels on the shop screen based on the selected tower or item.
      */
@@ -184,15 +181,15 @@ public class ShopScreenController {
         } else if (selectedItem != null) {
             if (selectedItem.equals("heal")) {
                 amountOwnedLabel.setText(" " + shopScreenGameManager.getAvailableHeals());
-                buyPriceLabel.setText(" " + shopService.getItemCost(selectedItem));
+                buyPriceLabel.setText(" " + ShopService.getItemCost(selectedItem));
                 selectedLabel.setText(" Heal");
             } else if (selectedItem.equals("revive")) {
                 amountOwnedLabel.setText(" " + shopScreenGameManager.getAvailableRevives());
-                buyPriceLabel.setText(" " + shopService.getItemCost(selectedItem));
+                buyPriceLabel.setText(" " + ShopService.getItemCost(selectedItem));
                 selectedLabel.setText(" Revive");
             } else if (selectedItem.equals("upgrade")) {
                 amountOwnedLabel.setText(" " + shopScreenGameManager.getAvailableUpgrades());
-                buyPriceLabel.setText(" " + shopService.getItemCost(selectedItem));
+                buyPriceLabel.setText(" " + ShopService.getItemCost(selectedItem));
                 selectedLabel.setText(" Upgrade");
             }
 
@@ -203,6 +200,7 @@ public class ShopScreenController {
         }
         moneyLabel.setText("Money: " + shopScreenGameManager.getMoneyAmount());
     }
+
     /**
      * Resets the selected tower.
      */
@@ -211,6 +209,7 @@ public class ShopScreenController {
         resetTowerButtonStyles();
         updateLabels();
     }
+
     /**
      * Resets the selected item.
      */
@@ -219,6 +218,7 @@ public class ShopScreenController {
         resetItemButtonStyles();
         updateLabels();
     }
+
     /**
      * Resets the styles of item buttons.
      */
@@ -227,6 +227,7 @@ public class ShopScreenController {
         towerReviveShopButton.setStyle("");
         towerUpgradeShopButton.setStyle("");
     }
+
     /**
      * Resets the styles of tower buttons.
      */
@@ -234,6 +235,7 @@ public class ShopScreenController {
         List<Button> availableTowerButtons = List.of(coalTower1ShopButton, coalTower2ShopButton, ironTower1ShopButton, ironTower2ShopButton, goldTower1ShopButton, goldTower2ShopButton, gemTower1ShopButton, gemTower2ShopButton);
         availableTowerButtons.forEach(button -> button.setStyle(""));
     }
+
     /**
      * Launches the inventory screen.
      */
@@ -241,6 +243,7 @@ public class ShopScreenController {
     private void onInventory() {
         shopScreenGameManager.launchInventoryScreen();
     }
+
     /**
      * Launches the between rounds screen.
      */
@@ -248,6 +251,7 @@ public class ShopScreenController {
     private void onMenu() {
         shopScreenGameManager.launchBetweenRoundsScreen();
     }
+
     /**
      * Sells the selected tower or item.
      */
@@ -260,8 +264,8 @@ public class ShopScreenController {
             shopScreenGameManager.sellItem(selectedItem);
         }
         updateLabels();
-//        resetSelections();
     }
+
     /**
      * Buys the selected tower or item.
      */
@@ -270,7 +274,6 @@ public class ShopScreenController {
         if (selectedTowerIndex >= 0) {
             Tower tower = shopScreenGameManager.getGenericRoundTowerList().get(selectedTowerIndex);
             shopScreenGameManager.buyTower(tower);
-            System.out.println("ShopSCreenController onBuy:");
             for (int i = 0; i < shopScreenGameManager.getGenericRoundTowerList().size(); i++) {
                 System.out.println(shopScreenGameManager.getGenericRoundTowerList().get(i).getTowerName() + ": " + shopScreenGameManager.getGenericRoundTowerList().get(i).getOwned());
             }
@@ -278,18 +281,6 @@ public class ShopScreenController {
         } else if (selectedItem != null) {
             shopScreenGameManager.buyItem(selectedItem);
         }
-        updateLabels();
-//        resetSelections();
-    }
-
-    /**
-     * Resets the selected tower and item, and updates the labels.
-     */
-    private void resetSelections() {
-        selectedTowerIndex = -1;
-        selectedItem = null;
-        resetTowerButtonStyles();
-        resetItemButtonStyles();
         updateLabels();
     }
 }

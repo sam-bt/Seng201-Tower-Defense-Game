@@ -16,8 +16,10 @@ public class RandomEventGenerator {
      * Random number generator
      */
     Random rnd = new Random();
+
     /**
      * Constructs a RandomEventGenerator with a specified likelihood of bad events.
+     *
      * @param badEventLikelihood The likelihood of generating a bad event.
      */
     public RandomEventGenerator(int badEventLikelihood) {
@@ -26,25 +28,28 @@ public class RandomEventGenerator {
 
     /**
      * Generates a random number in the range of 1 to 15.
+     *
      * @return A randomly generated number.
      */
     public int generate() { // in range 1 to 15
-        return rnd.nextInt(11)+badEventLikelihood;
+        return rnd.nextInt(11) + badEventLikelihood;
     }
 
     /**
      * Generates a random index for the first round.
+     *
      * @return A random index in the range of 0 to 2.
      */
-    public int generateRoundOneIndex(){
+    public int generateRoundOneIndex() {
         return rnd.nextInt(3);
     }
 
     /**
      * Generates a random index for the rounds other than the first.
+     *
      * @return A random index in the range of 0 to 4.
      */
-    public int generateRoundIndex(){
+    public int generateRoundIndex() {
         return rnd.nextInt(5);
     }
 

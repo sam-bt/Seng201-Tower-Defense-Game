@@ -7,6 +7,7 @@ public class RandomEvent { // return a message and action based on generated eve
     String eventName;
     String eventText;
     int eventNum;
+
     public void generateRandomEvent(double difficulty) {
         int badEventLikelihood = (int) Math.round(difficulty);
         if (badEventLikelihood > 5) {
@@ -16,56 +17,57 @@ public class RandomEvent { // return a message and action based on generated eve
         eventNum = randomGenerator.generate();
         if (eventNum <= 5) {
             this.generateGoodEvent();
-        }
-        else if (eventNum <= 10) {
+        } else if (eventNum <= 10) {
             generateNeutralEvent();
-        }
-        else {
+        } else {
             generateBadEvent();
         }
     }
-    public String getEventName(){
+
+    public String getEventName() {
         return this.eventName;
     }
-    public String getEventText(){
+
+    public String getEventText() {
         return this.eventText;
     }
-    private void generateGoodEvent(){
+
+    private void generateGoodEvent() {
         if (eventNum == 5 || eventNum == 1) {
             eventName = "Cart Reset";
             eventText = "One of the carts was reset!!";
-        }
-        else if (eventNum == 2 || eventNum == 3) {
+        } else if (eventNum == 2 || eventNum == 3) {
             eventName = "Reset Towers";
             eventText = "All of the towers were reloaded!";
-        }
-        else {
+        } else {
             eventName = "Fill Cart";
             eventText = "A cart was filled!";
         }
     }
-    private void generateNeutralEvent(){
+
+    private void generateNeutralEvent() {
         eventName = "Nothing";
         eventText = "Nothing happened!";
     }
-    private void generateBadEvent(){
+
+    private void generateBadEvent() {
         if (eventNum == 14 || eventNum == 11) {
             eventName = "Steal Resources";
             eventText = "Some of your resources were stolen!";
-        }
-        else if (eventNum == 12 || eventNum == 13) {
+        } else if (eventNum == 12 || eventNum == 13) {
             eventName = "Disable Tower";
             eventText = "A tower was used, but no cart was filled!";
-        }
-        else {
+        } else {
             eventName = "Actions Reset";
             eventText = "No actions this frame!";
         }
     }
-    public int generateRoundOneIndex(){
+
+    public int generateRoundOneIndex() {
         return randomGenerator.generateRoundOneIndex();
     }
-    public int generateRoundIndex(){
+
+    public int generateRoundIndex() {
         return randomGenerator.generateRoundIndex();
     }
 }

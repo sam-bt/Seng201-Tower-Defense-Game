@@ -33,12 +33,14 @@ public class TowerService {
      * Checks if the given tower is already selected among the selected towers.
      *
      * @param selectedTowers The array of selected towers.
-     * @param tower The tower to check.
+     * @param tower          The tower to check.
      * @return True if the tower is already selected, otherwise false.
      */
     public static boolean isTowerAlreadySelected(Tower[] selectedTowers, Tower tower) {
-        for (Tower selectedTower: selectedTowers){
-            if (selectedTower == null) {continue;}
+        for (Tower selectedTower : selectedTowers) {
+            if (selectedTower == null) {
+                continue;
+            }
             if (Objects.equals(selectedTower.getTowerName(), tower.getTowerName())) {
                 return true;
             }
@@ -55,7 +57,9 @@ public class TowerService {
     public static boolean areAllRoundOneTowersTypesSelected(Tower[] selectedTowers) {
         HashSet<String> roundOneTowers = new HashSet<>(Arrays.asList("Coal", "Iron", "Gold"));
         for (Tower tower : selectedTowers) {
-            if (tower == null) {return false;}
+            if (tower == null) {
+                return false;
+            }
             roundOneTowers.remove(tower.getFillType());
         }
         return roundOneTowers.isEmpty();
@@ -67,7 +71,7 @@ public class TowerService {
      * @param tower The tower to check.
      * @return True if the tower should break, otherwise false.
      */
-    public static boolean shouldTowerBreak(Tower tower){
+    public static boolean shouldTowerBreak(Tower tower) {
         int likelihood = rnd.nextInt(101);
         return tower.getBreakChance() > likelihood;
     }
@@ -77,8 +81,8 @@ public class TowerService {
      *
      * @param towerList The list of towers to check and break.
      */
-    public static void breakTowers(List<Tower> towerList){
-        for (Tower tower: towerList) {
+    public static void breakTowers(List<Tower> towerList) {
+        for (Tower tower : towerList) {
             if (tower.getOwned() && shouldTowerBreak(tower)) {
                 tower.breakTower();
             }

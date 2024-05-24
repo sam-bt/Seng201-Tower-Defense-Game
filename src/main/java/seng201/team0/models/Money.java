@@ -12,6 +12,7 @@ public class Money {
 
     /**
      * Get current counter count
+     *
      * @return Current count
      */
     public double getAmount() {
@@ -21,6 +22,7 @@ public class Money {
 
     /**
      * Set current counter count
+     *
      * @param value Value of counter
      */
     public void setMoney(double value) {

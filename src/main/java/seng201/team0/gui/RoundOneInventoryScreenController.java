@@ -8,9 +8,7 @@ import seng201.team0.models.Tower;
 import seng201.team0.services.RoundOneInventoryService;
 import seng201.team0.services.TowerService;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 import static java.util.Collections.emptyList;
@@ -20,21 +18,36 @@ import static java.util.Collections.emptyList;
  * Manages user interactions with tower selection and inventory management in the game.
  */
 public class RoundOneInventoryScreenController {
-    @FXML Button heavyCoalButton;
-    @FXML Button lightCoalButton;
-    @FXML Button heavyIronButton;
-    @FXML Button lightIronButton;
-    @FXML Button heavyGoldButton;
-    @FXML Button lightGoldButton;
-    @FXML Button selectedTowerButtonOne;
-    @FXML Button selectedTowerButtonTwo;
-    @FXML Button selectedTowerButtonThree;
-    @FXML Label towerNameLabel;
-    @FXML Label towerHealthLabel;
-    @FXML Label towerTypeLabel;
-    @FXML Label towerReloadLabel;
-    @FXML Label towerFillAmountLabel;
-    @FXML Label selectAllTowersLabel;
+    @FXML
+    Button heavyCoalButton;
+    @FXML
+    Button lightCoalButton;
+    @FXML
+    Button heavyIronButton;
+    @FXML
+    Button lightIronButton;
+    @FXML
+    Button heavyGoldButton;
+    @FXML
+    Button lightGoldButton;
+    @FXML
+    Button selectedTowerButtonOne;
+    @FXML
+    Button selectedTowerButtonTwo;
+    @FXML
+    Button selectedTowerButtonThree;
+    @FXML
+    Label towerNameLabel;
+    @FXML
+    Label towerHealthLabel;
+    @FXML
+    Label towerTypeLabel;
+    @FXML
+    Label towerReloadLabel;
+    @FXML
+    Label towerFillAmountLabel;
+    @FXML
+    Label selectAllTowersLabel;
     /**
      * Array containing the selected towers for the game round.
      */
@@ -69,35 +82,35 @@ public class RoundOneInventoryScreenController {
      * List of towers available for selection in the game round.
      */
     List<Tower> towers;
+
     /**
      * Constructs a new RoundOneInventoryScreenController with the specified GameManager instance.
+     *
      * @param tempRoundOneInventoryScreenGameManager The GameManager instance managing the game.
      */
-    RoundOneInventoryScreenController(GameManager tempRoundOneInventoryScreenGameManager){
+    RoundOneInventoryScreenController(GameManager tempRoundOneInventoryScreenGameManager) {
         roundOneInventoryScreenGameManager = tempRoundOneInventoryScreenGameManager;
     }
+
     /**
      * Initializes the Round One Inventory Screen.
      * Sets up button actions for tower selection and management.
      */
     public void initialize() {
         double currDifficulty = roundOneInventoryScreenGameManager.getDifficulty();
-        List<Button> towerButtons = List.of(heavyCoalButton,lightCoalButton,heavyIronButton,lightIronButton,heavyGoldButton,lightGoldButton);
-        selectedTowerButtons = List.of(selectedTowerButtonOne,selectedTowerButtonTwo,selectedTowerButtonThree);
+        List<Button> towerButtons = List.of(heavyCoalButton, lightCoalButton, heavyIronButton, lightIronButton, heavyGoldButton, lightGoldButton);
+        selectedTowerButtons = List.of(selectedTowerButtonOne, selectedTowerButtonTwo, selectedTowerButtonThree);
         RoundOneInventoryService roundOneInventory = new RoundOneInventoryService(currDifficulty);
         towers = roundOneInventory.getTowerList();
         towerListIndices = roundOneInventoryScreenGameManager.getRoundOneTowerListIndices();
         if (!roundOneInventoryScreenGameManager.isRoundOneSelectedTowerListNull()) {
-            if (roundOneInventoryScreenGameManager.getRoundOneSelectedTowerList()!=null){
+            if (roundOneInventoryScreenGameManager.getRoundOneSelectedTowerList() != null) {
                 savedTowers = roundOneInventoryScreenGameManager.getRoundOneSelectedTowerList();
                 towerListIndices = roundOneInventoryScreenGameManager.getRoundOneTowerListIndices();
             }
-        }
-        else {
+        } else {
             towerListIndices = emptyList();
         }
-        List<Button> savedTowerButtons = roundOneInventoryScreenGameManager.getRoundOneSelectedTowerButtons();
-
         // Sets the action to display the selected towers information when it is clicked on, and to show that it is selected
         for (int i = 0; i < towerButtons.size(); i++) {
             int finalI = i;
@@ -119,48 +132,54 @@ public class RoundOneInventoryScreenController {
             selectedTowerButtons.get(i).setOnAction(event -> {
                 if (selectedTowerIndex != -1) {
                     if (!TowerService.isTowerAlreadySelected(selectedTowers, towers.get(selectedTowerIndex))) {
-                    selectedTowerButtons.get(finalI).setText(towers.get(selectedTowerIndex).getTowerName());
-                    selectedTowers[finalI] = towers.get(selectedTowerIndex); }
+                        selectedTowerButtons.get(finalI).setText(towers.get(selectedTowerIndex).getTowerName());
+                        selectedTowers[finalI] = towers.get(selectedTowerIndex);
+                    }
                 }
             });
         }
         if (!towerListIndices.isEmpty()) {
-            for (int selectedTowerIndex: towerListIndices) {
-            selectedTowerButtons.get(selectedTowerIndex).setText(savedTowers[selectedTowerIndex].getTowerName());
-            selectedTowers[selectedTowerIndex] = savedTowers[selectedTowerIndex];
+            for (int selectedTowerIndex : towerListIndices) {
+                selectedTowerButtons.get(selectedTowerIndex).setText(savedTowers[selectedTowerIndex].getTowerName());
+                selectedTowers[selectedTowerIndex] = savedTowers[selectedTowerIndex];
             }
         }
 
     }
+
     /**
      * Updates the displayed stats for the selected tower.
+     *
      * @param tower The tower for which to display stats.
      */
     private void updateDisplayedStats(Tower tower) {
-        towerNameLabel.setText("Name: "+tower.getTowerName());
-        towerHealthLabel.setText("Health: "+tower.getHealth());
-        towerTypeLabel.setText("Resource Fill Type: "+tower.getFillType());
-        towerReloadLabel.setText("Reload Speed: "+tower.getReloadSpeed());
-        towerFillAmountLabel.setText("Reload Speed: "+tower.getFillAmount());
+        towerNameLabel.setText("Name: " + tower.getTowerName());
+        towerHealthLabel.setText("Health: " + tower.getHealth());
+        towerTypeLabel.setText("Resource Fill Type: " + tower.getFillType());
+        towerReloadLabel.setText("Reload Speed: " + tower.getReloadSpeed());
+        towerFillAmountLabel.setText("Reload Speed: " + tower.getFillAmount());
 
     }
+
     /**
      * Sets the selected towers for the game round and closes the inventory screen.
      */
     @FXML
     private void onConfirm() {
 //        roundOneInventoryScreenGameManager.setRoundOneSelectedTowerButtons(selectedTowerButtons);
-        if  (TowerService.areAllRoundOneTowersTypesSelected(selectedTowers) && TowerService.areAllTowersSelected(selectedTowers)) {
-            for (Tower tower: towers) {
-                for (Tower selectedTower: selectedTowers) {
+        if (TowerService.areAllRoundOneTowersTypesSelected(selectedTowers) && TowerService.areAllTowersSelected(selectedTowers)) {
+            for (Tower tower : towers) {
+                for (Tower selectedTower : selectedTowers) {
                     if (Objects.equals(tower.getTowerName(), selectedTower.getTowerName())) {
                         tower.setOwned();
                     }
                 }
             }
             roundOneInventoryScreenGameManager.setRoundOneTowerList(towers);
-        roundOneInventoryScreenGameManager.setRoundOneSelectedTowerList(selectedTowers);
-        roundOneInventoryScreenGameManager.closeRoundOneInventoryScreen(); }
-        else { selectAllTowersLabel.setStyle("-fx-text-fill: red");}
+            roundOneInventoryScreenGameManager.setRoundOneSelectedTowerList(selectedTowers);
+            roundOneInventoryScreenGameManager.closeRoundOneInventoryScreen();
+        } else {
+            selectAllTowersLabel.setStyle("-fx-text-fill: red");
+        }
     }
 }

@@ -25,9 +25,10 @@ public class DifficultyService {
 
     /**
      * Get the current count of the counter
+     *
      * @return Current count
      */
     public double getDifficulty() {
-        return Math.round(difficulty.getDifficulty()*10) / 10.0;
+        return Math.round(difficulty.getDifficulty() * 10) / 10.0;
     }
 }

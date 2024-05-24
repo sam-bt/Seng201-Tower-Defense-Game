@@ -171,17 +171,17 @@ public class GameManager {
      * Constructor for the GameManager class.
      * Initializes the screen launchers and services, and launches the setup screen.
      *
-     * @param setupScreenLauncher Consumer to launch the setup screen
-     * @param betweenScreenLauncher Consumer to launch the between rounds screen
-     * @param gameScreenLauncher Consumer to launch the game screen
-     * @param inventoryScreenLauncher Consumer to launch the inventory screen
-     * @param shopScreenLauncher Consumer to launch the shop screen
+     * @param setupScreenLauncher             Consumer to launch the setup screen
+     * @param betweenScreenLauncher           Consumer to launch the between rounds screen
+     * @param gameScreenLauncher              Consumer to launch the game screen
+     * @param inventoryScreenLauncher         Consumer to launch the inventory screen
+     * @param shopScreenLauncher              Consumer to launch the shop screen
      * @param roundOneInventoryScreenLauncher Consumer to launch the round one inventory screen
-     * @param roundOneGameScreenLauncher Consumer to launch the round one game screen
-     * @param errorScreenLauncher Consumer to launch the error screen
-     * @param finishedScreenLauncher Consumer to launch the finished screen
-     * @param losingScreenLauncher Consumer to launch the losing screen
-     * @param clearScreen Runnable to clear the screen
+     * @param roundOneGameScreenLauncher      Consumer to launch the round one game screen
+     * @param errorScreenLauncher             Consumer to launch the error screen
+     * @param finishedScreenLauncher          Consumer to launch the finished screen
+     * @param losingScreenLauncher            Consumer to launch the losing screen
+     * @param clearScreen                     Runnable to clear the screen
      */
     public GameManager(Consumer<GameManager> setupScreenLauncher, Consumer<GameManager> betweenScreenLauncher, Consumer<GameManager> gameScreenLauncher, Consumer<GameManager> inventoryScreenLauncher, Consumer<GameManager> shopScreenLauncher, Consumer<GameManager> roundOneInventoryScreenLauncher, Consumer<GameManager> roundOneGameScreenLauncher, Consumer<GameManager> errorScreenLauncher, Consumer<GameManager> finishedScreenLauncher, Consumer<GameManager> losingScreenLauncher, Runnable clearScreen) {
         this.setupScreenLauncher = setupScreenLauncher;
@@ -197,10 +197,14 @@ public class GameManager {
         this.shopService = new ShopService(this);
         launchSetupScreen();
     }
+
     /**
      * Empty constructor for the GameManager class for testing.
      */
-    public GameManager() {};
+    public GameManager() {
+    }
+
+    ;
 
     /**
      * Sets up the initial game settings.
@@ -804,36 +808,36 @@ public class GameManager {
     public void openRoundOneInventoryScreen() {
         launchRoundOneInventoryScreen();
     }
+
     /**
      * Launches generic inventory screen.
      */
-    public void openInventoryScreen(){
+    public void openInventoryScreen() {
         launchInventoryScreen();
     }
 
     /**
      * Launches between rounds screen.
      */
-    public void closeRoundOneInventoryScreen(){
+    public void closeRoundOneInventoryScreen() {
         launchBetweenRoundsScreen();
     }
 
     /**
      * Launches shop screen.
      */
-    public void openShopScreen(){
+    public void openShopScreen() {
         launchShopScreen();
     }
 
     /**
      * Launches between round screen or launches finished screen if it's the last round.
      */
-    public void closeGameScreen(){
+    public void closeGameScreen() {
         if (getCurrRound() <= getRounds()) {
             RoundService.completeRound(this);
             launchBetweenRoundsScreen();
-        }
-        else {
+        } else {
             launchFinishedScreen();
         }
     }
@@ -841,7 +845,7 @@ public class GameManager {
     /**
      * Launches setup screen.
      */
-    public void closeInvalidNameScreen(){
+    public void closeInvalidNameScreen() {
         launchSetupScreen();
     }
 

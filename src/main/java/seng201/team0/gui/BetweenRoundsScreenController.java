@@ -3,7 +3,6 @@ package seng201.team0.gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.text.TextFlow;
 import seng201.team0.GameManager;
 import seng201.team0.models.Tower;
 import seng201.team0.services.RoundService;
@@ -15,7 +14,10 @@ import java.text.DecimalFormat;
  * This class manages the user interface and interactions for the screen displayed between rounds.
  */
 public class BetweenRoundsScreenController {
-    public final DecimalFormat decimalFormat = new DecimalFormat("0.00");
+    /**
+     * Sets the decimal format style for the class.
+     */
+    private final DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
     @FXML
     private Label betweenRoundsTitleLabel;
@@ -35,14 +37,6 @@ public class BetweenRoundsScreenController {
     private Label cantAccessShopLabel;
     @FXML
     private Label cantStartRoundLabel;
-    @FXML
-    private TextFlow cantStartRoundTextFlow;
-    @FXML
-    private Button goToShopButton;
-    @FXML
-    private Button goToInventoryButton;
-    @FXML
-    private Button skipRoundButton;
     @FXML
     private Button trackLengthButtonOne;
     @FXML
@@ -250,9 +244,9 @@ public class BetweenRoundsScreenController {
     }
 
     /**
-    * If the current round is 1, displays a message indicating that the shop cannot be accessed.
-    * Otherwise, opens the shop screen.
-    */
+     * If the current round is 1, displays a message indicating that the shop cannot be accessed.
+     * Otherwise, opens the shop screen.
+     */
     @FXML
     private void onShop() {
         if (roundGameManager.getCurrRound() == 1) {

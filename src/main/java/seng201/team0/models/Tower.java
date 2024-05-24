@@ -1,6 +1,7 @@
 package seng201.team0.models;
 
 import java.util.Random;
+
 public class Tower implements Purchasable {
     private int health;
     private int maxHealth;
@@ -35,18 +36,28 @@ public class Tower implements Purchasable {
         buyPrice = price;
         sellPrice = price;
     }
+
     public void breakTower() {
         broken = true;
     }
-    public void setOwned() {owned = true;}
-    public void setNotOwned() {owned = false;}
-    public void buy(){
+
+    public void setOwned() {
         owned = true;
     }
-    public void sell(){
+
+    public void setNotOwned() {
         owned = false;
     }
-    public void useUpgrade(){
+
+    public void buy() {
+        owned = true;
+    }
+
+    public void sell() {
+        owned = false;
+    }
+
+    public void useUpgrade() {
         level += 1;
         maxHealth += 5;
         fillAmount += 2;
@@ -55,35 +66,47 @@ public class Tower implements Purchasable {
     public int getHealth() {
         return health;
     }
-    public int getMaxHealth() { return maxHealth; }
-    public boolean getOwned(){
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public boolean getOwned() {
         return owned;
     }
-    public int getLevel(){
+
+    public int getLevel() {
         return level;
     }
-    public int getBreakChance(){
+
+    public int getBreakChance() {
         return breakChance;
     }
 
-    public String getFillType(){
+    public String getFillType() {
         return fillType;
     }
-    public int getFillAmount(){
+
+    public int getFillAmount() {
         return fillAmount;
     }
-    public int getReloadSpeed(){
+
+    public int getReloadSpeed() {
         return reloadSpeed;
     }
-    public double getBuyPrice(){
+
+    public double getBuyPrice() {
         return buyPrice;
     }
-    public double getSellPrice(){
+
+    public double getSellPrice() {
         return sellPrice;
     }
-    public boolean getBroken(){
+
+    public boolean getBroken() {
         return broken;
     }
+
     public void useRevive() {
         broken = false;
         breakChance = 0;
@@ -91,7 +114,8 @@ public class Tower implements Purchasable {
             health = 5;
         }
     }
-    public String getTowerName(){
+
+    public String getTowerName() {
         return towerName;
     }
 
@@ -102,35 +126,43 @@ public class Tower implements Purchasable {
             health += 5;
         }
     }
-    public void use(){
+
+    public void use() {
         actionsUntilUsable = reloadSpeed;
         breakChance += rnd.nextInt(4);
         health -= rnd.nextInt(10);
-        if (health <=0) {
+        if (health <= 0) {
             health = 0;
             breakTower();
         }
         isUsable = false;
     }
-    public int getActionsUntilUsable(){
+
+    public int getActionsUntilUsable() {
         return actionsUntilUsable;
     }
-    public void actionUsed(){
+
+    public void actionUsed() {
         if (actionsUntilUsable == 1) {
             isUsable = true;
             actionsUntilUsable = 0;
+        } else if (actionsUntilUsable != 0) {
+            actionsUntilUsable -= 1;
         }
-        else if (actionsUntilUsable != 0) {
-            actionsUntilUsable -= 1; }
-    };
-    public boolean isUsable(){
+    }
+
+    ;
+
+    public boolean isUsable() {
         return isUsable;
     }
-    public void setUsable(){
+
+    public void setUsable() {
         actionsUntilUsable = 0;
         isUsable = true;
     }
-    public void setHealth(int health){
+
+    public void setHealth(int health) {
         this.health = health;
     }
 }

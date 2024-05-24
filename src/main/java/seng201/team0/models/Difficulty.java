@@ -12,6 +12,7 @@ public class Difficulty {
 
     /**
      * Get current counter count
+     *
      * @return Current count
      */
     public double getDifficulty() {
@@ -20,6 +21,7 @@ public class Difficulty {
 
     /**
      * Set current counter count
+     *
      * @param difficultyIncrease Value of counter
      */
     public void increaseDifficulty(double difficultyIncrease) {

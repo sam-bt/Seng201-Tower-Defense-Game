@@ -14,7 +14,7 @@ public class TowerGenerator {
      */
     public static int heavyTowerHealthGenerator() {
         Random rng = new Random();
-        return rng.nextInt(101)+200;
+        return rng.nextInt(101) + 200;
     }
 
     /**
@@ -75,8 +75,8 @@ public class TowerGenerator {
      */
     public static double heavyTowerPriceGenerator(double difficulty) {
         Random rnd = new Random();
-        double priceRandomInt = rnd.nextInt((301))+200 * (int) difficulty;
-        return Math.round(priceRandomInt*100.0)/100.0;
+        double priceRandomInt = rnd.nextInt((301)) + 200 * (int) difficulty;
+        return Math.round(priceRandomInt * 100.0) / 100.0;
     }
 
     /**
@@ -87,7 +87,7 @@ public class TowerGenerator {
      */
     public static double lightTowerPriceGenerator(double difficulty) {
         Random rnd = new Random();
-        double priceRandomInt = rnd.nextInt((166))+100 * (int) difficulty;
-        return Math.round(priceRandomInt*100.0)/100.0;
+        double priceRandomInt = rnd.nextInt((166)) + 100 * (int) difficulty;
+        return Math.round(priceRandomInt * 100.0) / 100.0;
     }
 }

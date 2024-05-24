@@ -41,10 +41,6 @@ public class InventoryScreenController {
     @FXML
     private Button inventorySlot5Button;
     @FXML
-    private Button inventoryToMenuButton;
-    @FXML
-    private Button inventoryToShopButton;
-    @FXML
     private Button ironType1Button;
     @FXML
     private Button ironType2Button;
@@ -114,11 +110,13 @@ public class InventoryScreenController {
 
     /**
      * Inventory screen constructor that constructs inventory screen game manager
+     *
      * @param tempInventoryScreenGameManager
      */
     public InventoryScreenController(GameManager tempInventoryScreenGameManager) {
         inventoryScreenGameManager = tempInventoryScreenGameManager;
     }
+
     /**
      * Initializes the inventory screen by setting up various UI elements and event handlers.
      */
@@ -128,7 +126,6 @@ public class InventoryScreenController {
         List<Button> availableItemButtons = List.of(useHealButton, useReviveButton, useUpgradeButton);
         currentInventory = new InventoryService(inventoryScreenGameManager);
         List<Tower> towers = currentInventory.getTowerList();
-        List<Tower> genericTowers = inventoryScreenGameManager.getGenericRoundTowerList();
 
         clearDisplayedStats();
 
@@ -138,15 +135,13 @@ public class InventoryScreenController {
 
         towerListIndices = inventoryScreenGameManager.getGenericRoundTowerListIndices();
         if (!inventoryScreenGameManager.isGenericRoundTowerListNull()) {
-            if (inventoryScreenGameManager.getRoundOneSelectedTowerList()!=null){
+            if (inventoryScreenGameManager.getRoundOneSelectedTowerList() != null) {
                 savedTowers = inventoryScreenGameManager.getRoundOneSelectedTowerList();
                 towerListIndices = inventoryScreenGameManager.getGenericRoundTowerListIndices();
             }
-        }
-        else {
+        } else {
             towerListIndices = emptyList();
         }
-        List<Button> savedTowerButtons = inventoryScreenGameManager.getRoundOneSelectedTowerButtons();
         // Load towers from slots if any
         towersInSlots = inventoryScreenGameManager.getTowersInSlots();
         for (int i = 0; i < towersInSlots.length; i++) {
@@ -278,8 +273,10 @@ public class InventoryScreenController {
         });
         updateSlotButtonStyles();
     }
+
     /**
      * Applies the selected item action to the specified tower.
+     *
      * @param tower The tower to apply the selected item action to.
      */
     private void applySelectedItem(Tower tower) {
@@ -312,6 +309,7 @@ public class InventoryScreenController {
         }
         updateDisplayedStats(tower);
     }
+
     /**
      * Resets the styles of item buttons.
      */
@@ -320,6 +318,7 @@ public class InventoryScreenController {
         useReviveButton.setStyle("");
         useUpgradeButton.setStyle("");
     }
+
     /**
      * Resets the styles of tower buttons based on their availability and broken status.
      */
@@ -346,6 +345,7 @@ public class InventoryScreenController {
             }
         }
     }
+
     /**
      * Resets the tower selection by clearing displayed stats and resetting tower button styles.
      */
@@ -354,6 +354,7 @@ public class InventoryScreenController {
         clearDisplayedStats();
         resetTowerButtonStyles();
     }
+
     /**
      * Resets the selected item.
      */
@@ -361,6 +362,7 @@ public class InventoryScreenController {
         selectedItem = null;
         resetItemButtonStyles();
     }
+
     /**
      * Clears the displayed tower statistics.
      */
@@ -372,12 +374,14 @@ public class InventoryScreenController {
         currTowerFillAmount.setText(" ");
         currTowerBreakChance.setText(" ");
     }
+
     /**
      * Updates the displayed statistics for the specified tower.
+     *
      * @param tower The tower whose statistics to display.
      */
     private void updateDisplayedStats(Tower tower) {
-        currTowerHealth.setText(" " + tower.getHealth() +"/"+ tower.getMaxHealth());
+        currTowerHealth.setText(" " + tower.getHealth() + "/" + tower.getMaxHealth());
         currTowerLevel.setText(" " + tower.getLevel());
         currTowerReload.setText(" " + tower.getReloadSpeed());
         currTowerType.setText(" " + tower.getTowerName());
@@ -394,6 +398,7 @@ public class InventoryScreenController {
             }
         }
     }
+
     /**
      * Updates the styles of tower slot buttons based on the towers in the slots.
      */
@@ -413,6 +418,7 @@ public class InventoryScreenController {
 
     /**
      * Retrieves the tower slot button corresponding to the given index.
+     *
      * @param index The index of the tower slot button to retrieve.
      * @return The tower slot button corresponding to the given index.
      */
@@ -426,6 +432,7 @@ public class InventoryScreenController {
             default -> null;
         };
     }
+
     /**
      * Saves the towers currently in slots to the GameManager.
      */

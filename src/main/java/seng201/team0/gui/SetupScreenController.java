@@ -9,24 +9,24 @@ import seng201.team0.services.DifficultyService;
 import seng201.team0.services.MoneyService;
 
 /**
- *
  * This class is the controller for the setup screen (the screen opened when the app is initialized)
- *
  */
 
 public class SetupScreenController {
     private GameManager setupGameManager;
-    @FXML private TextField playerName;
-    @FXML private Button setupAccept;
-    @FXML private Slider numRoundsSlider;
-    @FXML private Slider difficultySlider;
+    @FXML
+    private TextField playerName;
+    @FXML
+    private Slider numRoundsSlider;
+    @FXML
+    private Slider difficultySlider;
 
     /**
      * Sole constructor that sets the GameManager instance
      */
 
-    public SetupScreenController(GameManager tempSetupGameManager){
-            setupGameManager = tempSetupGameManager;
+    public SetupScreenController(GameManager tempSetupGameManager) {
+        setupGameManager = tempSetupGameManager;
     }
 
 
@@ -40,7 +40,7 @@ public class SetupScreenController {
         Long numRoundsValue = Math.round(numRoundsSlider.getValue());
         double difficultyValue = Math.round(difficultySlider.getValue());
         String playerText = playerName.getText();
-        Setup setup = new Setup(playerText,numRoundsValue);
+        Setup setup = new Setup(playerText, numRoundsValue);
         setupGameManager.startPoints();
         setupGameManager.setCurrRound();
         setupGameManager.setMoney(new MoneyService());

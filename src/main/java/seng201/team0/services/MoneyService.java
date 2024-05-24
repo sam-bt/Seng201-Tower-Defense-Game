@@ -19,21 +19,20 @@ public class MoneyService {
      * Increment our counter by one
      */
     public void editMoney(double amount) {
-        if (amount <0) {
+        if (amount < 0) {
             if (money.getAmount() + amount < 0) {
                 money.setMoney(-money.getAmount());
-            }
-            else {
+            } else {
                 money.setMoney(amount);
             }
-        }
-        else {
+        } else {
             money.setMoney(amount);
         }
     }
 
     /**
      * Get the current count of the counter
+     *
      * @return Current count
      */
     public double getCurrentAmount() {

@@ -1,7 +1,6 @@
 package seng201.team0.gui;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import seng201.team0.GameManager;
 
 /**
@@ -16,14 +15,12 @@ public class InvalidNameScreenController {
      */
     GameManager invalidNameGameManager;
 
-    @FXML
-    private Button nextRoundButton;
-
     /**
      * Constructor for the InvalidNameScreenController class.
+     *
      * @param tempInvalidNameGameManager The game manager instance associated with the screen.
      */
-    public InvalidNameScreenController(GameManager tempInvalidNameGameManager){
+    public InvalidNameScreenController(GameManager tempInvalidNameGameManager) {
         invalidNameGameManager = tempInvalidNameGameManager;
     }
 
