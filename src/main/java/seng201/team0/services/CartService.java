@@ -11,7 +11,7 @@ public class CartService {
     /**
      * Checks if all carts except the bonus cart are full.
      * @param cartList The list of carts to be checked.
-     * @return {@code true} if all carts except the bonus cart are full, {@code false} otherwise.
+     * @return returns true if all carts except the bonus cart are full, false otherwise.
      */
     public static boolean areAllCartsFull(List<Cart> cartList) { //checks all but the bonus cart
         for (Cart cart: cartList) {
