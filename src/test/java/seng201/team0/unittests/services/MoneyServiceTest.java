@@ -12,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author Samuel Beattie
  */
 class MoneyServiceTest {
+    /**
+     * Money Service
+     */
     private MoneyService testMoneyService;
 
     /**
