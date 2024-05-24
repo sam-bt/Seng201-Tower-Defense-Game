@@ -129,14 +129,17 @@ public class BetweenRoundsScreenController {
                 cantStartRoundLabel.setText("Please select a track length for the next round!");
             }
             else {
-                roundGameManager.incrementRound();
-                roundGameManager.closeBetweenRoundScreen();
                 roundGameManager.setTrackLengthIndex(trackNumChosen);
                 if (trackNumChosen==1) {
                     roundGameManager.setRoundTrackLength(shortTrackLength); }
                 else if (trackNumChosen==2){
                     roundGameManager.setRoundTrackLength(mediumTrackLength);}
-                else{roundGameManager.setRoundTrackLength(longTrackLength);}}
+                else{
+                    roundGameManager.setRoundTrackLength(longTrackLength);}
+                roundGameManager.incrementRound();
+                roundGameManager.closeBetweenRoundScreen();
+
+            }
         } else {
             Tower[] towersInSlots = roundGameManager.getTowersInSlots();
             boolean brokenTowerError = false;
@@ -181,14 +184,15 @@ public class BetweenRoundsScreenController {
 
                 }
             } else {
-                roundGameManager.incrementRound();
-                roundGameManager.closeBetweenRoundScreen();
                 roundGameManager.setTrackLengthIndex(trackNumChosen);
                 if (trackNumChosen==1) {
                     roundGameManager.setRoundTrackLength(shortTrackLength); }
                 else if (trackNumChosen==2){
                     roundGameManager.setRoundTrackLength(mediumTrackLength);}
                 else{roundGameManager.setRoundTrackLength(longTrackLength);}
+                roundGameManager.incrementRound();
+                roundGameManager.closeBetweenRoundScreen();
+
             }
         }
     }

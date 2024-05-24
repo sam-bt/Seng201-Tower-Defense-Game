@@ -46,9 +46,9 @@ public class Cart {
     }
 
     public void increaseDistance() {
-        double newDistanceTravelled  = distanceTravelled + (double) speed / tracklength;
-        if (newDistanceTravelled >= 1) {
-            distanceTravelled = 1;
+        double newDistanceTravelled = distanceTravelled + (double) speed / tracklength;
+        if (distanceTravelled*100 >= tracklength) {
+            distanceTravelled = tracklength;
             endReached = true;
             if (!full) {cartSuccess = false;}
         } else {

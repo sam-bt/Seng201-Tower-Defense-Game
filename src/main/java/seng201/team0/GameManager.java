@@ -65,7 +65,6 @@ public class GameManager {
         setName(setup.getName());
         setRounds(setup.getNumRounds());
         money.editMoney(1500);
-        setRoundTrackLength(100);
     }
     public void buyTower(Tower tower) {
         shopService.buyTower(tower);
