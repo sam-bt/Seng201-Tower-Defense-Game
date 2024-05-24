@@ -60,7 +60,7 @@ public class Tower implements Purchasable {
     public void sell(){
         owned = false;
     }
-    public void useUpgrade(InventoryService inventoryService){
+    public void useUpgrade(){
         level += 1;
         maxHealth += 5;
         fillAmount += 2;
