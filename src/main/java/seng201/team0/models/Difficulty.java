@@ -1,5 +1,8 @@
 package seng201.team0.models;
 
+/**
+ * Difficulty model class
+ */
 public class Difficulty {
     private double difficulty;
 
