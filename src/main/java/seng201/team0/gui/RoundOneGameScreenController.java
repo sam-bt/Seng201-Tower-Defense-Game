@@ -13,6 +13,10 @@ import seng201.team0.models.Tower;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Controller class for the graphical user interface of Round One of the game.
+ * This class handles the interaction between the game logic and the JavaFX user interface components.
+ */
 public class RoundOneGameScreenController {
     @FXML private Button nextRoundButton;
     @FXML private ProgressBar cartOneFillProgressBar;
@@ -49,22 +53,77 @@ public class RoundOneGameScreenController {
     @FXML private Button cartThreeButton;
     @FXML private Button confirmActionButton;
     @FXML private Button nextFrameButton;
+    /**
+     * Array containing the towers available for selection in the game round.
+     */
     private Tower[] towerList;
+
+    /**
+     * List containing the carts present in the game round.
+     */
     private List<Cart> cartList;
+
+    /**
+     * Index of the currently selected tower. Initialized to -1 indicating no tower is selected.
+     */
     private int selectedTowerIndex = -1;
+
+    /**
+     * Flag indicating whether the round has been lost.
+     */
     private boolean lost;
+
+    /**
+     * List of buttons representing the towers in the user interface.
+     */
     List<Button> towerButtons;
+
+    /**
+     * List of buttons representing the carts in the user interface.
+     */
     List<Button> cartButtons;
+
+    /**
+     * List of progress bars representing the fill levels of carts in the user interface.
+     */
     List<ProgressBar> cartFillProgressBars;
+
+    /**
+     * List of progress bars representing the travel progress of carts in the user interface.
+     */
     List<ProgressBar> cartProgressBars;
+
+    /**
+     * List of labels displaying the size of carts in the user interface.
+     */
     List<Label> cartSizeLabels;
+
+    /**
+     * Instance of the RoundOne class managing the game round.
+     */
     RoundOne roundOne;
+
+    /**
+     * Instance of the RandomEvent class handling random events during the game round.
+     */
     RandomEvent randomEvent = new RandomEvent();
+
+    /**
+     * Instance of the GameManager class managing the game.
+     */
     GameManager roundOneGameScreenManager;
 
+
+    /**
+     * Constructor for RoundOneGameScreenController.
+     * @param tempRoundOneGameScreenManager The GameManager instance managing the game.
+     */
     public RoundOneGameScreenController(GameManager tempRoundOneGameScreenManager){
         roundOneGameScreenManager = tempRoundOneGameScreenManager;
     }
+    /**
+     * Initializes the round one game screen controller and
+     */
     public void initialize() {
         roundOne = new RoundOne(roundOneGameScreenManager.getMoneyService(), roundOneGameScreenManager.getPoints(), roundOneGameScreenManager.getDifficultyService(), roundOneGameScreenManager.getRoundTrackLength());
         towerList = roundOneGameScreenManager.getRoundOneSelectedTowerList();
@@ -128,6 +187,10 @@ public class RoundOneGameScreenController {
         }
     }
 
+    /**
+     * Updates the stats of the selected tower.
+     * @param tower The selected tower to update the stats for.
+     */
     public void updateSelectedTowerStats(Tower tower) {
         fillAmountLabel.setText("Fill Amount: "+tower.getFillAmount());
         towerHealthLabel.setText("Health: "+tower.getHealth());
@@ -142,6 +205,9 @@ public class RoundOneGameScreenController {
             reloadSpeedLabel.setText("Actions until next usable: "+tower.getActionsUntilUsable());
         }
     }
+    /**
+     * Updates the colors of the tower buttons based on their usability status.
+     */
     public void updateTowerColours(){
         for (int towerIndex = 0; towerIndex < towerList.length; towerIndex++){
             if (towerList[towerIndex].isUsable()) {
@@ -152,6 +218,10 @@ public class RoundOneGameScreenController {
             }
         }
     }
+    /**
+     * Fills carts with resources based on the selected tower.
+     * @param selectedTower The tower selected to fill the carts.
+     */
     public void fillCarts(Tower selectedTower){
         for (int cartIndex = 0; cartIndex < cartFillProgressBars.size(); cartIndex++) {
             Cart cart = cartList.get(cartIndex);
@@ -161,11 +231,19 @@ public class RoundOneGameScreenController {
             }
         }
     }
+    /**
+     * Updates the distances traveled by carts on the track.
+     */
     public void updateCartDistances(){
         for (int cartIndex = 0; cartIndex < cartProgressBars.size(); cartIndex++) {
             cartProgressBars.get(cartIndex).setProgress(cartList.get(cartIndex).getDistanceTravelled());
         }
     }
+    /**
+     * Executes a random event during the round.
+     * @param eventName The name of the random event.
+     * @param eventText The text describing the event.
+     */
     public void executeRandomEvent(String eventName, String eventText) {
         if (Objects.equals(eventName, "Cart Reset")) {
             int cartToReset = randomEvent.generateRoundOneIndex();
@@ -221,6 +299,10 @@ public class RoundOneGameScreenController {
             eventFrameLabel.setStyle("-fx-text-fill: red");
         }
     }
+    /**
+     * Handles the action when the confirm button is clicked.
+     * Validates the action and updates the UI accordingly.
+     */
     @FXML
     private void onConfirmAction() {
         if (roundOne.getActionsLeft() == 0) {
@@ -258,6 +340,10 @@ public class RoundOneGameScreenController {
             fillCartWithTowerLabel.setText("Please select a Tower!");}
         this.updateTowerColours();
     }
+    /**
+     * Handles the action when the confirm next button is clicked.
+     * Proceeds to the next frame of the round and updates the UI.
+     */
     @FXML
     private void onConfirmNext() {
         if (selectedTowerIndex == -1) {
@@ -307,6 +393,10 @@ public class RoundOneGameScreenController {
     }
         this.updateTowerColours();
     }
+    /**
+     * Handles the action when the confirm button is clicked.
+     * Saves the selected tower list and closes the game screen.
+     */
     @FXML
     private void onConfirm() {
         roundOneGameScreenManager.setRoundOneSelectedTowerList(towerList);
