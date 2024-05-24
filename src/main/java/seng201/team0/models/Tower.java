@@ -98,7 +98,7 @@ public class Tower implements Purchasable {
     public boolean getBroken(){
         return broken;
     }
-    public void useRevive(InventoryService inventoryService) {
+    public void useRevive() {
         broken = false;
         breakChance = 0;
         if (health == 0) {
@@ -109,7 +109,7 @@ public class Tower implements Purchasable {
         return towerName;
     }
 
-    public void useHeal(InventoryService inventoryService) {
+    public void useHeal() {
         if (health + 5 >= maxHealth) {
             health = maxHealth;
         } else {

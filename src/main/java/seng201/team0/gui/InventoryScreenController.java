@@ -242,7 +242,7 @@ public class InventoryScreenController {
         switch (selectedItem) {
             case "heal":
                 if (inventoryScreenGameManager.getAvailableHeals() > 0 && tower.getMaxHealth() > tower.getHealth()) {
-                    tower.useHeal(currentInventory);
+                    tower.useHeal();
                     inventoryScreenGameManager.consumeHeal();
                     healsOwned.setText("Heals Owned: " + inventoryScreenGameManager.getAvailableHeals());
                 }
@@ -250,7 +250,7 @@ public class InventoryScreenController {
             case "revive":
                 if (inventoryScreenGameManager.getAvailableRevives() > 0) {
                     for (int i = 0; i < inventoryScreenGameManager.getGenericRoundTowerList().size(); i++) {
-                        inventoryScreenGameManager.getGenericRoundTowerList().get(i).useRevive(currentInventory);
+                        inventoryScreenGameManager.getGenericRoundTowerList().get(i).useRevive();
                     }
                     inventoryScreenGameManager.consumeRevive();
                     revivesOwned.setText("Revives Owned: " + inventoryScreenGameManager.getAvailableRevives());
