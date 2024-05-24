@@ -29,15 +29,7 @@ public class SetupWrapper {
      */
     public void init(Stage stage) {
         this.stage = stage;
-        new GameManager(this::launchSetupScreen, this::launchBetweenRoundsScreen, this::launchGameScreen, this::launchInventoryScreen, this::launchShopScreen, this::launchRoundOneInventoryScreen, this::launchRoundOneGameScreen, this::launchErrorScreen, this::launchFinishedScreen, this::launchLoseScreen, this::clearPane);
-    }
-
-    /**
-     * Clears the content of the BorderPane.
-     * FIXME - Change/delete as now not needed.
-     */
-    public void clearPane() { // TODO - change/delete as now not needed
-        borderpane.getChildren().removeAll(borderpane.getChildren());
+        new GameManager(this::launchSetupScreen, this::launchBetweenRoundsScreen, this::launchGameScreen, this::launchInventoryScreen, this::launchShopScreen, this::launchRoundOneInventoryScreen, this::launchRoundOneGameScreen, this::launchErrorScreen, this::launchFinishedScreen, this::launchLoseScreen);
     }
 
     /**

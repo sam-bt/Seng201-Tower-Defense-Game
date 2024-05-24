@@ -511,7 +511,7 @@ public class GameScreenController {
                 round.nextFrame(cartList, towerList);
                 if (round.roundEnded(cartList)) {
                     if (round.roundWon(cartList)) {
-                        cartButtons.get(4).setStyle("-fx-background-color: red; -fx-background-radius: 5;"); //TODO put into separate function
+                        cartButtons.get(4).setStyle("-fx-background-color: red; -fx-background-radius: 5;");
                         confirmActionButton.setDisable(true);
                         for (Button towerButton : towerButtons) {
                             towerButton.setDisable(true);
