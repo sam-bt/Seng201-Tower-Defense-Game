@@ -10,6 +10,11 @@ import seng201.team0.services.ShopService;
 
 import java.util.List;
 
+/**
+ * Controller class for the shop screen in the game.
+ * This class manages the interactions between the shop screen's UI elements and the game's backend logic.
+ * It handles the selection of towers and items, and the actions of buying and selling these entities.
+ */
 public class ShopScreenController {
     @FXML
     private Label amountOwnedLabel;
@@ -65,16 +70,36 @@ public class ShopScreenController {
     @FXML
     private Button towerUpgradeShopButton;
 
+    /**
+     * Manages the game logic and states related to the shop screen.
+     */
     private GameManager shopScreenGameManager;
+    /**
+     * The index of the tower currently selected by the player. Initialized to -1.
+     */
     private int selectedTowerIndex = -1;
+    /**
+     * The currently selected item in the shop screen.. Initialized to null.
+     */
     private String selectedItem = null;
+    /**
+     * The inventory service that handles the player's current inventory.
+     */
     private InventoryService currentInventory;
+    /**
+     * The shop service that manages the operations and data related to the shop.
+     */
     private ShopService shopService;
-
+    /**
+     * Constructor for the ShopScreenController.
+     * @param tempShopScreenGameManager The GameManager instance for the shop screen.
+     */
     public ShopScreenController(GameManager tempShopScreenGameManager) {
         shopScreenGameManager = tempShopScreenGameManager;
     }
-
+    /**
+     * Initializes the shop screen by setting up button actions and labels.
+     */
     public void initialize() {
 
         List<Button> availableTowerButtons = List.of(coalTower1ShopButton, coalTower2ShopButton, ironTower1ShopButton, ironTower2ShopButton, goldTower1ShopButton, goldTower2ShopButton, gemTower1ShopButton, gemTower2ShopButton);
@@ -147,7 +172,9 @@ public class ShopScreenController {
         buyButton.setOnAction(event -> onBuy());
         sellButton.setOnAction(event -> onSell());
     }
-
+    /**
+     * Updates the labels on the shop screen based on the selected tower or item.
+     */
     private void updateLabels() {
         if (selectedTowerIndex >= 0) {
             Tower tower = shopScreenGameManager.getGenericRoundTowerList().get(selectedTowerIndex);
@@ -176,40 +203,57 @@ public class ShopScreenController {
         }
         moneyLabel.setText("Money: " + shopScreenGameManager.getMoneyAmount());
     }
-
+    /**
+     * Resets the selected tower.
+     */
     private void resetTowerSelection() {
         selectedTowerIndex = -1;
         resetTowerButtonStyles();
         updateLabels();
     }
-
+    /**
+     * Resets the selected item.
+     */
     private void resetItemSelection() {
         selectedItem = null;
         resetItemButtonStyles();
         updateLabels();
     }
-
+    /**
+     * Resets the styles of item buttons.
+     */
     private void resetItemButtonStyles() {
         towerHealShopButton.setStyle("");
         towerReviveShopButton.setStyle("");
         towerUpgradeShopButton.setStyle("");
     }
-
+    /**
+     * Resets the styles of tower buttons.
+     */
     private void resetTowerButtonStyles() {
         List<Button> availableTowerButtons = List.of(coalTower1ShopButton, coalTower2ShopButton, ironTower1ShopButton, ironTower2ShopButton, goldTower1ShopButton, goldTower2ShopButton, gemTower1ShopButton, gemTower2ShopButton);
         availableTowerButtons.forEach(button -> button.setStyle(""));
     }
-
+    /**
+     * Handles the action when the inventory button is clicked.
+     * Launches the inventory screen.
+     */
     @FXML
     private void onInventory() {
         shopScreenGameManager.launchInventoryScreen();
     }
-
+    /**
+     * Handles the action when the menu button is clicked.
+     * Launches the between rounds screen.
+     */
     @FXML
     private void onMenu() {
         shopScreenGameManager.launchBetweenRoundsScreen();
     }
-
+    /**
+     * Handles the action when the sell button is clicked.
+     * Sells the selected tower or item.
+     */
     @FXML
     private void onSell() {
         if (selectedTowerIndex >= 0) {
@@ -221,7 +265,10 @@ public class ShopScreenController {
         updateLabels();
 //        resetSelections();
     }
-
+    /**
+     * Handles the action when the buy button is clicked.
+     * Buys the selected tower or item.
+     */
     @FXML
     private void onBuy() {
         if (selectedTowerIndex >= 0) {
@@ -239,6 +286,9 @@ public class ShopScreenController {
 //        resetSelections();
     }
 
+    /**
+     * Resets the selected tower and item, and updates the labels.
+     */
     private void resetSelections() {
         selectedTowerIndex = -1;
         selectedItem = null;
