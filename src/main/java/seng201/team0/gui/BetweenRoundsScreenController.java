@@ -65,7 +65,7 @@ public class BetweenRoundsScreenController {
     private int longTrackLength;
 
     /**
-     * Indicates whether a track has been chosen or not.
+     * Shows if a track has been chosen or not.
      */
     private boolean trackChosen;
 
@@ -75,7 +75,7 @@ public class BetweenRoundsScreenController {
     private int trackNumChosen;
 
     /**
-     * The game manager responsible for managing the round.
+     * The game manager for the round.
      */
     private final GameManager roundGameManager;
 
@@ -194,7 +194,7 @@ public class BetweenRoundsScreenController {
     }
 
     /**
-     * Handles the scenario where a broken tower is detected.
+     * Handles the case where there is a broken tower.
      */
     private void handleBrokenTowerError() {
         System.out.println("broken step 1");
@@ -213,7 +213,7 @@ public class BetweenRoundsScreenController {
     }
 
     /**
-     * Handles the scenario where not enough towers are selected.
+     * Handles the case where not enough towers are selected.
      */
     private void handleNotEnoughTowersError() {
         System.out.println("not enough step 1");
@@ -276,7 +276,7 @@ public class BetweenRoundsScreenController {
     }
 
     /**
-     * Increments the round number and closes the game screen.
+     * Increases the round number and closes the game screen.
      */
     @FXML
     private void onSkipRound() {

@@ -12,7 +12,14 @@ import seng201.team0.services.TowerGenerator;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Controller class for the main game screen in the game GUI.
+ * Handles user interactions and updating the game display.
+ */
 public class GameScreenController {
+    /**
+     * The GameManager instance for the current game round.
+     */
     GameManager roundGameManager;
     @FXML private Button nextRoundButton;
     @FXML private ProgressBar cartOneFillProgressBar;
@@ -64,22 +71,77 @@ public class GameScreenController {
     @FXML private Button cartFiveButton;
     @FXML private Button confirmActionButton;
     @FXML private Button nextFrameButton;
+    /**
+     * The current round being played.
+     */
     private Round round;
+
+    /**
+     * List of carts available in the game.
+     */
     private List<Cart> cartList;
+
+    /**
+     * Index of the selected tower.
+     */
     private int selectedTowerIndex = -1;
+
+    /**
+     * Indicates if the bonus is unlocked.
+     */
     private boolean bonusUnlocked;
+
+    /**
+     * Indicates if the game is lost.
+     */
     private boolean lost;
+
+    /**
+     * Array containing tower objects.
+     */
     private Tower[] towerList = new Tower[5]; //FIXME for when finn finishes inventory
+
+    /**
+     * Instance of RandomEvent class.
+     */
     RandomEvent randomEvent = new RandomEvent();
+    /**
+     * List of buttons representing towers.
+     */
     private List<Button> towerButtons;
+
+    /**
+     * List of buttons representing carts.
+     */
     private List<Button> cartButtons;
+
+    /**
+     * List of progress bars representing fill level of carts.
+     */
     private List<ProgressBar> cartFillProgressBars;
+
+    /**
+     * List of progress bars representing travel progress of carts.
+     */
     private List<ProgressBar> cartProgressBars;
+
+    /**
+     * List of labels displaying the size of carts.
+     */
     private List<Label> cartSizeLabels;
 
+    /**
+     * Constructor for the GameScreenController generating the game manager.
+     * @param tempRoundGameManager The GameManager instance managing the current game round.
+     */
     public GameScreenController(GameManager tempRoundGameManager){
         roundGameManager = tempRoundGameManager;
     }
+
+    /**
+     * Initializes the game screen and sets up initial game state.
+     * Called automatically after FXML file is loaded.
+     */
     public void initialize() {
         round = new Round(roundGameManager.getMoneyService(), roundGameManager.getPoints(), roundGameManager.getDifficultyService(), roundGameManager.getRoundTrackLength());
         cartList = List.of(round.getCoalCart(), round.getIronCart(), round.getGoldCart(), round.getGemCart(), round.getBonusCart());
@@ -165,6 +227,11 @@ public class GameScreenController {
             });
         }
     }
+
+    /**
+     * Updates the selected tower's displayed statistics.
+     * @param tower The tower whose stats need to be updated.
+     */
     public void updateSelectedTowerStats(Tower tower) {
         fillAmountLabel.setText("Fill Amount: "+tower.getFillAmount());
         towerHealthLabel.setText("Health: "+tower.getHealth());
@@ -179,6 +246,10 @@ public class GameScreenController {
             reloadSpeedLabel.setText("Usable in: "+tower.getActionsUntilUsable()+" Actions");
         }
     }
+
+    /**
+     * Updates the colors and styles of tower buttons based on their usability.
+     */
     public void updateTowerColours(){
         for (int towerIndex = 0; towerIndex < towerList.length; towerIndex++){
             if (towerList[towerIndex].isUsable()) {
@@ -189,6 +260,12 @@ public class GameScreenController {
             }
         }
     }
+
+    /**
+     * Fills the carts with resources based on the selected tower.
+     * Updates the progress bars and size labels accordingly.
+     * @param selectedTower The tower selected by the player to fill the carts.
+     */
     public void fillCarts(Tower selectedTower){
         for (int cartIndex = 0; cartIndex < cartFillProgressBars.size(); cartIndex++) {
             Cart cart = cartList.get(cartIndex);
@@ -198,16 +275,28 @@ public class GameScreenController {
             }
         }
     }
+
+    /**
+     * Fills the bonus cart regardless of resource
+     * Updates its progress bar and size label accordingly
+     */
     public void fillBonusCart(){
         Cart cart = cartList.get(4);
         cartFillProgressBars.get(4).setProgress(cart.getCurrentFillAmount());
         cartSizeLabels.get(4).setText("Filled: "+cart.getCurrentFillDisplay()+"/"+cart.getCapacity());
     }
+
+    /**
+     * Updates the distances traveled by the carts.
+     */
     public void updateCartDistances(){
         for (int cartIndex = 0; cartIndex < cartProgressBars.size(); cartIndex++) {
             cartProgressBars.get(cartIndex).setProgress(cartList.get(cartIndex).getDistanceTravelled());
         }
     }
+    /**
+     * Sets the bonus unlocked and updates the UI accordingly.
+     */
     public void setBonus(){
         this.bonusUnlocked = true;
         cartOneNameLabel.setText("");
@@ -225,6 +314,12 @@ public class GameScreenController {
         bonusTowerLabel.setText("BONUS TOWER UNLOCKED!!");
 
     }
+
+    /**
+     * Executes a random event in the game and updates the UI accordingly.
+     * @param eventName The name of the random event.
+     * @param eventText The description text of the random event.
+     */
     public void executeRandomEvent(String eventName, String eventText) {
         if (Objects.equals(eventName, "Cart Reset")) {
             int cartToReset = randomEvent.generateRoundIndex();
@@ -281,6 +376,10 @@ public class GameScreenController {
         }
         this.updateTowerColours();
     }
+
+    /**
+     * Executes the selected action by the player.
+     */
     @FXML
     private void onConfirmAction() {
         if (round.getActionsLeft() == 0) {
@@ -351,6 +450,10 @@ public class GameScreenController {
             fillCartWithTowerLabel.setText("Please select a Tower!");}
         this.updateTowerColours();
     }
+
+    /**
+     * Confirms the next action in the game round.
+     */
     @FXML private void onConfirmNext(){
         if (selectedTowerIndex == -1) {
             fillCartWithTowerLabel.setStyle("-fx-text-fill: red");
@@ -402,6 +505,9 @@ public class GameScreenController {
     }
     }
 
+    /**
+     * Closes the game screen and launches the between round screen.
+     */
     @FXML
     private void onConfirm() {
         roundGameManager.closeGameScreen();
