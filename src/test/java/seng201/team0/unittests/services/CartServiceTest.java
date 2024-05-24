@@ -9,8 +9,15 @@ import seng201.team0.services.CartService;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+/**
+ * Test CartService implementation
+ * @author Samuel Beattie
+ */
 
 public class CartServiceTest {
+    /**
+     * Test if all carts are full, when they are all empty
+     */
     @Test
     void testAllEmpty() {
         Cart coalCart = new Cart("Coal","Coal", 1.2,100);
@@ -22,6 +29,9 @@ public class CartServiceTest {
         CartService.areAllCartsFull(cartList);
         assertFalse(CartService.areAllCartsFull(cartList));
     }
+    /**
+     * Test if all carts are full, when one is full
+     */
     @Test
     void testOneFull() {
         Cart coalCart = new Cart("Coal","Coal", 1.2,100);
@@ -34,6 +44,9 @@ public class CartServiceTest {
         CartService.areAllCartsFull(cartList);
         assertFalse(CartService.areAllCartsFull(cartList));
     }
+    /**
+     * Test if all carts are full, when all are full including bonus
+     */
     @Test
     void testAllFullWithBonus() {
         Cart coalCart = new Cart("Coal","Coal", 1.2,100);
@@ -50,6 +63,9 @@ public class CartServiceTest {
         CartService.areAllCartsFull(cartList);
         assertTrue(CartService.areAllCartsFull(cartList));
     }
+    /**
+     * Test if all carts are full, when all are full except bonus
+     */
     @Test
     void testAllFullWithoutBonus() {
         Cart coalCart = new Cart("Coal","Coal", 1.2,100);

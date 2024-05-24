@@ -8,16 +8,14 @@ import seng201.team0.services.MoneyService;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Test Counter implementation
- * @author seng201 teaching team
+ * Test Money implementation
+ * @author Samuel Beattie
  */
 class MoneyServiceTest {
     private MoneyService testMoneyService;
 
     /**
-     * Setup before each test, we create two objects, one an actual
-     * instance of our CounterService class, and another a mocked version
-     * that has overridden methods.
+     * Setup money service before each test
      */
     @BeforeEach
     public void setupTest() {
@@ -25,7 +23,7 @@ class MoneyServiceTest {
     }
 
     /**
-     * Test incrementing the counter by one, normal JUnit test
+     * Test increasing the money
      */
     @Test
     void testIncrease() {
@@ -33,6 +31,9 @@ class MoneyServiceTest {
         testMoneyService.editMoney(100.00);
         assertEquals(100.00, testMoneyService.getCurrentAmount());
     }
+    /**
+     * Test decreasing the money
+     */
     @Test
     void testDecrease(){
         assertEquals(0, testMoneyService.getCurrentAmount());
@@ -41,6 +42,9 @@ class MoneyServiceTest {
         testMoneyService.editMoney(-50.00);
         assertEquals(50.00, testMoneyService.getCurrentAmount());
     }
+    /**
+     * Test money cannot go below zero
+     */
     @Test void
     testBelowZero(){
         assertEquals(0, testMoneyService.getCurrentAmount());

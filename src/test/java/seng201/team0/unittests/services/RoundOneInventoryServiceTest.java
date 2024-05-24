@@ -8,13 +8,23 @@ import seng201.team0.services.RoundOneInventoryService;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+/**
+ * Test RoundOneInventoryService implementation
+ * @author Samuel Beattie
+ */
 
 class RoundOneInventoryServiceTest {
     RoundOneInventoryService testRoundOneInventoryService;
+    /**
+     * Set up a RoundOneInventoryService instance before each test
+     */
     @BeforeEach
     void setupTest() {
         testRoundOneInventoryService = new RoundOneInventoryService(1.2);
     }
+    /**
+     * Test towers are as expected (done by checking names)
+     */
     @Test
     void towerNameTest(){
         List<Tower> towerList = testRoundOneInventoryService.getTowerList();

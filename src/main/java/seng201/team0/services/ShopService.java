@@ -65,7 +65,7 @@ public class ShopService {
         System.out.println("Sold item: " + item);
     }
 
-    public int getItemCost(String item) {
+    public static int getItemCost(String item) {
         switch (item) {
             case "heal":
                 return 50;
@@ -78,7 +78,7 @@ public class ShopService {
         }
     }
 
-    public int getItemSellValue(String item) {
+    public static int getItemSellValue(String item) {
         switch (item) {
             case "heal":
                 return 50;

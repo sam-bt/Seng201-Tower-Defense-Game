@@ -49,30 +49,8 @@ public class InventoryService {
             HeavyGem = inventoryServiceGameManager.getGenericRoundTowerList().get(6);
             LightGem = inventoryServiceGameManager.getGenericRoundTowerList().get(7);
         }
-
-
     }
     public List<Tower> getTowerList(){
         return List.of(HeavyCoal,LightCoal,HeavyIron,LightIron,HeavyGold,LightGold,HeavyGem,LightGem);
-    }
-
-    public void addHeal() {
-        availableHeals += 1;
-    }
-    public void addRevive() { availableRevives += 1;}
-    public void addUpgrade() {
-        availableUpgrades += 1;
-    }
-
-    public int getAvailableHeals() {
-        return availableHeals;
-    }
-
-    public int getAvailableRevives() {
-        return availableRevives;
-    }
-
-    public int getAvailableUpgrades() {
-        return availableUpgrades;
     }
 }

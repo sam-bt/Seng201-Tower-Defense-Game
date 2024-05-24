@@ -5,14 +5,16 @@ import org.junit.jupiter.api.Test;
 import seng201.team0.services.DifficultyService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+/**
+ * Test Difficulty implementation
+ * @author Samuel Beattie
+ */
 
 public class DifficultyServiceTest {
     private DifficultyService testDifficultyService;
 
     /**
-     * Setup before each test, we create two objects, one an actual
-     * instance of our CounterService class, and another a mocked version
-     * that has overridden methods.
+     * Set up a difficulty service before each test
      */
     @BeforeEach
     public void setupTest() {
@@ -20,7 +22,7 @@ public class DifficultyServiceTest {
     }
 
     /**
-     * Test incrementing the counter by one, normal JUnit test
+     * Test incrementing the difficulty
      */
     @Test
     void testIncrement() {
@@ -28,6 +30,9 @@ public class DifficultyServiceTest {
         testDifficultyService.incrementDifficulty();
         assertEquals(1.4, testDifficultyService.getDifficulty());
     }
+    /**
+     * Test incrementing the difficulty 5 times
+     */
     @Test
     void testLotsOfIncrement() {
         assertEquals(1.0, testDifficultyService.getDifficulty());

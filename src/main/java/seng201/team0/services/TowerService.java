@@ -23,14 +23,7 @@ public class TowerService {
         }
         return false;
     }
-    public static boolean areAllTowersTypesSelected(Tower[] selectedTowers) {
-        HashSet<String> roundOneTowers = new HashSet<>(Arrays.asList("Coal", "Iron", "Gold", "Gem"));
-        for (Tower tower : selectedTowers) {
-            if (tower == null) {return false;}
-            roundOneTowers.remove(tower.getFillType());
-        }
-        return roundOneTowers.isEmpty();
-    }
+
     public static boolean areAllRoundOneTowersTypesSelected(Tower[] selectedTowers) {
         HashSet<String> roundOneTowers = new HashSet<>(Arrays.asList("Coal", "Iron", "Gold"));
         for (Tower tower : selectedTowers) {
