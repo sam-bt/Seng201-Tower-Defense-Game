@@ -2,7 +2,7 @@ package seng201.team0.unittests.services;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seng201.team0.models.Cart;
-import seng201.team0.models.RoundOne;
+import seng201.team0.models.Round;
 import seng201.team0.models.Tower;
 import seng201.team0.services.DifficultyService;
 
@@ -10,10 +10,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
- * Test RoundOne implementation
+ * Test Round implementation
  * @author Samuel Beattie
  */
-public class RoundOneTest {
+public class RoundTest {
     /**
      * Difficulty Service
      */
@@ -21,7 +21,7 @@ public class RoundOneTest {
     /**
      * Round One
      */
-    RoundOne roundOne;
+    Round round;
     /**
      * Cart List
      */
@@ -32,8 +32,8 @@ public class RoundOneTest {
     @BeforeEach
     void setupTest(){
         difficultyService = new DifficultyService(1.0);
-        roundOne = new RoundOne(difficultyService,100);
-        cartList = List.of(roundOne.getCoalCart(),roundOne.getIronCart(),roundOne.getGoldCart());
+        round = new Round(difficultyService,100);
+        cartList = List.of(round.getCoalCart(),round.getIronCart(),round.getGoldCart());
     }
     /**
      * Tests if actions are being used as expected
@@ -45,8 +45,8 @@ public class RoundOneTest {
         towerList[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron",1.5,450);
         towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
         Tower selectedTower = towerList[0];
-        roundOne.useAction(selectedTower,cartList,towerList);
-        assertEquals(roundOne.getActionsLeft(), 1);
+        round.useAction(selectedTower,cartList,towerList);
+        assertEquals(round.getActionsLeft(), 1);
         assertEquals(cartList.get(0).getCurrentFillDisplay(), 25);
         assertEquals(cartList.get(1).getCurrentFillDisplay(), 0);
         assertEquals(cartList.get(2).getCurrentFillDisplay(), 0);
@@ -61,13 +61,13 @@ public class RoundOneTest {
         towerList[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron",1.5,450);
         towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
         Tower selectedTower = towerList[0];
-        roundOne.useAction(selectedTower,cartList,towerList);
-        assertEquals(roundOne.getActionsLeft(), 1);
+        round.useAction(selectedTower,cartList,towerList);
+        assertEquals(round.getActionsLeft(), 1);
         assertEquals(cartList.get(0).getCurrentFillDisplay(), 25);
         assertEquals(cartList.get(1).getCurrentFillDisplay(), 0);
         assertEquals(cartList.get(2).getCurrentFillDisplay(), 0);
-        roundOne.nextFrame(cartList,towerList);
-        assertEquals(roundOne.getActionsLeft(), 2);
+        round.nextFrame(cartList,towerList);
+        assertEquals(round.getActionsLeft(), 2);
     }
     /**
      * Tests if the round ended is true when all carts have reached the end
@@ -78,7 +78,7 @@ public class RoundOneTest {
         cartList.get(0).setEndReached();
         cartList.get(1).setEndReached();
         cartList.get(2).setEndReached();
-        assertEquals(roundOne.roundEnded(cartList), true);
+        assertEquals(round.roundEnded(cartList), true);
     }
     /**
      * Tests if the round ended is true when all carts are full
@@ -88,14 +88,14 @@ public class RoundOneTest {
         cartList.get(0).fillCart();
         cartList.get(1).fillCart();
         cartList.get(2).fillCart();
-        assertEquals(roundOne.roundEnded(cartList), true);
+        assertEquals(round.roundEnded(cartList), true);
     }
     /**
      * Tests if the round ended is false when none of the carts are full nor end reached
      */
     @Test
     void roundEndedFalseTest(){
-        assertEquals(roundOne.roundEnded(cartList), false);
+        assertEquals(round.roundEnded(cartList), false);
     }
     /**
      * Tests if a coal cart is fillable with a coal tower
@@ -105,7 +105,7 @@ public class RoundOneTest {
         Tower selectedTower = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
         cartList.get(1).fillCart();
         cartList.get(2).fillCart();
-        assertEquals(roundOne.isCartFillable(cartList,selectedTower), true);
+        assertEquals(round.isCartFillable(cartList,selectedTower), true);
     }
     /**
      * Tests if a full cart can be filled
@@ -116,7 +116,7 @@ public class RoundOneTest {
         cartList.get(0).fillCart();
         cartList.get(1).fillCart();
         cartList.get(2).fillCart();
-        assertEquals(roundOne.isCartFillable(cartList,selectedTower), false);
+        assertEquals(round.isCartFillable(cartList,selectedTower), false);
     }
     /**
      * Tests if a cart of the wrong type can be filled
@@ -124,7 +124,7 @@ public class RoundOneTest {
     @Test
     void isCartFillableEmptyFalseTest(){
         Tower selectedTower = new Tower(100,true,"Gem",25,3,"Light Gem",1.2,300);
-        assertEquals(roundOne.isCartFillable(cartList,selectedTower), false);
+        assertEquals(round.isCartFillable(cartList,selectedTower), false);
     }
     /**
      * Tests if round is won with all carts successful
@@ -134,7 +134,7 @@ public class RoundOneTest {
         cartList.get(0).setCartSuccess();
         cartList.get(1).setCartSuccess();
         cartList.get(2).setCartSuccess();
-        assertEquals(roundOne.roundWon(cartList), true);
+        assertEquals(round.roundWon(cartList), true);
     }
     /**
      * Tests if round is won with not all carts successful
@@ -143,6 +143,6 @@ public class RoundOneTest {
     void roundWonFalseTest(){
         cartList.get(0).setCartSuccess();
         cartList.get(1).setCartSuccess();
-        assertEquals(roundOne.roundWon(cartList), false);
+        assertEquals(round.roundWon(cartList), false);
     }
 }

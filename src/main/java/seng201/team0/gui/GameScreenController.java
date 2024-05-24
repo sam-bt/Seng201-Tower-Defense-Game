@@ -143,7 +143,7 @@ public class GameScreenController {
      * Called automatically after FXML file is loaded.
      */
     public void initialize() {
-        round = new Round(roundGameManager.getMoneyService(), roundGameManager.getPoints(), roundGameManager.getDifficultyService(), roundGameManager.getRoundTrackLength());
+        round = new Round(roundGameManager.getDifficultyService(), roundGameManager.getRoundTrackLength());
         cartList = List.of(round.getCoalCart(), round.getIronCart(), round.getGoldCart(), round.getGemCart(), round.getBonusCart());
         Tower[] tempTowerList = roundGameManager.getTowersInSlots();
         towerList[0] = tempTowerList[0];

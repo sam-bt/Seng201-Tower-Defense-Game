@@ -18,7 +18,7 @@ public class Round {
     boolean roundWon;
     boolean roundEnded;
     private final int numActions = 2;
-    public Round(MoneyService money, double points, DifficultyService difficulty, int trackLength){
+    public Round(DifficultyService difficulty, int trackLength){
         coalCart = new Cart("Coal","Coal", difficulty.getDifficulty(),trackLength);
         ironCart = new Cart("Iron","Iron",difficulty.getDifficulty(),trackLength);
         goldCart = new Cart("Gold","Gold",difficulty.getDifficulty(),trackLength);
@@ -65,15 +65,12 @@ public class Round {
         return numActions;
     }
     public boolean roundEnded(List<Cart> cartList){
-        System.out.println(cartList.size());
         for (Cart cart: cartList) {
             if (cart.isEndReached() && !cart.isFull()) {
                 return true;
             }
         }
         for (Cart cart: cartList) {
-            System.out.println("end reached? "+cart.isEndReached());
-            System.out.println("full? "+cart.isFull());
             if (!cart.isEndReached() && !cart.isFull()){
                 return false;
             }

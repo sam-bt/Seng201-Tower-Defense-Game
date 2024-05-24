@@ -112,4 +112,7 @@ public class Cart {
     public boolean isEndReached() {
         return endReached;
     }
+    public void fillCart() {full = true;}
+    public void setEndReached() {endReached = true;}
+    public void setCartSuccess() {cartSuccess = true;}
 }
