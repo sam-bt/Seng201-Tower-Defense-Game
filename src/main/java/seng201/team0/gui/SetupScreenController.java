@@ -20,10 +20,9 @@ public class SetupScreenController {
     @FXML private Button setupAccept;
     @FXML private Slider numRoundsSlider;
     @FXML private Slider difficultySlider;
+
     /**
-     *
      * Sole constructor that sets the GameManager instance
-     *
      */
 
     public SetupScreenController(GameManager tempSetupGameManager){
@@ -32,10 +31,8 @@ public class SetupScreenController {
 
 
     /**
-     *
      * Method that calls the GameManager setSetup method with a setup object containing the setup info
      * Also calls setCurrRound to set the current round to 0
-     *
      */
 
     @FXML

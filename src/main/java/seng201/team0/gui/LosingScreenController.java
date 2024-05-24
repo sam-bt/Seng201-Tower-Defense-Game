@@ -6,7 +6,7 @@ import javafx.scene.control.ProgressBar;
 import seng201.team0.GameManager;
 
 /**
- * Controller class for the LosingScreen.fxml file.
+ * Controller class for the losing screen.
  * Handles actions and interactions on the screen displayed when the player loses the game.
  */
 public class LosingScreenController {
@@ -26,7 +26,7 @@ public class LosingScreenController {
     GameManager losingScreenGameManager;
 
     /**
-     * Constructor for the LosingScreenController class.
+     * Constructor for the losing screen controllers game manager.
      * @param tempLosingScreenGameManager The game manager instance associated with the losing screen.
      */
     public LosingScreenController(GameManager tempLosingScreenGameManager) {
@@ -34,7 +34,7 @@ public class LosingScreenController {
     }
 
     /**
-     * Initializes the losing screen with relevant information such as rounds completed, points earned, and difficulty level.
+     * Initializes the losing screen with relevant information.
      */
     public void initialize() {
         roundsCompletedLabel.setText("You completed " + (losingScreenGameManager.getCurrRound() - 2) + "/" + losingScreenGameManager.getRounds() + " Rounds!");
@@ -43,8 +43,7 @@ public class LosingScreenController {
     }
 
     /**
-     * Event handler for quitting the game.
-     * Exits the application when called.
+     * Exits the application.
      */
     public void onQuit() {
         System.exit(0);

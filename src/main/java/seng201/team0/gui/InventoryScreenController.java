@@ -83,17 +83,17 @@ public class InventoryScreenController {
     private Tower[] towersInSlots = new Tower[5];
 
     /**
-     * Index indicating the currently selected tower (-1 if none selected).
+     * Index indicating the currently selected tower, initialised to -1.
      */
     private int selectedTowerIndex = -1;
 
     /**
-     * The currently selected item (null if none selected).
+     * The currently selected item, initialised to null.
      */
     private String selectedItem = null;
 
     /**
-     * List of indices representing towers in a tower list.
+     * List of indices for the tower list.
      */
     List<Integer> towerListIndices;
 
@@ -113,7 +113,7 @@ public class InventoryScreenController {
     private InventoryService currentInventory;
 
     /**
-     * Constructor
+     * Inventory screen constructor that constructs inventory screen game manager
      * @param tempInventoryScreenGameManager
      */
     public InventoryScreenController(GameManager tempInventoryScreenGameManager) {
@@ -121,8 +121,6 @@ public class InventoryScreenController {
     }
     /**
      * Initializes the inventory screen by setting up various UI elements and event handlers.
-     * It populates the inventory with available towers and items, updates displayed stats,
-     * and sets up button actions for tower selection, item usage, etc.
      */
     public void initialize() {
         List<Button> towerSlotButtons = List.of(inventorySlot1Button, inventorySlot2Button, inventorySlot3Button, inventorySlot4Button, inventorySlot5Button);
@@ -439,7 +437,6 @@ public class InventoryScreenController {
     }
 
     /**
-     * Handles the action when the menu button is clicked.
      * Saves towers in slots and launches the between rounds screen.
      */
     @FXML
@@ -449,7 +446,6 @@ public class InventoryScreenController {
     }
 
     /**
-     * Handles the action when the shop button is clicked.
      * Saves towers in slots and opens the shop screen.
      */
     @FXML

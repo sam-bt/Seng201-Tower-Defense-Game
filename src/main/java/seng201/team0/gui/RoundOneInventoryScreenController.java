@@ -145,7 +145,6 @@ public class RoundOneInventoryScreenController {
 
     }
     /**
-     * Handles the confirm action button click event.
      * Sets the selected towers for the game round and closes the inventory screen.
      */
     @FXML

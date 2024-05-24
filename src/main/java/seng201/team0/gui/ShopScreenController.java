@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * Controller class for the shop screen in the game.
- * This class manages the interactions between the shop screen's UI elements and the game's backend logic.
+ * This class manages the interactions between the shop screen's UI elements.
  * It handles the selection of towers and items, and the actions of buying and selling these entities.
  */
 public class ShopScreenController {
@@ -79,7 +79,7 @@ public class ShopScreenController {
      */
     private int selectedTowerIndex = -1;
     /**
-     * The currently selected item in the shop screen.. Initialized to null.
+     * The currently selected item in the shop screen. Initialized to null.
      */
     private String selectedItem = null;
     /**
@@ -91,7 +91,7 @@ public class ShopScreenController {
      */
     private ShopService shopService;
     /**
-     * Constructor for the ShopScreenController.
+     * Constructor for the ShopScreenController game manager.
      * @param tempShopScreenGameManager The GameManager instance for the shop screen.
      */
     public ShopScreenController(GameManager tempShopScreenGameManager) {
@@ -235,7 +235,6 @@ public class ShopScreenController {
         availableTowerButtons.forEach(button -> button.setStyle(""));
     }
     /**
-     * Handles the action when the inventory button is clicked.
      * Launches the inventory screen.
      */
     @FXML
@@ -243,7 +242,6 @@ public class ShopScreenController {
         shopScreenGameManager.launchInventoryScreen();
     }
     /**
-     * Handles the action when the menu button is clicked.
      * Launches the between rounds screen.
      */
     @FXML
@@ -251,7 +249,6 @@ public class ShopScreenController {
         shopScreenGameManager.launchBetweenRoundsScreen();
     }
     /**
-     * Handles the action when the sell button is clicked.
      * Sells the selected tower or item.
      */
     @FXML
@@ -266,7 +263,6 @@ public class ShopScreenController {
 //        resetSelections();
     }
     /**
-     * Handles the action when the buy button is clicked.
      * Buys the selected tower or item.
      */
     @FXML

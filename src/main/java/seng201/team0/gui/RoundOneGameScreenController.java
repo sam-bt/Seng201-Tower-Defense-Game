@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Controller class for the graphical user interface of Round One of the game.
+ * Controller class for the round one screen.
  * This class handles the interaction between the game logic and the JavaFX user interface components.
  */
 public class RoundOneGameScreenController {
@@ -64,37 +64,37 @@ public class RoundOneGameScreenController {
     private List<Cart> cartList;
 
     /**
-     * Index of the currently selected tower. Initialized to -1 indicating no tower is selected.
+     * Index of the currently selected tower. Initialized to -1.
      */
     private int selectedTowerIndex = -1;
 
     /**
-     * Flag indicating whether the round has been lost.
+     * Indicates whether the round has been lost.
      */
     private boolean lost;
 
     /**
-     * List of buttons representing the towers in the user interface.
+     * List of buttons for the towers in the UI.
      */
     List<Button> towerButtons;
 
     /**
-     * List of buttons representing the carts in the user interface.
+     * List of buttons for the carts in the UI.
      */
     List<Button> cartButtons;
 
     /**
-     * List of progress bars representing the fill levels of carts in the user interface.
+     * List of progress bars for the fill levels of carts in the UI.
      */
     List<ProgressBar> cartFillProgressBars;
 
     /**
-     * List of progress bars representing the travel progress of carts in the user interface.
+     * List of progress bars for the travel progress of carts in the UI.
      */
     List<ProgressBar> cartProgressBars;
 
     /**
-     * List of labels displaying the size of carts in the user interface.
+     * List of labels for the size of carts in the UI.
      */
     List<Label> cartSizeLabels;
 
@@ -115,14 +115,14 @@ public class RoundOneGameScreenController {
 
 
     /**
-     * Constructor for RoundOneGameScreenController.
+     * Constructor for round one game screen game manager.
      * @param tempRoundOneGameScreenManager The GameManager instance managing the game.
      */
     public RoundOneGameScreenController(GameManager tempRoundOneGameScreenManager){
         roundOneGameScreenManager = tempRoundOneGameScreenManager;
     }
     /**
-     * Initializes the round one game screen controller and
+     * Initializes the round one game screen, setting up UI elements and handling button presses.
      */
     public void initialize() {
         roundOne = new RoundOne(roundOneGameScreenManager.getMoneyService(), roundOneGameScreenManager.getPoints(), roundOneGameScreenManager.getDifficultyService(), roundOneGameScreenManager.getRoundTrackLength());
@@ -300,8 +300,7 @@ public class RoundOneGameScreenController {
         }
     }
     /**
-     * Handles the action when the confirm button is clicked.
-     * Validates the action and updates the UI accordingly.
+     * Handles the action and updates the UI accordingly.
      */
     @FXML
     private void onConfirmAction() {
@@ -341,7 +340,6 @@ public class RoundOneGameScreenController {
         this.updateTowerColours();
     }
     /**
-     * Handles the action when the confirm next button is clicked.
      * Proceeds to the next frame of the round and updates the UI.
      */
     @FXML
@@ -394,7 +392,6 @@ public class RoundOneGameScreenController {
         this.updateTowerColours();
     }
     /**
-     * Handles the action when the confirm button is clicked.
      * Saves the selected tower list and closes the game screen.
      */
     @FXML

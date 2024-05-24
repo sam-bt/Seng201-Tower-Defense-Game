@@ -12,7 +12,7 @@ public class InvalidNameScreenController {
 
 
     /**
-     * Instance of the game manager associated with the screen for managing game state.
+     * Instance of the game manager.
      */
     GameManager invalidNameGameManager;
 

@@ -184,7 +184,7 @@ public class SetupWrapper {
     }
 
     /**
-     * Launches the lose screen.
+     * Launches the loss screen.
      * @param loseScreenGameManager The GameManager instance managing the game.
      */
     public void launchLoseScreen(GameManager loseScreenGameManager) {
