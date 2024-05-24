@@ -15,10 +15,10 @@ public class RoundOne {
     boolean roundEnded;
     private final int numActions = 2;
     public RoundOne(MoneyService money, double points, DifficultyService difficulty, int trackLength){
-        this.coalCart = new Cart("Coal","Coal", difficulty.getDifficulty(),trackLength);
-        this.ironCart = new Cart("Iron","Iron",difficulty.getDifficulty(),trackLength);
-        this.goldCart = new Cart("Gold","Gold",difficulty.getDifficulty(),trackLength);
-        this.actionsLeft = numActions;
+        coalCart = new Cart("Coal","Coal", difficulty.getDifficulty(),trackLength);
+        ironCart = new Cart("Iron","Iron",difficulty.getDifficulty(),trackLength);
+        goldCart = new Cart("Gold","Gold",difficulty.getDifficulty(),trackLength);
+        actionsLeft = numActions;
     }
     public void useAction(Tower usedTower, List<Cart> cartList, Tower[] towerList){
         for (Tower tower:towerList) {
@@ -30,7 +30,7 @@ public class RoundOne {
             cart.increaseFillAmount(usedTower.getFillAmount());
             }
         }
-        this.actionsLeft -= 1;
+        actionsLeft -= 1;
     }
     public void nextFrame(List<Cart> cartList, Tower[] towerList) {
         for (Tower tower:towerList) {
@@ -43,24 +43,24 @@ public class RoundOne {
     }
 
     public Cart getCoalCart() {
-        return this.coalCart;
+        return coalCart;
     }
 
     public Cart getIronCart() {
-        return this.ironCart;
+        return ironCart;
     }
 
     public Cart getGoldCart() {
-        return this.goldCart;
+        return goldCart;
     }
     public int getActionsLeft(){
-        return this.actionsLeft;
+        return actionsLeft;
     }
 
     public int getNumActions(){
-        return this.numActions;
+        return numActions;
     }
-    public void resetActions() {this.actionsLeft = 0; }
+    public void resetActions() {actionsLeft = 0; }
     public boolean roundEnded(List<Cart> cartList){
         System.out.println(cartList.size());
         for (Cart cart: cartList) {

@@ -50,7 +50,7 @@ public class Tower implements Purchasable {
         else { health += amount; }
     }
     public void breakTower() {
-        this.broken = true;
+        broken = true;
     }
     public void setOwned() {owned = true;}
     public void setNotOwned() {owned = false;}
@@ -118,31 +118,31 @@ public class Tower implements Purchasable {
     }
     public void use(){
         actionsUntilUsable = reloadSpeed;
-        this.breakChance += rnd.nextInt(4);
-        this.health -= rnd.nextInt(10);
-        if (this.health <=0) {
+        breakChance += rnd.nextInt(4);
+        health -= rnd.nextInt(10);
+        if (health <=0) {
             health = 0;
-            this.breakTower();
+            breakTower();
         }
-        this.isUsable = false;
+        isUsable = false;
     }
     public int getActionsUntilUsable(){
-        return this.actionsUntilUsable;
+        return actionsUntilUsable;
     }
     public void actionUsed(){
         if (actionsUntilUsable == 1) {
-            this.isUsable = true;
-            this.actionsUntilUsable = 0;
+            isUsable = true;
+            actionsUntilUsable = 0;
         }
         else if (actionsUntilUsable != 0) {
-            this.actionsUntilUsable -= 1; }
+            actionsUntilUsable -= 1; }
     };
     public boolean isUsable(){
 
         return isUsable;
     }
     public void setUsable(){
-        this.actionsUntilUsable = 0;
-        this.isUsable = true;
+        actionsUntilUsable = 0;
+        isUsable = true;
     }
 }

@@ -37,34 +37,34 @@ public class RandomEvent { // return a message and action based on generated eve
     }
     private void generateGoodEvent(){
         if (eventNum == 5 || eventNum == 1) {
-            this.eventName = "Cart Reset";
-            this.eventText = "One of the carts was reset!!";
+            eventName = "Cart Reset";
+            eventText = "One of the carts was reset!!";
         }
         else if (eventNum == 2 || eventNum == 3) {
-            this.eventName = "Reset Towers";
-            this.eventText = "All of the towers were reloaded!";
+            eventName = "Reset Towers";
+            eventText = "All of the towers were reloaded!";
         }
         else {
-            this.eventName = "Fill Cart";
-            this.eventText = "A cart was filled!";
+            eventName = "Fill Cart";
+            eventText = "A cart was filled!";
         }
     }
     private void generateNeutralEvent(){
-        this.eventName = "Nothing";
-        this.eventText = "Nothing happened!";
+        eventName = "Nothing";
+        eventText = "Nothing happened!";
     }
     private void generateBadEvent(){
         if (eventNum == 14 || eventNum == 11) {
-            this.eventName = "Steal Resources";
-            this.eventText = "Some of your resources were stolen!";
+            eventName = "Steal Resources";
+            eventText = "Some of your resources were stolen!";
         }
         else if (eventNum == 12 || eventNum == 13) {
-            this.eventName = "Disable Tower";
-            this.eventText = "A tower was used, but no cart was filled!";
+            eventName = "Disable Tower";
+            eventText = "A tower was used, but no cart was filled!";
         }
         else {
-            this.eventName = "Actions Reset";
-            this.eventText = "No actions this frame!";
+            eventName = "Actions Reset";
+            eventText = "No actions this frame!";
         }
     }
     public int generateRoundOneIndex(){

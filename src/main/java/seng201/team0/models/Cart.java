@@ -41,8 +41,8 @@ public class Cart {
     }
 
     public void resetDistance() {
-        this.distanceTravelled = 0;
-        this.endReached = false;
+        distanceTravelled = 0;
+        endReached = false;
     }
 
     public void increaseDistance() {

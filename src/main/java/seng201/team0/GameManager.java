@@ -64,7 +64,7 @@ public class GameManager {
     public void setSetup(Setup setup){
         setName(setup.getName());
         setRounds(setup.getNumRounds());
-        this.money.editMoney(1500);
+        money.editMoney(1500);
         setRoundTrackLength(100);
     }
     public void buyTower(Tower tower) {
@@ -147,8 +147,8 @@ public class GameManager {
     public void setMoney(MoneyService money) { this.money = money; }
     public double getMoneyAmount() { return money.getCurrentAmount(); }
     public MoneyService getMoneyService() { return money; }
-    public void startPoints() { this.points = 0; }
-    public void incrementPoints() { this.points += 100*getDifficulty(); }
+    public void startPoints() { points = 0; }
+    public void incrementPoints() { points += 100*getDifficulty(); }
     public double getPoints() { return points; }
     public Tower[] getTowersInSlots() {
         return towersInSlots;
@@ -218,7 +218,7 @@ public class GameManager {
     }
 
     public void setTrackLengthIndex(int index){
-        this.trackLengthIndex = index;
+        trackLengthIndex = index;
     }
     public int getTrackLengthIndex(){
         return trackLengthIndex;
@@ -265,8 +265,6 @@ public class GameManager {
         launchSetupScreen();
     }
     public void openLosingScreen() {
-        this.launchLosingScreen();
+        launchLosingScreen();
     }
-
-
 }

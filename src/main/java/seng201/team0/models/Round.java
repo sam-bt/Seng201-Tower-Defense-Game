@@ -19,12 +19,12 @@ public class Round {
     boolean roundEnded;
     private final int numActions = 2;
     public Round(MoneyService money, double points, DifficultyService difficulty, int trackLength){
-        this.coalCart = new Cart("Coal","Coal", difficulty.getDifficulty(),trackLength);
-        this.ironCart = new Cart("Iron","Iron",difficulty.getDifficulty(),trackLength);
-        this.goldCart = new Cart("Gold","Gold",difficulty.getDifficulty(),trackLength);
-        this.gemCart = new Cart("Gem","Gem",difficulty.getDifficulty(),trackLength);
-        this.bonusCart = new Cart("Bonus","All",difficulty.getDifficulty(),trackLength);
-        this.actionsLeft = numActions;
+        coalCart = new Cart("Coal","Coal", difficulty.getDifficulty(),trackLength);
+        ironCart = new Cart("Iron","Iron",difficulty.getDifficulty(),trackLength);
+        goldCart = new Cart("Gold","Gold",difficulty.getDifficulty(),trackLength);
+        gemCart = new Cart("Gem","Gem",difficulty.getDifficulty(),trackLength);
+        bonusCart = new Cart("Bonus","All",difficulty.getDifficulty(),trackLength);
+        actionsLeft = numActions;
     }
     public void useAction(Tower usedTower, List<Cart> cartList, Tower[] towerList){
         for (Tower tower:towerList) {
@@ -36,7 +36,7 @@ public class Round {
                 cart.increaseFillAmount(usedTower.getFillAmount());
             }
         }
-        this.actionsLeft -= 1;
+        actionsLeft -= 1;
     }
     public void useBonusAction(Tower usedTower, List<Cart> cartList, Tower[] towerList) {
         for (Tower tower:towerList) {
@@ -44,7 +44,7 @@ public class Round {
         }
         usedTower.use();
         cartList.get(4).increaseFillAmount(usedTower.getFillAmount());
-        this.actionsLeft -= 1;
+        actionsLeft -= 1;
     }
     public void nextFrame(List<Cart> cartList, Tower[] towerList) {
         for (Tower tower:towerList) {
@@ -57,12 +57,12 @@ public class Round {
     }
 
     public int getActionsLeft(){
-        return this.actionsLeft;
+        return actionsLeft;
     }
-    public void resetActions() {this.actionsLeft = 0; }
+    public void resetActions() {actionsLeft = 0; }
 
     public int getNumActions(){
-        return this.numActions;
+        return numActions;
     }
     public boolean roundEnded(List<Cart> cartList){
         System.out.println(cartList.size());
@@ -101,18 +101,18 @@ public class Round {
     }
 
     public Cart getCoalCart() {
-        return this.coalCart;
+        return coalCart;
     }
 
     public Cart getIronCart() {
-        return this.ironCart;
+        return ironCart;
     }
 
     public Cart getGoldCart() {
-        return this.goldCart;
+        return goldCart;
     }
     public Cart getGemCart() {
-        return this.gemCart;
+        return gemCart;
     }
-    public Cart getBonusCart() { return this.bonusCart; }
+    public Cart getBonusCart() { return bonusCart; }
 }
