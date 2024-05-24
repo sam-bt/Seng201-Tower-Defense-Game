@@ -559,7 +559,6 @@ public class GameManager {
      * @param roundOneTowerList The list of towers for round one.
      */
     public void setRoundOneTowerList(List<Tower> roundOneTowerList) {
-        System.out.println(roundOneTowerList.get(0).getHealth());
         this.roundOneTowerList = roundOneTowerList;
     }
 

@@ -92,7 +92,6 @@ public class Round {
 
     public boolean roundWon(List<Cart> cartList) {
         for (Cart cart : cartList) {
-            System.out.println("success? " + cart.isCartSuccess());
             if (!cart.isCartSuccess()) {
                 return false;
             }

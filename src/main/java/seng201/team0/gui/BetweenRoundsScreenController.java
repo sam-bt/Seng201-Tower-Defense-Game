@@ -137,7 +137,6 @@ public class BetweenRoundsScreenController {
      */
     @FXML
     private void onConfirm() {
-        System.out.println("click worked");
         if (roundGameManager.getCurrRound() == 1) {
             if (roundGameManager.isRoundOneSelectedTowerListNull()) {
                 cantStartRoundLabel.setText("Cannot start the round without any towers selected! Please go to the inventory and select your towers!");
@@ -191,17 +190,12 @@ public class BetweenRoundsScreenController {
      * Handles the case where there is a broken tower.
      */
     private void handleBrokenTowerError() {
-        System.out.println("broken step 1");
         if (!roundGameManager.isNotFirstTimeInInventory()) {
-            System.out.println("broken step 2");
             cantStartRoundLabel.setText("Select your towers in the inventory");
         } else {
-            System.out.println("broken step 3");
             cantStartRoundLabel.setText("One of your towers is broken!");
             if (getNetWorth() < roundGameManager.getCheapestTowersSum(roundGameManager.getGenericRoundTowerList()) + 100) {
-                System.out.println("broken step 4");
                 roundGameManager.launchLosingScreen();
-                System.out.println("YOU LOSE");
             }
         }
     }
@@ -210,17 +204,12 @@ public class BetweenRoundsScreenController {
      * Handles the case where not enough towers are selected.
      */
     private void handleNotEnoughTowersError() {
-        System.out.println("not enough step 1");
         if (!roundGameManager.isNotFirstTimeInInventory()) {
             cantStartRoundLabel.setText("Select your towers in the inventory");
         } else {
-            System.out.println("not enough step 2");
             cantStartRoundLabel.setText("You need 5 towers selected to start the next round!");
-            System.out.println(getNetWorth() + "<=" + roundGameManager.getCheapestTowersSum(roundGameManager.getGenericRoundTowerList()));
             if (getNetWorth() < roundGameManager.getCheapestTowersSum(roundGameManager.getGenericRoundTowerList())) {
-                System.out.println("not enough step 3");
                 roundGameManager.launchLosingScreen();
-                System.out.println("YOU LOSE");
             }
         }
     }

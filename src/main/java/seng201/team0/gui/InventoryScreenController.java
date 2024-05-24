@@ -171,7 +171,6 @@ public class InventoryScreenController {
                 availableTowerButtons.get(i).setStyle("");
             }
             if (tower.getBroken()) {
-                System.out.println(tower.getTowerName() + " is broken");
                 availableTowerButtons.get(i).setStyle("-fx-background-color: #ff0000; -fx-background-radius: 5;");
             }
         }
