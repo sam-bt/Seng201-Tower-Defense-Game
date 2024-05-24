@@ -10,6 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class CartTest {
     /**
+     * Empty Constructor for CartServiceTest.
+     */
+    public CartTest(){}
+    /**
      * Cart
      */
     Cart cart;

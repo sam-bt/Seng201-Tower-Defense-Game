@@ -219,8 +219,8 @@ public class GameScreenController {
         cartOneSizeLabel.setText("Filled: 0/" + cartList.get(0).getCapacity());
         cartTwoSizeLabel.setText("Filled: 0/" + cartList.get(1).getCapacity());
         cartThreeSizeLabel.setText("Filled: 0/" + cartList.get(2).getCapacity());
-        cartFourSizeLabel.setText("Filled: 0/" + cartList.get(2).getCapacity());
-        cartFiveSizeLabel.setText("Filled: 0/" + cartList.get(2).getCapacity());
+        cartFourSizeLabel.setText("Filled: 0/" + cartList.get(3).getCapacity());
+        cartFiveSizeLabel.setText("Filled: 0/" + cartList.get(4).getCapacity());
         cartOneFillProgressBar.setMouseTransparent(true);
         cartTwoFillProgressBar.setMouseTransparent(true);
         cartThreeFillProgressBar.setMouseTransparent(true);
@@ -540,7 +540,7 @@ public class GameScreenController {
                     executeRandomEvent(randomEvent.getEventName(), randomEvent.getEventText());
                     updateSelectedTowerStats(towerList[selectedTowerIndex]);
                     updateCartDistances();
-                    actionsLeftLabel.setText("Actions Left This Frame: " + round.getActionsLeft());
+                    actionsLeftLabel.setText("Actions Left: " + round.getActionsLeft());
                 }
             }
         }

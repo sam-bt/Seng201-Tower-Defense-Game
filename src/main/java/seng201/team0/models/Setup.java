@@ -15,6 +15,9 @@ public class Setup {
 
     /**
      * Constructor method that initialises the input variables.
+     *
+     * @param numRounds the number of rounds selected by the player.
+     * @param playerName the name entered by the player.
      */
     public Setup(String playerName, Long numRounds) {
         this.playerName = playerName;

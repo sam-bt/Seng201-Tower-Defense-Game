@@ -7,6 +7,10 @@ import seng201.team0.GameManager;
  * Service class for managing rounds in the game.
  */
 public class RoundService {
+    /**
+     * Empty Constructor for RoundService.
+     */
+    public RoundService(){}
 
     /**
      * Completes a round in the game.

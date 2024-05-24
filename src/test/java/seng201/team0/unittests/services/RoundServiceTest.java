@@ -17,6 +17,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class RoundServiceTest {
     /**
+     * Empty Constructor for RoundServiceTest.
+     */
+    public RoundServiceTest(){}
+
+    /**
      * Test 100m track length calculator implementation
      */
     @Test

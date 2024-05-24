@@ -15,6 +15,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class InventoryServiceTest {
     /**
+     * Empty Constructor for InventoryServiceTest.
+     */
+    public InventoryServiceTest(){}
+
+    /**
      * Test getting the tower list if it is the first time in the inventory
      */
 

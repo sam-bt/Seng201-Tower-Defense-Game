@@ -15,6 +15,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class RoundOneTest {
     /**
+     * Empty Constructor for RoundOneTest.
+     */
+    public RoundOneTest(){}
+    /**
      * Difficulty Service
      */
     DifficultyService difficultyService;

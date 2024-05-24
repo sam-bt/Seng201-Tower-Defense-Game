@@ -14,6 +14,11 @@ import java.io.IOException;
  * Responsible for loading and displaying different screens based on game events.
  */
 public class SetupWrapper {
+    /**
+     * Empty Constructor for SetupWrapper.
+     */
+    public SetupWrapper(){}
+
     @FXML
     private BorderPane borderpane;
 

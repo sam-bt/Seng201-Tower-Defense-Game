@@ -14,6 +14,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class ShopServiceTest {
     /**
+     * Empty Constructor for ShopServiceTest.
+     */
+    public ShopServiceTest(){}
+
+    /**
      * Test heal price correct
      */
     @Test void healPriceTest(){

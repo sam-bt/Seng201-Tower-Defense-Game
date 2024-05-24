@@ -86,7 +86,6 @@
             <Font size="20.0" />
          </font>
         </Label>
-      <Button fx:id="skipRoundButton" mnemonicParsing="false" onAction="#onSkipRound" text="Button" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
       <Button fx:id="trackLengthButtonTwo" mnemonicParsing="false" onAction="#setTrackLengthTwo" prefHeight="80.0" prefWidth="252.0" text="{Selection2} m" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets top="80.0" />

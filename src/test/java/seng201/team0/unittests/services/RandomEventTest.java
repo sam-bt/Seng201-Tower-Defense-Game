@@ -10,6 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class RandomEventTest {
     /**
+     * Empty Constructor for RandomEventTest.
+     */
+    public RandomEventTest(){}
+
+    /**
      * random event
      */
     RandomEvent randomEvent;

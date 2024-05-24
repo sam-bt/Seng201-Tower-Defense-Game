@@ -6,6 +6,10 @@ import java.util.Random;
  * Class for generating random tower attributes.
  */
 public class TowerGenerator {
+    /**
+     * Empty Constructor for TowerGenerator.
+     */
+    public TowerGenerator(){}
 
     /**
      * Generates a random health value for a heavy tower.

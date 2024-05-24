@@ -14,6 +14,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TowerTest {
     /**
+     * Empty Constructor for TowerTest.
+     */
+    public TowerTest(){}
+
+    /**
      * The tower to test
      */
     Tower testTower;

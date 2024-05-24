@@ -4,10 +4,16 @@ package seng201.team0.models;
  * Difficulty model class
  */
 public class Difficulty {
+
+    /**
+     * Difficulty number
+     */
     private double difficulty;
 
     /**
      * Constructor
+     *
+     * @param initialDifficulty the initial difficulty of the Difficulty instance
      */
     public Difficulty(double initialDifficulty) {
         this.difficulty = initialDifficulty;

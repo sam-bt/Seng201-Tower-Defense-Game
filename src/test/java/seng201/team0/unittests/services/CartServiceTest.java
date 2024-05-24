@@ -16,6 +16,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CartServiceTest {
     /**
+     * Empty Constructor for CartServiceTest.
+     */
+    public CartServiceTest(){}
+    /**
      * Test if all carts are full, when they are all empty
      */
     @Test

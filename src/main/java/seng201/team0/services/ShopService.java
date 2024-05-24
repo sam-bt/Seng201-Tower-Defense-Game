@@ -47,7 +47,11 @@ public class ShopService {
         }
 
     }
-
+    /**
+     * Allows the player to buy an item from the shop.
+     *
+     * @param item The Item to be bought
+     */
     public void buyItem(String item) {
         int itemCost = getItemCost(item);
         if (gameManager.getMoneyAmount() >= itemCost) {
@@ -61,7 +65,11 @@ public class ShopService {
             }
         }
     }
-
+    /**
+     * Allows the player to sell an item to the shop.
+     *
+     * @param item The Item to be sold
+     */
     public void sellItem(String item) {
         int itemSellValue = getItemSellValue(item);
         if (item.equals("heal") && gameManager.getAvailableHeals() > 0) {
@@ -75,7 +83,12 @@ public class ShopService {
             gameManager.getMoneyService().editMoney(itemSellValue);
         }
     }
-
+    /**
+     * Gets the cost of a specifiec item.
+     *
+     * @param item The Item to return the cost of
+     * @return the cost of the specified item
+     */
     public static int getItemCost(String item) {
         switch (item) {
             case "heal":
@@ -88,7 +101,12 @@ public class ShopService {
                 return 0;
         }
     }
-
+    /**
+     * Gets the sell value of a specifiec item.
+     *
+     * @param item The Item to return the sell value of
+     * @return the sell value of the specified item
+     */
     public static int getItemSellValue(String item) {
         switch (item) {
             case "heal":

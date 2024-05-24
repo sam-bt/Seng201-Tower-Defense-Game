@@ -7,7 +7,12 @@ import seng201.team0.gui.SetupWindow;
  *
  * @author seng201 teaching team
  */
+
 public class App {
+    /**
+     * Empty Constructor for App.
+     */
+    public App(){}
 
     /**
      * Entry point which runs the javaFX application

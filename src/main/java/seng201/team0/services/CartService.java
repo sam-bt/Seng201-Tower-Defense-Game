@@ -10,6 +10,10 @@ import java.util.Objects;
  */
 public class CartService {
     /**
+     * Empty Constructor for CartService.
+     */
+    public CartService(){}
+    /**
      * Checks if all carts except the bonus cart are full.
      *
      * @param cartList The list of carts to be checked.

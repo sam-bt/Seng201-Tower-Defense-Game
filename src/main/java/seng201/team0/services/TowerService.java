@@ -8,6 +8,10 @@ import java.util.*;
  * Class for tower-related operations.
  */
 public class TowerService {
+    /**
+     * Empty Constructor for TowerService.
+     */
+    public TowerService(){}
 
     /**
      * Random object used for generating random numbers.

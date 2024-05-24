@@ -7,6 +7,10 @@ import seng201.team0.services.RandomEventGenerator;
  * Determines the type of event based on the difficulty level and the generated random number.
  */
 public class RandomEvent { // return a message and action based on generated event
+    /**
+     * Empty Constructor for RandomEvent.
+     */
+    public RandomEvent(){}
 
     /**
      * Generator used to generate random events.

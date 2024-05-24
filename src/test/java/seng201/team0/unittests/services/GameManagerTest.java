@@ -20,6 +20,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GameManagerTest {
     /**
+     * Empty Constructor for GameManagerTest.
+     */
+    public GameManagerTest(){}
+
+    /**
      * Game Manager
      */
     GameManager gameManager;

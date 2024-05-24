@@ -10,6 +10,8 @@ public class DifficultyService {
 
     /**
      * Constructor
+     *
+     * @param initialDifficulty the initial difficulty for the DifficultyService.
      */
     public DifficultyService(double initialDifficulty) {
         difficulty = new Difficulty(initialDifficulty);

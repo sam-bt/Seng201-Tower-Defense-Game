@@ -111,7 +111,7 @@ public class InventoryScreenController {
     /**
      * Inventory screen constructor that constructs inventory screen game manager
      *
-     * @param tempInventoryScreenGameManager
+     * @param tempInventoryScreenGameManager the GameManager instance for this screen.
      */
     public InventoryScreenController(GameManager tempInventoryScreenGameManager) {
         inventoryScreenGameManager = tempInventoryScreenGameManager;

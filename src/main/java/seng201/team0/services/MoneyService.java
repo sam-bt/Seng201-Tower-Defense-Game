@@ -17,6 +17,8 @@ public class MoneyService {
 
     /**
      * Increment our counter by one
+     *
+     * @param amount the amount for the money to be increased/decreased by.
      */
     public void editMoney(double amount) {
         if (amount < 0) {

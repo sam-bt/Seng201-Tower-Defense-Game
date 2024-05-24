@@ -12,6 +12,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TowerGeneratorTest {
     /**
+     * Empty Constructor for TowerGeneratorTest.
+     */
+    public TowerGeneratorTest(){}
+
+    /**
      * Test heavy tower health generator range as expected
      */
     @RepeatedTest(200)

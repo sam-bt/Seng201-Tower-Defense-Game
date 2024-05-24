@@ -13,6 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SetupTest {
     /**
+     * Empty Constructor for SetupTest.
+     */
+    public SetupTest(){}
+
+    /**
      * Test that the name and round number are correctly set
      */
     @Test

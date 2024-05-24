@@ -11,6 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 
 public class TowerServiceTest {
+    /**
+     * Empty Constructor for TowerServiceTest.
+     */
+    public TowerServiceTest(){}
 
     /**
      * Test if all towers are selected with a towerlist that should return true

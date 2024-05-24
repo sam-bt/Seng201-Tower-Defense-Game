@@ -23,6 +23,8 @@ public class SetupScreenController {
 
     /**
      * Sole constructor that sets the GameManager instance
+     *
+     * @param tempSetupGameManager the GameManager instance for the Setup Screen.
      */
 
     public SetupScreenController(GameManager tempSetupGameManager) {
