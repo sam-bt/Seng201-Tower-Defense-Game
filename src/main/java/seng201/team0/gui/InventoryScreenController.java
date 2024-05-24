@@ -260,7 +260,7 @@ public class InventoryScreenController {
                 break;
             case "upgrade":
                 if (inventoryScreenGameManager.getAvailableUpgrades() > 0) {
-                    tower.useUpgrade(currentInventory);
+                    tower.useUpgrade();
                     inventoryScreenGameManager.consumeUpgrade();
                     upgradesOwned.setText("Upgrades Owned: " + inventoryScreenGameManager.getAvailableUpgrades());
                 }
