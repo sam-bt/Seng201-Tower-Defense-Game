@@ -3,13 +3,31 @@ package seng201.team0.services;
 import seng201.team0.GameManager;
 import seng201.team0.models.Tower;
 
+
+/**
+ * Service class for managing transactions in the game's shop.
+ */
 public class ShopService {
+
+    /**
+     * The GameManager object representing the game's state.
+     */
     private GameManager gameManager;
 
+    /**
+     * Constructs a ShopService object with the given GameManager.
+     *
+     * @param gameManager The GameManager object representing the game's state.
+     */
     public ShopService(GameManager gameManager) {
         this.gameManager = gameManager;
     }
 
+    /**
+     * Allows the player to buy a tower from the shop.
+     *
+     * @param tower The Tower object representing the tower to be bought.
+     */
     public void buyTower(Tower tower) {
         if (gameManager.getMoneyAmount() >= tower.getBuyPrice() && !tower.getOwned()) {
             gameManager.getMoneyService().editMoney(-tower.getBuyPrice());
@@ -17,6 +35,11 @@ public class ShopService {
         }
     }
 
+    /**
+     * Allows the player to sell a tower to the shop.
+     *
+     * @param tower The Tower object representing the tower to be sold.
+     */
     public void sellTower(Tower tower) {
         if (tower.getOwned()) {
             gameManager.getMoneyService().editMoney(tower.getSellPrice());
