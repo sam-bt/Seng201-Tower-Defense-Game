@@ -16,7 +16,7 @@ public class ShopScreenController {
     @FXML
     private Label buyPriceLabel;
     @FXML
-    private Label sellPriceLabel;
+    private Label selectedLabel;
     @FXML
     private Label moneyLabel;
 
@@ -151,28 +151,28 @@ public class ShopScreenController {
     private void updateLabels() {
         if (selectedTowerIndex >= 0) {
             Tower tower = shopScreenGameManager.getGenericRoundTowerList().get(selectedTowerIndex);
-            amountOwnedLabel.setText("Owned: " + tower.getOwned());
-            buyPriceLabel.setText("Buy Price: " + tower.getBuyPrice());
-            sellPriceLabel.setText("Sell Price: " + tower.getSellPrice());
+            amountOwnedLabel.setText(" " + tower.getOwned());
+            buyPriceLabel.setText(" " + tower.getBuyPrice());
+            selectedLabel.setText(" " + tower.getTowerName());
         } else if (selectedItem != null) {
             if (selectedItem.equals("heal")) {
-                amountOwnedLabel.setText("Amount Owned: " + shopScreenGameManager.getAvailableHeals());
-                buyPriceLabel.setText("Buy Price: " + shopService.getItemCost(selectedItem));
-                sellPriceLabel.setText("Sell Price: " + shopService.getItemSellValue(selectedItem));
+                amountOwnedLabel.setText(" " + shopScreenGameManager.getAvailableHeals());
+                buyPriceLabel.setText(" " + shopService.getItemCost(selectedItem));
+                selectedLabel.setText(" Heal");
             } else if (selectedItem.equals("revive")) {
-                amountOwnedLabel.setText("Amount Owned: " + shopScreenGameManager.getAvailableRevives());
-                buyPriceLabel.setText("Buy Price: " + shopService.getItemCost(selectedItem));
-                sellPriceLabel.setText("Sell Price: " + shopService.getItemSellValue(selectedItem));
+                amountOwnedLabel.setText(" " + shopScreenGameManager.getAvailableRevives());
+                buyPriceLabel.setText(" " + shopService.getItemCost(selectedItem));
+                selectedLabel.setText(" Revive");
             } else if (selectedItem.equals("upgrade")) {
-                amountOwnedLabel.setText("Amount Owned: " + shopScreenGameManager.getAvailableUpgrades());
-                buyPriceLabel.setText("Buy Price: " + shopService.getItemCost(selectedItem));
-                sellPriceLabel.setText("Sell Price: " + shopService.getItemSellValue(selectedItem));
+                amountOwnedLabel.setText(" " + shopScreenGameManager.getAvailableUpgrades());
+                buyPriceLabel.setText(" " + shopService.getItemCost(selectedItem));
+                selectedLabel.setText(" Upgrade");
             }
 
         } else {
             amountOwnedLabel.setText("");
             buyPriceLabel.setText("");
-            sellPriceLabel.setText("");
+            selectedLabel.setText("");
         }
         moneyLabel.setText("Money: " + shopScreenGameManager.getMoneyAmount());
     }
