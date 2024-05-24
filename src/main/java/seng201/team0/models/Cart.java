@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Random;
 
 /**
- * Class for cart object
+ * Cart model class
  */
 public class Cart {
     /**

@@ -1,5 +1,8 @@
 package seng201.team0.models;
 
+/**
+ * Money model class
+ */
 public class Money {
     private double money;
 
