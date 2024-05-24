@@ -12,9 +12,8 @@ public class RoundOneInventoryService {
     Tower LightIron;
     Tower HeavyGold;
     Tower LightGold;
-    public RoundOneInventoryService(GameManager roundOneServiceGameManager){
-        double currDifficulty = roundOneServiceGameManager.getDifficulty();
-        System.out.println("difficulty "+currDifficulty);
+    public RoundOneInventoryService(double difficulty){
+        double currDifficulty = difficulty;
         HeavyCoal = new Tower(TowerGenerator.heavyTowerHealthGenerator(),false, "Coal", TowerGenerator.heavyTowerFillAmountGenerator(),  TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Coal", currDifficulty, TowerGenerator.heavyTowerPriceGenerator(currDifficulty));
         LightCoal = new Tower(TowerGenerator.lightTowerHealthGenerator(),false, "Coal", TowerGenerator.lightTowerFillAmountGenerator(),  TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Coal", currDifficulty,TowerGenerator.lightTowerPriceGenerator(currDifficulty));
         HeavyIron = new Tower(TowerGenerator.heavyTowerHealthGenerator(),false, "Iron", TowerGenerator.heavyTowerFillAmountGenerator(),  TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Iron", currDifficulty,TowerGenerator.heavyTowerPriceGenerator(currDifficulty));

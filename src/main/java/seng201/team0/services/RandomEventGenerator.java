@@ -11,7 +11,7 @@ public class RandomEventGenerator {
         this.badEventLikelihood = badEventLikelihood;
     }
     public int generate() { // in range 1 to 15
-        return rnd.nextInt(10)+badEventLikelihood;
+        return rnd.nextInt(11)+badEventLikelihood;
     }
     public int generateRoundOneIndex(){
         return rnd.nextInt(3);

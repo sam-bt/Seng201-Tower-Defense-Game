@@ -45,9 +45,10 @@ public class RoundOneInventoryScreenController {
         roundOneInventoryScreenGameManager = tempRoundOneInventoryScreenGameManager;
     }
     public void initialize() {
+        double currDifficulty = roundOneInventoryScreenGameManager.getDifficulty();
         List<Button> towerButtons = List.of(heavyCoalButton,lightCoalButton,heavyIronButton,lightIronButton,heavyGoldButton,lightGoldButton);
         selectedTowerButtons = List.of(selectedTowerButtonOne,selectedTowerButtonTwo,selectedTowerButtonThree);
-        RoundOneInventoryService roundOneInventory = new RoundOneInventoryService(roundOneInventoryScreenGameManager);
+        RoundOneInventoryService roundOneInventory = new RoundOneInventoryService(currDifficulty);
         towers = roundOneInventory.getTowerList();
         towerListIndices = roundOneInventoryScreenGameManager.getRoundOneTowerListIndices();
         if (!roundOneInventoryScreenGameManager.isRoundOneSelectedTowerListNull()) {

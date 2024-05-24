@@ -18,7 +18,7 @@ public class MoneyService {
     public void editMoney(double amount) {
         if (amount <0) {
             if (money.getAmount() + amount < 0) {
-                money.setMoney(0);
+                money.setMoney(-money.getAmount());
             }
             else {
                 money.setMoney(amount);
