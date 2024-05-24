@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -7,20 +8,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.InvalidNameScreenController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.InvalidNameScreenController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="447.6666564941406" minHeight="10.0" prefHeight="337.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="393.0" minHeight="10.0" prefHeight="249.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="127.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Invalid name, Please make sure that your name is between 3 and 15 characters long and only contain letters and numbers!" textAlignment="CENTER" wrappingWidth="486.60791015625" GridPane.halignment="CENTER">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Invalid name, Please make sure that your name is between 3 and 15 characters long and only contain letters and numbers!" textAlignment="CENTER" wrappingWidth="1167.9412231445312" GridPane.halignment="CENTER">
          <font>
-            <Font size="18.0" />
-         </font></Text>
-      <Button fx:id="returnToMainMenuButton" mnemonicParsing="false" onAction="#invalidNameOnConfirm" prefHeight="92.0" prefWidth="165.0" text="Return to Main Menu" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="25.0" />
+         </GridPane.margin></Text>
+      <Button fx:id="returnToMainMenuButton" mnemonicParsing="false" onAction="#invalidNameOnConfirm" prefHeight="321.0" prefWidth="1168.0" text="Return to Main Menu" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font></Button>
    </children>
 </GridPane>

@@ -11,11 +11,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.SetupScreenController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.SetupScreenController">
 
   <columnConstraints>
-      <ColumnConstraints hgrow="ALWAYS" maxWidth="1120.0" minWidth="10.0" prefWidth="1120.0" />
-    <ColumnConstraints hgrow="ALWAYS" maxWidth="800.0" minWidth="10.0" prefWidth="565.0" />
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="1120.0" minWidth="10.0" prefWidth="721.0" />
+    <ColumnConstraints hgrow="ALWAYS" maxWidth="800.0" minWidth="10.0" prefWidth="719.0" />
       <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
   </columnConstraints>
   <rowConstraints>
@@ -44,7 +44,7 @@
             <Font size="42.0" />
          </font>
       </Button>
-      <Slider fx:id="numRoundsSlider" majorTickUnit="1.0" max="15.0" maxHeight="-Infinity" maxWidth="-Infinity" min="5.0" minorTickCount="0" prefHeight="38.0" prefWidth="457.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Slider fx:id="numRoundsSlider" majorTickUnit="1.0" max="15.0" maxHeight="-Infinity" maxWidth="-Infinity" min="5.0" minorTickCount="0" prefHeight="38.0" prefWidth="600.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
@@ -53,8 +53,11 @@
          <GridPane.margin>
             <Insets top="15.0" />
          </GridPane.margin>
+         <font>
+            <Font size="32.0" />
+         </font>
       </Label>
-      <Slider fx:id="difficultySlider" majorTickUnit="1.0" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" min="1.0" minorTickCount="0" prefHeight="38.0" prefWidth="541.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Slider fx:id="difficultySlider" majorTickUnit="1.0" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" min="1.0" minorTickCount="0" prefHeight="38.0" prefWidth="600.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
@@ -63,6 +66,9 @@
          <GridPane.margin>
             <Insets top="15.0" />
          </GridPane.margin>
+         <font>
+            <Font size="32.0" />
+         </font>
       </Label>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Seng201 Towers vs Carts!!" wrappingWidth="847.7294921875" GridPane.columnSpan="2" GridPane.halignment="CENTER">
          <font>
