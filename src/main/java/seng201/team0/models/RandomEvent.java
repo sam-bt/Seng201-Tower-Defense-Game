@@ -32,9 +32,6 @@ public class RandomEvent { // return a message and action based on generated eve
     public String getEventText(){
         return this.eventText;
     }
-    public int generateEvent(){
-        return randomGenerator.generate();
-    }
     private void generateGoodEvent(){
         if (eventNum == 5 || eventNum == 1) {
             eventName = "Cart Reset";

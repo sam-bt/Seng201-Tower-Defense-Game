@@ -33,39 +33,47 @@ public class RoundTest {
     void setupTest(){
         difficultyService = new DifficultyService(1.0);
         round = new Round(difficultyService,100);
-        cartList = List.of(round.getCoalCart(),round.getIronCart(),round.getGoldCart());
+        cartList = List.of(round.getCoalCart(),round.getIronCart(),round.getGoldCart(),round.getGemCart(),round.getBonusCart());
     }
     /**
      * Tests if actions are being used as expected
      */
     @Test
     void useActionTest(){
-        Tower[] towerList = new Tower[3];
+        Tower[] towerList = new Tower[5];
         towerList[0] = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
         towerList[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron",1.5,450);
         towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
+        towerList[3] = new Tower(250,true,"Iron",25,9,"Heavy Gem",1.5,450);
+        towerList[4] = new Tower(500,false,"Bonus",25,3,"Bonus",3.8,800);
         Tower selectedTower = towerList[0];
         round.useAction(selectedTower,cartList,towerList);
         assertEquals(round.getActionsLeft(), 1);
         assertEquals(cartList.get(0).getCurrentFillDisplay(), 25);
         assertEquals(cartList.get(1).getCurrentFillDisplay(), 0);
         assertEquals(cartList.get(2).getCurrentFillDisplay(), 0);
+        assertEquals(cartList.get(3).getCurrentFillDisplay(), 0);
+        assertEquals(cartList.get(4).getCurrentFillDisplay(), 0);
     }
     /**
      * Tests if the next frame is being executed as expected
      */
     @Test
     void nextFrameTest(){
-        Tower[] towerList = new Tower[3];
+        Tower[] towerList = new Tower[5];
         towerList[0] = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
         towerList[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron",1.5,450);
         towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
+        towerList[3] = new Tower(250,true,"Iron",25,9,"Heavy Gem",1.5,450);
+        towerList[4] = new Tower(500,false,"Bonus",25,3,"Bonus",3.8,800);
         Tower selectedTower = towerList[0];
         round.useAction(selectedTower,cartList,towerList);
         assertEquals(round.getActionsLeft(), 1);
         assertEquals(cartList.get(0).getCurrentFillDisplay(), 25);
         assertEquals(cartList.get(1).getCurrentFillDisplay(), 0);
         assertEquals(cartList.get(2).getCurrentFillDisplay(), 0);
+        assertEquals(cartList.get(3).getCurrentFillDisplay(), 0);
+        assertEquals(cartList.get(4).getCurrentFillDisplay(), 0);
         round.nextFrame(cartList,towerList);
         assertEquals(round.getActionsLeft(), 2);
     }
@@ -78,6 +86,8 @@ public class RoundTest {
         cartList.get(0).setEndReached();
         cartList.get(1).setEndReached();
         cartList.get(2).setEndReached();
+        cartList.get(3).setEndReached();
+        cartList.get(4).setEndReached();
         assertEquals(round.roundEnded(cartList), true);
     }
     /**
@@ -88,6 +98,8 @@ public class RoundTest {
         cartList.get(0).fillCart();
         cartList.get(1).fillCart();
         cartList.get(2).fillCart();
+        cartList.get(3).fillCart();
+        cartList.get(4).fillCart();
         assertEquals(round.roundEnded(cartList), true);
     }
     /**
@@ -105,6 +117,7 @@ public class RoundTest {
         Tower selectedTower = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
         cartList.get(1).fillCart();
         cartList.get(2).fillCart();
+        cartList.get(3).fillCart();
         assertEquals(round.isCartFillable(cartList,selectedTower), true);
     }
     /**
@@ -116,6 +129,7 @@ public class RoundTest {
         cartList.get(0).fillCart();
         cartList.get(1).fillCart();
         cartList.get(2).fillCart();
+        cartList.get(3).fillCart();
         assertEquals(round.isCartFillable(cartList,selectedTower), false);
     }
     /**
@@ -123,8 +137,24 @@ public class RoundTest {
      */
     @Test
     void isCartFillableEmptyFalseTest(){
-        Tower selectedTower = new Tower(100,true,"Gem",25,3,"Light Gem",1.2,300);
+        Tower selectedTower = new Tower(100,true,"Fake Type",25,3,"Fake Tower",1.2,300);
         assertEquals(round.isCartFillable(cartList,selectedTower), false);
+    }
+    /**
+     * Tests if the bonus cart is fillable by any tower
+     */
+    @Test
+    void isBonusCartFillableTest(){
+        Tower[] towerList = new Tower[5];
+        towerList[0] = new Tower(100,true,"Coal",25,3,"Light Coal",1.2,300);
+        towerList[1] = new Tower(250,true,"Iron",25,9,"Heavy Iron",1.5,450);
+        towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold",3.8,800);
+        towerList[3] = new Tower(250,true,"Iron",25,9,"Heavy Gem",1.5,450);
+        towerList[4] = new Tower(500,false,"Bonus",25,3,"Bonus",3.8,800);
+        Tower selectedTower = towerList[0];
+        round.useBonusAction(selectedTower,cartList,towerList);
+        assertEquals(cartList.get(0).getCurrentFillDisplay(), 0);
+        assertEquals(cartList.get(4).getCurrentFillDisplay(), 25);
     }
     /**
      * Tests if round is won with all carts successful
@@ -134,6 +164,8 @@ public class RoundTest {
         cartList.get(0).setCartSuccess();
         cartList.get(1).setCartSuccess();
         cartList.get(2).setCartSuccess();
+        cartList.get(3).setCartSuccess();
+        cartList.get(4).setCartSuccess();
         assertEquals(round.roundWon(cartList), true);
     }
     /**
@@ -143,6 +175,7 @@ public class RoundTest {
     void roundWonFalseTest(){
         cartList.get(0).setCartSuccess();
         cartList.get(1).setCartSuccess();
+        cartList.get(4).setCartSuccess();
         assertEquals(round.roundWon(cartList), false);
     }
 }
