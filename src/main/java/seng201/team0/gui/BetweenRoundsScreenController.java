@@ -194,7 +194,7 @@ public class BetweenRoundsScreenController {
             cantStartRoundLabel.setText("Select your towers in the inventory");
         } else {
             cantStartRoundLabel.setText("One of your towers is broken!");
-            if (getNetWorth() < roundGameManager.getCheapestTowersSum(roundGameManager.getGenericRoundTowerList()) + 100) {
+            if (getNetWorth() < roundGameManager.getCheapestTowersSum(roundGameManager.getGenericRoundTowerList()) + 500) {
                 roundGameManager.launchLosingScreen();
             }
         }
@@ -221,7 +221,7 @@ public class BetweenRoundsScreenController {
      */
     private double getNetWorth() {
         double netWorth = roundGameManager.getMoneyAmount();
-        netWorth += (roundGameManager.getAvailableHeals() * 50);
+        netWorth += (roundGameManager.getAvailableHeals() * 200);
         netWorth += (roundGameManager.getAvailableRevives() * 500);
         netWorth += (roundGameManager.getAvailableUpgrades() * 150);
         for (int i = 0; i < roundGameManager.getGenericRoundTowerList().size(); i++) {

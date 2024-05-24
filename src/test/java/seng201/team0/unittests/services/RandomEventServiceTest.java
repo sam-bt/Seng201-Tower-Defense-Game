@@ -1,5 +1,6 @@
 package seng201.team0.unittests.services;
 
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import seng201.team0.services.RandomEventGenerator;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -11,7 +12,7 @@ class RandomEventServiceTest {
     /**
      * Test random event number is in correct range with high bad event likelihood
      */
-    @Test
+    @RepeatedTest(50)
     void generateLikelyTest(){
         RandomEventGenerator randomEventGenerator = new RandomEventGenerator(5);
         int generated = randomEventGenerator.generate();
@@ -20,7 +21,7 @@ class RandomEventServiceTest {
     /**
      * Test random event number is in correct range with low bad event likelihood
      */
-    @Test
+    @RepeatedTest(50)
     void generateUnlikelyTest(){
         RandomEventGenerator randomEventGenerator = new RandomEventGenerator(1);
         int generated = randomEventGenerator.generate();
@@ -29,7 +30,7 @@ class RandomEventServiceTest {
     /**
      * Test range of round one index is as expected
      */
-    @Test
+    @RepeatedTest(5)
     void generateRoundOneIndexTest(){
         RandomEventGenerator randomEventGenerator = new RandomEventGenerator(5);
         int generated = randomEventGenerator.generateRoundOneIndex();
@@ -38,7 +39,7 @@ class RandomEventServiceTest {
     /**
      * Test range of round index is as expected
      */
-    @Test
+    @RepeatedTest(10)
     void generateRoundIndexTest(){
         RandomEventGenerator randomEventGenerator = new RandomEventGenerator(1);
         int generated = randomEventGenerator.generateRoundIndex();

@@ -17,7 +17,7 @@ public class RoundService {
         TowerService.breakTowers(roundGameManager.getRoundOneTowerList());
         roundGameManager.incrementPoints();
         roundGameManager.setTrackLengthIndex(0);
-        roundGameManager.getMoneyService().editMoney(1000 - (100 * roundGameManager.getDifficulty()));
+        roundGameManager.getMoneyService().editMoney(1500 - (100 * roundGameManager.getDifficulty()));
         roundGameManager.getDifficultyService().incrementDifficulty();
     }
 
@@ -32,20 +32,12 @@ public class RoundService {
             return 100;
         } else if (difficulty <= 2.0) {
             return 90;
-        } else if (difficulty <= 3.0) {
-            return 80;
-        } else if (difficulty <= 4.0) {
-            return 70;
         } else if (difficulty <= 5.0) {
-            return 60;
-        } else if (difficulty <= 6.0) {
-            return 50;
-        } else if (difficulty <= 7.0) {
-            return 40;
+            return 80;
         } else if (difficulty <= 8.0) {
-            return 30;
+            return 70;
         } else {
-            return 20;
+            return 60;
         }
     }
 }

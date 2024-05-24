@@ -37,57 +37,25 @@ public class RoundServiceTest {
      * Test 80m track length calculator implementation
      */
     @Test
-    void trackLengthTestThree(){
+    void trackLengthTestFive(){
         assertEquals(RoundService.trackLengthCalculator(2.7),80);
-        assertEquals(RoundService.trackLengthCalculator(3.0),80);
+        assertEquals(RoundService.trackLengthCalculator(5.0),80);
     }
     /**
      * Test 70m track length calculator implementation
      */
     @Test
-    void trackLengthTestFour(){
-        assertEquals(RoundService.trackLengthCalculator(3.1),70);
-        assertEquals(RoundService.trackLengthCalculator(4),70);
+    void trackLengthTestEight(){
+        assertEquals(RoundService.trackLengthCalculator(5.5),70);
+        assertEquals(RoundService.trackLengthCalculator(8.0),70);
     }
     /**
      * Test 60m track length calculator implementation
      */
     @Test
-    void trackLengthTestOFive(){
-        assertEquals(RoundService.trackLengthCalculator(4.3),60);
-        assertEquals(RoundService.trackLengthCalculator(5),60);
-    }
-    /**
-     * Test 50m track length calculator implementation
-     */
-    @Test
-    void trackLengthTestSix(){
-        assertEquals(RoundService.trackLengthCalculator(5.4),50);
-        assertEquals(RoundService.trackLengthCalculator(6.0),50);
-    }
-    /**
-     * Test 40m track length calculator implementation
-     */
-    @Test
-    void trackLengthTestSeven(){
-        assertEquals(RoundService.trackLengthCalculator(6.1),40);
-        assertEquals(RoundService.trackLengthCalculator(7.0),40);
-    }
-    /**
-     * Test 30m track length calculator implementation
-     */
-    @Test
-    void trackLengthTestEight(){
-        assertEquals(RoundService.trackLengthCalculator(7.9),30);
-        assertEquals(RoundService.trackLengthCalculator(8.0),30);
-    }
-    /**
-     * Test 20m track length calculator implementation
-     */
-    @Test
-    void trackLengthTestNine(){
-        assertEquals(RoundService.trackLengthCalculator(9.0),20);
-        assertEquals(RoundService.trackLengthCalculator(11.0),20);
+    void trackLengthTestElse(){
+        assertEquals(RoundService.trackLengthCalculator(9.0),60);
+        assertEquals(RoundService.trackLengthCalculator(11.0),60);
     }
     /**
      * Test if the round is completed properly

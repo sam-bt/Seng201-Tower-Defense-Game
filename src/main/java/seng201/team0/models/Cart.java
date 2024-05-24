@@ -81,15 +81,16 @@ public class Cart {
         currentFillDisplay = 0;
         this.trackLength = trackLength;
         Random rng = new Random();
-        List<Integer> speedList = Arrays.asList(5, 8, 8, 10, 10, 15);
-        int randomSpeed = rng.nextInt(6);
-        speed = speedList.get(randomSpeed);
-        List<Integer> capacityList = Arrays.asList(80, 80, 80, 90, 90, 90, 100, 100, 150);
+        List<Integer> speedList = Arrays.asList(3, 3, 3, 3, 3, 3, 3, 4, 4, 5, 5, 5, 6, 6, 7);
+        int randomSpeed = rng.nextInt(15);
+        List<Integer> capacityList = Arrays.asList(50, 50, 60, 60, 70, 70, 70, 80, 80, 80, 90, 90, 90, 100);
         int randomCapacity = rng.nextInt(9);
         if (Objects.equals(cartName, "Bonus")) {
             capacity = 100 + ((int) difficulty * 40);
+            speed = 3;
         } else {
             capacity = capacityList.get(randomCapacity);
+            speed = speedList.get(randomSpeed);
         }
     }
 

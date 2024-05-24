@@ -1,6 +1,7 @@
 package seng201.team0.unittests.services;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import seng201.team0.models.Tower;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -90,7 +91,7 @@ public class TowerTest {
         testTower.setHealth(0);
         assertEquals(testTower.getHealth(), 0);
         testTower.useHeal();
-        assertEquals(testTower.getHealth(), 5);
+        assertEquals(testTower.getHealth(), 40);
     }
     /**
      * Test buying a tower that is already on max health
@@ -104,7 +105,8 @@ public class TowerTest {
     /**
      * Test using a tower
      */
-    @Test void useTowerTest(){
+    @RepeatedTest(5)
+    void useTowerTest(){
         assertEquals(testTower.getActionsUntilUsable(), 0);
         assertEquals(testTower.getBreakChance(), 0);
         assertEquals(testTower.getHealth(), 100);
@@ -119,7 +121,8 @@ public class TowerTest {
     /**
      * Test using a tower when it is going to break after use
      */
-    @Test void useTowerBreakTest(){
+    @RepeatedTest(5)
+    void useTowerBreakTest(){
         testTower.setHealth(-1);
         assertEquals(testTower.getActionsUntilUsable(), 0);
         assertEquals(testTower.getBreakChance(), 0);

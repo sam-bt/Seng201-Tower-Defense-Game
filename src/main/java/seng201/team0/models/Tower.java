@@ -279,10 +279,10 @@ public class Tower implements Purchasable {
      * Heals the tower, increasing its health by a set amount.
      */
     public void useHeal() {
-        if (health + 5 >= maxHealth) {
+        if (health + 40 >= maxHealth) {
             health = maxHealth;
         } else {
-            health += 5;
+            health += 40;
         }
     }
 

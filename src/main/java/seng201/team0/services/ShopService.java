@@ -79,7 +79,7 @@ public class ShopService {
     public static int getItemCost(String item) {
         switch (item) {
             case "heal":
-                return 50;
+                return 200;
             case "revive":
                 return 500;
             case "upgrade":
@@ -92,7 +92,7 @@ public class ShopService {
     public static int getItemSellValue(String item) {
         switch (item) {
             case "heal":
-                return 50;
+                return 200;
             case "revive":
                 return 500;
             case "upgrade":

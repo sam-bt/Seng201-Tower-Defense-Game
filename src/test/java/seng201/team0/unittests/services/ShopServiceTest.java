@@ -17,7 +17,7 @@ public class ShopServiceTest {
      * Test heal price correct
      */
     @Test void healPriceTest(){
-        assertEquals(ShopService.getItemCost("heal"), 50);
+        assertEquals(ShopService.getItemCost("heal"), 200);
     }
     /**
      * Test revive price correct
@@ -41,7 +41,7 @@ public class ShopServiceTest {
      * Test heal sell price correct
      */
     @Test void healSellTest(){
-        assertEquals(ShopService.getItemSellValue("heal"), 50);
+        assertEquals(ShopService.getItemSellValue("heal"), 200);
     }
     /**
      * Test revive sell price correct
@@ -127,7 +127,7 @@ public class ShopServiceTest {
         moneyService.editMoney(1000.0);
         gameManager.setMoney(moneyService);
         shopService.buyItem("heal");
-        assertEquals(gameManager.getMoneyAmount(), 950.0);
+        assertEquals(gameManager.getMoneyAmount(), 800.0);
         assertEquals(gameManager.getAvailableHeals(), 1);
     }
     /**
@@ -205,7 +205,7 @@ public class ShopServiceTest {
         moneyService.editMoney(1000.0);
         gameManager.setMoney(moneyService);
         shopService.buyItem("heal");
-        assertEquals(gameManager.getMoneyAmount(), 950.0);
+        assertEquals(gameManager.getMoneyAmount(), 800.0);
         assertEquals(gameManager.getAvailableHeals(), 1);
         shopService.sellItem("heal");
         assertEquals(gameManager.getMoneyAmount(), 1000.0);
