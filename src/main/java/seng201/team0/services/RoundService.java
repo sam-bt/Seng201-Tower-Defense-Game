@@ -3,7 +3,16 @@ package seng201.team0.services;
 
 import seng201.team0.GameManager;
 
+/**
+ * Service class for managing rounds in the game.
+ */
 public class RoundService {
+
+    /**
+     * Completes a round in the game.
+     *
+     * @param roundGameManager The GameManager object representing the current round's game state.
+     */
     public static void completeRound(GameManager roundGameManager){
         TowerService.breakTowers(roundGameManager.getRoundOneTowerList());
         roundGameManager.incrementPoints();
@@ -11,6 +20,13 @@ public class RoundService {
         roundGameManager.getMoneyService().editMoney(1000-(100*roundGameManager.getDifficulty()));
         roundGameManager.getDifficultyService().incrementDifficulty();
     }
+
+    /**
+     * Calculates the track length based on the difficulty level.
+     *
+     * @param difficulty The difficulty level of the game.
+     * @return The track length for the next round.
+     */
     public static int trackLengthCalculator(double difficulty){
         if (difficulty <= 1.0) {
             return 100;
