@@ -2,12 +2,37 @@ package seng201.team0.models;
 
 import seng201.team0.services.RandomEventGenerator;
 
+/**
+ * Responsible for generating random events in the game.
+ * Determines the type of event based on the difficulty level and the generated random number.
+ */
 public class RandomEvent { // return a message and action based on generated event
+
+    /**
+     * Generator used to generate random events.
+     */
     RandomEventGenerator randomGenerator;
+
+    /**
+     * Name of the event.
+     */
     String eventName;
+
+    /**
+     * Event message.
+     */
     String eventText;
+
+    /**
+     * Number representing the event.
+     */
     int eventNum;
 
+    /**
+     * Generates a random event based on the difficulty level.
+     *
+     * @param difficulty The difficulty level of the game.
+     */
     public void generateRandomEvent(double difficulty) {
         int badEventLikelihood = (int) Math.round(difficulty);
         if (badEventLikelihood > 5) {
@@ -24,14 +49,27 @@ public class RandomEvent { // return a message and action based on generated eve
         }
     }
 
+    /**
+     * Returns the name of the generated event.
+     *
+     * @return The name of the event.
+     */
     public String getEventName() {
         return this.eventName;
     }
 
+    /**
+     * Returns the event message.
+     *
+     * @return The event message.
+     */
     public String getEventText() {
         return this.eventText;
     }
 
+    /**
+     * Generates a good event based on the event number.
+     */
     private void generateGoodEvent() {
         if (eventNum == 5 || eventNum == 1) {
             eventName = "Cart Reset";
@@ -45,11 +83,17 @@ public class RandomEvent { // return a message and action based on generated eve
         }
     }
 
+    /**
+     * Generates a neutral event.
+     */
     private void generateNeutralEvent() {
         eventName = "Nothing";
         eventText = "Nothing happened!";
     }
 
+    /**
+     * Generates a bad event based on the event number.
+     */
     private void generateBadEvent() {
         if (eventNum == 14 || eventNum == 11) {
             eventName = "Steal Resources";
@@ -63,10 +107,20 @@ public class RandomEvent { // return a message and action based on generated eve
         }
     }
 
+    /**
+     * Generates a random index for round one.
+     *
+     * @return The generated random index for round one.
+     */
     public int generateRoundOneIndex() {
         return randomGenerator.generateRoundOneIndex();
     }
 
+    /**
+     * Generates a random index for rounds after one.
+     *
+     * @return The generated random index for rounds after one.
+     */
     public int generateRoundIndex() {
         return randomGenerator.generateRoundIndex();
     }
