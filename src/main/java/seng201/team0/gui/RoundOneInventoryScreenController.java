@@ -15,6 +15,10 @@ import java.util.Objects;
 
 import static java.util.Collections.emptyList;
 
+/**
+ * Controller class for the Round One Inventory Screen.
+ * Manages user interactions with tower selection and inventory management in the game.
+ */
 public class RoundOneInventoryScreenController {
     @FXML Button heavyCoalButton;
     @FXML Button lightCoalButton;
@@ -31,19 +35,51 @@ public class RoundOneInventoryScreenController {
     @FXML Label towerReloadLabel;
     @FXML Label towerFillAmountLabel;
     @FXML Label selectAllTowersLabel;
+    /**
+     * Array containing the selected towers for the game round.
+     */
     private final Tower[] selectedTowers = new Tower[3];
+
+    /**
+     * Index of the currently selected tower.
+     */
     private int selectedTowerIndex = -1;
+
+    /**
+     * List of buttons representing selected tower slots in the UI.
+     */
     List<Button> selectedTowerButtons;
+
+    /**
+     * List of indices representing selected towers in the UI.
+     */
     List<Integer> towerListIndices;
+
+    /**
+     * Array containing previously saved towers.
+     */
     Tower[] savedTowers;
 
-
+    /**
+     * Instance of GameManager managing the game.
+     */
     GameManager roundOneInventoryScreenGameManager;
-    List<Tower> towers;
 
+    /**
+     * List of towers available for selection in the game round.
+     */
+    List<Tower> towers;
+    /**
+     * Constructs a new RoundOneInventoryScreenController with the specified GameManager instance.
+     * @param tempRoundOneInventoryScreenGameManager The GameManager instance managing the game.
+     */
     RoundOneInventoryScreenController(GameManager tempRoundOneInventoryScreenGameManager){
         roundOneInventoryScreenGameManager = tempRoundOneInventoryScreenGameManager;
     }
+    /**
+     * Initializes the Round One Inventory Screen.
+     * Sets up button actions for tower selection and management.
+     */
     public void initialize() {
         double currDifficulty = roundOneInventoryScreenGameManager.getDifficulty();
         List<Button> towerButtons = List.of(heavyCoalButton,lightCoalButton,heavyIronButton,lightIronButton,heavyGoldButton,lightGoldButton);
@@ -96,6 +132,10 @@ public class RoundOneInventoryScreenController {
         }
 
     }
+    /**
+     * Updates the displayed stats for the selected tower.
+     * @param tower The tower for which to display stats.
+     */
     private void updateDisplayedStats(Tower tower) {
         towerNameLabel.setText("Name: "+tower.getTowerName());
         towerHealthLabel.setText("Health: "+tower.getHealth());
@@ -104,6 +144,10 @@ public class RoundOneInventoryScreenController {
         towerFillAmountLabel.setText("Reload Speed: "+tower.getFillAmount());
 
     }
+    /**
+     * Handles the confirm action button click event.
+     * Sets the selected towers for the game round and closes the inventory screen.
+     */
     @FXML
     private void onConfirm() {
 //        roundOneInventoryScreenGameManager.setRoundOneSelectedTowerButtons(selectedTowerButtons);
