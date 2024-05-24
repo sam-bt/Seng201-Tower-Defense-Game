@@ -13,14 +13,14 @@ public class InvalidNameScreenController {
     /**
      * Instance of the game manager.
      */
-    GameManager invalidNameGameManager;
+    private GameManager invalidNameGameManager;
 
     /**
      * Constructor for the InvalidNameScreenController class.
      *
      * @param tempInvalidNameGameManager The game manager instance associated with the screen.
      */
-    public InvalidNameScreenController(GameManager tempInvalidNameGameManager) {
+    public InvalidNameScreenController(final GameManager tempInvalidNameGameManager) {
         invalidNameGameManager = tempInvalidNameGameManager;
     }
 

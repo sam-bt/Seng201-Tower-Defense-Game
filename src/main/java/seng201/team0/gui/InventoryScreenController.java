@@ -91,17 +91,17 @@ public class InventoryScreenController {
     /**
      * List of indices for the tower list.
      */
-    List<Integer> towerListIndices;
+    private List<Integer> towerListIndices;
 
     /**
      * Array to store saved towers.
      */
-    Tower[] savedTowers;
+    private Tower[] savedTowers;
 
     /**
      * GameManager instance for the inventory screen.
      */
-    GameManager inventoryScreenGameManager;
+    private GameManager inventoryScreenGameManager;
 
     /**
      * The current inventory service.
@@ -109,11 +109,11 @@ public class InventoryScreenController {
     private InventoryService currentInventory;
 
     /**
-     * Inventory screen constructor that constructs inventory screen game manager
+     * Inventory screen constructor that constructs inventory screen game manager.
      *
      * @param tempInventoryScreenGameManager the GameManager instance for this screen.
      */
-    public InventoryScreenController(GameManager tempInventoryScreenGameManager) {
+    public InventoryScreenController(final GameManager tempInventoryScreenGameManager) {
         inventoryScreenGameManager = tempInventoryScreenGameManager;
     }
 
@@ -126,9 +126,7 @@ public class InventoryScreenController {
         List<Button> availableItemButtons = List.of(useHealButton, useReviveButton, useUpgradeButton);
         currentInventory = new InventoryService(inventoryScreenGameManager);
         List<Tower> towers = currentInventory.getTowerList();
-
         clearDisplayedStats();
-
         healsOwned.setText("Heals Owned: " + inventoryScreenGameManager.getAvailableHeals());
         revivesOwned.setText("Revives Owned: " + inventoryScreenGameManager.getAvailableRevives());
         upgradesOwned.setText("Upgrades Owned: " + inventoryScreenGameManager.getAvailableUpgrades());
@@ -278,7 +276,7 @@ public class InventoryScreenController {
      *
      * @param tower The tower to apply the selected item action to.
      */
-    private void applySelectedItem(Tower tower) {
+    private void applySelectedItem(final Tower tower) {
         switch (selectedItem) {
             case "heal":
                 if (inventoryScreenGameManager.getAvailableHeals() > 0 && tower.getMaxHealth() > tower.getHealth()) {
@@ -304,6 +302,8 @@ public class InventoryScreenController {
                     inventoryScreenGameManager.consumeUpgrade();
                     upgradesOwned.setText("Upgrades Owned: " + inventoryScreenGameManager.getAvailableUpgrades());
                 }
+                break;
+            default:
                 break;
         }
         updateDisplayedStats(tower);
@@ -379,7 +379,7 @@ public class InventoryScreenController {
      *
      * @param tower The tower whose statistics to display.
      */
-    private void updateDisplayedStats(Tower tower) {
+    private void updateDisplayedStats(final Tower tower) {
         currTowerHealth.setText(" " + tower.getHealth() + "/" + tower.getMaxHealth());
         currTowerLevel.setText(" " + tower.getLevel());
         currTowerReload.setText(" " + tower.getReloadSpeed());
@@ -421,7 +421,7 @@ public class InventoryScreenController {
      * @param index The index of the tower slot button to retrieve.
      * @return The tower slot button corresponding to the given index.
      */
-    private Button getTowerSlotButton(int index) {
+    private Button getTowerSlotButton(final int index) {
         return switch (index) {
             case 0 -> inventorySlot1Button;
             case 1 -> inventorySlot2Button;

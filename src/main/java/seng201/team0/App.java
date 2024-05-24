@@ -12,7 +12,7 @@ public class App {
     /**
      * Empty Constructor for App.
      */
-    public App(){}
+    public App() { }
 
     /**
      * Entry point which runs the javaFX application
@@ -21,7 +21,7 @@ public class App {
      *
      * @param args program arguments from command line
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         SetupWindow.launchWrapper(args);
     }
 }

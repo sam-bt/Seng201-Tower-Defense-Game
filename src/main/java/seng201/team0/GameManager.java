@@ -182,7 +182,7 @@ public class GameManager {
      * @param finishedScreenLauncher          Consumer to launch the finished screen
      * @param losingScreenLauncher            Consumer to launch the losing screen
      */
-    public GameManager(Consumer<GameManager> setupScreenLauncher, Consumer<GameManager> betweenScreenLauncher, Consumer<GameManager> gameScreenLauncher, Consumer<GameManager> inventoryScreenLauncher, Consumer<GameManager> shopScreenLauncher, Consumer<GameManager> roundOneInventoryScreenLauncher, Consumer<GameManager> roundOneGameScreenLauncher, Consumer<GameManager> errorScreenLauncher, Consumer<GameManager> finishedScreenLauncher, Consumer<GameManager> losingScreenLauncher) {
+    public GameManager(final Consumer<GameManager> setupScreenLauncher, final Consumer<GameManager> betweenScreenLauncher, final Consumer<GameManager> gameScreenLauncher, final Consumer<GameManager> inventoryScreenLauncher, final Consumer<GameManager> shopScreenLauncher, final Consumer<GameManager> roundOneInventoryScreenLauncher, final Consumer<GameManager> roundOneGameScreenLauncher, final Consumer<GameManager> errorScreenLauncher, final Consumer<GameManager> finishedScreenLauncher, final Consumer<GameManager> losingScreenLauncher) {
         this.setupScreenLauncher = setupScreenLauncher;
         this.betweenScreenLauncher = betweenScreenLauncher;
         this.gameScreenLauncher = gameScreenLauncher;
@@ -210,7 +210,7 @@ public class GameManager {
      *
      * @param setup The setup object containing initial game settings.
      */
-    public void setSetup(Setup setup) {
+    public void setSetup(final Setup setup) {
         setName(setup.getName());
         setRounds(setup.getNumRounds());
         money.editMoney(1500);
@@ -221,7 +221,7 @@ public class GameManager {
      *
      * @param tower The tower to be bought.
      */
-    public void buyTower(Tower tower) {
+    public void buyTower(final Tower tower) {
         shopService.buyTower(tower);
     }
 
@@ -230,7 +230,7 @@ public class GameManager {
      *
      * @param tower The tower to be sold.
      */
-    public void sellTower(Tower tower) {
+    public void sellTower(final Tower tower) {
         shopService.sellTower(tower);
     }
 
@@ -239,7 +239,7 @@ public class GameManager {
      *
      * @param item The item to be bought.
      */
-    public void buyItem(String item) {
+    public void buyItem(final String item) {
         shopService.buyItem(item);
     }
 
@@ -248,7 +248,7 @@ public class GameManager {
      *
      * @param item The item to be sold.
      */
-    public void sellItem(String item) {
+    public void sellItem(final String item) {
         shopService.sellItem(item);
     }
 
@@ -264,7 +264,7 @@ public class GameManager {
      *
      * @param trackLength The length of the round track.
      */
-    public void setRoundTrackLength(int trackLength) {
+    public void setRoundTrackLength(final int trackLength) {
         roundTrackLength = trackLength;
     }
 
@@ -283,7 +283,7 @@ public class GameManager {
      * @param genericRoundTowerList The list of towers to consider.
      * @return The sum of the buy prices of the five cheapest towers.
      */
-    public double getCheapestTowersSum(List<Tower> genericRoundTowerList) {
+    public double getCheapestTowersSum(final List<Tower> genericRoundTowerList) {
         List<Tower> sortedList = new ArrayList<>(genericRoundTowerList);
         Collections.sort(sortedList, Comparator.comparingDouble(Tower::getBuyPrice));
         double sum = 0;
@@ -435,7 +435,7 @@ public class GameManager {
      *
      * @param name The new game name.
      */
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -444,7 +444,7 @@ public class GameManager {
      *
      * @param rounds The number of rounds.
      */
-    public void setRounds(Long rounds) {
+    public void setRounds(final Long rounds) {
         this.rounds = rounds;
     }
 
@@ -462,7 +462,7 @@ public class GameManager {
      *
      * @param difficulty The difficulty service.
      */
-    public void setDifficulty(DifficultyService difficulty) {
+    public void setDifficulty(final DifficultyService difficulty) {
         this.difficulty = difficulty;
     }
 
@@ -489,7 +489,7 @@ public class GameManager {
      *
      * @param money The money service.
      */
-    public void setMoney(MoneyService money) {
+    public void setMoney(final MoneyService money) {
         this.money = money;
     }
 
@@ -548,7 +548,7 @@ public class GameManager {
      *
      * @param towersInSlots The array of towers to set in the slots.
      */
-    public void setTowersInSlots(Tower[] towersInSlots) {
+    public void setTowersInSlots(final Tower[] towersInSlots) {
         this.towersInSlots = towersInSlots;
     }
 
@@ -557,7 +557,7 @@ public class GameManager {
      *
      * @param roundOneTowerList The list of towers for round one.
      */
-    public void setRoundOneTowerList(List<Tower> roundOneTowerList) {
+    public void setRoundOneTowerList(final List<Tower> roundOneTowerList) {
         this.roundOneTowerList = roundOneTowerList;
     }
 
@@ -575,7 +575,7 @@ public class GameManager {
      *
      * @param roundOneSelectedTowerList The array of selected towers for round one.
      */
-    public void setRoundOneSelectedTowerList(Tower[] roundOneSelectedTowerList) {
+    public void setRoundOneSelectedTowerList(final Tower[] roundOneSelectedTowerList) {
         this.roundOneSelectedTowerList = roundOneSelectedTowerList;
     }
 
@@ -645,7 +645,7 @@ public class GameManager {
      *
      * @param genericRoundTowerList The list of generic round towers.
      */
-    public void setGenericRoundTowerList(List<Tower> genericRoundTowerList) {
+    public void setGenericRoundTowerList(final List<Tower> genericRoundTowerList) {
         this.genericRoundTowerList = genericRoundTowerList;
     }
 
@@ -711,7 +711,7 @@ public class GameManager {
      *
      * @param index The track length index.
      */
-    public void setTrackLengthIndex(int index) {
+    public void setTrackLengthIndex(final int index) {
         trackLengthIndex = index;
     }
 
@@ -738,7 +738,7 @@ public class GameManager {
      *
      * @param firstTimeInInventory True if it is the first time in the inventory, false otherwise.
      */
-    public void setNotFirstTimeInInventory(boolean firstTimeInInventory) {
+    public void setNotFirstTimeInInventory(final boolean firstTimeInInventory) {
         this.firstTimeInInventory = firstTimeInInventory;
     }
 

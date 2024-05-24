@@ -9,7 +9,7 @@ public class Setup {
      */
     private final String playerName;
     /**
-     * Number of rounds in the game
+     * Number of rounds in the game.
      */
     private final Long numRounds;
 
@@ -19,7 +19,7 @@ public class Setup {
      * @param numRounds the number of rounds selected by the player.
      * @param playerName the name entered by the player.
      */
-    public Setup(String playerName, Long numRounds) {
+    public Setup(final String playerName, final Long numRounds) {
         this.playerName = playerName;
         this.numRounds = numRounds;
     }

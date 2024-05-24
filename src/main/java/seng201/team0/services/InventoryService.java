@@ -54,17 +54,17 @@ public class InventoryService {
     /**
      * The number of available revives in the inventory.
      */
-    public int availableRevives;
+    private int availableRevives;
 
     /**
      * The number of available heals in the inventory.
      */
-    public int availableHeals;
+    private int availableHeals;
 
     /**
      * The number of available upgrades in the inventory.
      */
-    public int availableUpgrades;
+    private int availableUpgrades;
 
     /**
      * Constructor for InventoryService.
@@ -72,7 +72,7 @@ public class InventoryService {
      *
      * @param inventoryServiceGameManager the game manager instance used to retrieve game-related information
      */
-    public InventoryService(GameManager inventoryServiceGameManager) {
+    public InventoryService(final GameManager inventoryServiceGameManager) {
         double currDifficulty = inventoryServiceGameManager.getDifficulty();
 
         if (!inventoryServiceGameManager.isNotFirstTimeInInventory()) {

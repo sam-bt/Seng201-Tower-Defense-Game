@@ -19,7 +19,7 @@ public class GameScreenController {
     /**
      * The GameManager instance for the current game round.
      */
-    GameManager roundGameManager;
+    private GameManager roundGameManager;
     @FXML
     private ProgressBar cartOneFillProgressBar;
     @FXML
@@ -151,7 +151,7 @@ public class GameScreenController {
     /**
      * Instance of RandomEvent class.
      */
-    RandomEvent randomEvent = new RandomEvent();
+    private final RandomEvent randomEvent = new RandomEvent();
     /**
      * List of buttons representing towers.
      */
@@ -282,7 +282,7 @@ public class GameScreenController {
      *
      * @param tower The tower whose stats need to be updated.
      */
-    public void updateSelectedTowerStats(Tower tower) {
+    public void updateSelectedTowerStats(final Tower tower) {
         fillAmountLabel.setText("Fill Amount: " + tower.getFillAmount());
         towerHealthLabel.setText("Health: " + tower.getHealth());
         if (tower.getActionsUntilUsable() == 0) {
@@ -315,7 +315,7 @@ public class GameScreenController {
      *
      * @param selectedTower The tower selected by the player to fill the carts.
      */
-    public void fillCarts(Tower selectedTower) {
+    public void fillCarts(final Tower selectedTower) {
         for (int cartIndex = 0; cartIndex < cartFillProgressBars.size(); cartIndex++) {
             Cart cart = cartList.get(cartIndex);
             if (Objects.equals(cart.getResourceType(), selectedTower.getFillType())) {
@@ -371,7 +371,7 @@ public class GameScreenController {
      * @param eventName The name of the random event.
      * @param eventText The description text of the random event.
      */
-    public void executeRandomEvent(String eventName, String eventText) {
+    public void executeRandomEvent(final String eventName, final String eventText) {
         if (Objects.equals(eventName, "Cart Reset")) {
             int cartToReset = randomEvent.generateRoundIndex();
             cartList.get(cartToReset).resetDistance();

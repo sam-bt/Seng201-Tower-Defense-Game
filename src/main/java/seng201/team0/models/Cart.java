@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Random;
 
 /**
- * Cart model class
+ * Cart model class.
  */
 public class Cart {
     /**
@@ -72,7 +72,7 @@ public class Cart {
      * @param difficulty The difficulty level, which affects the cart's capacity.
      * @param trackLength The length of the track the cart travels on.
      */
-    public Cart(String cartName, String resourceType, double difficulty, int trackLength) {
+    public Cart(final String cartName, final String resourceType, final double difficulty, final int trackLength) {
         this.cartName = cartName;
         this.resourceType = resourceType;
         endReached = false;
@@ -186,7 +186,7 @@ public class Cart {
      *
      * @param towerFillAmount The amount to increase the fill amount by.
      */
-    public void increaseFillAmount(int towerFillAmount) {
+    public void increaseFillAmount(final int towerFillAmount) {
         double newFillAmount = currentFillAmount + (double) towerFillAmount / capacity;
         if (newFillAmount >= 1) {
             currentFillAmount = 1;

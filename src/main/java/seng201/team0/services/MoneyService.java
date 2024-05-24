@@ -3,7 +3,7 @@ package seng201.team0.services;
 import seng201.team0.models.Money;
 
 /**
- * Class that handles money related processes
+ * Class that handles money related processes.
  */
 public class MoneyService {
     private final Money money;
@@ -16,11 +16,11 @@ public class MoneyService {
     }
 
     /**
-     * Increment our counter by one
+     * Increment our counter by one.
      *
      * @param amount the amount for the money to be increased/decreased by.
      */
-    public void editMoney(double amount) {
+    public void editMoney(final double amount) {
         if (amount < 0) {
             if (money.getAmount() + amount < 0) {
                 money.setMoney(-money.getAmount());
@@ -33,7 +33,7 @@ public class MoneyService {
     }
 
     /**
-     * Get the current count of the counter
+     * Get the current count of the counter.
      *
      * @return Current count
      */

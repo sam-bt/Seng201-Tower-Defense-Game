@@ -19,7 +19,7 @@ public class ShopService {
      *
      * @param gameManager The GameManager object representing the game's state.
      */
-    public ShopService(GameManager gameManager) {
+    public ShopService(final GameManager gameManager) {
         this.gameManager = gameManager;
     }
 
@@ -28,7 +28,7 @@ public class ShopService {
      *
      * @param tower The Tower object representing the tower to be bought.
      */
-    public void buyTower(Tower tower) {
+    public void buyTower(final Tower tower) {
         if (gameManager.getMoneyAmount() >= tower.getBuyPrice() && !tower.getOwned()) {
             gameManager.getMoneyService().editMoney(-tower.getBuyPrice());
             tower.setOwned();
@@ -40,7 +40,7 @@ public class ShopService {
      *
      * @param tower The Tower object representing the tower to be sold.
      */
-    public void sellTower(Tower tower) {
+    public void sellTower(final Tower tower) {
         if (tower.getOwned()) {
             gameManager.getMoneyService().editMoney(tower.getSellPrice());
             tower.setNotOwned();
@@ -52,7 +52,7 @@ public class ShopService {
      *
      * @param item The Item to be bought
      */
-    public void buyItem(String item) {
+    public void buyItem(final String item) {
         int itemCost = getItemCost(item);
         if (gameManager.getMoneyAmount() >= itemCost) {
             gameManager.getMoneyService().editMoney(-itemCost);
@@ -70,7 +70,7 @@ public class ShopService {
      *
      * @param item The Item to be sold
      */
-    public void sellItem(String item) {
+    public void sellItem(final String item) {
         int itemSellValue = getItemSellValue(item);
         if (item.equals("heal") && gameManager.getAvailableHeals() > 0) {
             gameManager.decrementHeals();
@@ -89,7 +89,7 @@ public class ShopService {
      * @param item The Item to return the cost of
      * @return the cost of the specified item
      */
-    public static int getItemCost(String item) {
+    public static int getItemCost(final String item) {
         switch (item) {
             case "heal":
                 return 200;
@@ -107,7 +107,7 @@ public class ShopService {
      * @param item The Item to return the sell value of
      * @return the sell value of the specified item
      */
-    public static int getItemSellValue(String item) {
+    public static int getItemSellValue(final String item) {
         switch (item) {
             case "heal":
                 return 200;

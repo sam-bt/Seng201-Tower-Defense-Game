@@ -3,29 +3,29 @@ package seng201.team0.services;
 import seng201.team0.models.Difficulty;
 
 /**
- * Class to handle game difficulty related processes
+ * Class to handle game difficulty related processes.
  */
 public class DifficultyService {
     private final Difficulty difficulty;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param initialDifficulty the initial difficulty for the DifficultyService.
      */
-    public DifficultyService(double initialDifficulty) {
+    public DifficultyService(final double initialDifficulty) {
         difficulty = new Difficulty(initialDifficulty);
     }
 
     /**
-     * Increment our counter by one
+     * Increment the counter by one.
      */
     public void incrementDifficulty() {
         difficulty.increaseDifficulty(.4);
     }
 
     /**
-     * Get the current count of the counter
+     * Get the current count of the counter.
      *
      * @return Current count
      */

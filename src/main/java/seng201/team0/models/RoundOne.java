@@ -41,7 +41,7 @@ public class RoundOne {
      * @param difficulty The difficulty service providing the difficulty level.
      * @param trackLength The length of the track for the carts.
      */
-    public RoundOne(DifficultyService difficulty, int trackLength) {
+    public RoundOne(final DifficultyService difficulty, final int trackLength) {
         coalCart = new Cart("Coal", "Coal", difficulty.getDifficulty(), trackLength);
         ironCart = new Cart("Iron", "Iron", difficulty.getDifficulty(), trackLength);
         goldCart = new Cart("Gold", "Gold", difficulty.getDifficulty(), trackLength);
@@ -56,7 +56,7 @@ public class RoundOne {
      * @param cartList The list of carts to be filled.
      * @param towerList The list of towers to be updated.
      */
-    public void useAction(Tower usedTower, List<Cart> cartList, Tower[] towerList) {
+    public void useAction(final Tower usedTower, final List<Cart> cartList, final Tower[] towerList) {
         for (Tower tower : towerList) {
             tower.actionUsed();
         }
@@ -75,7 +75,7 @@ public class RoundOne {
      * @param cartList The list of carts to be updated.
      * @param towerList The list of towers to be updated.
      */
-    public void nextFrame(List<Cart> cartList, Tower[] towerList) {
+    public void nextFrame(final List<Cart> cartList, final Tower[] towerList) {
         for (Tower tower : towerList) {
             tower.actionUsed();
         }
@@ -134,7 +134,7 @@ public class RoundOne {
      * @param cartList The list of carts to be checked.
      * @return true if the round has ended, false otherwise.
      */
-    public boolean roundEnded(List<Cart> cartList) {
+    public boolean roundEnded(final List<Cart> cartList) {
         for (Cart cart : cartList) {
             if (cart.isEndReached() && !cart.isFull()) {
                 return true;
@@ -155,7 +155,7 @@ public class RoundOne {
      * @param selectedTower The selected tower.
      * @return true if a cart can be filled, false otherwise.
      */
-    public boolean isCartFillable(List<Cart> cartList, Tower selectedTower) {
+    public boolean isCartFillable(final List<Cart> cartList, final Tower selectedTower) {
         for (Cart cart : cartList) {
             if (Objects.equals(cart.getResourceType(), selectedTower.getFillType())) {
                 if (!cart.isFull()) {
@@ -172,7 +172,7 @@ public class RoundOne {
      * @param cartList The list of carts to be checked.
      * @return true if the round is won, false otherwise.
      */
-    public boolean roundWon(List<Cart> cartList) {
+    public boolean roundWon(final List<Cart> cartList) {
         for (Cart cart : cartList) {
             if (!cart.isCartSuccess()) {
                 return false;

@@ -90,7 +90,7 @@ public class ShopScreenController {
      *
      * @param tempShopScreenGameManager The GameManager instance for the shop screen.
      */
-    public ShopScreenController(GameManager tempShopScreenGameManager) {
+    public ShopScreenController(final GameManager tempShopScreenGameManager) {
         shopScreenGameManager = tempShopScreenGameManager;
     }
 
@@ -274,9 +274,6 @@ public class ShopScreenController {
         if (selectedTowerIndex >= 0) {
             Tower tower = shopScreenGameManager.getGenericRoundTowerList().get(selectedTowerIndex);
             shopScreenGameManager.buyTower(tower);
-            for (int i = 0; i < shopScreenGameManager.getGenericRoundTowerList().size(); i++) {
-            }
-
         } else if (selectedItem != null) {
             shopScreenGameManager.buyItem(selectedItem);
         }

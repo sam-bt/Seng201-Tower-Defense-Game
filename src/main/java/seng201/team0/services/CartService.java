@@ -12,14 +12,14 @@ public class CartService {
     /**
      * Empty Constructor for CartService.
      */
-    public CartService(){}
+    public CartService() { }
     /**
      * Checks if all carts except the bonus cart are full.
      *
      * @param cartList The list of carts to be checked.
      * @return returns true if all carts except the bonus cart are full, false otherwise.
      */
-    public static boolean areAllCartsFull(List<Cart> cartList) {
+    public static boolean areAllCartsFull(final List<Cart> cartList) {
         for (Cart cart : cartList) {
             if (!cart.isFull() && !Objects.equals(cart.getCartName(), "Bonus")) {
                 return false;

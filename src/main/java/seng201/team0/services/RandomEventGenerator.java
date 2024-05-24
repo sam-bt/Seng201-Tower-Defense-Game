@@ -9,18 +9,18 @@ public class RandomEventGenerator {
     /**
      * The likelihood of generating a bad event
      */
-    int badEventLikelihood;
+    private int badEventLikelihood;
     /**
      * Random number generator
      */
-    Random rnd = new Random();
+    private Random rnd = new Random();
 
     /**
      * Constructs a RandomEventGenerator with a specified likelihood of bad events.
      *
      * @param badEventLikelihood The likelihood of generating a bad event.
      */
-    public RandomEventGenerator(int badEventLikelihood) {
+    public RandomEventGenerator(final int badEventLikelihood) {
         this.badEventLikelihood = badEventLikelihood;
     }
 

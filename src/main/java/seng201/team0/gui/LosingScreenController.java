@@ -2,7 +2,6 @@ package seng201.team0.gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import seng201.team0.GameManager;
 
 /**
@@ -23,14 +22,14 @@ public class LosingScreenController {
     /**
      * Game manager for the losing screen.
      */
-    GameManager losingScreenGameManager;
+    private GameManager losingScreenGameManager;
 
     /**
      * Constructor for the losing screen controllers game manager.
      *
      * @param tempLosingScreenGameManager The game manager instance associated with the losing screen.
      */
-    public LosingScreenController(GameManager tempLosingScreenGameManager) {
+    public LosingScreenController(final GameManager tempLosingScreenGameManager) {
         losingScreenGameManager = tempLosingScreenGameManager;
     }
 

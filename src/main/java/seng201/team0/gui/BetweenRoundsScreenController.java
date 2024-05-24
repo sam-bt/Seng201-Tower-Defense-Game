@@ -79,7 +79,7 @@ public class BetweenRoundsScreenController {
      *
      * @param tempRoundGameManager the GameManager instance used to retrieve and update game state
      */
-    public BetweenRoundsScreenController(GameManager tempRoundGameManager) {
+    public BetweenRoundsScreenController(final GameManager tempRoundGameManager) {
         roundGameManager = tempRoundGameManager;
     }
 

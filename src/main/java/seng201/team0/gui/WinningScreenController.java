@@ -9,7 +9,7 @@ import seng201.team0.GameManager;
  * Responsible for displaying information about the completed game, such as rounds completed, points, money, and difficulty level.
  */
 public class WinningScreenController {
-    GameManager winningScreenGameManager;
+    private GameManager winningScreenGameManager;
     @FXML
     private Label roundsCompletedLabel;
     @FXML
@@ -24,7 +24,7 @@ public class WinningScreenController {
      *
      * @param tempWinningScreenGameManager The GameManager instance managing the game.
      */
-    public WinningScreenController(GameManager tempWinningScreenGameManager) {
+    public WinningScreenController(final GameManager tempWinningScreenGameManager) {
         winningScreenGameManager = tempWinningScreenGameManager;
     }
 

@@ -17,7 +17,7 @@ public class SetupWrapper {
     /**
      * Empty Constructor for SetupWrapper.
      */
-    public SetupWrapper(){}
+    public SetupWrapper() { }
 
     @FXML
     private BorderPane borderpane;
@@ -32,7 +32,7 @@ public class SetupWrapper {
      *
      * @param stage The Stage for the application window.
      */
-    public void init(Stage stage) {
+    public void init(final Stage stage) {
         this.stage = stage;
         new GameManager(this::launchSetupScreen, this::launchBetweenRoundsScreen, this::launchGameScreen, this::launchInventoryScreen, this::launchShopScreen, this::launchRoundOneInventoryScreen, this::launchRoundOneGameScreen, this::launchErrorScreen, this::launchFinishedScreen, this::launchLoseScreen);
     }
@@ -42,7 +42,7 @@ public class SetupWrapper {
      *
      * @param setupGameManager The GameManager instance managing the game.
      */
-    public void launchSetupScreen(GameManager setupGameManager) {
+    public void launchSetupScreen(final GameManager setupGameManager) {
         try {
             FXMLLoader setupScreenLoader = new FXMLLoader(getClass().getResource("/fxml/setup_screen.fxml"));
             setupScreenLoader.setControllerFactory(param -> new SetupScreenController(setupGameManager));
@@ -57,12 +57,12 @@ public class SetupWrapper {
     /**
      * Launches the between rounds screen.
      *
-     * @param setupGameManager The GameManager instance managing the game.
+     * @param betweenRoundsGameManager The GameManager instance managing the game.
      */
-    public void launchBetweenRoundsScreen(GameManager setupGameManager) {
+    public void launchBetweenRoundsScreen(final GameManager betweenRoundsGameManager) {
         try {
             FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/between_rounds_screen.fxml"));
-            mainScreenLoader.setControllerFactory(param -> new BetweenRoundsScreenController(setupGameManager));
+            mainScreenLoader.setControllerFactory(param -> new BetweenRoundsScreenController(betweenRoundsGameManager));
             Parent setupParent = mainScreenLoader.load();
             borderpane.setCenter(setupParent);
             stage.setTitle("Between Rounds Screen");
@@ -77,7 +77,7 @@ public class SetupWrapper {
      *
      * @param launchGameManager The GameManager instance managing the game.
      */
-    public void launchGameScreen(GameManager launchGameManager) {
+    public void launchGameScreen(final GameManager launchGameManager) {
         try {
             FXMLLoader gameScreenLoader = new FXMLLoader(getClass().getResource("/fxml/game_screen.fxml"));
             gameScreenLoader.setControllerFactory(param -> new GameScreenController(launchGameManager));
@@ -94,7 +94,7 @@ public class SetupWrapper {
      *
      * @param roundOneInventoryGameManager The GameManager instance managing the game.
      */
-    public void launchRoundOneInventoryScreen(GameManager roundOneInventoryGameManager) {
+    public void launchRoundOneInventoryScreen(final GameManager roundOneInventoryGameManager) {
         try {
             FXMLLoader roundOneInventoryScreenLoader = new FXMLLoader(getClass().getResource("/fxml/round_one_inventory_screen.fxml"));
             roundOneInventoryScreenLoader.setControllerFactory(param -> new RoundOneInventoryScreenController(roundOneInventoryGameManager));
@@ -111,7 +111,7 @@ public class SetupWrapper {
      *
      * @param shopScreenGameManager The GameManager instance managing the game.
      */
-    public void launchShopScreen(GameManager shopScreenGameManager) {
+    public void launchShopScreen(final GameManager shopScreenGameManager) {
         try {
             FXMLLoader shopScreenLoader = new FXMLLoader(getClass().getResource("/fxml/shop_screen.fxml"));
             shopScreenLoader.setControllerFactory(param -> new ShopScreenController(shopScreenGameManager));
@@ -128,7 +128,7 @@ public class SetupWrapper {
      *
      * @param inventoryScreenGameManager The GameManager instance managing the game.
      */
-    public void launchInventoryScreen(GameManager inventoryScreenGameManager) {
+    public void launchInventoryScreen(final GameManager inventoryScreenGameManager) {
         try {
             FXMLLoader inventoryScreenLoader = new FXMLLoader(getClass().getResource("/fxml/inventory_screen.fxml"));
             inventoryScreenLoader.setControllerFactory(param -> new InventoryScreenController(inventoryScreenGameManager));
@@ -145,7 +145,7 @@ public class SetupWrapper {
      *
      * @param roundOneGameManager The GameManager instance managing the game.
      */
-    public void launchRoundOneGameScreen(GameManager roundOneGameManager) {
+    public void launchRoundOneGameScreen(final GameManager roundOneGameManager) {
         try {
             FXMLLoader roundOneGameScreenLoader = new FXMLLoader(getClass().getResource("/fxml/round_one_game_screen.fxml"));
             roundOneGameScreenLoader.setControllerFactory(param -> new RoundOneGameScreenController(roundOneGameManager));
@@ -162,7 +162,7 @@ public class SetupWrapper {
      *
      * @param errorScreenGameManager The GameManager instance managing the game.
      */
-    public void launchErrorScreen(GameManager errorScreenGameManager) {
+    public void launchErrorScreen(final GameManager errorScreenGameManager) {
         try {
             FXMLLoader errorScreenLoader = new FXMLLoader(getClass().getResource("/fxml/error_screen.fxml"));
             errorScreenLoader.setControllerFactory(param -> new InvalidNameScreenController(errorScreenGameManager));
@@ -179,7 +179,7 @@ public class SetupWrapper {
      *
      * @param finishedScreenGameManager The GameManager instance managing the game.
      */
-    public void launchFinishedScreen(GameManager finishedScreenGameManager) {
+    public void launchFinishedScreen(final GameManager finishedScreenGameManager) {
         try {
             FXMLLoader finishedScreenLoader = new FXMLLoader(getClass().getResource("/fxml/winning_screen.fxml"));
             finishedScreenLoader.setControllerFactory(param -> new WinningScreenController(finishedScreenGameManager));
@@ -196,7 +196,7 @@ public class SetupWrapper {
      *
      * @param loseScreenGameManager The GameManager instance managing the game.
      */
-    public void launchLoseScreen(GameManager loseScreenGameManager) {
+    public void launchLoseScreen(final GameManager loseScreenGameManager) {
         try {
             FXMLLoader losingScreenLoader = new FXMLLoader(getClass().getResource("/fxml/losing_screen.fxml"));
             losingScreenLoader.setControllerFactory(param -> new LosingScreenController(loseScreenGameManager));

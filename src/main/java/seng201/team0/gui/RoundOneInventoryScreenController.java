@@ -19,35 +19,35 @@ import static java.util.Collections.emptyList;
  */
 public class RoundOneInventoryScreenController {
     @FXML
-    Button heavyCoalButton;
+    private Button heavyCoalButton;
     @FXML
-    Button lightCoalButton;
+    private Button lightCoalButton;
     @FXML
-    Button heavyIronButton;
+    private Button heavyIronButton;
     @FXML
-    Button lightIronButton;
+    private Button lightIronButton;
     @FXML
-    Button heavyGoldButton;
+    private Button heavyGoldButton;
     @FXML
-    Button lightGoldButton;
+    private Button lightGoldButton;
     @FXML
-    Button selectedTowerButtonOne;
+    private Button selectedTowerButtonOne;
     @FXML
-    Button selectedTowerButtonTwo;
+    private Button selectedTowerButtonTwo;
     @FXML
-    Button selectedTowerButtonThree;
+    private Button selectedTowerButtonThree;
     @FXML
-    Label towerNameLabel;
+    private Label towerNameLabel;
     @FXML
-    Label towerHealthLabel;
+    private Label towerHealthLabel;
     @FXML
-    Label towerTypeLabel;
+    private Label towerTypeLabel;
     @FXML
-    Label towerReloadLabel;
+    private Label towerReloadLabel;
     @FXML
-    Label towerFillAmountLabel;
+    private Label towerFillAmountLabel;
     @FXML
-    Label selectAllTowersLabel;
+    private Label selectAllTowersLabel;
     /**
      * Array containing the selected towers for the game round.
      */
@@ -61,34 +61,34 @@ public class RoundOneInventoryScreenController {
     /**
      * List of buttons representing selected tower slots in the UI.
      */
-    List<Button> selectedTowerButtons;
+    private List<Button> selectedTowerButtons;
 
     /**
      * List of indices representing selected towers in the UI.
      */
-    List<Integer> towerListIndices;
+    private List<Integer> towerListIndices;
 
     /**
      * Array containing previously saved towers.
      */
-    Tower[] savedTowers;
+    private Tower[] savedTowers;
 
     /**
      * Instance of GameManager managing the game.
      */
-    GameManager roundOneInventoryScreenGameManager;
+    private GameManager roundOneInventoryScreenGameManager;
 
     /**
      * List of towers available for selection in the game round.
      */
-    List<Tower> towers;
+    private List<Tower> towers;
 
     /**
      * Constructs a new RoundOneInventoryScreenController with the specified GameManager instance.
      *
      * @param tempRoundOneInventoryScreenGameManager The GameManager instance managing the game.
      */
-    RoundOneInventoryScreenController(GameManager tempRoundOneInventoryScreenGameManager) {
+    RoundOneInventoryScreenController(final GameManager tempRoundOneInventoryScreenGameManager) {
         roundOneInventoryScreenGameManager = tempRoundOneInventoryScreenGameManager;
     }
 
@@ -152,7 +152,7 @@ public class RoundOneInventoryScreenController {
      *
      * @param tower The tower for which to display stats.
      */
-    private void updateDisplayedStats(Tower tower) {
+    private void updateDisplayedStats(final Tower tower) {
         towerNameLabel.setText("Name: " + tower.getTowerName());
         towerHealthLabel.setText("Health: " + tower.getHealth());
         towerTypeLabel.setText("Resource Fill Type: " + tower.getFillType());

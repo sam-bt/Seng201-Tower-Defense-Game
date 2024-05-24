@@ -11,7 +11,7 @@ public class TowerService {
     /**
      * Empty Constructor for TowerService.
      */
-    public TowerService(){}
+    public TowerService() { }
 
     /**
      * Random object used for generating random numbers.
@@ -24,7 +24,7 @@ public class TowerService {
      * @param selectedTowers The array of selected towers.
      * @return True if all towers are selected, otherwise false.
      */
-    public static boolean areAllTowersSelected(Tower[] selectedTowers) {
+    public static boolean areAllTowersSelected(final Tower[] selectedTowers) {
         for (Tower tower : selectedTowers) {
             if (tower == null) {
                 return false;
@@ -40,7 +40,7 @@ public class TowerService {
      * @param tower          The tower to check.
      * @return True if the tower is already selected, otherwise false.
      */
-    public static boolean isTowerAlreadySelected(Tower[] selectedTowers, Tower tower) {
+    public static boolean isTowerAlreadySelected(final Tower[] selectedTowers, final Tower tower) {
         for (Tower selectedTower : selectedTowers) {
             if (selectedTower == null) {
                 continue;
@@ -58,7 +58,7 @@ public class TowerService {
      * @param selectedTowers The array of selected towers.
      * @return True if all round one tower types are selected, otherwise false.
      */
-    public static boolean areAllRoundOneTowersTypesSelected(Tower[] selectedTowers) {
+    public static boolean areAllRoundOneTowersTypesSelected(final Tower[] selectedTowers) {
         HashSet<String> roundOneTowers = new HashSet<>(Arrays.asList("Coal", "Iron", "Gold"));
         for (Tower tower : selectedTowers) {
             if (tower == null) {
@@ -75,7 +75,7 @@ public class TowerService {
      * @param tower The tower to check.
      * @return True if the tower should break, otherwise false.
      */
-    public static boolean shouldTowerBreak(Tower tower) {
+    public static boolean shouldTowerBreak(final Tower tower) {
         int likelihood = rnd.nextInt(101);
         return tower.getBreakChance() > likelihood;
     }
@@ -85,7 +85,7 @@ public class TowerService {
      *
      * @param towerList The list of towers to check and break.
      */
-    public static void breakTowers(List<Tower> towerList) {
+    public static void breakTowers(final List<Tower> towerList) {
         for (Tower tower : towerList) {
             if (tower.getOwned() && shouldTowerBreak(tower)) {
                 tower.breakTower();

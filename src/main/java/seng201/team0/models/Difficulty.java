@@ -1,17 +1,17 @@
 package seng201.team0.models;
 
 /**
- * Difficulty model class
+ * Difficulty model class.
  */
 public class Difficulty {
 
     /**
-     * Difficulty number
+     * Difficulty number.
      */
     private double difficulty;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param initialDifficulty the initial difficulty of the Difficulty instance
      */
@@ -20,7 +20,7 @@ public class Difficulty {
     }
 
     /**
-     * Get current counter count
+     * Get current counter count.
      *
      * @return Current count
      */
@@ -29,11 +29,11 @@ public class Difficulty {
     }
 
     /**
-     * Set current counter count
+     * Set current counter count.
      *
      * @param difficultyIncrease Value of counter
      */
-    public void increaseDifficulty(double difficultyIncrease) {
+    public void increaseDifficulty(final double difficultyIncrease) {
         difficulty += difficultyIncrease;
     }
 }

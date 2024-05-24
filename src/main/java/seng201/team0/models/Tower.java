@@ -94,7 +94,7 @@ public class Tower implements Purchasable {
      * @param towerName The name of the tower.
      * @param price The price of the tower.
      */
-    public Tower(int initialHealth, boolean owned, String fillType, int fillAmount, int reloadSpeed, String towerName, double price) {
+    public Tower(final int initialHealth, final boolean owned, final String fillType, final int fillAmount, final int reloadSpeed, final String towerName, final double price) {
         health = initialHealth;
         maxHealth = initialHealth;
         this.owned = owned;
@@ -343,7 +343,7 @@ public class Tower implements Purchasable {
      *
      * @param health The health to be set.
      */
-    public void setHealth(int health) {
+    public void setHealth(final int health) {
         this.health = health;
     }
 }

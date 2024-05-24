@@ -43,7 +43,7 @@ public class RoundOneInventoryService {
      *
      * @param difficulty The difficulty level of the game.
      */
-    public RoundOneInventoryService(double difficulty) {
+    public RoundOneInventoryService(final double difficulty) {
         heavyCoal = new Tower(TowerGenerator.heavyTowerHealthGenerator(), false, "Coal", TowerGenerator.heavyTowerFillAmountGenerator(), TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Coal", TowerGenerator.heavyTowerPriceGenerator(difficulty));
         lightCoal = new Tower(TowerGenerator.lightTowerHealthGenerator(), false, "Coal", TowerGenerator.lightTowerFillAmountGenerator(), TowerGenerator.lightTowerReloadSpeedGenerator(), "Light Coal", TowerGenerator.lightTowerPriceGenerator(difficulty));
         heavyIron = new Tower(TowerGenerator.heavyTowerHealthGenerator(), false, "Iron", TowerGenerator.heavyTowerFillAmountGenerator(), TowerGenerator.heavyTowerReloadSpeedGenerator(), "Heavy Iron", TowerGenerator.heavyTowerPriceGenerator(difficulty));

@@ -9,7 +9,7 @@ public class TowerGenerator {
     /**
      * Empty Constructor for TowerGenerator.
      */
-    public TowerGenerator(){}
+    public TowerGenerator() { }
 
     /**
      * Generates a random health value for a heavy tower.
@@ -77,7 +77,7 @@ public class TowerGenerator {
      * @param difficulty The difficulty level of the game.
      * @return The generated price.
      */
-    public static double heavyTowerPriceGenerator(double difficulty) {
+    public static double heavyTowerPriceGenerator(final double difficulty) {
         Random rnd = new Random();
         double priceRandomInt = rnd.nextInt((301)) + 200 * (int) difficulty;
         return Math.round(priceRandomInt * 100.0) / 100.0;
@@ -89,7 +89,7 @@ public class TowerGenerator {
      * @param difficulty The difficulty level of the game.
      * @return The generated price.
      */
-    public static double lightTowerPriceGenerator(double difficulty) {
+    public static double lightTowerPriceGenerator(final double difficulty) {
         Random rnd = new Random();
         double priceRandomInt = rnd.nextInt((166)) + 100 * (int) difficulty;
         return Math.round(priceRandomInt * 100.0) / 100.0;

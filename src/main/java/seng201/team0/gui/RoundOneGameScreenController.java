@@ -109,42 +109,42 @@ public class RoundOneGameScreenController {
     /**
      * List of buttons for the towers in the UI.
      */
-    List<Button> towerButtons;
+    private List<Button> towerButtons;
 
     /**
      * List of buttons for the carts in the UI.
      */
-    List<Button> cartButtons;
+    private List<Button> cartButtons;
 
     /**
      * List of progress bars for the fill levels of carts in the UI.
      */
-    List<ProgressBar> cartFillProgressBars;
+    private List<ProgressBar> cartFillProgressBars;
 
     /**
      * List of progress bars for the travel progress of carts in the UI.
      */
-    List<ProgressBar> cartProgressBars;
+    private List<ProgressBar> cartProgressBars;
 
     /**
      * List of labels for the size of carts in the UI.
      */
-    List<Label> cartSizeLabels;
+    private List<Label> cartSizeLabels;
 
     /**
      * Instance of the RoundOne class managing the game round.
      */
-    RoundOne roundOne;
+    private RoundOne roundOne;
 
     /**
      * Instance of the RandomEvent class handling random events during the game round.
      */
-    RandomEvent randomEvent = new RandomEvent();
+    private RandomEvent randomEvent = new RandomEvent();
 
     /**
      * Instance of the GameManager class managing the game.
      */
-    GameManager roundOneGameScreenManager;
+    private GameManager roundOneGameScreenManager;
 
 
     /**
@@ -152,7 +152,7 @@ public class RoundOneGameScreenController {
      *
      * @param tempRoundOneGameScreenManager The GameManager instance managing the game.
      */
-    public RoundOneGameScreenController(GameManager tempRoundOneGameScreenManager) {
+    public RoundOneGameScreenController(final GameManager tempRoundOneGameScreenManager) {
         roundOneGameScreenManager = tempRoundOneGameScreenManager;
     }
 
@@ -228,7 +228,7 @@ public class RoundOneGameScreenController {
      *
      * @param tower The selected tower to update the stats for.
      */
-    public void updateSelectedTowerStats(Tower tower) {
+    public void updateSelectedTowerStats(final Tower tower) {
         fillAmountLabel.setText("Fill Amount: " + tower.getFillAmount());
         towerHealthLabel.setText("Health: " + tower.getHealth());
         if (tower.getActionsUntilUsable() == 0) {
@@ -260,7 +260,7 @@ public class RoundOneGameScreenController {
      *
      * @param selectedTower The tower selected to fill the carts.
      */
-    public void fillCarts(Tower selectedTower) {
+    public void fillCarts(final Tower selectedTower) {
         for (int cartIndex = 0; cartIndex < cartFillProgressBars.size(); cartIndex++) {
             Cart cart = cartList.get(cartIndex);
             if (Objects.equals(cart.getResourceType(), selectedTower.getFillType())) {
@@ -285,7 +285,7 @@ public class RoundOneGameScreenController {
      * @param eventName The name of the random event.
      * @param eventText The text describing the event.
      */
-    public void executeRandomEvent(String eventName, String eventText) {
+    public void executeRandomEvent(final String eventName, final String eventText) {
         if (Objects.equals(eventName, "Cart Reset")) {
             int cartToReset = randomEvent.generateRoundOneIndex();
             cartList.get(cartToReset).resetDistance();

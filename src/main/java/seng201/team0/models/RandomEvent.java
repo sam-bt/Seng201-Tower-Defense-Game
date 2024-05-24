@@ -10,34 +10,34 @@ public class RandomEvent { // return a message and action based on generated eve
     /**
      * Empty Constructor for RandomEvent.
      */
-    public RandomEvent(){}
+    public RandomEvent() { }
 
     /**
      * Generator used to generate random events.
      */
-    RandomEventGenerator randomGenerator;
+    private RandomEventGenerator randomGenerator;
 
     /**
      * Name of the event.
      */
-    String eventName;
+    private String eventName;
 
     /**
      * Event message.
      */
-    String eventText;
+    private String eventText;
 
     /**
      * Number representing the event.
      */
-    int eventNum;
+    private int eventNum;
 
     /**
      * Generates a random event based on the difficulty level.
      *
      * @param difficulty The difficulty level of the game.
      */
-    public void generateRandomEvent(double difficulty) {
+    public void generateRandomEvent(final double difficulty) {
         int badEventLikelihood = (int) Math.round(difficulty);
         if (badEventLikelihood > 5) {
             badEventLikelihood = 5;
