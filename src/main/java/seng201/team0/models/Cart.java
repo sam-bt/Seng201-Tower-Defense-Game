@@ -84,10 +84,10 @@ public class Cart {
         List<Integer> speedList = Arrays.asList(5, 8, 8, 10, 10, 15);
         int randomSpeed = rng.nextInt(6);
         speed = speedList.get(randomSpeed);
-        List<Integer> capacityList = Arrays.asList(50 * (int) difficulty, 60 * (int) difficulty, 50 * (int) difficulty, 60 * (int) difficulty, 75 * (int) difficulty);
-        int randomCapacity = rng.nextInt(3);
+        List<Integer> capacityList = Arrays.asList(80, 80, 80, 90, 90, 90, 100, 100, 150);
+        int randomCapacity = rng.nextInt(9);
         if (Objects.equals(cartName, "Bonus")) {
-            capacity = 100 + ((int) difficulty * 50);
+            capacity = 100 + ((int) difficulty * 40);
         } else {
             capacity = capacityList.get(randomCapacity);
         }

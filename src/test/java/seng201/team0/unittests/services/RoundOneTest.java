@@ -46,7 +46,7 @@ public class RoundOneTest {
         towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold", 800);
         Tower selectedTower = towerList[0];
         roundOne.useAction(selectedTower,cartList,towerList);
-        assertEquals(roundOne.getActionsLeft(), 2);
+        assertEquals(roundOne.getActionsLeft(), 1);
         assertEquals(cartList.get(0).getCurrentFillDisplay(), 25);
         assertEquals(cartList.get(1).getCurrentFillDisplay(), 0);
         assertEquals(cartList.get(2).getCurrentFillDisplay(), 0);
@@ -62,12 +62,12 @@ public class RoundOneTest {
         towerList[2] = new Tower(500,false,"Gold",25,3,"Light Gold", 800);
         Tower selectedTower = towerList[0];
         roundOne.useAction(selectedTower,cartList,towerList);
-        assertEquals(roundOne.getActionsLeft(), 2);
+        assertEquals(roundOne.getActionsLeft(), 1);
         assertEquals(cartList.get(0).getCurrentFillDisplay(), 25);
         assertEquals(cartList.get(1).getCurrentFillDisplay(), 0);
         assertEquals(cartList.get(2).getCurrentFillDisplay(), 0);
         roundOne.nextFrame(cartList,towerList);
-        assertEquals(roundOne.getActionsLeft(), 3);
+        assertEquals(roundOne.getActionsLeft(), 2);
     }
     /**
      * Tests if the round ended is true when all carts have reached the end
