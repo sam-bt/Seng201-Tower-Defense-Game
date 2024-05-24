@@ -130,11 +130,13 @@ public class Tower implements Purchasable {
             actionsUntilUsable -= 1; }
     };
     public boolean isUsable(){
-
         return isUsable;
     }
     public void setUsable(){
         actionsUntilUsable = 0;
         isUsable = true;
+    }
+    public void setHealth(int health){
+        this.health = health;
     }
 }
