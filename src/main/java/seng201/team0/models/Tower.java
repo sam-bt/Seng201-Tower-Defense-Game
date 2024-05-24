@@ -33,7 +33,7 @@ public class Tower implements Purchasable {
         this.fillType = fillType;
         this.fillAmount = fillAmount;
         this.reloadSpeed = reloadSpeed;
-        broken = true;
+        broken = false;
         this.towerName = towerName;
         isUsable = true;
         actionsUntilUsable = 0;

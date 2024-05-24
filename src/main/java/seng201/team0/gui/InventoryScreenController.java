@@ -60,6 +60,8 @@ public class InventoryScreenController {
     @FXML
     private Label currTowerFillAmount;
     @FXML
+    private Label currTowerBreakChance;
+    @FXML
     private Label upgradesOwned;
     @FXML
     private Label healsOwned;
@@ -87,10 +89,11 @@ public class InventoryScreenController {
         List<Tower> towers = currentInventory.getTowerList();
         List<Tower> genericTowers = inventoryScreenGameManager.getGenericRoundTowerList();
 
+        clearDisplayedStats();
 
-        healsOwned.setText(": " + inventoryScreenGameManager.getAvailableHeals());
-        revivesOwned.setText(": " + inventoryScreenGameManager.getAvailableRevives());
-        upgradesOwned.setText(": " + inventoryScreenGameManager.getAvailableUpgrades());
+        healsOwned.setText("Heals Owned: " + inventoryScreenGameManager.getAvailableHeals());
+        revivesOwned.setText("Revives Owned: " + inventoryScreenGameManager.getAvailableRevives());
+        upgradesOwned.setText("Upgrades Owned: " + inventoryScreenGameManager.getAvailableUpgrades());
 
         towerListIndices = inventoryScreenGameManager.getGenericRoundTowerListIndices();
         if (!inventoryScreenGameManager.isGenericRoundTowerListNull()) {
@@ -241,7 +244,7 @@ public class InventoryScreenController {
                 if (inventoryScreenGameManager.getAvailableHeals() > 0 && tower.getMaxHealth() > tower.getHealth()) {
                     tower.useHeal(currentInventory);
                     inventoryScreenGameManager.consumeHeal();
-                    healsOwned.setText(":" + inventoryScreenGameManager.getAvailableHeals());
+                    healsOwned.setText("Heals Owned: " + inventoryScreenGameManager.getAvailableHeals());
                 }
                 break;
             case "revive":
@@ -250,7 +253,7 @@ public class InventoryScreenController {
                         inventoryScreenGameManager.getGenericRoundTowerList().get(i).useRevive(currentInventory);
                     }
                     inventoryScreenGameManager.consumeRevive();
-                    revivesOwned.setText(":" + inventoryScreenGameManager.getAvailableRevives());
+                    revivesOwned.setText("Revives Owned: " + inventoryScreenGameManager.getAvailableRevives());
                     resetTowerButtonStyles();
                     updateSlotButtonStyles();
                 }
@@ -259,7 +262,7 @@ public class InventoryScreenController {
                 if (inventoryScreenGameManager.getAvailableUpgrades() > 0) {
                     tower.useUpgrade(currentInventory);
                     inventoryScreenGameManager.consumeUpgrade();
-                    upgradesOwned.setText(":" + inventoryScreenGameManager.getAvailableUpgrades());
+                    upgradesOwned.setText("Upgrades Owned: " + inventoryScreenGameManager.getAvailableUpgrades());
                 }
                 break;
         }
@@ -297,6 +300,7 @@ public class InventoryScreenController {
     }
     private void resetTowerSelection() {
         selectedTowerIndex = -1;
+        clearDisplayedStats();
         resetTowerButtonStyles();
     }
 
@@ -304,13 +308,22 @@ public class InventoryScreenController {
         selectedItem = null;
         resetItemButtonStyles();
     }
+    private void clearDisplayedStats() {
+        currTowerHealth.setText(" ");
+        currTowerLevel.setText(" ");
+        currTowerReload.setText(" ");
+        currTowerType.setText(" ");
+        currTowerFillAmount.setText(" ");
+        currTowerBreakChance.setText(" ");
+    }
 
     private void updateDisplayedStats(Tower tower) {
-        currTowerHealth.setText("Health: " + tower.getHealth() +"/"+ tower.getMaxHealth());
-        currTowerLevel.setText("Level: " + tower.getLevel());
-        currTowerReload.setText("Reload Speed:" + tower.getReloadSpeed());
-        currTowerType.setText("Name:" + tower.getTowerName());
-        currTowerFillAmount.setText("Fill Amount:" + tower.getFillAmount());
+        currTowerHealth.setText(" " + tower.getHealth() +"/"+ tower.getMaxHealth());
+        currTowerLevel.setText(" " + tower.getLevel());
+        currTowerReload.setText(" " + tower.getReloadSpeed());
+        currTowerType.setText(" " + tower.getTowerName());
+        currTowerFillAmount.setText(" " + tower.getFillAmount());
+        currTowerBreakChance.setText(" " + tower.getBreakChance() + "%");
         // Update the tower slot button color based on the broken status
         for (int i = 0; i < selectedTowers.length; i++) {
             if (selectedTowers[i] != null && selectedTowers[i].equals(tower)) {
