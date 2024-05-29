@@ -165,6 +165,8 @@ public class Cart {
 
     /**
      * Sets the distance travelled by the cart.
+     * 
+     * @param The distance to set the cart distancetravelled to
      */
     public void setDistanceTravelled(final double distanceTravelled){
         this.distanceTravelled = distanceTravelled;
