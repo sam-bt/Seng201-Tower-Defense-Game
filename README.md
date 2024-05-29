@@ -1,46 +1,15 @@
-# SENG201 Template Project Overview
-Welcome to the template project for SENG201 which you will transform into your own.
-This README file includes some useful information to help you get started.
-However, we expect that this README becomes your own
-
-## Notes
-Remember you are required to commit your code to the **main** branch of your repository before the deadline.
-
-This project contains default naming of `team0` throughout.
-If you are interested you can update this to reflect your team number, however it is **not required**.
-This can be done by renaming any instance of `team0` with `team<x>` (where x is your number).
-IntelliJ can help with this using `ctrl+shift+f` to find all instances of a string, and `ctrl+shift+r` to replace them, though make sure to change the package names as well.
+## About
+This is a game where the aim is to fill up carts using towers, to complete rounds coded in java, using JavaFX and gradle.
+Built for 1440x900px screens and up
 
 ## Authors
-- SENG201 Teaching team
+Samuel Beattie and Finn Brown
 
-## Prerequisites
-- JDK >= 17 [click here to get the latest stable OpenJDK release (as of writing this README)](https://jdk.java.net/18/)
-- *(optional)* Gradle [Download](https://gradle.org/releases/) and [Install](https://gradle.org/install/)
-
-
-## What's Included
-This project comes with some basic examples of the following (including dependencies in the build.gradle file):
-- JavaFX
-- Junit 5
-
-We have also included a basic setup of the Gradle project and Tasks required for the course including:
-- Required dependencies for the functionality above
-- Test Coverage with JaCoCo
-- Build plugins:
-    - JavaFX Gradle plugin for working with (and packaging) JavaFX applications easily
-
-You are expected to understand the content provided and build your application on top of it. If there is anything you
-would like more information about please reach out to the tutors.
-
-## Importing Project (Using IntelliJ)
-IntelliJ has built-in support for Gradle. To import your project:
-
-- Launch IntelliJ and choose `Open` from the start-up window.
-- Select the project and click open
-- At this point in the bottom right notifications you may be prompted to 'load gradle scripts', If so, click load
-
-**Note:** *If you run into dependency issues when running the app or the Gradle pop up doesn't appear then open the Gradle sidebar and click the Refresh icon.*
+## Features
+Very high unit test coverage
+Javadoc written for every method and class
+Real-time interactive game screen
+Modularised code into controllers, services and models
 
 ## Run Project 
 1. Open a command line interface inside the project directory and run `./gradlew run` to run the app.
@@ -54,5 +23,3 @@ IntelliJ has built-in support for Gradle. To import your project:
 ## Run Tests
 1. Open a command line interface inside the project directory and run `./gradlew test` to run the tests.
 2. Test results should be printed to the command line
-
-**Note:** *This Jar is **NOT** cross-platform, so you **must** build the jar you submit on Linux.* 
